@@ -9,6 +9,7 @@ public class SRSDoc
 {
 
 	private JDesktopPane desktop;
+	private SRSView view = null;
 	//private SRSView view;
 
 	private double population = 100;
@@ -42,15 +43,15 @@ public class SRSDoc
 	{
 		this.desktop = desktop;
 
-		//view = new SRSView(this);
-	//	view.setVisible(true); // necessary as of 1.3
-	//	desktop.add(view);
-		SRSResultsView resultsView = new SRSResultsView(this);
-		resultsView.setVisible(true); // necessary as of 1.3
-		desktop.add(resultsView);
+		view = new SRSView(this);
+		view.setVisible(true); // necessary as of 1.3
+		desktop.add(view);
+		//SRSResultsView resultsView = new SRSResultsView(this);
+	//	resultsView.setVisible(true); // necessary as of 1.3
+	//	desktop.add(resultsView);
 		try
 		{
-			resultsView.setSelected(true);
+			view.setSelected(true);
 		} catch (java.beans.PropertyVetoException e)
 		{
 		}
