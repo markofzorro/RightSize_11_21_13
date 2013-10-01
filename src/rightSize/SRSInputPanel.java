@@ -262,6 +262,9 @@ public class SRSInputPanel extends JPanel
 			gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
 			gridBagConstraints.insets = new Insets(31, 1, 5, 5);
 			add(tfConfidenceInterval, gridBagConstraints);
+			
+			
+			setDefaultValues(); 
 
 		}
 	

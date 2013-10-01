@@ -53,13 +53,16 @@ public class SRSView extends RSInternalFrame
         this.doc = doc;
       setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         
-       // setSize(1000,000);
-       // setDefaultValues();
+   /*
+    * Inherits box layout from RSInternalPane. this shows components vertically from top to bottom
+    */
         
+        inputPanel = new SRSInputPanel();
+        this.add(inputPanel);
         resultsPanel = new SRSResultsPanel();
-    	this.add(resultsPanel, BorderLayout.EAST);
-    	inputPanel = new SRSInputPanel();
-    	this.add(inputPanel, BorderLayout.WEST);
+        this.add(resultsPanel);
+    	
+    	
     	//resultsPanel.setVisible(true);
     //	gridPanel = new JPanel();
     	//getContentPane().add(gridPanel, BorderLayout.WEST);

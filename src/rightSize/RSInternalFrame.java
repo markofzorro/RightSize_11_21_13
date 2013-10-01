@@ -3,8 +3,7 @@
  */
 package rightSize;
 
-import java.awt.BorderLayout;
-
+import javax.swing.BoxLayout;
 import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
 
@@ -35,7 +34,8 @@ public class RSInternalFrame extends JInternalFrame
 
 			// ...Create the GUI and put it in the window...
 			
-			JPanel contentPane = new JPanel(new BorderLayout());
+			JPanel contentPane = new JPanel();
+			contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.Y_AXIS));  // default will display components vertically
 			setContentPane(contentPane);
 
 			// ...Then set the window size or call pack...
