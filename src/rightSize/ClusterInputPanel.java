@@ -1,16 +1,18 @@
 package rightSize;
 
-import javax.swing.JPanel;
-
-public class ClusterInputPanel extends JPanel
+public class ClusterInputPanel extends SRSInputPanel
 {
 
-	/**
-	 * Create the panel.
-	 */
+	
 	public ClusterInputPanel()
 		{
-
+			super();
+			// TODO Auto-generated constructor stub
+			
+			tfPopulation.setText("6969");
+			
+			D.b("ClusterInput tfPopulation = " + tfPopulation);
 		}
 
+	
 }

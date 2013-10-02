@@ -35,7 +35,8 @@ import javax.swing.KeyStroke;
 public class RightSize extends JFrame implements ActionListener
 {
 	private JDesktopPane desktop;
-	private SRSDoc doc;
+	private SRSDoc srsDoc;
+	private ClusterDoc clusterdoc;
 
 	public RightSize()
 		{
@@ -93,6 +94,13 @@ public class RightSize extends JFrame implements ActionListener
 			srsMI.setActionCommand("srs");
 			srsMI.addActionListener(this);
 			sampleSizeMenu.add(srsMI);
+			
+			JMenuItem clusterMI = new JMenuItem("Cluster Sample");
+			clusterMI.setActionCommand("cluster");
+			clusterMI.addActionListener(this);
+			sampleSizeMenu.add(clusterMI);
+			
+			
 
 			return menuBar;
 		}
@@ -104,7 +112,9 @@ public class RightSize extends JFrame implements ActionListener
 				{
 					quit();
 				} else if ("srs".equals(e.getActionCommand()))
-				doc = new SRSDoc(desktop);
+					srsDoc = new SRSDoc(desktop);
+				else if ("cluster".equals(e.getActionCommand()))
+					srsDoc = new ClusterDoc(desktop);
 		}
 
 	// Quit the application.
