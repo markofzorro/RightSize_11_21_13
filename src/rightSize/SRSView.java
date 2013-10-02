@@ -126,29 +126,49 @@ public class SRSView extends RSInternalFrame
        
        getContentPane().add(buttonPanel, BorderLayout.SOUTH);
         pack();
-    }// </editor-fold>                        
+    }
+    
+    public void update(double n0, double n)
+    	{
+    		resultsPanel.set_n0Label(n0);
+    		resultsPanel.set_nLabel(n);
+    		
+    	}
+    
+    
 
 
     /***************getters and setters *********************/
-    String getPopString()
+    public String getPopString()
     {
     	return inputPanel.getPopString();
     }
     
-    String getProportionString()
+   public String getProportionString()
     	{
     		return inputPanel.getProportionString();
     	}
     
-    String getCIString()
+    public String getCIString()
     	{
     		return inputPanel.getCIString();
     	}
     
-    String getCCString()
+    public String getCCString()
     	{
     		return inputPanel.getCCString();
     	}
+    
+    public void set_n0(double n0)
+    	{
+    		resultsPanel.set_n0Label(n0);
+    	}
+    
+    public void set_n(double n)
+    	{
+    		resultsPanel.set_nLabel(n);
+    	}
+    
     
 /*	setProportion(view.getProportion());
 	setCI(view.getCI());

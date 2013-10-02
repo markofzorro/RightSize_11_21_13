@@ -15,6 +15,14 @@ import javax.swing.BorderFactory;
 public class SRSResultsPanel extends javax.swing.JPanel
 {
 
+	// Variables declaration - do not modify
+		private javax.swing.JLabel jLabel2;
+		private javax.swing.JLabel jLabel3;
+		private javax.swing.JLabel n0Label;
+		private javax.swing.JLabel nLabel;
+	
+
+		
 	/**
 	 * Creates new form ShowResultsPanel
 	 */
@@ -36,9 +44,10 @@ public class SRSResultsPanel extends javax.swing.JPanel
 
 			jLabel2 = new javax.swing.JLabel();
 			jLabel3 = new javax.swing.JLabel();
-			n0 = new javax.swing.JLabel();
-			n = new javax.swing.JLabel();
-
+			n0Label = new javax.swing.JLabel();
+			nLabel = new javax.swing.JLabel();
+			
+			
 			//setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 			setLayout(new java.awt.GridBagLayout());
 
@@ -62,31 +71,51 @@ public class SRSResultsPanel extends javax.swing.JPanel
 			gridBagConstraints.insets = new java.awt.Insets(8, 50, 27, 0);
 			add(jLabel3, gridBagConstraints);
 
-			n0.setFont(new java.awt.Font("Lucida Grande", Font.BOLD, 24)); // NOI18N
-			n0.setText("Sample Size Goes Here");
+			n0Label.setFont(new java.awt.Font("Lucida Grande", Font.BOLD, 24)); // NOI18N
+			n0Label.setText(""); // display blank until result exists
 			gridBagConstraints = new java.awt.GridBagConstraints();
 			gridBagConstraints.gridx = 2;
 			gridBagConstraints.gridy = 0;
 			gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
 			gridBagConstraints.insets = new java.awt.Insets(30, 49, 0, 24);
-			add(n0, gridBagConstraints);
+			add(n0Label, gridBagConstraints);
 
-			n.setFont(new java.awt.Font("Lucida Grande", Font.BOLD, 24)); // NOI18N
-			n.setText("Sample Size Goes Here");
+			nLabel.setFont(new java.awt.Font("Lucida Grande", Font.BOLD, 24)); // NOI18N
+			nLabel.setText("");
 			gridBagConstraints = new java.awt.GridBagConstraints();
 			gridBagConstraints.gridx = 2;
 			gridBagConstraints.gridy = 1;
 			gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
 			gridBagConstraints.insets = new java.awt.Insets(8, 49, 27, 33);
-			add(n, gridBagConstraints);
+			add(nLabel, gridBagConstraints);
 
 		//	pack();
 		}// </editor-fold>
 
-	// Variables declaration - do not modify
-	private javax.swing.JLabel jLabel2;
-	private javax.swing.JLabel jLabel3;
-	private javax.swing.JLabel n0;
-	private javax.swing.JLabel n;
+	
+	/*************** Setters *************/
+	
+	/**
+	 * Uses longs to get rid of annoying decimal
+	 * @param n0
+	 */
+	public void set_n0Label(double n0)
+		{
+			long l = (long) n0;
+			String s = Long.toString(l);
+			n0Label.setText(s);
+		}
+
+	public void set_nLabel(double n)
+		{
+			long l = (long) n;
+			String s = Long.toString(l);
+			nLabel.setText(s);
+		//	revalidate();
+		}
+	
+	/*****end setters ***/
+
+	
 	// End of variables declaration
 }

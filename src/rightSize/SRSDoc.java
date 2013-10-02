@@ -78,7 +78,10 @@ public class SRSDoc
 			setCC(view.getCCString());
 			
 			if (SUCCESS)
-			Calculate();
+			{
+				Calculate();
+				view.update(n0, n);
+			}
 		
 			//{
 				// reset the variables;
@@ -143,7 +146,10 @@ public class SRSDoc
 						//m_nn = RoundUp(m_dn0 / ( 1 + ((m_dn0 - 1)/m_lTargetPop ) ) );     
 					fpc = 1 / ( ( 1 + ((n0 - 1)/population ) ) );     ;                                      
 					
+					// Now that calculations are done, round the results to whole numbers
 					n = roundUp(n0 * fpc);
+					n0 = roundUp(n0);
+					
 					
 					D.b("fpc is " + fpc + " and adjucted n = " + n);
 				//	showResults(n0, fpc, n);		
@@ -180,6 +186,7 @@ public class SRSDoc
 		{
 			
 			double retval = stringToDouble(s, POP_MIN, POP_MAX, POP_MAX_DIGITS);
+	
 			
 			
 			if ( retval <= 0)
