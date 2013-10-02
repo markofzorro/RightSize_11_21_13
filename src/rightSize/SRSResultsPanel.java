@@ -36,7 +36,7 @@ public class SRSResultsPanel extends javax.swing.JPanel
 
 		}
 
-	@SuppressWarnings("unchecked")
+//	@SuppressWarnings("unchecked")
 	// <editor-fold defaultstate="collapsed" desc="Generated Code">
 	private void initComponents()
 		{
