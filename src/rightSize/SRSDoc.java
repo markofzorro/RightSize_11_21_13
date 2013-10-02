@@ -21,7 +21,7 @@ public class SRSDoc
 	private double fpc = 0;
 	
 	
-	static boolean SUCCESS = false;
+	static boolean SUCCESS = true;
 	static final double POP_MAX = 100000000000000000D;
 	static final double POP_MIN = 10; // No sense in trying to do survey on less
 	static final int POP_MAX_DIGITS = 18;
@@ -38,6 +38,13 @@ public class SRSDoc
 	static final double CC_MIN = 1;
 	static final int CC_MAX_DIGITS = 2;
 	
+	/**
+	 * Constructor creates a view to gather input and display results.
+	 * When the view is finished and OK is clicked, the view calls the
+	 * doc's calculate method and hands control back to the doc. 
+	 * 
+	 * @param desktop
+	 */
 	
 	public SRSDoc(JDesktopPane desktop) 
 	{
@@ -58,16 +65,21 @@ public class SRSDoc
 	
 	}
 
-	public void setVariables()
+	/**
+	 * Loads variables into the document's class-level vars.
+	 * It gets the values as strings from the input view and passes them
+	 * to specialized methods for parsing and validation.
+	 */
+		public void setVariables()
 		{
-/*			setPopulation(view.getPopulation());
-			setProportion(view.getProportion());
-			setCI(view.getCI());
-			setCC(view.getCC());
+			setPop(view.getPopString());
+			setProportion(view.getProportionString());
+			setCI(view.getCIString());
+			setCC(view.getCCString());
 			
 			if (SUCCESS)
 			Calculate();
-	*/	
+		
 			//{
 				// reset the variables;
 			//	population = proportion = confidenceInterval = 0;
@@ -116,7 +128,7 @@ public class SRSDoc
 					 //double ciSquared  
 					 D.b("ci2 is " + confidenceInterval + " squared it is " + ci2);
 					 
-					 D.b("p = " + p + " q = " + q + ".");
+					 D.b("p = " + p + ", q = " + q + ", z " + z + ", CI2 " + ci2 + ".");
 					
 				//	 double n0 = (z * z * p * q ) / ciWidth * ciWidth;
 					 
@@ -132,6 +144,8 @@ public class SRSDoc
 					fpc = 1 / ( ( 1 + ((n0 - 1)/population ) ) );     ;                                      
 					
 					n = roundUp(n0 * fpc);
+					
+					D.b("fpc is " + fpc + " and adjucted n = " + n);
 				//	showResults(n0, fpc, n);		
 		
 		}
@@ -162,24 +176,21 @@ public class SRSDoc
 	/****** end of calculations */
 /** Validation and value setting and getting methods follow */
 	
- 	private void setPopulation(String s)
+ 	private void setPop(String s)
 		{
-			double retval = 0;
-			retval = stringToDouble(s, POP_MIN, POP_MAX, POP_MAX_DIGITS);
+			
+			double retval = stringToDouble(s, POP_MIN, POP_MAX, POP_MAX_DIGITS);
 			
 			
-			if ( retval > 0)
+			if ( retval <= 0)
 			{
-				population = retval;
-				SUCCESS = true;
-			}
-			else
-			{	
 				population = 0; // mark failure
 				SUCCESS = false;
 			}
+			else 
+				population = retval;
 			
-			D.b("setPop: retval is " + retval);
+			D.b("Doc setPop: retval is " + retval);
 						
 		}
  	
@@ -192,36 +203,32 @@ public class SRSDoc
 	
 	private void setProportion(String s)
 		{
-			double retval = 0;
-			retval = stringToDouble(s, PROPORTION_MIN, PROPORTION_MAX, PROPORTION_MAX_DIGITS);
-			if ( retval > 0)
-			{
-				proportion = retval;
-				D.b("setProportion: retval is: " + retval);
-				SUCCESS = true;
-			}
+	
+			double retval = stringToDouble(s, PROPORTION_MIN, PROPORTION_MAX, PROPORTION_MAX_DIGITS);
+			if ( retval <= 0)
+				{
+					proportion = 0; // mark failure
+					SUCCESS = false;
+				}	
 			else
-			{	
-				SUCCESS = false;
-			}
-						
+				proportion = retval;
+				
+			D.b("Doc setProportion: retval is " + retval);
 		}
 	
 	private void setCI(String s)
 		{
-			double retval = 0;
-			retval = stringToDouble(s, CI_MIN, CI_MAX, CI_MAX_DIGITS);
-			if ( retval > 0)
-			{
-				confidenceInterval = retval;
-				D.b("setCI: retval is: " + retval);
-				SUCCESS = true;
-			}
+			
+			double retval = stringToDouble(s, CI_MIN, CI_MAX, CI_MAX_DIGITS);
+			if ( retval <= 0)
+				{
+					confidenceInterval = 0; // mark failure
+					SUCCESS = false;
+				}	
 			else
-			{	
-				confidenceInterval = 0; // mark failure
-				SUCCESS = false;
-			}
+				confidenceInterval = retval;
+				
+			D.b("Doc setCI: retval is " + retval);
 						
 		}
 	
@@ -229,17 +236,15 @@ public class SRSDoc
 		{
 			double retval = 0;
 			retval = stringToDouble(s, CC_MIN, CC_MAX, CC_MAX_DIGITS);
-			if ( retval > 0)
-			{
-				confidenceCoefficient = retval;
-				D.b("setCC: retval is: " + retval);
-				SUCCESS = true;
-			}
+			if ( retval <= 0)
+				{
+					confidenceInterval = 0; // mark failure
+					SUCCESS = false;
+				}	
 			else
-			{	
-				confidenceCoefficient = 0; // mark failure
-				SUCCESS = false;
-			}
+				confidenceCoefficient = retval;
+				
+			D.b("Doc setCC: retval is " + retval);
 						
 		}
 	
@@ -307,7 +312,7 @@ public class SRSDoc
 					{
 //						JOptionPane.showMessageDialog(view,"Oops, You entered: " + retval + ". The value must be between" + in_min + " and " + in_max);
 						
-						if ( SUCCESS )
+						
 							SUCCESS = false;	// mark failure
 						
 						return 0.0;

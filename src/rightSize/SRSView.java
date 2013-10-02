@@ -128,7 +128,32 @@ public class SRSView extends RSInternalFrame
         pack();
     }// </editor-fold>                        
 
-   	
+
+    /***************getters and setters *********************/
+    String getPopString()
+    {
+    	return inputPanel.getPopString();
+    }
+    
+    String getProportionString()
+    	{
+    		return inputPanel.getProportionString();
+    	}
+    
+    String getCIString()
+    	{
+    		return inputPanel.getCIString();
+    	}
+    
+    String getCCString()
+    	{
+    		return inputPanel.getCCString();
+    	}
+    
+/*	setProportion(view.getProportion());
+	setCI(view.getCI());
+	setCC(view.getCC());
+  */  
 	                                              
 
 /*******end getters and setters *****************/
@@ -136,5 +161,5 @@ public class SRSView extends RSInternalFrame
     /**
      * @param args the command line arguments
      */
-   
+  	 
   }
