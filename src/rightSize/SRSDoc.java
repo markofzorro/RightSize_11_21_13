@@ -8,17 +8,17 @@ import org.apache.commons.math3.distribution.NormalDistribution;
 public class SRSDoc
 {
 
-	private JDesktopPane desktop;
-	private SRSView view = null;
-	//private SRSView view;
+	protected JDesktopPane desktop;
+	protected SRSView view = null;
+	
 
-	private double population = 100;
-	private double confidenceInterval = 5;
-	private double confidenceCoefficient = 95;
-	private double proportion = 50;
-	private double n0 = 0;
-	private double n = 0;
-	private double fpc = 0;
+	protected double population = 100;
+	protected double confidenceInterval = 5;
+	protected double confidenceCoefficient = 95;
+	protected double proportion = 50;
+	protected double n0 = 0;
+	protected double n = 0;
+	protected double fpc = 0;
 	
 	
 	static boolean SUCCESS = true;
@@ -50,19 +50,25 @@ public class SRSDoc
 	{
 		this.desktop = desktop;
 
-		view = new SRSView(this);
-		view.setVisible(true); // necessary as of 1.3
-		desktop.add(view);
+		setView();
 		//SRSResultsView resultsView = new SRSResultsView(this);
 	//	resultsView.setVisible(true); // necessary as of 1.3
 	//	desktop.add(resultsView);
-		try
-		{
-			view.setSelected(true);
-		} catch (java.beans.PropertyVetoException e)
-		{
-		}
+		
 	
+	}
+	
+	protected void setView()
+	{
+		view = new SRSView(this);
+		view.setVisible(true); // necessary as of 1.3
+		desktop.add(view);
+		try
+			{
+				view.setSelected(true);
+			} catch (java.beans.PropertyVetoException e)
+			{
+			}
 	}
 
 	/**
@@ -73,10 +79,10 @@ public class SRSDoc
 		public void setVariables()
 		{
 			setPop(view.getPopString());
-		/*	setProportion(view.getProportionString());
+			setProportion(view.getProportionString());
 			setCI(view.getCIString());
 			setCC(view.getCCString());
-			*/
+			
 			if (SUCCESS)
 			{
 				Calculate();
@@ -95,7 +101,7 @@ public class SRSDoc
 		}
 	
 	
-	private void Calculate()
+	protected void Calculate()
 		{
 				//	   System.out.println(" cumulative probability takes z and returns p. Example: of z = 1.96 returns " + nd.cumulativeProbability(1.96)); 
     		//   	D.b("inverseCumulativeProbability gets z score from probabity: " +  nd.inverseCumulativeProbability(.025));
@@ -156,14 +162,14 @@ public class SRSDoc
 		
 		}
 	
-	private void showResults(double show_n0, double show_fpc, double show_n  )
+	protected void showResults(double show_n0, double show_fpc, double show_n  )
 		{
 			// JOptionPane.showMessageDialog(view,"Sample size is = " + show_n0 + "FPC is " + show_fpc + ". With FPC it is: " +show_n);
 		//	SRSResultsView resultsView = new SRSResultsView();
 		//	desktop.add(resultsView);
 		}
 	//  Weirdly I can't get hold of the version in java.math, but it is simple enough
-	private double abs(double number)
+	protected double abs(double number)
 		{
 			double abs_number = (number < 0) ? -number : number;
 			return abs_number;
@@ -182,7 +188,7 @@ public class SRSDoc
 	/****** end of calculations */
 /** Validation and value setting and getting methods follow */
 	
- 	private void setPop(String s)
+ 	protected void setPop(String s)
 		{
 			
 			double retval = stringToDouble(s, POP_MIN, POP_MAX, POP_MAX_DIGITS);
@@ -208,7 +214,7 @@ public class SRSDoc
  		}
  	
 	
-	private void setProportion(String s)
+	protected void setProportion(String s)
 		{
 	
 			double retval = stringToDouble(s, PROPORTION_MIN, PROPORTION_MAX, PROPORTION_MAX_DIGITS);
@@ -223,7 +229,7 @@ public class SRSDoc
 			D.b("Doc setProportion: retval is " + retval);
 		}
 	
-	private void setCI(String s)
+	protected void setCI(String s)
 		{
 			
 			double retval = stringToDouble(s, CI_MIN, CI_MAX, CI_MAX_DIGITS);
@@ -239,7 +245,7 @@ public class SRSDoc
 						
 		}
 	
-	private void setCC(String s)
+	protected void setCC(String s)
 		{
 			double retval = 0;
 			retval = stringToDouble(s, CC_MIN, CC_MAX, CC_MAX_DIGITS);

@@ -36,7 +36,7 @@ public class RightSize extends JFrame implements ActionListener
 {
 	private JDesktopPane desktop;
 	private SRSDoc srsDoc;
-	private ClusterDoc clusterdoc;
+	private ClusterDoc clusterDoc;
 
 	public RightSize()
 		{
@@ -114,7 +114,7 @@ public class RightSize extends JFrame implements ActionListener
 				} else if ("srs".equals(e.getActionCommand()))
 					srsDoc = new SRSDoc(desktop);
 				else if ("cluster".equals(e.getActionCommand()))
-					srsDoc = new ClusterDoc(desktop);
+					clusterDoc = new ClusterDoc(desktop);
 		}
 
 	// Quit the application.

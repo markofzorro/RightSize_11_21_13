@@ -1,3 +1,15 @@
+public void actionPerformed(ActionEvent e)
+		{
+			if ("quit".equals(e.getActionCommand()))
+				{
+					quit();
+				} else if ("srs".equals(e.getActionCommand()))
+					srsDoc = new SRSDoc(desktop);
+				else if ("cluster".equals(e.getActionCommand()))
+					srsDoc = new ClusterDoc(desktop);
+		}
+
+
 /********** From RightsizeView
 
       // Variables declaration - do not modify                     

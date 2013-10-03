@@ -26,6 +26,7 @@ public class SRSView extends RSInternalFrame
 	SRSDoc doc = null;
 	SRSResultsPanel resultsPanel = null;
 	SRSInputPanel inputPanel = null;
+	
 	//SRSButtonPanel pb = null; Not a class
 	// begin variable declarations
 	
@@ -49,9 +50,13 @@ public class SRSView extends RSInternalFrame
      */
     public SRSView(SRSDoc doc)
       {
-        super("Simple Random Sample");
+    	 super("Simple Random Sample"); // Sets the title of RSInternalFrame. this allows us to keep count of the panels
+    	  
+    	  // super("Simple Random Sample");
+    	//  setTitle("Simple Random Sample");
         this.doc = doc;
       setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+      
         
    /*
     * Inherits box layout from RSInternalPane. this shows components vertically from top to bottom
@@ -61,18 +66,16 @@ public class SRSView extends RSInternalFrame
         this.add(inputPanel);
         resultsPanel = new SRSResultsPanel();
         this.add(resultsPanel);
-    	
-    	
-    	//resultsPanel.setVisible(true);
-    //	gridPanel = new JPanel();
-    	//getContentPane().add(gridPanel, BorderLayout.WEST);
-    	
         initComponents();
-              
-      }
-    
-    
-   private void initButtonPanel()
+    	
+    			 
+    			
+    }
+
+
+   
+
+private void initButtonPanel()
     {
     	buttonPanel = new JPanel();
     	buttonPanel.setLayout(new FlowLayout());
@@ -113,18 +116,8 @@ public class SRSView extends RSInternalFrame
     
     private void initComponents()
     {
-    	//setTitle("RightSize");
-    	
-    	
-    	
     	initButtonPanel();
-    	
-    	
-    	
-    	
-    	       
-       
-       getContentPane().add(buttonPanel, BorderLayout.SOUTH);
+    	getContentPane().add(buttonPanel, BorderLayout.SOUTH);
         pack();
     }
     
