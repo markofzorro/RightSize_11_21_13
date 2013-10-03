@@ -5,11 +5,11 @@ import javax.swing.JOptionPane;
 
 import org.apache.commons.math3.distribution.NormalDistribution;
 
-public class SRSDoc
+public class ClusterDoc_Old
 {
 
 	protected JDesktopPane desktop;
-	protected SRSView view = null;
+	protected ClusterView_Old clusterView = null;
 	
 
 	protected double population = 100;
@@ -46,7 +46,7 @@ public class SRSDoc
 	 * @param desktop
 	 */
 	
-	public SRSDoc(JDesktopPane desktop) 
+	public ClusterDoc_Old(JDesktopPane desktop) 
 	{
 		this.desktop = desktop;
 
@@ -60,12 +60,12 @@ public class SRSDoc
 	
 	protected void setView()
 	{
-		view = new SRSView(this, "Simple Random Sample");
-		view.setVisible(true); // necessary as of 1.3
-		desktop.add(view);
+		clusterView = new ClusterView_Old(this);
+		clusterView.setVisible(true); // necessary as of 1.3
+		desktop.add(clusterView);
 		try
 			{
-				view.setSelected(true);
+				clusterView.setSelected(true);
 			} catch (java.beans.PropertyVetoException e)
 			{
 			}
@@ -78,15 +78,15 @@ public class SRSDoc
 	 */
 		public void setVariables()
 		{
-			setPop(view.getPopString());
-			setProportion(view.getProportionString());
-			setCI(view.getCIString());
-			setCC(view.getCCString());
+			setPop(clusterView.getPopString());
+			setProportion(clusterView.getProportionString());
+			setCI(clusterView.getCIString());
+			setCC(clusterView.getCCString());
 			
 			if (SUCCESS)
 			{
 				Calculate();
-				view.update(n0, n);
+				clusterView.update(n0, n);
 			}
 		
 			//{
@@ -307,7 +307,7 @@ public class SRSDoc
 			try {	retval= Double.parseDouble(sb.toString()); }
 		catch (NumberFormatException e) 
 				{ 
-//					JOptionPane.showMessageDialog(view,"<HTML>Oops, SRSdocument has Internal error converting string to Double. <br>Please contact TEPHINET office or"
+//					JOptionPane.showMessageDialog(view,"<HTML>Oops, ClusterDocument has Internal error converting string to Double. <br>Please contact TEPHINET office or"
 //							+ " Mark White at mark@markewhite.com to report this error. <br>Thanks. Try again. Be sure to enter a valid number.</HTML>");
 				}
 			 
@@ -334,4 +334,4 @@ public class SRSDoc
 		}
 	
 		
-} // end of SRSDocument
+} // end of ClusterDocument
