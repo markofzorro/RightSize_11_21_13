@@ -4,6 +4,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+// ERASEME: TOWER GITHUB TEST!
 public class ClusterView extends SRSView
 {	
 	ClusterDoc doc;
@@ -14,7 +15,7 @@ public class ClusterView extends SRSView
 			super(doc, title);
 			//super.setTitle("Cluster Sample");
 			this.doc = doc;
-			D.b("Reached ClusterFuckView(): doc is " + doc);
+			D.b("Reached ClusterView(): doc is " + doc);
 			
 			
 			
