@@ -9,7 +9,7 @@ public class SRSDoc
 {
 
 	protected JDesktopPane desktop;
-	protected SRSView view = null;
+	protected SRSView srsView = null;
 	
 
 	protected double population = 100;
@@ -60,12 +60,12 @@ public class SRSDoc
 	
 	protected void setView()
 	{
-		view = new SRSView(this);
-		view.setVisible(true); // necessary as of 1.3
-		desktop.add(view);
+		srsView = new SRSView(this);
+		srsView.setVisible(true); // necessary as of 1.3
+		desktop.add(srsView);
 		try
 			{
-				view.setSelected(true);
+				srsView.setSelected(true);
 			} catch (java.beans.PropertyVetoException e)
 			{
 			}
@@ -78,15 +78,15 @@ public class SRSDoc
 	 */
 		public void setVariables()
 		{
-			setPop(view.getPopString());
-			setProportion(view.getProportionString());
-			setCI(view.getCIString());
-			setCC(view.getCCString());
+			setPop(srsView.getPopString());
+			setProportion(srsView.getProportionString());
+			setCI(srsView.getCIString());
+			setCC(srsView.getCCString());
 			
 			if (SUCCESS)
 			{
 				Calculate();
-				view.update(n0, n);
+				srsView.update(n0, n);
 			}
 		
 			//{
