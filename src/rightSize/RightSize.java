@@ -24,10 +24,10 @@ import javax.swing.KeyStroke;
  * Desktop pane allows sample sizes to be displayed in internal panes that nestle nicely in
  * fan rows so users can keep them and compare.
  * 
- * The class sets up the main window and menu. Each menu item creates a document that
+ * The class sets up the main window and menu. Each menu item creates a SRSDocument that
  * creates the requisite view to get input and display results.
  * 
- * the document does calculations and holds variables so that graphs can be created and shown.
+ * the SRSDocument does calculations and holds variables so that graphs can be created and shown.
  * 
  * InternalFrameDemo.java requires:
  *   MyInternalFrame.java
@@ -35,7 +35,8 @@ import javax.swing.KeyStroke;
 public class RightSize extends JFrame implements ActionListener
 {
 	private JDesktopPane desktop;
-	private SRSDoc doc;
+	private SRSDoc srsDoc;
+	private ClusterDoc clusterDoc = null;
 
 	public RightSize()
 		{
@@ -52,7 +53,7 @@ public class RightSize extends JFrame implements ActionListener
 			desktop = new JDesktopPane(); // a specialized layered pane
 			// createFrame(); //create first "window"
 			setContentPane(desktop);
-			// doc = new SRSDoc(desktop);
+			// SRSDoc = new SRSSRSDoc(desktop);
 			setJMenuBar(createMenuBar());
 
 			// Make dragging a little faster but perhaps uglier.
@@ -93,6 +94,11 @@ public class RightSize extends JFrame implements ActionListener
 			srsMI.setActionCommand("srs");
 			srsMI.addActionListener(this);
 			sampleSizeMenu.add(srsMI);
+			
+			JMenuItem clusterMI = new JMenuItem("Cluster Sample");
+			clusterMI.setActionCommand("cluster");
+			clusterMI.addActionListener(this);
+			sampleSizeMenu.add(clusterMI);
 
 			return menuBar;
 		}
@@ -103,8 +109,15 @@ public class RightSize extends JFrame implements ActionListener
 			if ("quit".equals(e.getActionCommand()))
 				{
 					quit();
-				} else if ("srs".equals(e.getActionCommand()))
-				doc = new SRSDoc(desktop);
+				} 
+				else if ("srs".equals(e.getActionCommand()))
+					srsDoc = new SRSDoc(desktop);
+				else if ("cluster".equals(e.getActionCommand()))
+						clusterDoc = new ClusterDoc(desktop);
+					
+					
+				
+			
 		}
 
 	// Quit the application.
