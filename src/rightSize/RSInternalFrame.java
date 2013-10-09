@@ -27,7 +27,7 @@ public class RSInternalFrame extends JInternalFrame
 
 	public RSInternalFrame(String title)
 		{
-			super(title + " " + (++openFrameCount), true, // resizable
+			super("Sample Number " + (++openFrameCount) +  ": A " + title, true, // resizable
 					true, // closable
 					true, // maximizable
 					true);// iconifiable
@@ -45,7 +45,7 @@ public class RSInternalFrame extends JInternalFrame
 			setLocation(xOffset * openFrameCount, yOffset * openFrameCount);
 		
 			// maybe this belongs in SRSView. etc.
-			setVisible(true);
+		//	setVisible(true);
 		}
 
 	

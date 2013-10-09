@@ -4,18 +4,16 @@
  */
 package rightSize;
 
-//import java.awt.BorderLayout;
+import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 //import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
@@ -24,43 +22,47 @@ import java.awt.Insets;
  *
  * @author markwhite
  */
-public class SRSView extends RSInternalFrame
+public class ClusterView_Old extends RSInternalFrame
   {
-	SRSDoc doc = null;
+	ClusterDoc_Old doc = null;
 	SRSResultsPanel resultsPanel = null;
 	SRSInputPanel inputPanel = null;
-	JPanel contentPane = new JPanel();
 	
 	//SRSButtonPanel pb = null; Not a class
 	// begin variable declarations
 	
 	 private javax.swing.JButton okButton;
-	 private javax.swing.JButton cancelButton;
+	    private javax.swing.JButton cancelButton;
 	   
-		
+	
+	
+	
+	
+	
 	
     private JPanel buttonPanel;
     
    
     //end variable declarations
 	
-   
+ /*   public ClusterView(ClusterDoc clusterDoc)
+		{
+			// TODO Auto-generated constructor stub
+			super("Cluster Sample"); // Sets the title of RSInternalFrame. this allows us to keep count of the panels
+		}
+*/
+  
     /**
      * Creates new Internal Frame for user interactions for simple random sample calculations. 
      */
-    public SRSView(SRSDoc doc, String title)
+    public ClusterView_Old(ClusterDoc_Old clusterDoc)
       {
-    	 super(title); // Sets the title of RSInternalFrame. this allows us to keep count of the panels
+    	  super("Cluster Sample"); // Sets the title of RSInternalFrame. this allows us to keep count of the panels
     	  
     	  // super("Simple Random Sample");
     	//  setTitle("Simple Random Sample");
-        this.doc = doc;
-        contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-	//	contentPane.setLayout(new BorderLayout(0, 0));
-		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.Y_AXIS));
-		setContentPane(contentPane);
-      setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        this.doc = clusterDoc;
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
       
         
    /*
@@ -69,19 +71,15 @@ public class SRSView extends RSInternalFrame
         
         inputPanel = new SRSInputPanel();
         this.add(inputPanel);
-        resultsPanel = new SRSResultsPanel();
+   /*     resultsPanel = new SRSResultsPanel();
         this.add(resultsPanel);
-        initComponents();
+     
     	
-    			 
+  */ 
+        initComponents();
+      }
     			
-    }
-
-
    
-
-
-
 
 private void initButtonPanel()
     {
@@ -125,7 +123,7 @@ private void initButtonPanel()
     private void initComponents()
     {
     	initButtonPanel();
-    	getContentPane().add(buttonPanel);
+    	getContentPane().add(buttonPanel, BorderLayout.SOUTH);
         pack();
     }
     

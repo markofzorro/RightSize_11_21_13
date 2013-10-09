@@ -302,23 +302,23 @@ public class SRSInputPanel extends JPanel
 		return tfPopulation;
 	}
 	*/
-    public String getPopulation()
+    public String getPopString()
     	{
-    		//System.out.println("getpop: the string is " + tfPopulation.toString());
+    		System.out.println("InputPanel: getpop: the string is " + tfPopulation.toString());
     		return tfPopulation.getText();
     	}
 
-    public String getProportion() 
+    public String getProportionString() 
     	{
     		return tfProportion.getText();
     	}
     
-    public String getCI() 
+    public String getCIString() 
     	{
     		return tfConfidenceInterval.getText();
     	}
     
-    public String getCC() 
+    public String getCCString() 
     	{
     		return tfConfidenceLevel.getText();
     	}
@@ -347,4 +347,5 @@ public class SRSInputPanel extends JPanel
     		
     	}
 
+	
 }
