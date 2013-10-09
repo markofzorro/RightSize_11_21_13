@@ -21,6 +21,12 @@ public class ClusterDoc
 	private double fpc = 0;
 	
 	
+	private double clusterSize = 0;
+	private double clusterNumber = 0; 
+	private double designEffect = 0;
+	private double roh = 0;
+	
+	
 	static boolean SUCCESS = false;
 	static final double POP_MAX = 100000000000000000D;
 	static final double POP_MIN = 10; // No sense in trying to do survey on less
@@ -42,20 +48,26 @@ public class ClusterDoc
 	public ClusterDoc(JDesktopPane desktop) 
 	{
 		this.desktop = desktop;
+		Calculate();
 
-		view = new ClusterView(this);
-		view.setVisible(true); // necessary as of 1.3
+		/* temporarily skip these steps while I test the formula
+		 * 
+		 
+//		view = new ClusterView(this);
+//		view.setVisible(true); // necessary as of 1.3
 		desktop.add(view);
 		//SRSResultsView resultsView = new SRSResultsView(this);
 	//	resultsView.setVisible(true); // necessary as of 1.3
 	//	desktop.add(resultsView);
+		
+	
 		try
 		{
 			view.setSelected(true);
 		} catch (java.beans.PropertyVetoException e)
 		{
 		}
-	
+		* add some of these back when calculation works. */
 	}
 
 	public void setVariables()
@@ -65,7 +77,7 @@ public class ClusterDoc
 			setCI(view.inputPanel.getCI());
 			setCC(view.inputPanel.getCC());
 			
-			if (SUCCESS)
+		//	if (SUCCESS)
 			Calculate();
 		
 			//{
@@ -79,17 +91,12 @@ public class ClusterDoc
 //			D.b("pop = " + population + ". proportion = " + proportion + ". ci = " + confidenceInterval + " cc = "+ confidenceCoefficient);
 		}
 	
-	
+/**
+ *  Formula from Bennett, WHO Stat Quartery 44(3), 98-106, 1991	
+ */
 	private void Calculate()
 		{
-		  
-/* Begin calculations **************/		        
-/******* Formula from Cochran (1963:75) ***
- *	n0 = z2pq/e2
- *	where z2 = z squared
- *	e = confidence interval
- */
-				 
+			 
 				// Standard Normal Distribution has mean of 0 and SD of 1.
 					NormalDistribution  nd = new NormalDistribution(0, 1); 
 					
@@ -104,7 +111,24 @@ public class ClusterDoc
 					
 					double p = proportion/100;
 					 double q = 1 - p;
-					 double ci2 = confidenceInterval/100; // get rid of percents
+					 
+			/***** Begin cluster sample-specific calculations ***/
+					 
+			// Set vars to match example
+					 roh = .2;
+					 clusterSize = 30; // b in example
+					 clusterNumber = 20;
+					 
+					 population = clusterSize * clusterNumber;
+					 
+					 
+					 designEffect = 1 +(clusterSize - 1) * roh;
+					 
+					 population = clusterSize * clusterNumber;
+					 double standardError = Math.sqrt((p * q)/population);
+					 
+					 D.b("standard error is "+ standardError);
+				/*	 double ci2 = confidenceInterval/100; // get rid of percents
 					 ci2 = ci2 * ci2; // square it.
 					
 					 //double ciSquared  
@@ -128,7 +152,7 @@ public class ClusterDoc
 					n = roundUp(n0 * fpc);
 					D.b("n = " + n + " fpc " + fpc + " n0 = "+ n0 );
 					showResults(n0, fpc, n);		
-		
+		*/
 		}
 	
 	private void showResults(double show_n0, double show_fpc, double show_n  )
