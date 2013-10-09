@@ -2,6 +2,7 @@ package rightSize;
 
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
+import java.math.*;
 
 import org.apache.commons.math3.distribution.NormalDistribution;
 
@@ -22,7 +23,7 @@ public class ClusterDoc
 	
 	
 	private double clusterSize = 0;
-	private double clusterNumber = 0; 
+	private double clustersNeeded = 0; 
 	private double designEffect = 0;
 	private double roh = 0;
 	
@@ -115,21 +116,51 @@ public class ClusterDoc
 			/***** Begin cluster sample-specific calculations ***/
 					 
 			// Set vars to match example
-					 roh = .2;
-					 clusterSize = 30; // b in example
-					 clusterNumber = 20;
 					 
-					 population = clusterSize * clusterNumber;
+					 /*
+					  * Formula from Bennett:
+					  * D = 1 + (b - 1)* roh
+					  * Where: 
+					  * 	D = design effect
+					  * 	b = clusterSize (number of responses per cluster
+					  * 	roh or rate of homogeneity, is a given  based on estimates. 0.2 is a big one. 
+					  * 
+					  * the number of clusters required is c = p*q*D/(s squared *b)
+					  * 
+					  * Example:
+					  * b = 20
+					  * p = 20%
+					  * roh = 0.2
+					  * ci 5%
+					  *
+					  * requires 18 clusters
+					  *
+					  * 
+					  * 
+					  */
+					 clusterSize = 20;
+					 roh = 0.02;
+					 p = 0.2;
+					 confidenceInterval = 5;
 					 
+					 double ci = confidenceInterval/100; // get rid of percents
+				
 					 
+					 // this is the right one  
+					 double standardError = (ci) / z;
+					 
+					 // for testing
+					// double standardError = 0.025;
 					 designEffect = 1 +(clusterSize - 1) * roh;
 					 
-					 population = clusterSize * clusterNumber;
-					 double standardError = Math.sqrt((p * q)/population);
 					 
-					 D.b("standard error is "+ standardError);
-				/*	 double ci2 = confidenceInterval/100; // get rid of percents
-					 ci2 = ci2 * ci2; // square it.
+					 
+					 clustersNeeded = (p * (1 - p) * designEffect)/((square(standardError) * clusterSize));
+					 
+					 D.b("clustersNeeded is " + clustersNeeded);
+					 
+					
+				/*	 
 					
 					 //double ciSquared  
 					 D.b("ci2 is " + confidenceInterval + " squared it is " + ci2);
@@ -154,6 +185,11 @@ public class ClusterDoc
 					showResults(n0, fpc, n);		
 		*/
 		}
+	
+	private double square(double d )
+	{
+		return (d * d);
+	}
 	
 	private void showResults(double show_n0, double show_fpc, double show_n  )
 		{
