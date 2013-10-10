@@ -73,12 +73,12 @@ public class ClusterDoc
 
 	public void setVariables()
 		{
-			setPopulation(view.inputPanel.getPopulation());
+/*			setPopulation(view.inputPanel.getPopulation());
 			setProportion(view.inputPanel.getProportion());
 			setCI(view.inputPanel.getCI());
 			setCC(view.inputPanel.getCC());
 			
-		//	if (SUCCESS)
+	*/	//	if (SUCCESS)
 			Calculate();
 		
 			//{
