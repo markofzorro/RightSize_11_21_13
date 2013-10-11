@@ -21,7 +21,6 @@ public class SRSDoc
 	protected double fpc = 0;
 	
 	
-	static boolean SUCCESS = true;
 	static final double POP_MAX = 100000000000000000D;
 	static final double POP_MIN = 10; // No sense in trying to do survey on less
 	static final int POP_MAX_DIGITS = 18;
@@ -84,11 +83,10 @@ public class SRSDoc
 			setCC(view.getCCString());
 			D.b("doc:setVariables(): "); 
 					D.b("pop = " + population + ". proportion = " + proportion + ". ci = " + confidenceInterval + " cc = "+ confidenceCoefficient);
-			if (SUCCESS)
-			{
+
 				Calculate();
 //				view.update(n0, n);
-			}
+	
 		
 			//{
 				// reset the variables;
@@ -197,10 +195,7 @@ public class SRSDoc
 			
 			
 			if ( retval <= 0)
-			{
 				population = 0; // mark failure
-				SUCCESS = false;
-			}
 			else 
 				population = retval;
 			
@@ -219,11 +214,8 @@ public class SRSDoc
 		{
 	
 			double retval = stringToDouble(s, PROPORTION_MIN, PROPORTION_MAX, PROPORTION_MAX_DIGITS);
-			if ( retval <= 0)
-				{
-					proportion = 0; // mark failure
-					SUCCESS = false;
-				}	
+			if ( retval <= 0)	
+				proportion = 0; // mark failure
 			else
 				proportion = retval;
 				
@@ -235,10 +227,7 @@ public class SRSDoc
 			
 			double retval = stringToDouble(s, CI_MIN, CI_MAX, CI_MAX_DIGITS);
 			if ( retval <= 0)
-				{
-					confidenceInterval = 0; // mark failure
-					SUCCESS = false;
-				}	
+				confidenceInterval = 0; // mark failure
 			else
 				confidenceInterval = retval;
 				
@@ -251,10 +240,7 @@ public class SRSDoc
 			double retval = 0;
 			retval = stringToDouble(s, CC_MIN, CC_MAX, CC_MAX_DIGITS);
 			if ( retval <= 0)
-				{
-					confidenceInterval = 0; // mark failure
-					SUCCESS = false;
-				}	
+				confidenceInterval = 0; // mark failure
 			else
 				confidenceCoefficient = retval;
 				
@@ -325,9 +311,6 @@ public class SRSDoc
 					else // not in range
 					{
 //						JOptionPane.showMessageDialog(view,"Oops, You entered: " + retval + ". The value must be between" + in_min + " and " + in_max);
-						
-						
-							SUCCESS = false;	// mark failure
 						
 						return 0.0;
 					}

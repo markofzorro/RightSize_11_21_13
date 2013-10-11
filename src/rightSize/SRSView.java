@@ -125,6 +125,9 @@ private JPanel initButtonPanel()
     	 inputPanel = new CommonInputPanel();
     	 inputPanel.setVisible(true);
          getContentPane().add(inputPanel);
+         resultsPanel = new SRSResultsPanel();
+         resultsPanel.setVisible(true);
+         add(resultsPanel);
     	initButtonPanel();
     	getContentPane().add(buttonPanel);
         pack();
@@ -132,8 +135,8 @@ private JPanel initButtonPanel()
     
     public void update(double n0, double n)
     	{
-    		resultsPanel.set_n0Label(n0);
-    		resultsPanel.set_nLabel(n);
+ //   		resultsPanel.set_n0Label(n0);
+ //   		resultsPanel.set_nLabel(n);
     		
     	}
     
@@ -163,12 +166,12 @@ private JPanel initButtonPanel()
     
     public void set_n0(double n0)
     	{
-    		resultsPanel.set_n0Label(n0);
+//    		resultsPanel.set_n0Label(n0);
     	}
     
     public void set_n(double n)
     	{
-    		resultsPanel.set_nLabel(n);
+//    		resultsPanel.set_nLabel(n);
     	}
     
     

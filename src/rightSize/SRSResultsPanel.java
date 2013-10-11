@@ -1,121 +1,92 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package rightSize;
 
+import javax.swing.JPanel;
+import javax.swing.JLabel;
 import java.awt.Font;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.JTextField;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
 
-import javax.swing.BorderFactory;
+public class SRSResultsPanel extends JPanel {
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
 
-/**
- * 
- * @author markofzero
- */
-public class SRSResultsPanel extends javax.swing.JPanel
-{
-
-	// Variables declaration - do not modify
-		private javax.swing.JLabel jLabel2;
-		private javax.swing.JLabel jLabel3;
-		private javax.swing.JLabel n0Label;
-		private javax.swing.JLabel nLabel;
-	
-
+	/**
+	 * Create the panel.
+	 */
+	public SRSResultsPanel() {
 		
-	/**
-	 * Creates new form ShowResultsPanel
-	 */
-	public SRSResultsPanel()
-		{
-			initComponents();
-			setBorder(BorderFactory.createEmptyBorder(20, 30, 20, 20)); // top,
-			// left,
-			// bottom,
-			// right
+		JLabel lblNewLabel = new JLabel("Results");
+		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 36));
+		
+		JLabel lblNewLabel_1 = new JLabel("Sample Size");
+		lblNewLabel_1.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
+		
+		textField = new JTextField();
+		textField.setColumns(10);
+		
+		JLabel label = new JLabel("Sample Size");
+		label.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
+		
+		textField_1 = new JTextField();
+		textField_1.setColumns(10);
+		
+		JLabel label_1 = new JLabel("Sample Size");
+		label_1.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
+		
+		textField_2 = new JTextField();
+		textField_2.setColumns(10);
+		GroupLayout groupLayout = new GroupLayout(this);
+		groupLayout.setHorizontalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+					.addContainerGap(66, Short.MAX_VALUE)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(229)
+							.addComponent(lblNewLabel))
+						.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
+							.addGroup(groupLayout.createSequentialGroup()
+								.addComponent(label_1)
+								.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+							.addGroup(groupLayout.createSequentialGroup()
+								.addComponent(label)
+								.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+							.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+								.addComponent(lblNewLabel_1)
+								.addGap(294)
+								.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
+					.addGap(58))
+		);
+		groupLayout.setVerticalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(48)
+					.addComponent(lblNewLabel)
+					.addGap(5)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(lblNewLabel_1)
+							.addGap(8)
+							.addComponent(label)
+							.addGap(15)
+							.addComponent(label_1)))
+					.addContainerGap(91, Short.MAX_VALUE))
+		);
+		setLayout(groupLayout);
 
-		}
-
-//	@SuppressWarnings("unchecked")
-	// <editor-fold defaultstate="collapsed" desc="Generated Code">
-	private void initComponents()
-		{
-			java.awt.GridBagConstraints gridBagConstraints;
-
-			jLabel2 = new javax.swing.JLabel();
-			jLabel3 = new javax.swing.JLabel();
-			n0Label = new javax.swing.JLabel();
-			nLabel = new javax.swing.JLabel();
-			
-			
-			//setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-			setLayout(new java.awt.GridBagLayout());
-
-			jLabel2.setFont(new java.awt.Font("Lucida Grande", Font.BOLD, 24)); // NOI18N
-			jLabel2.setText("Sample Size:");
-			gridBagConstraints = new java.awt.GridBagConstraints();
-			gridBagConstraints.gridx = 0;
-			gridBagConstraints.gridy = 0;
-			gridBagConstraints.ipadx = 10;
-			gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-			gridBagConstraints.insets = new java.awt.Insets(30, 50, 0, 0);
-			add(jLabel2, gridBagConstraints);
-
-			jLabel3.setFont(new java.awt.Font("Lucida Grande", Font.BOLD, 24)); // NOI18N
-			jLabel3.setText("Sample Size with Finite Population Correction:");
-			gridBagConstraints = new java.awt.GridBagConstraints();
-			gridBagConstraints.gridx = 0;
-			gridBagConstraints.gridy = 1;
-			gridBagConstraints.gridwidth = 2;
-			gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-			gridBagConstraints.insets = new java.awt.Insets(8, 50, 27, 0);
-			add(jLabel3, gridBagConstraints);
-
-			n0Label.setFont(new java.awt.Font("Lucida Grande", Font.BOLD, 24)); // NOI18N
-			n0Label.setText(""); // display blank until result exists
-			gridBagConstraints = new java.awt.GridBagConstraints();
-			gridBagConstraints.gridx = 2;
-			gridBagConstraints.gridy = 0;
-			gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-			gridBagConstraints.insets = new java.awt.Insets(30, 49, 0, 24);
-			add(n0Label, gridBagConstraints);
-
-			nLabel.setFont(new java.awt.Font("Lucida Grande", Font.BOLD, 24)); // NOI18N
-			nLabel.setText("");
-			gridBagConstraints = new java.awt.GridBagConstraints();
-			gridBagConstraints.gridx = 2;
-			gridBagConstraints.gridy = 1;
-			gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-			gridBagConstraints.insets = new java.awt.Insets(8, 49, 27, 33);
-			add(nLabel, gridBagConstraints);
-
-		//	pack();
-		}// </editor-fold>
-
-	
-	/*************** Setters *************/
-	
-	/**
-	 * Uses longs to get rid of annoying decimal
-	 * @param n0
-	 */
-	public void set_n0Label(double n0)
-		{
-			long l = (long) n0;
-			String s = Long.toString(l);
-			n0Label.setText(s);
-		}
-
-	public void set_nLabel(double n)
-		{
-			long l = (long) n;
-			String s = Long.toString(l);
-			nLabel.setText(s);
-		//	revalidate();
-		}
-	
-	/*****end setters ***/
-
-	
-	// End of variables declaration
+	}
 }

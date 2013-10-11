@@ -25,7 +25,7 @@ import java.awt.Insets;
 public class ClusterView_Old extends RSInternalFrame
   {
 	ClusterDoc_Old doc = null;
-	SRSResultsPanel resultsPanel = null;
+	OldSRSResultsPanel resultsPanel = null;
 	OldSRSInputPanel inputPanel = null;
 	
 	//SRSButtonPanel pb = null; Not a class

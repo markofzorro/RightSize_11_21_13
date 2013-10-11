@@ -39,7 +39,8 @@ public class RSInternalFrame extends JInternalFrame
 			setContentPane(contentPane);
 
 			// ...Then set the window size or call pack...
-			setSize(1000, 500);
+			//setSize(1000, 500);
+			pack();
 
 			// Set the window's location.
 			setLocation(xOffset * openFrameCount, yOffset * openFrameCount);

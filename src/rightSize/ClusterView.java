@@ -24,7 +24,7 @@ import java.awt.Insets;
 public class ClusterView extends RSInternalFrame
   {
 	ClusterDoc doc = null;
-	SRSResultsPanel resultsPanel = null;
+	OldSRSResultsPanel resultsPanel = null;
 	OldSRSInputPanel inputPanel = null;
 	//SRSButtonPanel pb = null; Not a class
 	// begin variable declarations
@@ -59,7 +59,7 @@ public class ClusterView extends RSInternalFrame
         
         inputPanel = new OldSRSInputPanel();
         this.add(inputPanel);
-        resultsPanel = new SRSResultsPanel();
+        resultsPanel = new OldSRSResultsPanel();
         this.add(resultsPanel);
     	
     	
