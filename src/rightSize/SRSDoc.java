@@ -35,7 +35,7 @@ public class SRSDoc
 	static final int CI_MAX_DIGITS = 2;
 	
 	static final double CC_MAX = 99;
-	static final double CC_MIN = 1;
+	static final double CC_MIN = 90;
 	static final int CC_MAX_DIGITS = 2;
 	
 	/**
@@ -78,15 +78,16 @@ public class SRSDoc
 	 */
 		public void setVariables()
 		{
-/*			setPop(view.getPopString());
+			setPop(view.getPopString());
 			setProportion(view.getProportionString());
 			setCI(view.getCIString());
 			setCC(view.getCCString());
-	*/		
+			D.b("doc:setVariables(): "); 
+					D.b("pop = " + population + ". proportion = " + proportion + ". ci = " + confidenceInterval + " cc = "+ confidenceCoefficient);
 			if (SUCCESS)
 			{
 				Calculate();
-				view.update(n0, n);
+//				view.update(n0, n);
 			}
 		
 			//{

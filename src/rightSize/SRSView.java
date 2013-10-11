@@ -141,7 +141,7 @@ private JPanel initButtonPanel()
 
 
     /***************getters and setters *********************/
- /*   public String getPopString()
+    public String getPopString()
     {
     	return inputPanel.getPopString();
     }

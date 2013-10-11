@@ -10,12 +10,34 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 
-public class CommonInputPanel extends JPanel {
-	private JTextField tfPopSize;
-	private JTextField textField;
-	private JTextField textField_1;
+public class CommonInputPanel extends JPanel 
+{
+	private JTextField tfPop;
+	private JTextField tfProportion;
 	private JTextField tfCI;
+	private JTextField tfCC;
+	
+	/********************* Getters **************/
+	
+	public String getPopString() {
+		return tfPop.getText();
+	}
 
+	public String getProportionString() {
+		return tfProportion.getText();
+	}
+
+	public String getCIString() {
+		return tfCI.getText();
+	}
+
+	public String getCCString() {
+		return tfCC.getText();
+	}
+	
+	/********** end getters *********************/
+
+	
 	/**
 	 * Create the panel.
 	 */
@@ -47,18 +69,18 @@ public class CommonInputPanel extends JPanel {
 		gbc_label.gridy = 2;
 		add(label, gbc_label);
 		
-		textField = new JTextField();
-		textField.setText("100");
-		textField.setHorizontalAlignment(SwingConstants.TRAILING);
-		textField.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
-		textField.setColumns(10);
+		tfPop = new JTextField();
+		tfPop.setText("100");
+		tfPop.setHorizontalAlignment(SwingConstants.TRAILING);
+		tfPop.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
+		tfPop.setColumns(10);
 		GridBagConstraints gbc_textField = new GridBagConstraints();
 		gbc_textField.fill = GridBagConstraints.BOTH;
 		gbc_textField.insets = new Insets(0, 0, 5, 5);
 		gbc_textField.gridwidth = 3;
 		gbc_textField.gridx = 2;
 		gbc_textField.gridy = 2;
-		add(textField, gbc_textField);
+		add(tfPop, gbc_textField);
 		
 		JLabel label_2 = new JLabel("Expected Proportion");
 		label_2.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
@@ -70,17 +92,17 @@ public class CommonInputPanel extends JPanel {
 		gbc_label_2.gridy = 3;
 		add(label_2, gbc_label_2);
 		
-		tfPopSize = new JTextField();
-		tfPopSize.setHorizontalAlignment(SwingConstants.TRAILING);
-		tfPopSize.setText("50");
-		tfPopSize.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
+		tfProportion = new JTextField();
+		tfProportion.setHorizontalAlignment(SwingConstants.TRAILING);
+		tfProportion.setText("50");
+		tfProportion.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
 		GridBagConstraints gbc_tfPopSize = new GridBagConstraints();
 		gbc_tfPopSize.fill = GridBagConstraints.BOTH;
 		gbc_tfPopSize.insets = new Insets(0, 0, 5, 5);
 		gbc_tfPopSize.gridx = 4;
 		gbc_tfPopSize.gridy = 3;
-		add(tfPopSize, gbc_tfPopSize);
-		tfPopSize.setColumns(10);
+		add(tfProportion, gbc_tfPopSize);
+		tfProportion.setColumns(10);
 		
 		JLabel lblNewLabel_2 = new JLabel("%");
 		lblNewLabel_2.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
@@ -102,17 +124,17 @@ public class CommonInputPanel extends JPanel {
 		gbc_lblNewLabel_1.gridy = 4;
 		add(lblNewLabel_1, gbc_lblNewLabel_1);
 		
-		textField_1 = new JTextField();
-		textField_1.setHorizontalAlignment(SwingConstants.TRAILING);
-		textField_1.setText("5");
-		textField_1.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
-		textField_1.setColumns(10);
-		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
-		gbc_textField_1.fill = GridBagConstraints.BOTH;
-		gbc_textField_1.insets = new Insets(0, 0, 5, 5);
-		gbc_textField_1.gridx = 4;
-		gbc_textField_1.gridy = 4;
-		add(textField_1, gbc_textField_1);
+		tfCI = new JTextField();
+		tfCI.setHorizontalAlignment(SwingConstants.TRAILING);
+		tfCI.setText("5");
+		tfCI.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
+		tfCI.setColumns(10);
+		GridBagConstraints gbc_tftfCC = new GridBagConstraints();
+		gbc_tftfCC.fill = GridBagConstraints.BOTH;
+		gbc_tftfCC.insets = new Insets(0, 0, 5, 5);
+		gbc_tftfCC.gridx = 4;
+		gbc_tftfCC.gridy = 4;
+		add(tfCI, gbc_tftfCC);
 		
 		JLabel label_1 = new JLabel("%");
 		label_1.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
@@ -134,17 +156,17 @@ public class CommonInputPanel extends JPanel {
 		gbc_lblDesiredConfidenceCoefficient.gridy = 5;
 		add(lblDesiredConfidenceCoefficient, gbc_lblDesiredConfidenceCoefficient);
 		
-		tfCI = new JTextField();
-		tfCI.setText("5");
-		tfCI.setHorizontalAlignment(SwingConstants.TRAILING);
-		tfCI.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
-		tfCI.setColumns(10);
-		GridBagConstraints gbc_tfCI = new GridBagConstraints();
-		gbc_tfCI.fill = GridBagConstraints.BOTH;
-		gbc_tfCI.insets = new Insets(0, 0, 0, 5);
-		gbc_tfCI.gridx = 4;
-		gbc_tfCI.gridy = 5;
-		add(tfCI, gbc_tfCI);
+		tfCC = new JTextField();
+		tfCC.setText("95");
+		tfCC.setHorizontalAlignment(SwingConstants.TRAILING);
+		tfCC.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
+		tfCC.setColumns(10);
+		GridBagConstraints gbc_tfCC = new GridBagConstraints();
+		gbc_tftfCC.fill = GridBagConstraints.BOTH;
+		gbc_tftfCC.insets = new Insets(0, 0, 0, 5);
+		gbc_tftfCC.gridx = 4;
+		gbc_tftfCC.gridy = 5;
+		add(tfCC, gbc_tftfCC);
 		
 		JLabel label_4 = new JLabel("%");
 		label_4.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
