@@ -7,7 +7,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class SRSInputPanel extends JPanel
+public class OldSRSInputPanel extends JPanel
 {
 	
 	// set to defaults
@@ -37,7 +37,7 @@ public class SRSInputPanel extends JPanel
 	
     
 
-	SRSInputPanel()
+	OldSRSInputPanel()
 		{
 			setBorder(BorderFactory.createEmptyBorder(20, 30, 20, 20)); // top,
 																		// left,

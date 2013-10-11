@@ -25,7 +25,7 @@ public class ClusterView extends RSInternalFrame
   {
 	ClusterDoc doc = null;
 	SRSResultsPanel resultsPanel = null;
-	SRSInputPanel inputPanel = null;
+	OldSRSInputPanel inputPanel = null;
 	//SRSButtonPanel pb = null; Not a class
 	// begin variable declarations
 	
@@ -47,9 +47,9 @@ public class ClusterView extends RSInternalFrame
     /**
      * Creates new Internal Frame for user interactions for simple random sample calculations. 
      */
-    public ClusterView(ClusterDoc doc)
+    public ClusterView(ClusterDoc doc, String title)
       {
-        super("Simple Random Sample");
+        super(title);
         this.doc = doc;
       setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         
@@ -57,7 +57,7 @@ public class ClusterView extends RSInternalFrame
     * Inherits box layout from RSInternalPane. this shows components vertically from top to bottom
     */
         
-        inputPanel = new SRSInputPanel();
+        inputPanel = new OldSRSInputPanel();
         this.add(inputPanel);
         resultsPanel = new SRSResultsPanel();
         this.add(resultsPanel);

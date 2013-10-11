@@ -78,11 +78,11 @@ public class SRSDoc
 	 */
 		public void setVariables()
 		{
-			setPop(view.getPopString());
+/*			setPop(view.getPopString());
 			setProportion(view.getProportionString());
 			setCI(view.getCIString());
 			setCC(view.getCCString());
-			
+	*/		
 			if (SUCCESS)
 			{
 				Calculate();

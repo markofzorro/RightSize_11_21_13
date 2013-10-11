@@ -26,7 +26,7 @@ public class ClusterView_Old extends RSInternalFrame
   {
 	ClusterDoc_Old doc = null;
 	SRSResultsPanel resultsPanel = null;
-	SRSInputPanel inputPanel = null;
+	OldSRSInputPanel inputPanel = null;
 	
 	//SRSButtonPanel pb = null; Not a class
 	// begin variable declarations
@@ -69,7 +69,7 @@ public class ClusterView_Old extends RSInternalFrame
     * Inherits box layout from RSInternalPane. this shows components vertically from top to bottom
     */
         
-        inputPanel = new SRSInputPanel();
+        inputPanel = new OldSRSInputPanel();
         this.add(inputPanel);
    /*     resultsPanel = new SRSResultsPanel();
         this.add(resultsPanel);

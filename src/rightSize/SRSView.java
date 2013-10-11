@@ -28,7 +28,8 @@ public class SRSView extends RSInternalFrame
   {
 	SRSDoc doc = null;
 	SRSResultsPanel resultsPanel = null;
-	SRSInputPanel inputPanel = null;
+	CommonInputPanel inputPanel = null;
+	
 	JPanel contentPane = new JPanel();
 	
 	//SRSButtonPanel pb = null; Not a class
@@ -67,11 +68,7 @@ public class SRSView extends RSInternalFrame
     * Inherits box layout from RSInternalPane. this shows components vertically from top to bottom
     */
         
-        inputPanel = new SRSInputPanel();
-        this.add(inputPanel);
-        resultsPanel = new SRSResultsPanel();
-        this.add(resultsPanel);
-        initComponents();
+           initComponents();
     	
     			 
     			
@@ -83,7 +80,7 @@ public class SRSView extends RSInternalFrame
 
 
 
-private void initButtonPanel()
+private JPanel initButtonPanel()
     {
     	buttonPanel = new JPanel();
     	buttonPanel.setLayout(new FlowLayout());
@@ -116,6 +113,7 @@ private void initButtonPanel()
     	    }
     	});
     	buttonPanel.add(okButton);
+    	return buttonPanel;
     	
     	
     }	
@@ -124,6 +122,9 @@ private void initButtonPanel()
     
     private void initComponents()
     {
+    	 inputPanel = new CommonInputPanel();
+    	 inputPanel.setVisible(true);
+         getContentPane().add(inputPanel);
     	initButtonPanel();
     	getContentPane().add(buttonPanel);
         pack();
@@ -140,7 +141,7 @@ private void initButtonPanel()
 
 
     /***************getters and setters *********************/
-    public String getPopString()
+ /*   public String getPopString()
     {
     	return inputPanel.getPopString();
     }

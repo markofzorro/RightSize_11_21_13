@@ -1,6 +1,6 @@
 package rightSize;
 
-public class ClusterInputPanel extends SRSInputPanel
+public class ClusterInputPanel extends OldSRSInputPanel
 {
 
 	
