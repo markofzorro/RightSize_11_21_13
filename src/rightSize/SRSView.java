@@ -27,8 +27,11 @@ import java.awt.Insets;
 public class SRSView extends RSInternalFrame
   {
 	SRSDoc doc = null;
-	SRSResultsPanel resultsPanel = null;
-	CommonInputPanel inputPanel = null;
+	SRSPanel srsPanel = null;
+	
+	double n = 0;
+	double n0 = 0;
+	double fpc = 0;
 	
 	JPanel contentPane = new JPanel();
 	
@@ -122,21 +125,24 @@ private JPanel initButtonPanel()
     
     private void initComponents()
     {
-    	 inputPanel = new CommonInputPanel();
-    	 inputPanel.setVisible(true);
-         getContentPane().add(inputPanel);
-         resultsPanel = new SRSResultsPanel();
-         resultsPanel.setVisible(true);
-         add(resultsPanel);
-    	initButtonPanel();
+    	 srsPanel = new SRSPanel();
+    	 srsPanel.setVisible(true);
+         getContentPane().add(srsPanel);
+     	initButtonPanel();
     	getContentPane().add(buttonPanel);
-        pack();
+       //pack();
+    	setSize(1000, 1000);
     }
     
-    public void update(double n0, double n)
+    public void update(double n0, double fpc, double n )
     	{
- //   		resultsPanel.set_n0Label(n0);
- //   		resultsPanel.set_nLabel(n);
+    		
+    		 this.n0 = n0;
+    		 set_n0(n0);
+    		set_n(n);
+    		set_fpc(fpc);
+    		
+
     		
     	}
     
@@ -146,33 +152,40 @@ private JPanel initButtonPanel()
     /***************getters and setters *********************/
     public String getPopString()
     {
-    	return inputPanel.getPopString();
+    	return srsPanel.getPopString();
     }
     
    public String getProportionString()
     	{
-    		return inputPanel.getProportionString();
+    		return srsPanel.getProportionString();
     	}
     
     public String getCIString()
     	{
-    		return inputPanel.getCIString();
+    		return srsPanel.getCIString();
     	}
     
     public String getCCString()
     	{
-    		return inputPanel.getCCString();
+    		return srsPanel.getCCString();
+    	}
+   
+   
+    public void set_n0(double d)
+    	{
+    		srsPanel.setTfN0(d);
     	}
     
-    public void set_n0(double n0)
+    public void set_n(double d)
     	{
-//    		resultsPanel.set_n0Label(n0);
+    		srsPanel.setTfN(d);
     	}
     
-    public void set_n(double n)
+    public void set_fpc(double d)
     	{
-//    		resultsPanel.set_nLabel(n);
+    		srsPanel.setTfFpc(d);
     	}
+    
     
     
 /*	setProportion(view.getProportion());

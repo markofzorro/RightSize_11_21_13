@@ -50,6 +50,9 @@ public class SRSDoc
 		this.desktop = desktop;
 
 		setView();
+	//	if (calculate())
+		//	view.update(n0, fpc, n);
+			
 		//SRSResultsView resultsView = new SRSResultsView(this);
 	//	resultsView.setVisible(true); // necessary as of 1.3
 	//	desktop.add(resultsView);
@@ -69,7 +72,8 @@ public class SRSDoc
 			{
 			}
 	}
-
+	
+	
 	/**
 	 * Loads variables into the document's class-level vars.
 	 * It gets the values as strings from the input view and passes them
@@ -84,7 +88,7 @@ public class SRSDoc
 			D.b("doc:setVariables(): "); 
 					D.b("pop = " + population + ". proportion = " + proportion + ". ci = " + confidenceInterval + " cc = "+ confidenceCoefficient);
 
-				Calculate();
+				
 //				view.update(n0, n);
 	
 		
@@ -100,7 +104,7 @@ public class SRSDoc
 		}
 	
 	
-	protected void Calculate()
+	protected Boolean calculate()
 		{
 				//	   System.out.println(" cumulative probability takes z and returns p. Example: of z = 1.96 returns " + nd.cumulativeProbability(1.96)); 
     		//   	D.b("inverseCumulativeProbability gets z score from probabity: " +  nd.inverseCumulativeProbability(.025));
@@ -157,7 +161,11 @@ public class SRSDoc
 					
 					
 					D.b("fpc is " + fpc + " and adjucted n = " + n);
-				//	showResults(n0, fpc, n);		
+				//	showResults(n0, fpc, n);
+					if(n>0 && n>0 && fpc != 0)
+						return true;
+					else
+						return false;
 		
 		}
 	
