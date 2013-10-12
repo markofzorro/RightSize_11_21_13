@@ -24,10 +24,10 @@ import java.awt.Insets;
  *
  * @author markwhite
  */
-public class SRSView extends RSInternalFrame
+public class CopyOfSRSView extends RSInternalFrame
   {
 	SRSDoc doc = null;
-	SRSPanel srsPanel = null;
+	OldSRSPanel srsPanel = null;
 	
 	double n = 0;
 	double n0 = 0;
@@ -52,7 +52,7 @@ public class SRSView extends RSInternalFrame
     /**
      * Creates new Internal Frame for user interactions for simple random sample calculations. 
      */
-    public SRSView(SRSDoc doc, String title)
+    public CopyOfSRSView(SRSDoc doc, String title)
       {
     	 super(title); // Sets the title of RSInternalFrame. this allows us to keep count of the panels
     	  
@@ -72,7 +72,6 @@ public class SRSView extends RSInternalFrame
     */
         
            initComponents();
-           pack();
     	
     			 
     			
@@ -126,24 +125,24 @@ private JPanel initButtonPanel()
     
     private void initComponents()
     {
-    	 srsPanel = new SRSPanel();
+    	 srsPanel = new OldSRSPanel();
     	 srsPanel.setVisible(true);
          getContentPane().add(srsPanel);
      	initButtonPanel();
     	getContentPane().add(buttonPanel);
-       pack();
-    	//setSize(1000, 1000);
+       //pack();
+    	setSize(1000, 1000);
     }
     
     public void update(double n0, double fpc, double n )
     	{
-  /*  		
+    		
     	//	 this.n0 = n0;
     		 set_n0(n0);
     		set_n(n);
     		set_fpc(fpc);
     		revalidate();
-    */		
+    		
 
     		
     	}
@@ -152,7 +151,7 @@ private JPanel initButtonPanel()
 
 
     /***************getters and setters *********************/
-/*    public String getPopString()
+    public String getPopString()
     {
     	return srsPanel.getPopString();
     }

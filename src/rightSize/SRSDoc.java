@@ -81,10 +81,10 @@ public class SRSDoc
 	 */
 		public void setVariables()
 		{
-			setPop(view.getPopString());
-			setProportion(view.getProportionString());
-			setCI(view.getCIString());
-			setCC(view.getCCString());
+//			setPop(view.getPopString());
+//			setProportion(view.getProportionString());
+//			setCI(view.getCIString());
+//			setCC(view.getCCString());
 			D.b("doc:setVariables(): "); 
 					D.b("pop = " + population + ". proportion = " + proportion + ". ci = " + confidenceInterval + " cc = "+ confidenceCoefficient);
 
