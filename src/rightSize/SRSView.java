@@ -21,185 +21,164 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 
 /**
- *
+ * 
  * @author markwhite
  */
 public class SRSView extends RSInternalFrame
-  {
-	SRSDoc doc = null;
-	SRSPanel srsPanel = null;
-	
-	double n = 0;
-	double n0 = 0;
-	double fpc = 0;
-	
-	JPanel contentPane = new JPanel();
-	
-	//SRSButtonPanel pb = null; Not a class
-	// begin variable declarations
-	
-	 private javax.swing.JButton okButton;
-	 private javax.swing.JButton cancelButton;
-	   
-		
-	
-    private JPanel buttonPanel;
-    
-   
-    //end variable declarations
-	
-   
-    /**
-     * Creates new Internal Frame for user interactions for simple random sample calculations. 
-     */
-    public SRSView(SRSDoc doc, String title)
-      {
-    	 super(title); // Sets the title of RSInternalFrame. this allows us to keep count of the panels
-    	  
-    	  // super("Simple Random Sample");
-    	//  setTitle("Simple Random Sample");
-        this.doc = doc;
-        contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-	//	contentPane.setLayout(new BorderLayout(0, 0));
-		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.Y_AXIS));
-		setContentPane(contentPane);
-      setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-      
-        
-   /*
-    * Inherits box layout from RSInternalPane. this shows components vertically from top to bottom
-    */
-        
-           initComponents();
-           pack();
-    	
-    			 
-    			
-    }
+	{
+		SRSDoc doc = null;
+		SRSPanel srsPanel = null;
 
+		double n = 0;
+		double n0 = 0;
+		double fpc = 0;
 
-   
+		JPanel contentPane = new JPanel();
 
+		// SRSButtonPanel pb = null; Not a class
+		// begin variable declarations
 
+		private javax.swing.JButton okButton;
+		private javax.swing.JButton cancelButton;
 
+		private JPanel buttonPanel;
 
-private JPanel initButtonPanel()
-    {
-    	buttonPanel = new JPanel();
-    	buttonPanel.setLayout(new FlowLayout());
-    	cancelButton = new JButton("Cancel");
-    	cancelButton.setFont(new java.awt.Font("Lucida Grande", 0, 24));
-    	cancelButton.addActionListener( new ActionListener()
-    	{
-    	    public void actionPerformed(ActionEvent e)
-    	    {
-    	    	dispose();
-    	        // System.out.println("OK button Clicked.");
-    	    }
-    	});
-    	buttonPanel.add(cancelButton);
-    	
-    	
-    	// add buttonPanel to internal frame
-    	
-    	
-    	okButton = new JButton("OK");
-    	okButton.setFont(new java.awt.Font("Lucida Grande", 0, 24));
-    	okButton.addActionListener( new ActionListener()
-    	{
-    	    public void actionPerformed(ActionEvent e)
-    	    {
-    	      
-    	    		doc.setVariables();
-    	    	
-    	     
-    	    }
-    	});
-    	buttonPanel.add(okButton);
-    	return buttonPanel;
-    	
-    	
-    }	
-   
-   
-    
-    private void initComponents()
-    {
-    	 srsPanel = new SRSPanel();
-    	 srsPanel.setVisible(true);
-         getContentPane().add(srsPanel);
-     	initButtonPanel();
-    	getContentPane().add(buttonPanel);
-       pack();
-    	//setSize(1000, 1000);
-    }
-    
-    public void update(double n0, double fpc, double n )
-    	{
-  /*  		
-    	//	 this.n0 = n0;
-    		 set_n0(n0);
-    		set_n(n);
-    		set_fpc(fpc);
-    		revalidate();
-    */		
+		// end variable declarations
 
-    		
-    	}
-    
-    
+		/**
+		 * Creates new Internal Frame for user interactions for simple random
+		 * sample calculations.
+		 */
+		public SRSView(SRSDoc doc, String title)
+			{
+				super(title); // Sets the title of RSInternalFrame. this allows
+								// us to keep count of the panels
 
+				// super("Simple Random Sample");
+				// setTitle("Simple Random Sample");
+				this.doc = doc;
+				contentPane = new JPanel();
+				contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+				// contentPane.setLayout(new BorderLayout(0, 0));
+				contentPane.setLayout(new BoxLayout(contentPane,
+						BoxLayout.Y_AXIS));
+				setContentPane(contentPane);
+				setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-    /***************getters and setters *********************/
-/*    public String getPopString()
-    {
-    	return srsPanel.getPopString();
-    }
-    
-   public String getProportionString()
-    	{
-    		return srsPanel.getProportionString();
-    	}
-    
-    public String getCIString()
-    	{
-    		return srsPanel.getCIString();
-    	}
-    
-    public String getCCString()
-    	{
-    		return srsPanel.getCCString();
-    	}
-   
-   
-    public void set_n0(double d)
-    	{
-    		srsPanel.setTfN0(d);
-    	}
-    
-    public void set_n(double d)
-    	{
-    		srsPanel.setTfN(d);
-    	}
-    
-    public void set_fpc(double d)
-    	{
-    		srsPanel.setTfFpc(d);
-    	}
-    
-    
-    
-/*	setProportion(view.getProportion());
-	setCI(view.getCI());
-	setCC(view.getCC());
-  */  
-	                                              
+				/*
+				 * Inherits box layout from RSInternalPane. this shows
+				 * components vertically from top to bottom
+				 */
 
-/*******end getters and setters *****************/
-  
-    /**
-     * @param args the command line arguments
-     */
-  	 
-  }
+				initComponents();
+				pack();
+
+			}
+
+		private JPanel initButtonPanel()
+			{
+				buttonPanel = new JPanel();
+				buttonPanel.setLayout(new FlowLayout());
+				cancelButton = new JButton("Cancel");
+				cancelButton.setFont(new java.awt.Font("Lucida Grande", 0, 24));
+				cancelButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e)
+						{
+							dispose();
+							// System.out.println("OK button Clicked.");
+						}
+				});
+				buttonPanel.add(cancelButton);
+
+				// add buttonPanel to internal frame
+
+				okButton = new JButton("OK");
+				okButton.setFont(new java.awt.Font("Lucida Grande", 0, 24));
+				okButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e)
+						{
+
+							doc.calculate();
+
+						}
+				});
+				buttonPanel.add(okButton);
+				return buttonPanel;
+
+			}
+
+		private void initComponents()
+			{
+				srsPanel = new SRSPanel();
+				srsPanel.setVisible(true);
+				getContentPane().add(srsPanel);
+				initButtonPanel();
+				getContentPane().add(buttonPanel);
+				pack();
+				// setSize(1000, 1000);
+			}
+
+		public void update(double n0, double fpc, double n)
+			{
+
+				this.n0 = n0;
+				set_n0(n0);
+				set_n(n);
+				set_fpc(fpc);
+				revalidate();
+
+			}
+
+		/*************** getters and setters *********************/
+		public String getPopString()
+			{
+				
+				
+				return srsPanel.getPopString();
+			}
+
+		public String getProportionString()
+			{
+				return srsPanel.getProportionString();
+			}
+
+		public String getCIString()
+			{
+				return srsPanel.getCIString();
+			}
+
+		public String getCCString()
+			{
+				return srsPanel.getCCString();
+			}
+
+		public void set_n0(double d)
+			{
+
+				srsPanel.setLblN0(d);
+			}
+
+		public void set_n(double d)
+			{
+				srsPanel.setLblN(d);
+				// srsPanel.setLblN(d);
+			}
+
+		public void set_fpc(double d)
+			{
+				srsPanel.setLblFpc(d);
+			}
+
+		/*
+		 * setProportion(view.getProportion()); setCI(view.getCI());
+		 * setCC(view.getCC());
+		 */
+
+		/******* end getters and setters *****************/
+
+		/**
+		 * @param args
+		 *            the command line arguments
+		 */
+
+	}

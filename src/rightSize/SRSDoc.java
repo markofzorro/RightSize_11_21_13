@@ -50,9 +50,9 @@ public class SRSDoc
 		this.desktop = desktop;
 
 		setView();
-	//	if (calculate())
-		//	view.update(n0, fpc, n);
-			
+//		if (calculate());
+//			view.update(n0, fpc, n);
+//			
 		//SRSResultsView resultsView = new SRSResultsView(this);
 	//	resultsView.setVisible(true); // necessary as of 1.3
 	//	desktop.add(resultsView);
@@ -81,15 +81,15 @@ public class SRSDoc
 	 */
 		public void setVariables()
 		{
-//			setPop(view.getPopString());
-//			setProportion(view.getProportionString());
-//			setCI(view.getCIString());
-//			setCC(view.getCCString());
+			setPop(view.getPopString());
+			setProportion(view.getProportionString());
+			setCI(view.getCIString());
+			setCC(view.getCCString());
 			D.b("doc:setVariables(): "); 
 					D.b("pop = " + population + ". proportion = " + proportion + ". ci = " + confidenceInterval + " cc = "+ confidenceCoefficient);
 
 				
-//				view.update(n0, n);
+				view.update(n0, fpc, n);
 	
 		
 			//{
@@ -104,16 +104,12 @@ public class SRSDoc
 		}
 	
 	
-	protected Boolean calculate()
+	protected void calculate()
 		{
-				//	   System.out.println(" cumulative probability takes z and returns p. Example: of z = 1.96 returns " + nd.cumulativeProbability(1.96)); 
-    		//   	D.b("inverseCumulativeProbability gets z score from probabity: " +  nd.inverseCumulativeProbability(.025));
-		      // System.out.println("Standard normal curve: mean" + nd.getMean());
-		        // Problem 2; µ = 50; σ = 10
-		 //       d = new NormalDistribution(50, 10);
-		  //      System.out.println("Inverse cum probability gets the z score from the p value For example: p of 0.025 returns: " + nd.inverseCumulativeProbability(.025));
-		  
-/* Begin calculations **************/		        
+			setVariables();
+			
+			
+			/* Begin calculations **************/		        
 /******* Formula from Cochran (1963:75) ***
  *	n0 = z2pq/e2
  *	where z2 = z squared
@@ -160,22 +156,15 @@ public class SRSDoc
 					n0 = roundUp(n0);
 					
 					
-					D.b("fpc is " + fpc + " and adjucted n = " + n);
+					D.b("Calculate: fpc is " + fpc + " and adjucted n = " + n);
 				//	showResults(n0, fpc, n);
 					if(n>0 && n>0 && fpc != 0)
-						return true;
-					else
-						return false;
+						view.update(n0, fpc, n);
+					
 		
 		}
 	
-	protected void showResults(double show_n0, double show_fpc, double show_n  )
-		{
-			// JOptionPane.showMessageDialog(view,"Sample size is = " + show_n0 + "FPC is " + show_fpc + ". With FPC it is: " +show_n);
-		//	SRSResultsView resultsView = new SRSResultsView();
-		//	desktop.add(resultsView);
-		}
-	//  Weirdly I can't get hold of the version in java.math, but it is simple enough
+		//  Weirdly I can't get hold of the version in java.math, but it is simple enough
 	protected double abs(double number)
 		{
 			double abs_number = (number < 0) ? -number : number;
