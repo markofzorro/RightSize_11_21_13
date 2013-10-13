@@ -2,7 +2,6 @@ package rightSize;
 
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
-
 import java.math.*;
 
 import org.apache.commons.math3.distribution.NormalDistribution;
@@ -50,52 +49,36 @@ public class ClusterDoc
 	public ClusterDoc(JDesktopPane desktop) 
 	{
 		this.desktop = desktop;
-		setView();
 		Calculate();
-	}
+
 		/* temporarily skip these steps while I test the formula
-		 */ 
+		 * 
 		 
 //		view = new ClusterView(this);
 //		view.setVisible(true); // necessary as of 1.3
-	//	desktop.add(view);
+		desktop.add(view);
 		//SRSResultsView resultsView = new SRSResultsView(this);
 	//	resultsView.setVisible(true); // necessary as of 1.3
 	//	desktop.add(resultsView);
 		
 	
-/*		try
+		try
 		{
 			view.setSelected(true);
 		} catch (java.beans.PropertyVetoException e)
 		{
 		}
-		 add some of these back when calculation works. 
-	*/
-		
-		protected void setView()
-		{
-			view = new ClusterView(this, "Simple Random Sample");
-			view.setVisible(true); // necessary as of 1.3
-			desktop.add(view);
-			try
-				{
-					view.setSelected(true);
-				} catch (java.beans.PropertyVetoException e)
-				{
-				}
-		}
-	
-	
+		* add some of these back when calculation works. */
+	}
 
 	public void setVariables()
 		{
-//			setPopulation(view.inputPanel.getPopulation());
-	//		setProportion(view.inputPanel.getProportion());
-		//	setCI(view.inputPanel.getCI());
-		//	setCC(view.inputPanel.getCC());
+/*			setPopulation(view.inputPanel.getPopulation());
+			setProportion(view.inputPanel.getProportion());
+			setCI(view.inputPanel.getCI());
+			setCC(view.inputPanel.getCC());
 			
-		//	if (SUCCESS)
+	*/	//	if (SUCCESS)
 			Calculate();
 		
 			//{
@@ -173,6 +156,8 @@ public class ClusterDoc
 					 
 					 
 					 clustersNeeded = (p * (1 - p) * designEffect)/((square(standardError) * clusterSize));
+					 
+					 clustersNeeded = roundUp(clustersNeeded);
 					 
 					 D.b("clustersNeeded is " + clustersNeeded);
 					 

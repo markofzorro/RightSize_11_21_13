@@ -68,7 +68,7 @@ public class SRSPanel extends JPanel
 					add(new JSeparator());
 
 				// Results:
-
+/******************* REsults start here ***********/
 				// row 7
 				JLabel lblTitle = new JLabel("Results:");
 				lblTitle.setFont(new java.awt.Font("Lucida Grande", 1, 36)); // NOI18N
@@ -78,27 +78,29 @@ public class SRSPanel extends JPanel
 				// Row 8
 				newLabel("Sample Size", 24);
 				fillCols(1);
-				lblN0 = newLabel("n", 24);
+				lblN0 = newLabel("", 24);
 				lblN0.setHorizontalAlignment(SwingConstants.TRAILING);
 
 				fillCols(1);
 
 				// Row 9
 				newLabel("Finite Population Correction", 24);
-				fillCols(1);
-				lblFpc = newLabel("fpc", 24);
+				fillCols(2);
+				lblFpc = newLabel("", 24);
 				lblFpc.setHorizontalAlignment(SwingConstants.TRAILING);
-				fillCols(1);
+				//fillCols(1);
 
 				// Row 8
 				newLabel("Corrected Sample Size", 24);
 				fillCols(1);
-				lblN = newLabel("N", 24);
+				lblN = newLabel("", 24);
 				lblN.setHorizontalAlignment(SwingConstants.TRAILING);
 
 				fillCols(1);
 			}
 
+		/****************** Helper Methods ***************************/
+		
 		JLabel newLabel(String s, int fontSize)
 			{
 				JLabel label = new JLabel(s);
