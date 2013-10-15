@@ -50,14 +50,6 @@ public class SRSDoc
 		this.desktop = desktop;
 
 		setView();
-//		if (calculate());
-//			view.update(n0, fpc, n);
-//			
-		//SRSResultsView resultsView = new SRSResultsView(this);
-	//	resultsView.setVisible(true); // necessary as of 1.3
-	//	desktop.add(resultsView);
-		
-	
 	}
 	
 	protected void setView()
@@ -89,18 +81,7 @@ public class SRSDoc
 					D.b("pop = " + population + ". proportion = " + proportion + ". ci = " + confidenceInterval + " cc = "+ confidenceCoefficient);
 
 				
-				view.update(n0, fpc, n);
-	
-		
-			//{
-				// reset the variables;
-			//	population = proportion = confidenceInterval = 0;
-				// reset the view to defaults
-			//	view.resetToDefaults();
-			//}
-				
-			
-//			D.b("pop = " + population + ". proportion = " + proportion + ". ci = " + confidenceInterval + " cc = "+ confidenceCoefficient);
+
 		}
 	
 	

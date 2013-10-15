@@ -14,9 +14,13 @@ import java.awt.GridLayout;
 				JTextField tfProportion = null;
 				JTextField tfCI = null;
 				JTextField tfCC = null;
-				JLabel lblN0 = null;
-				JLabel lblN = null;
-				JLabel lblFpc = null;
+				JTextField tfClusterSize = null;
+				JTextField tfROH = null;
+			
+				// Result labels
+				JLabel lblClustersNeeded = null;
+				JLabel lblDesignEffect= null;
+			
 
 				/**
 				 * Create the panel. Has four equal sized columns. Adds rows prn.
@@ -60,15 +64,30 @@ import java.awt.GridLayout;
 						tfCC = newTf("95");
 						add(tfCC);
 						newLabel("%", 24);
+						
 
 						// Sixth Row
+						newLabel("Desired Cluster Size", 24);
+						fillCols(1);
+						tfClusterSize = newTf("10");
+						add(tfClusterSize);
+						//newLabel("%", 24);
+						fillCols(1);
+
+						// Seventh Row
+						newLabel("Estimated Rate of Homogeneity", 24);
+						fillCols(1);
+						tfROH = newTf("0.2");
+						add(tfROH);
+						newLabel("%", 24);
+						
 
 						// Draw separator across all 4 columns
 						for (int i = 0; i < 4; i++)
 							add(new JSeparator());
 
 						// Results:
-		/******************* REsults start here ***********/
+		/******************* Results start here ***********/
 						// row 7
 						JLabel lblTitle = new JLabel("Results:");
 						lblTitle.setFont(new java.awt.Font("Lucida Grande", 1, 36)); // NOI18N
@@ -76,28 +95,21 @@ import java.awt.GridLayout;
 						fillCols(3);
 
 						// Row 8
-						newLabel("Sample Size", 24);
+						newLabel("Clusters Needed", 24);
 						fillCols(1);
-						lblN0 = newLabel("", 24);
-						lblN0.setHorizontalAlignment(SwingConstants.TRAILING);
+						lblClustersNeeded = newLabel("", 24);
+						lblClustersNeeded.setHorizontalAlignment(SwingConstants.TRAILING);
 
 						fillCols(1);
 
 						// Row 9
-						newLabel("Finite Population Correction", 24);
+						newLabel("Design Effect", 24);
 						fillCols(2);
-						lblFpc = newLabel("", 24);
-						lblFpc.setHorizontalAlignment(SwingConstants.TRAILING);
+						lblDesignEffect = newLabel("", 24);
+						lblDesignEffect.setHorizontalAlignment(SwingConstants.TRAILING);
 						//fillCols(1);
 
-						// Row 8
-						newLabel("Corrected Sample Size", 24);
-						fillCols(1);
-						lblN = newLabel("", 24);
-						lblN.setHorizontalAlignment(SwingConstants.TRAILING);
-
-						fillCols(1);
-					}
+										}
 
 				/****************** Helper Methods ***************************/
 				
@@ -151,24 +163,19 @@ import java.awt.GridLayout;
 					}
 
 				/************** Setters ************/
-				public void setLblN0(double d)
+				public void setLblClustersNeeded(double d)
 					{
-						lblN0.setText(Double.toString(d));
+						lblClustersNeeded.setText(Double.toString(d));
 
 					}
 
-				public void setLblN(double d)
+				public void setLblDesignEffect(double d)
 					{
-						lblN.setText(Double.toString(d));
+						lblDesignEffect.setText(Double.toString(d));
 
 					}
 
-				public void setLblFpc(double d)
-					{
-						lblFpc.setText(Double.toString(d));
-
-					}
-
+				
 			}
 
 	

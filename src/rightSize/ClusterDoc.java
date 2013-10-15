@@ -49,7 +49,7 @@ public class ClusterDoc
 	public ClusterDoc(JDesktopPane desktop) 
 	{
 		this.desktop = desktop;
-		Calculate();
+		//Calculate();
 
 		/* temporarily skip these steps while I test the formula*/
 		  
@@ -79,7 +79,7 @@ public class ClusterDoc
 			setCC(view.inputPanel.getCC());
 			
 	*/	//	if (SUCCESS)
-			Calculate();
+//			calculate();
 		
 			//{
 				// reset the variables;
@@ -95,7 +95,7 @@ public class ClusterDoc
 /**
  *  Formula from Bennett, WHO Stat Quartery 44(3), 98-106, 1991	
  */
-	private void Calculate()
+	public void calculate()
 		{
 			 
 				// Standard Normal Distribution has mean of 0 and SD of 1.
@@ -160,7 +160,7 @@ public class ClusterDoc
 					 clustersNeeded = roundUp(clustersNeeded);
 					 
 					 D.b("clustersNeeded is " + clustersNeeded);
-					 
+////////////////////////// PUT UPDATE CALL HERE //////////////////////////					 
 					
 				/*	 
 					
