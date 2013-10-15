@@ -51,11 +51,11 @@ public class ClusterDoc
 		this.desktop = desktop;
 		Calculate();
 
-		/* temporarily skip these steps while I test the formula
-		 * 
+		/* temporarily skip these steps while I test the formula*/
+		  
 		 
-//		view = new ClusterView(this);
-//		view.setVisible(true); // necessary as of 1.3
+		view = new ClusterView(this, "cluster Sample");
+		view.setVisible(true); // necessary as of 1.3
 		desktop.add(view);
 		//SRSResultsView resultsView = new SRSResultsView(this);
 	//	resultsView.setVisible(true); // necessary as of 1.3
@@ -68,7 +68,7 @@ public class ClusterDoc
 		} catch (java.beans.PropertyVetoException e)
 		{
 		}
-		* add some of these back when calculation works. */
+		//* add some of these back when calculation works. */
 	}
 
 	public void setVariables()

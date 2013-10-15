@@ -1,3 +1,30 @@
+
+	 clusterSize = 20;
+					 roh = 0.02;
+					 p = 0.2;
+					 confidenceInterval = 5;
+					 
+					 double ci = confidenceInterval/100; // get rid of percents
+				
+					 
+					 // this is the right one  
+					 double standardError = (ci) / z;
+					 
+					 // for testing
+					// double standardError = 0.025;
+					 designEffect = 1 +(clusterSize - 1) * roh;
+					 
+					 
+					 
+					 clustersNeeded = (p * (1 - p) * designEffect)/((square(standardError) * clusterSize));
+					 
+					 clustersNeeded = roundUp(clustersNeeded);
+					 
+					 D.b("clustersNeeded is " + clustersNeeded);
+					 
+				
+
+
 public void actionPerformed(ActionEvent e)
 		{
 			if ("quit".equals(e.getActionCommand()))
