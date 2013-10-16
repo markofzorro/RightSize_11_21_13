@@ -17,9 +17,7 @@ public class ClusterDoc
 	private double confidenceInterval = 5;
 	private double confidenceCoefficient = 95;
 	private double proportion = 50;
-	private double n0 = 0;
-	private double n = 0;
-	private double fpc = 0;
+
 	
 	
 	private double clusterSize = 0;
@@ -28,9 +26,9 @@ public class ClusterDoc
 	private double roh = 0;
 	
 	
-	static boolean SUCCESS = false;
+	//static boolean SUCCESS = false;
 	static final double POP_MAX = 100000000000000000D;
-	static final double POP_MIN = 10; // No sense in trying to do survey on less
+	static final double POP_MIN = 1000; // No sense in trying to do cluster survey on less
 	static final int POP_MAX_DIGITS = 18;
 	
 	static final double PROPORTION_MAX = 99;
@@ -44,6 +42,14 @@ public class ClusterDoc
 	static final double CC_MAX = 99;
 	static final double CC_MIN = 1;
 	static final int CC_MAX_DIGITS = 2;
+	
+	static final double CLUSTER_SIZE_MAX = 100;
+	static final double CLUSTER_SIZE_MIN = 1;
+	static final int CLUSTER_SIZE_MAX_DIGITS = 2;
+	
+	static final double ROH_SIZE_MAX = 99;
+	static final double ROH_SIZE_MIN = 0;
+	static final int ROH_SIZE_MAX_DIGITS = 100;
 	
 	
 	public ClusterDoc(JDesktopPane desktop) 
@@ -73,12 +79,15 @@ public class ClusterDoc
 
 	public void setVariables()
 		{
-/*			setPopulation(view.inputPanel.getPopulation());
-			setProportion(view.inputPanel.getProportion());
-			setCI(view.inputPanel.getCI());
-			setCC(view.inputPanel.getCC());
+			setPopulation(view.getPopString());
+			setProportion(view.getProportionString());
+			setCI(view.getCIString());
+			setCC(view.getCCString());
+			setClusterSize(view.getClusterSizeString());
+			setROH(view.getROHString());
+			D.b("Doc:setVariables: roh is " + roh);
 			
-	*/	//	if (SUCCESS)
+		//	if (SUCCESS)
 //			calculate();
 		
 			//{
@@ -98,6 +107,7 @@ public class ClusterDoc
 	public void calculate()
 		{
 			 
+			setVariables();
 				// Standard Normal Distribution has mean of 0 and SD of 1.
 					NormalDistribution  nd = new NormalDistribution(0, 1); 
 					
@@ -138,16 +148,19 @@ public class ClusterDoc
 					  * 
 					  * 
 					  */
-					 clusterSize = 20;
-					 roh = 0.02;
-					 p = 0.2;
-					 confidenceInterval = 5;
+					// clusterSize = 20;
+					// roh = 0.02;
+					// p = 0.2;
+					 //confidenceInterval = 5;
 					 
 					 double ci = confidenceInterval/100; // get rid of percents
 				
 					 
 					 // this is the right one  
-					 double standardError = (ci) / z;
+				//	 double standardError = (ci) / z;
+					
+					 double standardError = ci/2;
+					 D.b("calculate: s is " + standardError);
 					 
 					 // for testing
 					// double standardError = 0.025;
@@ -159,33 +172,17 @@ public class ClusterDoc
 					 
 					 clustersNeeded = roundUp(clustersNeeded);
 					 
-					 D.b("clustersNeeded is " + clustersNeeded);
-////////////////////////// PUT UPDATE CALL HERE //////////////////////////					 
-					
-				/*	 
-					
-					 //double ciSquared  
-					 D.b("ci2 is " + confidenceInterval + " squared it is " + ci2);
+					 D.b("Standard Error is " + standardError + " clustersNeeded is " + clustersNeeded + 
+							 ". designEffect is " + designEffect + ". roh is " + roh + ".clusterSize is " + 
+							 clusterSize + "CI Width is " + confidenceInterval + ".");
 					 
-					 D.b("p = " + p + " q = " + q + ".");
+					 
+					 
+					 
+////////////////////////// PUT UPDATE CALL HERE //////////////////////////	
+					 view.update(clustersNeeded, roh, designEffect);
 					
-				//	 double n0 = (z * z * p * q ) / ciWidth * ciWidth;
-					 
-				//	 D.b("n0 = " + n0);
-					    
-					 n0 = z2 * p * q/ ci2;
-					 D.b("n0 = " + n0);
-					 
-					 // Now calculate finite population correction
-					 
-					// now do finite population correction
-						//m_nn = RoundUp(m_dn0 / ( 1 + ((m_dn0 - 1)/m_lTargetPop ) ) );     
-					fpc = 1 / ( ( 1 + ((n0 - 1)/population ) ) );     ;                                      
-					
-					n = roundUp(n0 * fpc);
-					D.b("n = " + n + " fpc " + fpc + " n0 = "+ n0 );
-					showResults(n0, fpc, n);		
-		*/
+				
 		}
 	
 	private double square(double d )
@@ -193,12 +190,7 @@ public class ClusterDoc
 		return (d * d);
 	}
 	
-	private void showResults(double show_n0, double show_fpc, double show_n  )
-		{
-			 JOptionPane.showMessageDialog(view,"Sample size is = " + show_n0 + "FPC is " + show_fpc + ". With FPC it is: " +show_n);
-		//	SRSResultsView resultsView = new SRSResultsView();
-		//	desktop.add(resultsView);
-		}
+
 	//  Weirdly I can't get hold of the version in java.math, but it is simple enough
 	private double abs(double number)
 		{
@@ -228,24 +220,20 @@ public class ClusterDoc
 			if ( retval > 0)
 			{
 				population = retval;
-				SUCCESS = true;
+				
 			}
 			else
 			{	
 				population = 0; // mark failure
-				SUCCESS = false;
+				
 			}
 			
 			D.b("setPop: retval is " + retval);
 						
 		}
  	
- 	public double get_n0()
- 		{
- 			return n0;
- 			
- 		}
- 	
+ 
+ 
 	
 	private void setProportion(String s)
 		{
@@ -255,11 +243,10 @@ public class ClusterDoc
 			{
 				proportion = retval;
 				D.b("setProportion: retval is: " + retval);
-				SUCCESS = true;
 			}
 			else
 			{	
-				SUCCESS = false;
+				proportion = 0; // Mark failure
 			}
 						
 		}
@@ -272,12 +259,12 @@ public class ClusterDoc
 			{
 				confidenceInterval = retval;
 				D.b("setCI: retval is: " + retval);
-				SUCCESS = true;
+				
 			}
 			else
 			{	
 				confidenceInterval = 0; // mark failure
-				SUCCESS = false;
+				
 			}
 						
 		}
@@ -290,15 +277,44 @@ public class ClusterDoc
 			{
 				confidenceCoefficient = retval;
 				D.b("setCC: retval is: " + retval);
-				SUCCESS = true;
 			}
 			else
 			{	
 				confidenceCoefficient = 0; // mark failure
-				SUCCESS = false;
+				
 			}
 						
 		}
+	
+	private void setClusterSize(String s)
+	{
+		double retVal = stringToDouble(s, CLUSTER_SIZE_MIN, CLUSTER_SIZE_MAX, CLUSTER_SIZE_MAX_DIGITS);
+		
+		if ( retVal > 0)
+			{
+				clusterSize = retVal;
+				D.b("setClusterSize: retval is: " + retVal);
+				
+			}
+			
+		
+	}
+	
+	private void setROH(String s)
+		{
+			double retVal = stringToDouble(s, ROH_SIZE_MIN, ROH_SIZE_MAX, ROH_SIZE_MAX_DIGITS);
+			D.b("Doc: setRoh: roh is " + retVal);
+			if ( retVal > 0)
+				{
+					roh = retVal;
+					D.b("setROH: retval is: " + retVal);
+					
+				}
+				
+			
+		}
+	
+	
 	
 	/************ END OF SETTERS AND GETTERS ************/
 	
@@ -364,8 +380,6 @@ public class ClusterDoc
 					{
 //						JOptionPane.showMessageDialog(view,"Oops, You entered: " + retval + ". The value must be between" + in_min + " and " + in_max);
 						
-						if ( SUCCESS )
-							SUCCESS = false;	// mark failure
 						
 						return 0.0;
 					}

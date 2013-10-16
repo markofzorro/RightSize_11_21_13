@@ -10,16 +10,17 @@ import java.awt.GridLayout;
 
 		public class ClusterPanel extends JPanel
 			{
-				JTextField tfPop = null;
-				JTextField tfProportion = null;
-				JTextField tfCI = null;
-				JTextField tfCC = null;
-				JTextField tfClusterSize = null;
-				JTextField tfROH = null;
+				private JTextField tfPop = null;
+				private JTextField tfProportion = null;
+				private JTextField tfCI = null;
+				private JTextField tfCC = null;
+				private JTextField tfClusterSize = null;
+				private JTextField tfROH = null;
 			
 				// Result labels
-				JLabel lblClustersNeeded = null;
-				JLabel lblDesignEffect= null;
+				private JLabel lblClustersNeeded = null;
+				private JLabel lblDesignEffect= null;
+				private JLabel lblROH = null;
 			
 
 				/**
@@ -103,13 +104,19 @@ import java.awt.GridLayout;
 						fillCols(1);
 
 						// Row 9
+						newLabel("Rate of Homogeneity", 24);
+						fillCols(1);
+						lblROH = newLabel("", 24);
+						lblROH.setHorizontalAlignment(SwingConstants.TRAILING);
+						fillCols(1);
+
+						// Row 9
 						newLabel("Design Effect", 24);
-						fillCols(2);
+						fillCols(1);
 						lblDesignEffect = newLabel("", 24);
 						lblDesignEffect.setHorizontalAlignment(SwingConstants.TRAILING);
 						//fillCols(1);
-
-										}
+				}
 
 				/****************** Helper Methods ***************************/
 				
@@ -161,7 +168,17 @@ import java.awt.GridLayout;
 					{
 						return tfCC.getText();
 					}
+				
+				public String getClusterSizeString()
+					{
+						return tfClusterSize.getText();
+					}
 
+				public String getROHString()
+					{
+						D.b("Panel: tfROH is " + tfROH.getText());
+						return tfROH.getText();
+					}
 				/************** Setters ************/
 				public void setLblClustersNeeded(double d)
 					{
@@ -174,6 +191,14 @@ import java.awt.GridLayout;
 						lblDesignEffect.setText(Double.toString(d));
 
 					}
+				
+				public void setLblROH(double d)
+					{
+						lblROH.setText(Double.toString(d));
+
+					}
+				
+				
 
 				
 			}

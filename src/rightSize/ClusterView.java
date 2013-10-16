@@ -26,14 +26,14 @@ import java.awt.Insets;
  */
 public class ClusterView extends RSInternalFrame
 	{
-		ClusterDoc doc = null;
-		ClusterPanel ClusterPanel = null;
+		private ClusterDoc doc = null;
+		private ClusterPanel ClusterPanel = null;
 
-		double n = 0;
-		double n0 = 0;
-		double fpc = 0;
+		private double clusterSize = 0;
+		private double clustersNeeded = 0;
+		private double designEffect = 0;
 
-		JPanel contentPane = new JPanel();
+		private JPanel contentPane = new JPanel();
 
 		// ClusterButtonPanel pb = null; Not a class
 		// begin variable declarations
@@ -54,8 +54,7 @@ public class ClusterView extends RSInternalFrame
 				super(title); // Sets the title of RSInternalFrame. this allows
 								// us to keep count of the panels
 
-				// super("Simple Random Sample");
-				// setTitle("Simple Random Sample");
+				
 				this.doc = clusterDoc;
 				contentPane = new JPanel();
 				contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -118,13 +117,13 @@ public class ClusterView extends RSInternalFrame
 				// setSize(1000, 1000);
 			}
 
-		public void update(double n0, double fpc, double n)
+		public void update(double clustersNeeded, double roh, double designEffect)
 			{
 
-				this.n0 = n0;
-				set_n0(n0);
-				set_n(n);
-				set_fpc(fpc);
+				setClustersNeeded(clustersNeeded);
+				//= clustersNeeded;
+				setROH(roh);
+				setDesignEffect(designEffect);
 				revalidate();
 
 			}
@@ -152,28 +151,33 @@ public class ClusterView extends RSInternalFrame
 				return ClusterPanel.getCCString();
 			}
 
-		public void set_n0(double d)
+		public void setClustersNeeded(double d)
 			{
 
-				ClusterPanel.setLblN0(d);
+				ClusterPanel.setLblClustersNeeded(d);
 			}
 
-		public void set_n(double d)
+		public void setDesignEffect(double d)
 			{
-				ClusterPanel.setLblN(d);
+				ClusterPanel.setLblDesignEffect(d);
 				// ClusterPanel.setLblN(d);
 			}
-
-		public void set_fpc(double d)
+		public void setROH(double d)
 			{
-				ClusterPanel.setLblFpc(d);
+				ClusterPanel.setLblROH(d);
+				// ClusterPanel.setLblN(d);
 			}
-
-		/*
-		 * setProportion(view.getProportion()); setCI(view.getCI());
-		 * setCC(view.getCC());
-		 */
-
+		
+		public String getClusterSizeString()
+			{
+				return ClusterPanel.getClusterSizeString();
+			}
+		public String getROHString()
+			{
+				D.b("Clusterview: rohString is " + ClusterPanel.getROHString());
+				return ClusterPanel.getROHString();
+			}
+		
 		/******* end getters and setters *****************/
 
 		/**

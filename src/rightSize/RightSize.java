@@ -40,7 +40,7 @@ public class RightSize extends JFrame implements ActionListener
 
 	public RightSize()
 		{
-			super("RightSize");
+			super("RightSize from your freinds at TEPHINET");
 
 			// Make the big window be indented 50 pixels from each edge
 			// of the screen.
