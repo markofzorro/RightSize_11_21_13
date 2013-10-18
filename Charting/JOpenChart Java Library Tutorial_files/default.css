@@ -1,0 +1,49 @@
+A, CODE, DL, DT, EM, H1, H2, H3, H4, H5, H6, LI, P, STRONG, SUB, SUP, TD  {
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
+
+PRE  {
+	font-size : 8pt;
+	font-family : monospace;
+}
+
+CODE {
+	font-family : monospace;
+}
+
+P.address  {
+	font-size : 10pt;
+	font-style : italic;
+	text-align : left;
+	margin-top : 40pt;
+}
+
+P.caption  {
+	font-size : 10pt;
+	font-style : italic;
+}
+
+LI  {
+	margin-bottom : 5px;
+}
+
+TD.header  {
+	background-color : #e1e1e1;
+}
+
+A:hover  {
+	background-color : #dbdde8;
+}
+
+A:link  {
+	color : #000040;
+}
+
+A:visited  {
+	color : Black;
+}
+
+A:active  {
+	color : #0000a0;
+}
+

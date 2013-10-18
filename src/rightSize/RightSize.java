@@ -7,6 +7,7 @@ package rightSize;
  * @author zero
  *
  */
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -19,6 +20,8 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
+
+import charts2D.*;
 
 /*
  * Desktop pane allows sample sizes to be displayed in internal panes that nestle nicely in
@@ -99,6 +102,11 @@ public class RightSize extends JFrame implements ActionListener
 			clusterMI.setActionCommand("cluster");
 			clusterMI.addActionListener(this);
 			sampleSizeMenu.add(clusterMI);
+			
+			JMenuItem chartMI = new JMenuItem("Chart Test");
+			chartMI.setActionCommand("chart");
+			chartMI.addActionListener(this);
+			sampleSizeMenu.add(chartMI);
 
 			return menuBar;
 		}
@@ -114,6 +122,13 @@ public class RightSize extends JFrame implements ActionListener
 					srsDoc = new SRSDoc(desktop);
 				else if ("cluster".equals(e.getActionCommand()))
 						clusterDoc = new ClusterDoc(desktop);
+				else if ("chart".equals(e.getActionCommand()))
+					{
+						LMZChart chart = new LMZChart();
+						chart.setVisible(true);
+						desktop.add(chart);
+					}
+			
 					
 					
 				

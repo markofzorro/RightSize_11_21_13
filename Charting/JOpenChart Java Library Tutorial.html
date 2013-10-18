@@ -1,0 +1,520 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+	<title>JOpenChart Java Library Tutorial</title>
+
+	<link rel="STYLESHEET" type="text/css" href="JOpenChart%20Java%20Library%20Tutorial_files/default.css">
+	<style type="text/css"><!--
+		.syntax0 {
+		color: #000000;
+		}
+		.syntax1 {
+		color: #006666;
+		font-style: italic;
+		}
+		.syntax2 {
+		color: #990033;
+		font-style: italic;
+		}
+		.syntax3 {
+		color: #404040;
+		}
+		.syntax4 {
+		color: #404040;
+		}
+		.syntax5 {
+		color: #990033;
+		font-weight: bold;
+		font-style: italic;
+		}
+		.syntax6 {
+		color: #000000;
+		font-weight: bold;
+		}
+		.syntax7 {
+		color: #660066;
+		font-weight: bold;
+		}
+		.syntax8 {
+		color: #000066;
+		font-weight: bold;
+		}
+		.syntax9 {
+		color: #000066;
+		}
+		.syntax10 {
+		color: #5e5e5e;
+		font-weight: bold;
+		}
+		.syntax11 {
+		color: #000000;
+		font-weight: bold;
+		}
+		.syntax12 {
+		color: #666600;
+		}
+		.syntax13 {
+		color: #ff0000;
+		}
+		.gutter {
+		background: #ffffff;
+		color: #000000;
+		}
+		.gutterH {
+		background: #ffffff;
+		color: #000066;
+		}
+		-->
+		</style>
+</head>
+
+<body topmargin="0" leftmargin="5" background="JOpenChart%20Java%20Library%20Tutorial_files/background.gif">
+<div id="dic_bubble" class="selection_bubble fontSize13 noSelect" style="z-index: 9999; border: 1px solid rgb(74, 174, 222); visibility: hidden;"></div><table valign="middle" align="left" border="0" cellpadding="0" cellspacing="0" height="100%" width="90%">
+	<tbody><tr>
+		<td align="left" height="20" valign="bottom" width="25"><img alt="" src="JOpenChart%20Java%20Library%20Tutorial_files/corner_lo_t.gif" align="left" border="0" height="21" hspace="0" width="25"></td>
+		<td style="FONT-SIZE: 8pt" bgcolor="white">&nbsp;</td>
+		<td align="right" height="20" valign="bottom" width="25"><img alt="" src="JOpenChart%20Java%20Library%20Tutorial_files/corner_ro_t.gif" align="right" border="0" height="21" hspace="0" width="25"></td></tr>
+	<tr>
+		<td bgcolor="white" height="25" width="25">&nbsp;</td>
+		<td class="header" height="25" valign="center">
+		<a href="http://jopenchart.sourceforge.net/index.shtml">home</a> |
+		<a href="http://jopenchart.sourceforge.net/developer.shtml">developer</a> |
+		<a href="http://jopenchart.sourceforge.net/tutorial.html">tutorial</a> | 
+		<a href="http://jopenchart.sourceforge.net/examples.html">examples</a> | 
+		<a href="http://jopenchart.sourceforge.net/download.html">download</a>
+		</td>
+		<td bgcolor="white" height="25" width="25">&nbsp;</td></tr>	
+	<tr>
+		<td bgcolor="white" width="25">&nbsp;</td>
+		<td bgcolor="white" valign="top">
+		<!-- Here goes the content -->		
+		<h1>Tutorial</h1>
+		<p>This tutorial introduces to the JOpenChart library. It is intended for users with previous knowledge of Java as
+		a programming language. If you have no idea what Java is all about, check out the 
+		<a href="http://developer.java.sun.com/developer/onlineTraining">Java tutorials</a> provided by Sun.
+		Please mail me a <a href="mailto:sebastian.mueller@berlin.de">sebastian.mueller@berlin.de</a>
+		if you find any bugs in this tutorial. Please note though, that this 
+tutorial here is already aiming at the upcoming release 0.94. You have 
+to get the latest CVS version for now, as I didn't find the time to 
+create a new release, yet. The CVS release is perfectly stable though.</p>
+		<a href="#first">1. Our First Chart</a><br>
+		<a href="#second">2. Tweaking the Chart</a><br>
+		<a href="#third">3. Another Kind of Chart</a><br>
+		<a href="#fourth">4. And Yet Another</a><br>
+		<a href="#fifth">5. Diversifying Our Data</a><br>
+		<a href="#sixth">6. Interpolating Data</a><br>
+		<a href="#seventh">7. Plot me, please</a><br>
+		<a href="#eighth">8. Oh I'm Manipulatable and it swings</a><br>
+		<a href="#final">9. Some Further Advice</a>
+		
+		<a name="first"></a><h2>1. Our First Chart</h2>
+		
+<pre><span class="gutter">   1:</span>    <span class="syntax7">import</span> de.progra.charting.*;
+<span class="gutter">   2:</span>    <span class="syntax7">import</span> de.progra.charting.model.*;
+<span class="gutter">   3:</span>    <span class="syntax7">import</span> de.progra.charting.render.*;
+<span class="gutter">   4:</span>    <span class="syntax7">import</span> java.awt.*;
+<span class="gutterH">   5:</span>    <span class="syntax7">import</span> java.io.*;
+<span class="gutter">   6:</span>    
+<span class="gutter">   7:</span>    [...]
+<span class="gutter">   8:</span>    
+<span class="gutter">   9:</span>    <span class="syntax6">public</span> <span class="syntax6">static</span> <span class="syntax8">void</span> <span class="syntax9">makeFirstChart</span>() <span class="syntax11">{</span>
+<span class="gutterH">  10:</span>    
+<span class="gutter">  11:</span>        <span class="syntax8">int</span>[][] model <span class="syntax11">=</span> <span class="syntax11">{{</span><span class="syntax12">0</span>, <span class="syntax12">100</span>, <span class="syntax12">200000</span><span class="syntax11">}}</span>;     <span class="syntax1">// Create data array</span>
+<span class="gutter">  12:</span>        
+<span class="gutter">  13:</span>        <span class="syntax8">double</span>[] columns <span class="syntax11">=</span> <span class="syntax11">{</span><span class="syntax12">0</span>.<span class="syntax12">0</span>, <span class="syntax12">1</span>.<span class="syntax12">0</span>, <span class="syntax12">2000</span>.<span class="syntax12">0</span><span class="syntax11">}</span>;  <span class="syntax1">// Create x-axis values</span>
+<span class="gutter">  14:</span>        
+<span class="gutterH">  15:</span>        String[] rows <span class="syntax11">=</span> <span class="syntax11">{</span><span class="syntax3">"DataSet 1"</span><span class="syntax11">}</span>;          <span class="syntax1">// Create data set title</span>
+<span class="gutter">  16:</span>        
+<span class="gutter">  17:</span>        String title <span class="syntax11">=</span> <span class="syntax3">"A First Test"</span>;          <span class="syntax1">// Create diagram title</span>
+<span class="gutter">  18:</span>        
+<span class="gutter">  19:</span>        <span class="syntax8">int</span> width <span class="syntax11">=</span> <span class="syntax12">640</span>;                        <span class="syntax1">// Image size</span>
+<span class="gutterH">  20:</span>        <span class="syntax8">int</span> height <span class="syntax11">=</span> <span class="syntax12">480</span>;
+<span class="gutter">  21:</span>        
+<span class="gutter">  22:</span>        <span class="syntax1">// Create data model</span>
+<span class="gutter">  23:</span>        DefaultChartDataModel data <span class="syntax11">=</span> <span class="syntax6">new</span> <span class="syntax9">DefaultChartDataModel</span>(model, columns, rows);
+<span class="gutter">  24:</span>        
+<span class="gutterH">  25:</span>        <span class="syntax1">// Create chart with default coordinate system</span>
+<span class="gutter">  26:</span>        DefaultChart c <span class="syntax11">=</span> <span class="syntax6">new</span> <span class="syntax9">DefaultChart</span>(data, title, DefaultChart.LINEAR_X_LINEAR_Y);
+<span class="gutter">  27:</span>        
+<span class="gutter">  28:</span>        <span class="syntax1">// Add a line chart renderer</span>
+<span class="gutter">  29:</span>        c.<span class="syntax9">addChartRenderer</span>(<span class="syntax6">new</span> <span class="syntax9">LineChartRenderer</span>(c.<span class="syntax9">getCoordSystem</span>(), data,
+<span class="gutterH">  30:</span>                           RowColorModel.<span class="syntax9">getInstance</span>(data)), <span class="syntax12">1</span>);
+<span class="gutter">  31:</span>        
+<span class="gutter">  32:</span>        <span class="syntax1">// Set the chart size</span>
+<span class="gutter">  33:</span>        c.<span class="syntax9">setBounds</span>(<span class="syntax6">new</span> <span class="syntax9">Rectangle</span>(<span class="syntax12">0</span>, <span class="syntax12">0</span>, width, height));
+<span class="gutter">  34:</span>        
+<span class="gutterH">  35:</span>        <span class="syntax1">// Export the chart as a PNG image</span>
+<span class="gutter">  36:</span>        <span class="syntax6">try</span> <span class="syntax11">{</span>
+<span class="gutter">  37:</span>            ChartEncoder.<span class="syntax9">createEncodedImage</span>(<span class="syntax6">new</span> <span class="syntax9">FileOutputStream</span>(System.<span class="syntax9">getProperty</span>(<span class="syntax3">"user.home"</span>)<span class="syntax11">+</span><span class="syntax3">"/first.png"</span>), c, <span class="syntax3">"png"</span>);
+<span class="gutter">  38:</span>        <span class="syntax11">}</span> <span class="syntax6">catch</span>(Exception e) <span class="syntax11">{</span>
+<span class="gutter">  39:</span>            e.<span class="syntax9">printStackTrace</span>();
+<span class="gutterH">  40:</span>        <span class="syntax11">}</span>
+<span class="gutter">  41:</span>    <span class="syntax11">}</span>
+</pre>
+		
+		<p>This is our first simple example, which creates a line chart displaying some example values. In the beginning,
+		we import some packages, which we will need. In the lines 10 - 22 we create our example data. The columns array is the
+		array of x-axis values while model contains the y-axis values. The rows array contains a name for any data set we create.
+		In this simple example, we have exactly on data set, ie. one array of y-axis values. The first interesting stuff happens
+		in line 23. There, we create a <code>DefaultChartDataModel</code> which contains all our model data, ie. the x- and y-axis
+		values and the data set titles.
+		</p>
+		<p>In line 26 we create the <code>DefaultChart</code> object, which, as the name implies, encapsulates our first chart.
+		As parameters, we pass the <code>DefaultChartDataModel data</code>, the chart title and a constant 
+		<code>DefaultChart.LINEAR_X_LINEAR_Y</code> which tells the <code>DefaultChart</code> object to create a standard
+		coordinate system, with linear x- and y-axes.</p>
+		<p>Line 29 gets a bit more complicated. This time we add a <code>ChartRenderer</code> to the chart. Renderers are responsible
+		for rendering the provided data in a specific way. We add a <code>LineChartRenderer</code> here, which will render, you guessed it,
+		a line chart. The <code>LineChartRenderer</code> and almost all Renderer classes need three parameters. At first, we pass
+		an instance of the coordinate system, which the <code>DefaultChart</code> object created for us, secondly, we pass the 
+		<code>DefaultChartDataModel</code> so the Renderer know what to draw on the screen. Last but not least, we create an instance
+		of a <code>RowColorModel</code> and pass it to the <code>LineChartRenderer</code>. The <code>RowColorModel</code>
+ maps data sets
+		to colors. When adding a Renderer to a chart, the chart method expects
+ a second parameter besides the Renderer itself, this number
+		(1 in our example) is something like a z-coordinate, which is 
+important if you add multiple Renderers. That's something we'll
+		explore later. For our first example, we're almost done.
+		</p>
+		<p>
+		In line 33 we set the chart bounds. By doing that, we initiate the layout of the chart components. You cannot render a chart,
+		before you have told him his size. Finally, in the <code>try { ... }Êcatch(...) {...}</code> statement, we export the chart
+		as a PNG image to your home directory. The static methods in class <code>ChartEncoder</code> provide the means to export your
+		chart in all available image formats. The first parameter is a <code>FileOutputStream</code> which the Encoder will write to,
+		the second parameter is the chart object itself and the last one tells the Encoder which format to use.
+		</p>
+		<p>That's it, the first chart is done. Try it out by copying the code.</p>
+		<a name="second"></a><h2>2. Tweaking the Chart</h2>
+		
+<pre><span class="gutter">   1:</span>    <span class="syntax6">public</span> <span class="syntax6">static</span> <span class="syntax8">void</span> <span class="syntax9">makeSecondChart</span>() <span class="syntax11">{</span>
+<span class="gutter">   2:</span>    
+<span class="gutter">   3:</span>        <span class="syntax8">int</span>[][] model <span class="syntax11">=</span> <span class="syntax11">{{</span><span class="syntax12">0</span>, <span class="syntax12">100</span>, <span class="syntax12">200000</span><span class="syntax11">}</span>,      <span class="syntax1">// Create data array</span>
+<span class="gutter">   4:</span>                         <span class="syntax11">{</span><span class="syntax12">0</span>, <span class="syntax12">200</span>, <span class="syntax12">100000</span><span class="syntax11">}}</span>;
+<span class="gutterH">   5:</span>        
+<span class="gutter">   6:</span>        <span class="syntax8">double</span>[] columns <span class="syntax11">=</span> <span class="syntax11">{</span><span class="syntax12">0</span>.<span class="syntax12">0</span>, <span class="syntax12">1</span>.<span class="syntax12">0</span>, <span class="syntax12">2000</span>.<span class="syntax12">0</span><span class="syntax11">}</span>;  <span class="syntax1">// Create x-axis values</span>
+<span class="gutter">   7:</span>        
+<span class="gutter">   8:</span>        String[] rows <span class="syntax11">=</span> <span class="syntax11">{</span><span class="syntax3">"DataSet 1"</span>, <span class="syntax3">"DataSet 2"</span><span class="syntax11">}</span>; <span class="syntax1">// Create data set title</span>
+<span class="gutter">   9:</span>        
+<span class="gutterH">  10:</span>        String title <span class="syntax11">=</span> <span class="syntax3">"A First Test"</span>;          <span class="syntax1">// Create diagram title</span>
+<span class="gutter">  11:</span>        
+<span class="gutter">  12:</span>        <span class="syntax8">int</span> width <span class="syntax11">=</span> <span class="syntax12">640</span>;                        <span class="syntax1">// Image size</span>
+<span class="gutter">  13:</span>        <span class="syntax8">int</span> height <span class="syntax11">=</span> <span class="syntax12">480</span>;
+<span class="gutter">  14:</span>        
+<span class="gutterH">  15:</span>        <span class="syntax1">// Create data model</span>
+<span class="gutter">  16:</span>        DefaultChartDataModel data <span class="syntax11">=</span> <span class="syntax6">new</span> <span class="syntax9">DefaultChartDataModel</span>(model, columns, rows);
+<span class="gutter">  17:</span>        
+<span class="gutter">  18:</span>        data.<span class="syntax9">setAutoScale</span>(<span class="syntax4">true</span>);
+<span class="gutter">  19:</span>        
+<span class="gutterH">  20:</span>        <span class="syntax1">// Create chart with default coordinate system</span>
+<span class="gutter">  21:</span>        DefaultChart c <span class="syntax11">=</span> <span class="syntax6">new</span> <span class="syntax9">DefaultChart</span>(data, title, DefaultChart.LINEAR_X_LINEAR_Y, <span class="syntax3">"x-axis"</span>, <span class="syntax3">"y-axis"</span>);
+<span class="gutter">  22:</span>        
+<span class="gutter">  23:</span>        <span class="syntax1">// Add a line chart renderer</span>
+<span class="gutter">  24:</span>        c.<span class="syntax9">addChartRenderer</span>(<span class="syntax6">new</span> <span class="syntax9">LineChartRenderer</span>(c.<span class="syntax9">getCoordSystem</span>(), data,
+<span class="gutterH">  25:</span>                           RowColorModel.<span class="syntax9">getInstance</span>(data)), <span class="syntax12">1</span>);
+<span class="gutter">  26:</span>        c.<span class="syntax9">addChartRenderer</span>(<span class="syntax6">new</span> <span class="syntax9">PlotChartRenderer</span>(c.<span class="syntax9">getCoordSystem</span>(), data,
+<span class="gutter">  27:</span>                           RowColorModel.<span class="syntax9">getInstance</span>(data)), <span class="syntax12">2</span>);
+<span class="gutter">  28:</span>        
+<span class="gutter">  29:</span>        <span class="syntax1">// Set the chart size</span>
+<span class="gutterH">  30:</span>        c.<span class="syntax9">setBounds</span>(<span class="syntax6">new</span> <span class="syntax9">Rectangle</span>(<span class="syntax12">0</span>, <span class="syntax12">0</span>, width, height));
+<span class="gutter">  31:</span>        
+<span class="gutter">  32:</span>        <span class="syntax1">// Export the chart as a PNG image</span>
+<span class="gutter">  33:</span>        <span class="syntax6">try</span> <span class="syntax11">{</span>
+<span class="gutter">  34:</span>            ChartEncoder.<span class="syntax9">createEncodedImage</span>(<span class="syntax6">new</span> <span class="syntax9">FileOutputStream</span>(System.<span class="syntax9">getProperty</span>(<span class="syntax3">"user.home"</span>)<span class="syntax11">+</span><span class="syntax3">"/second.png"</span>), c, <span class="syntax3">"png"</span>);
+<span class="gutterH">  35:</span>        <span class="syntax11">}</span> <span class="syntax6">catch</span>(Exception e) <span class="syntax11">{</span>
+<span class="gutter">  36:</span>            e.<span class="syntax9">printStackTrace</span>();
+<span class="gutter">  37:</span>        <span class="syntax11">}</span>
+<span class="gutter">  38:</span>    <span class="syntax11">}</span>
+</pre>
+		
+		<p>There are four new aspects in this example. Look at lines 3, 18, 21 and 26 and you'll know what I mean. In line 3 I create
+		a two-dimensional data model using and int[]. This way we create two <code>DataSet</code>s. We pass one columns array, that
+		is, one array of x-axis values, but in the <code>model</code> array we put two arrays of y-axis values. Please note, that
+		the columns array and the array of y-axis values should have the same number of entries. These two data sets will be
+		automatically rendered using different colors and the chart will of course be layouted to fit both charts.</p>
+		<p>In line 18 is a simple method call <code>data.setAutoScale(true)</code>. That means that the maximum and minimum
+		axis values are automatically scaled to fit a nice value, mostly multiples (or fractions) of 5 and 10. If your maximum x-value
+		happens to be 0.345 it might be rounded up to 0.5 for instance.
+		</p>
+		<p>The change in line 21 is just as simple. I present an additional constructor for chart objects. You can pass two Strings
+		which will be the axis labels. They are rendered aside of or below the axis arrows.</p>
+		<p>In lines 26 and following, I show a special future - the possibility to combine different <code>ChartRenderer</code> objects.
+		That doesn't work with all kind of Renderers, e.g. you cannot combine a <code>PieChartRenderer</code> with any other type but
+		you can combine line, plot and interpolation chart renderers. Just add all of them to the chart and give them different
+		z-coordinates. That's all.
+		</p>
+		<a name="third"></a><h2>3. Another Kind of Chart</h2>
+		
+<pre><span class="gutter">   1:</span>    <span class="syntax6">public</span> <span class="syntax6">static</span> <span class="syntax8">void</span> <span class="syntax9">makeThirdChart</span>() <span class="syntax11">{</span>
+<span class="gutter">   2:</span>        
+<span class="gutter">   3:</span>        <span class="syntax8">int</span>[][] model <span class="syntax11">=</span> <span class="syntax11">{{</span><span class="syntax12">23</span>, <span class="syntax12">43</span>, <span class="syntax12">12</span><span class="syntax11">}}</span>;
+<span class="gutter">   4:</span>        
+<span class="gutterH">   5:</span>        <span class="syntax1">// Strings as x-axis values</span>
+<span class="gutter">   6:</span>        String[] columns <span class="syntax11">=</span> <span class="syntax11">{</span><span class="syntax3">"Conservatives"</span>, <span class="syntax3">"Socialdemocrats"</span>, <span class="syntax3">"Green Party"</span><span class="syntax11">}</span>;
+<span class="gutter">   7:</span>        
+<span class="gutter">   8:</span>        String[] rows <span class="syntax11">=</span> <span class="syntax11">{</span><span class="syntax3">"Voting Results"</span><span class="syntax11">}</span>;
+<span class="gutter">   9:</span>        
+<span class="gutterH">  10:</span>        String title <span class="syntax11">=</span> <span class="syntax3">"Parliamentary Elections 1997"</span>;
+<span class="gutter">  11:</span>        
+<span class="gutter">  12:</span>        <span class="syntax8">int</span> width <span class="syntax11">=</span> <span class="syntax12">640</span>;
+<span class="gutter">  13:</span>        <span class="syntax8">int</span> height <span class="syntax11">=</span> <span class="syntax12">480</span>;
+<span class="gutter">  14:</span>        
+<span class="gutterH">  15:</span>        <span class="syntax1">// Create the data model using Strings as x-axis values</span>
+<span class="gutter">  16:</span>        ObjectChartDataModel data <span class="syntax11">=</span> <span class="syntax6">new</span> <span class="syntax9">ObjectChartDataModel</span>(model, columns, rows);
+<span class="gutter">  17:</span>        
+<span class="gutter">  18:</span>        <span class="syntax1">// Create the chart</span>
+<span class="gutter">  19:</span>        DefaultChart c <span class="syntax11">=</span> <span class="syntax6">new</span> <span class="syntax9">DefaultChart</span>(data, title);
+<span class="gutterH">  20:</span>        
+<span class="gutter">  21:</span>        <span class="syntax1">// Add pie chart renderer</span>
+<span class="gutter">  22:</span>        c.<span class="syntax9">addChartRenderer</span>(<span class="syntax6">new</span> <span class="syntax9">PieChartRenderer</span>(data,
+<span class="gutter">  23:</span>                            RowColorModel.<span class="syntax9">getInstance</span>(data)), <span class="syntax12">1</span>);
+<span class="gutter">  24:</span>
+<span class="gutterH">  25:</span>        <span class="syntax1">// Set chart bounds                         </span>
+<span class="gutter">  26:</span>        c.<span class="syntax9">setBounds</span>(<span class="syntax6">new</span> <span class="syntax9">Rectangle</span>(<span class="syntax12">0</span>, <span class="syntax12">0</span>, width, height));
+<span class="gutter">  27:</span>        
+<span class="gutter">  28:</span>        <span class="syntax6">try</span> <span class="syntax11">{</span>
+<span class="gutter">  29:</span>            ChartEncoder.<span class="syntax9">createPNG</span>(<span class="syntax6">new</span> <span class="syntax9">FileOutputStream</span>(System.<span class="syntax9">getProperty</span>(<span class="syntax3">"user.home"</span>)<span class="syntax11">+</span><span class="syntax3">"/third.png"</span>), c);
+<span class="gutterH">  30:</span>        <span class="syntax11">}</span> <span class="syntax6">catch</span>(Exception e) <span class="syntax11">{</span>
+<span class="gutter">  31:</span>            e.<span class="syntax9">printStackTrace</span>();
+<span class="gutter">  32:</span>        <span class="syntax11">}</span>
+<span class="gutter">  33:</span>    <span class="syntax11">}</span>
+</pre>
+		
+		<p>In this part of the tutorial I want to introduce you to the use of a different <code>ChartRenderer</code>, namely the
+		<code>PieChartRenderer</code>. You can create and add this Renderer like any other one, but look at the line 16, where
+		the data model is created. It is not a <code>DefaultChartDataModel</code> anymore but an <code>ObjectChartDataModel</code>.
+		What's the difference anyway? Well, with this kind of data model you can use arbitrary objects as x-axis values. 
+		So far, they are always rendered using their <code>toString()</code>. 
+You could for instance use Date objects, Strings
+		etc. You can create all kinds of charts using this data model. The 
+constructor parameters are basically the same as you'll see..</p>
+		
+		<a name="fourth"></a><h2>4. And Yet Another</h2>
+		
+<pre><span class="gutter">   1:</span>    <span class="syntax6">public</span> <span class="syntax6">static</span> <span class="syntax8">void</span> <span class="syntax9">makeFourthTest</span>() <span class="syntax11">{</span>
+<span class="gutter">   2:</span>        
+<span class="gutter">   3:</span>        <span class="syntax8">int</span>[][] model <span class="syntax11">=</span> <span class="syntax11">{{</span><span class="syntax12">23</span>, <span class="syntax12">43</span>, <span class="syntax12">12</span><span class="syntax11">}</span>,
+<span class="gutter">   4:</span>                         <span class="syntax11">{</span><span class="syntax12">54</span>, <span class="syntax11">-</span><span class="syntax12">15</span>, <span class="syntax12">34</span><span class="syntax11">}</span>,
+<span class="gutterH">   5:</span>                         <span class="syntax11">{</span><span class="syntax12">99</span>, <span class="syntax12">32</span>, <span class="syntax12">45</span><span class="syntax11">}}</span>;
+<span class="gutter">   6:</span>        
+<span class="gutter">   7:</span>        String[] columns <span class="syntax11">=</span> <span class="syntax11">{</span><span class="syntax3">"1997"</span>, <span class="syntax3">"1998"</span>, <span class="syntax3">"1999"</span><span class="syntax11">}</span>;
+<span class="gutter">   8:</span>        
+<span class="gutter">   9:</span>        String[] rows <span class="syntax11">=</span> <span class="syntax11">{</span><span class="syntax3">"foobar.com"</span>, <span class="syntax3">"@foo Ltd."</span>, <span class="syntax3">"bar.online"</span><span class="syntax11">}</span>;
+<span class="gutterH">  10:</span>        
+<span class="gutter">  11:</span>        String title <span class="syntax11">=</span> <span class="syntax3">"Average Growth 1997 - 1999"</span>;
+<span class="gutter">  12:</span>        
+<span class="gutter">  13:</span>        <span class="syntax8">int</span> width <span class="syntax11">=</span> <span class="syntax12">640</span>;
+<span class="gutter">  14:</span>        <span class="syntax8">int</span> height <span class="syntax11">=</span> <span class="syntax12">480</span>;
+<span class="gutterH">  15:</span>        
+<span class="gutter">  16:</span>        <span class="syntax1">// Create the data model</span>
+<span class="gutter">  17:</span>        ObjectChartDataModel data <span class="syntax11">=</span> <span class="syntax6">new</span> <span class="syntax9">ObjectChartDataModel</span>(model, columns, rows);
+<span class="gutter">  18:</span>        
+<span class="gutter">  19:</span>        <span class="syntax1">// Create the chart with coordinate system and the given axis labels</span>
+<span class="gutterH">  20:</span>        DefaultChart c <span class="syntax11">=</span> <span class="syntax6">new</span> <span class="syntax9">DefaultChart</span>(data, title, DefaultChart.LINEAR_X_LINEAR_Y, <span class="syntax3">"Year"</span>, <span class="syntax3">"Growth"</span>);
+<span class="gutter">  21:</span>        
+<span class="gutter">  22:</span>        <span class="syntax1">// Set the coordinate system, the format for the x-axis values and the coord. system layout</span>
+<span class="gutter">  23:</span>        c.<span class="syntax9">setCoordSystem</span>(<span class="syntax6">new</span> <span class="syntax9">CoordSystem</span>(data, <span class="syntax6">new</span> <span class="syntax9">DecimalFormat</span>(), <span class="syntax4">false</span>, <span class="syntax4">true</span>, <span class="syntax4">false</span>));
+<span class="gutter">  24:</span>        
+<span class="gutterH">  25:</span>        <span class="syntax1">// Add a bar chart renderer</span>
+<span class="gutter">  26:</span>        c.<span class="syntax9">addChartRenderer</span>(<span class="syntax6">new</span> <span class="syntax9">BarChartRenderer</span>(c.<span class="syntax9">getCoordSystem</span>(),
+<span class="gutter">  27:</span>                            data,
+<span class="gutter">  28:</span>                            RowColorModel.<span class="syntax9">getInstance</span>(data), <span class="syntax6">new</span> <span class="syntax9">DecimalFormat</span>(), <span class="syntax6">new</span> <span class="syntax9">Font</span>(<span class="syntax3">"sans"</span>, Font.ITALIC, <span class="syntax12">9</span>), <span class="syntax12">1</span>.<span class="syntax12">0f</span>), <span class="syntax12">1</span>);
+<span class="gutter">  29:</span>        
+<span class="gutterH">  30:</span>        c.<span class="syntax9">setBounds</span>(<span class="syntax6">new</span> <span class="syntax9">Rectangle</span>(<span class="syntax12">0</span>, <span class="syntax12">0</span>, width, height));
+<span class="gutter">  31:</span>        
+<span class="gutter">  32:</span>        <span class="syntax6">try</span> <span class="syntax11">{</span>
+<span class="gutter">  33:</span>            ChartEncoder.<span class="syntax9">createPNG</span>(<span class="syntax6">new</span> <span class="syntax9">FileOutputStream</span>(System.<span class="syntax9">getProperty</span>(<span class="syntax3">"user.home"</span>)<span class="syntax11">+</span><span class="syntax3">"/fourth.png"</span>), c);
+<span class="gutter">  34:</span>        <span class="syntax11">}</span> <span class="syntax6">catch</span>(Exception e) <span class="syntax11">{</span>
+<span class="gutterH">  35:</span>            e.<span class="syntax9">printStackTrace</span>();
+<span class="gutter">  36:</span>        <span class="syntax11">}</span>
+<span class="gutter">  37:</span>    <span class="syntax11">}</span>
+</pre>
+		
+		<p>It gets more complicated this time. Again, I create an <code>ObjectChartDataModel</code> but things start to differ
+		in line 23, where we manually set the chart's coordinate system. We pass a <code>DecimalFormat</code> and three boolean 
+		values to the constructor. The <code>DecimalFormat</code> object will change the way the numbers along the y-axis are 
+		rendered. You could for instance create a <code>DecimalFormat</code> displaying a currency sign next to the numbers on the axis
+		or whatever else you like. The meaning of the boolean values is a bit more complicated. The first one defines, if the
+		arrows on the axes should be rendered, if the second one is false, the labels will be painted on each tick and if the
+		last one is false, not only the ticks will be painted, but a light grey horizontal line.
+		</p>
+		<p> Afterwards we add a <code>BarChartRenderer</code> which has the same kind of constructor like the previous  renderers.
+		This time, we use a special constructor, only the <code>BarChartRenderer</code> has. It takes three additional parameters.
+		The <code>DecimalFormat</code> is used to draw the numerical value on top of the corresponding bar, the <code>Font</code>
+		object following determines the font and the last float number manipulates the standard bar width. A value of 1.0f is 
+		equivalent to the standard size, ie. the maximum size without overlapping, 0f means no bars at all (pretty useless) and
+		any value above 1f will mean, that the bars overlap.</p>
+		
+		<a name="fifth"></a><h2>5. Diversifying Our Data</h2>
+		
+<pre><span class="gutter">   1:</span>    <span class="syntax6">public</span> <span class="syntax6">static</span> <span class="syntax8">void</span> <span class="syntax9">makeFifthChart</span>() <span class="syntax11">{</span>
+<span class="gutter">   2:</span>        
+<span class="gutter">   3:</span>        <span class="syntax1">// Initializing some arrayss</span>
+<span class="gutter">   4:</span>        <span class="syntax8">int</span>[] quadr <span class="syntax11">=</span> <span class="syntax11">{</span><span class="syntax12">0</span>, <span class="syntax12">1</span>, <span class="syntax12">4</span>, <span class="syntax12">9</span>, <span class="syntax12">16</span>, <span class="syntax12">25</span>, <span class="syntax12">36</span><span class="syntax11">}</span>;
+<span class="gutterH">   5:</span>        <span class="syntax8">int</span>[] exp <span class="syntax11">=</span> <span class="syntax11">{</span><span class="syntax12">1</span>, <span class="syntax12">2</span>, <span class="syntax12">4</span>, <span class="syntax12">8</span>, <span class="syntax12">16</span>, <span class="syntax12">32</span>, <span class="syntax12">64</span><span class="syntax11">}</span>;        
+<span class="gutter">   6:</span>        <span class="syntax8">double</span>[] columns <span class="syntax11">=</span> <span class="syntax11">{</span><span class="syntax12">0</span>.<span class="syntax12">0</span>, <span class="syntax12">1</span>.<span class="syntax12">0</span>, <span class="syntax12">2</span>.<span class="syntax12">0</span>, <span class="syntax12">3</span>.<span class="syntax12">0</span>, <span class="syntax12">4</span>.<span class="syntax12">0</span>, <span class="syntax12">5</span>.<span class="syntax12">0</span>, <span class="syntax12">6</span>.<span class="syntax12">0</span><span class="syntax11">}</span>;
+<span class="gutter">   7:</span>        
+<span class="gutter">   8:</span>        <span class="syntax1">// Creating a data set array</span>
+<span class="gutter">   9:</span>        DefaultDataSet[] ds <span class="syntax11">=</span> <span class="syntax6">new</span> DefaultDataSet[<span class="syntax12">3</span>];
+<span class="gutterH">  10:</span>        
+<span class="gutter">  11:</span>        <span class="syntax1">// Filling all DataSets</span>
+<span class="gutter">  12:</span>        ds[<span class="syntax12">0</span>] <span class="syntax11">=</span> <span class="syntax6">new</span> <span class="syntax9">DefaultDataSet</span>(ChartUtilities.<span class="syntax9">transformArray</span>(<span class="syntax6">new</span> <span class="syntax8">int</span>[] <span class="syntax11">{</span><span class="syntax12">0</span>, <span class="syntax12">6</span><span class="syntax11">}</span>),
+<span class="gutter">  13:</span>                                   ChartUtilities.<span class="syntax9">transformArray</span>(<span class="syntax6">new</span> <span class="syntax8">double</span>[] <span class="syntax11">{</span><span class="syntax12">0</span>.<span class="syntax12">0</span>, <span class="syntax12">6</span>.<span class="syntax12">0</span><span class="syntax11">}</span>),
+<span class="gutter">  14:</span>                                   CoordSystem.FIRST_YAXIS,
+<span class="gutterH">  15:</span>                                   <span class="syntax3">"Linear Growth"</span>);
+<span class="gutter">  16:</span>                                   
+<span class="gutter">  17:</span>        ds[<span class="syntax12">1</span>] <span class="syntax11">=</span> <span class="syntax6">new</span> <span class="syntax9">DefaultDataSet</span>(ChartUtilities.<span class="syntax9">transformArray</span>(quadr),
+<span class="gutter">  18:</span>                                   ChartUtilities.<span class="syntax9">transformArray</span>(columns),
+<span class="gutter">  19:</span>                                   CoordSystem.FIRST_YAXIS,
+<span class="gutterH">  20:</span>                                   <span class="syntax3">"Quadratic Growth"</span>);
+<span class="gutter">  21:</span>        
+<span class="gutter">  22:</span>        ds[<span class="syntax12">2</span>] <span class="syntax11">=</span> <span class="syntax6">new</span> <span class="syntax9">DefaultDataSet</span>(ChartUtilities.<span class="syntax9">transformArray</span>(exp),
+<span class="gutter">  23:</span>                                   ChartUtilities.<span class="syntax9">transformArray</span>(columns),
+<span class="gutter">  24:</span>                                   CoordSystem.FIRST_YAXIS,
+<span class="gutterH">  25:</span>                                   <span class="syntax3">"Exponential Growth"</span>);
+<span class="gutter">  26:</span>        
+<span class="gutter">  27:</span>        String title <span class="syntax11">=</span> <span class="syntax3">"Growth Factor Comparison"</span>;
+<span class="gutter">  28:</span>        
+<span class="gutter">  29:</span>        <span class="syntax8">int</span> width <span class="syntax11">=</span> <span class="syntax12">640</span>;
+<span class="gutterH">  30:</span>        <span class="syntax8">int</span> height <span class="syntax11">=</span> <span class="syntax12">480</span>;
+<span class="gutter">  31:</span>        
+<span class="gutter">  32:</span>        DefaultChartDataModel data <span class="syntax11">=</span> <span class="syntax6">new</span> <span class="syntax9">DefaultChartDataModel</span>(ds);
+<span class="gutter">  33:</span>        
+<span class="gutter">  34:</span>        data.<span class="syntax9">setAutoScale</span>(<span class="syntax4">true</span>);
+<span class="gutterH">  35:</span>        
+<span class="gutter">  36:</span>        DefaultChart c <span class="syntax11">=</span> <span class="syntax6">new</span> <span class="syntax9">DefaultChart</span>(data, title, DefaultChart.LINEAR_X_LINEAR_Y);
+<span class="gutter">  37:</span>        
+<span class="gutter">  38:</span>        c.<span class="syntax9">addChartRenderer</span>(<span class="syntax6">new</span> <span class="syntax9">LineChartRenderer</span>(c.<span class="syntax9">getCoordSystem</span>(),
+<span class="gutter">  39:</span>                           data,
+<span class="gutterH">  40:</span>                           RowColorModel.<span class="syntax9">getInstance</span>(data)), <span class="syntax12">1</span>);
+<span class="gutter">  41:</span>        
+<span class="gutter">  42:</span>        c.<span class="syntax9">setBounds</span>(<span class="syntax6">new</span> <span class="syntax9">Rectangle</span>(<span class="syntax12">0</span>, <span class="syntax12">0</span>, width, height));
+<span class="gutter">  43:</span>        
+<span class="gutter">  44:</span>        <span class="syntax6">try</span> <span class="syntax11">{</span>
+<span class="gutterH">  45:</span>            ChartEncoder.<span class="syntax9">createPNG</span>(<span class="syntax6">new</span> <span class="syntax9">FileOutputStream</span>(System.<span class="syntax9">getProperty</span>(<span class="syntax3">"user.home"</span>)<span class="syntax11">+</span><span class="syntax3">"/fifth.png"</span>), c);
+<span class="gutter">  46:</span>        <span class="syntax11">}</span> <span class="syntax6">catch</span>(Exception e) <span class="syntax11">{</span>
+<span class="gutter">  47:</span>            e.<span class="syntax9">printStackTrace</span>();
+<span class="gutter">  48:</span>        <span class="syntax11">}</span>
+<span class="gutter">  49:</span>    <span class="syntax11">}</span>
+</pre>
+		
+		<p>With the last large example I show the possibility to create a data model with differently sized data sets. For doing that,
+		you have to create the <code>DataSet</code>s manually the way shown above. The <code>DataSet</code>s need <code>Number</code>
+		arrays but the utility method <code>transformArray</code> transforms arrays of primitive data types into object arrays.
+		Additionally, you have to pass a constant describing the y-axis to which the data set should be attached. Up to now,
+		only the first y-axis is fully implemented so you don't have much of a choice. The string parameter is the data set title
+		which will be displayed in the chart's legend. With the release following version 0.93 you can also create 
+		<code>ObjectChartDataModel</code>s this way.</p>
+		
+		<a name="sixth"></a><h2>6. Interpolating Data</h2>
+
+<pre><span class="gutter">   1:</span>c.<span class="syntax9">addChartRenderer</span>(<span class="syntax6">new</span> <span class="syntax9">InterpolationChartRenderer</span>(c.<span class="syntax9">getCoordSystem</span>(),
+<span class="gutter">   2:</span>                   data,
+<span class="gutter">   3:</span>                   RowColorModel.<span class="syntax9">getInstance</span>(data)), <span class="syntax12">1</span>);
+</pre>
+
+		<p>The JOpenChart library implements a polynomial interpolation algorithm (Aitken-Neville) which can interpolate
+		any values in the data model to a continuous line. You can do that simply by adding the <code>InterpolationChartRenderer</code>
+		as shown above.</p>
+		
+		<a name="seventh"></a><h2>7. Plot me, please</h2>
+		
+<pre><span class="gutter">   1:</span>DefaultChartDataModel data <span class="syntax11">=</span> FunctionPlotter.<span class="syntax9">createChartDataModelInstance</span>(<span class="syntax11">-</span><span class="syntax12">10</span>, <span class="syntax12">10</span>, <span class="syntax12">2000</span>, <span class="syntax3">"1/x"</span>);
+</pre>
+
+		<p>Another nice feature of the library is its ability to plot any mathematical function by giving it as a String object.
+		You can create a data model by giving the minimum and maximum x-axis value, the number of computed points (2000 is a good
+		value) and the function itself.</p>
+		
+		<a name="eighth"></a><h2>8. Oh I'm Manipulatable and it swings</h2>
+
+<pre><span class="gutter">   1:</span><span class="syntax7">import</span> java.awt.*;
+<span class="gutter">   2:</span><span class="syntax7">import</span> java.awt.event.*;
+<span class="gutter">   3:</span><span class="syntax7">import</span> javax.swing.*;
+<span class="gutter">   4:</span><span class="syntax7">import</span> de.progra.charting.swing.*;
+<span class="gutterH">   5:</span><span class="syntax7">import</span> de.progra.charting.event.*;
+<span class="gutter">   6:</span><span class="syntax7">import</span> de.progra.charting.model.*;
+<span class="gutter">   7:</span><span class="syntax7">import</span> de.progra.charting.render.*;
+<span class="gutter">   8:</span><span class="syntax7">import</span> de.progra.charting.*;
+<span class="gutter">   9:</span>
+<span class="gutterH">  10:</span><span class="syntax6">public</span> <span class="syntax8">class</span> GraphFrame <span class="syntax6">extends</span> javax.swing.JFrame <span class="syntax6">implements</span> ActionListener, ChartDataModelListener <span class="syntax11">{</span>
+<span class="gutter">  11:</span>
+<span class="gutter">  12:</span>    ChartPanel panel;
+<span class="gutter">  13:</span>    EditableChartDataModel data;
+<span class="gutter">  14:</span>    
+<span class="gutterH">  15:</span>    <span class="syntax1">// Initialize the Timer:</span>
+<span class="gutter">  16:</span>    javax.swing.Timer t <span class="syntax11">=</span> <span class="syntax6">new</span> javax.swing.<span class="syntax9">Timer</span>(<span class="syntax12">1000</span>, <span class="syntax4">this</span>);
+<span class="gutter">  17:</span>    <span class="syntax8">double</span> time <span class="syntax11">=</span> <span class="syntax12">3</span>.<span class="syntax12">0</span>;
+<span class="gutter">  18:</span>    
+<span class="gutter">  19:</span>    <span class="syntax6">public</span> <span class="syntax9">GraphFrame</span>() <span class="syntax11">{</span>
+<span class="gutterH">  20:</span>        <span class="syntax1">// Init some starting data</span>
+<span class="gutter">  21:</span>        <span class="syntax8">double</span>[][] model <span class="syntax11">=</span> <span class="syntax11">{{</span><span class="syntax12">25</span>.<span class="syntax12">0</span>, <span class="syntax12">22</span>.<span class="syntax12">0</span>, <span class="syntax12">23</span>.<span class="syntax12">0</span><span class="syntax11">}</span>,
+<span class="gutter">  22:</span>                            <span class="syntax11">{</span><span class="syntax12">13</span>.<span class="syntax12">0</span>, <span class="syntax12">11</span>.<span class="syntax12">0</span>, <span class="syntax12">12</span>.<span class="syntax12">0</span><span class="syntax11">}}</span>;
+<span class="gutter">  23:</span>        
+<span class="gutter">  24:</span>        <span class="syntax8">double</span>[] columns <span class="syntax11">=</span> <span class="syntax11">{</span><span class="syntax12">0</span>.<span class="syntax12">0</span>, <span class="syntax12">1</span>.<span class="syntax12">0</span>, <span class="syntax12">2</span>.<span class="syntax12">0</span><span class="syntax11">}</span>;
+<span class="gutterH">  25:</span>        String[] columnString <span class="syntax11">=</span> <span class="syntax11">{</span><span class="syntax3">"1998"</span>, <span class="syntax3">"1999"</span>, <span class="syntax3">"2000"</span><span class="syntax11">}</span>;
+<span class="gutter">  26:</span>        String[] rows <span class="syntax11">=</span> <span class="syntax11">{</span><span class="syntax3">"Int. Temp."</span>, <span class="syntax3">"Ext. Temp."</span><span class="syntax11">}</span>;
+<span class="gutter">  27:</span>
+<span class="gutter">  28:</span>        String title <span class="syntax11">=</span> <span class="syntax3">"Viewing Internal &amp; External Temperature"</span>;
+<span class="gutter">  29:</span>
+<span class="gutterH">  30:</span>        <span class="syntax1">// Create an editable chart data model</span>
+<span class="gutter">  31:</span>        data <span class="syntax11">=</span> <span class="syntax6">new</span> <span class="syntax9">EditableChartDataModel</span>(model, columns, rows);
+<span class="gutter">  32:</span>        
+<span class="gutter">  33:</span>        <span class="syntax1">// Creating the Swing ChartPanel instead of DefaultChart</span>
+<span class="gutter">  34:</span>        panel <span class="syntax11">=</span> <span class="syntax6">new</span> <span class="syntax9">ChartPanel</span>(data, title, DefaultChart.LINEAR_X_LINEAR_Y);
+<span class="gutterH">  35:</span>        <span class="syntax1">// Adding ChartRenderer as usual</span>
+<span class="gutter">  36:</span>        panel.<span class="syntax9">addChartRenderer</span>(<span class="syntax6">new</span> <span class="syntax9">LineChartRenderer</span>(panel.<span class="syntax9">getCoordSystem</span>(), data, RowColorModel.<span class="syntax9">getInstance</span>(data)), <span class="syntax12">1</span>);
+<span class="gutter">  37:</span>        <span class="syntax1">// Register EventListener</span>
+<span class="gutter">  38:</span>        data.<span class="syntax9">addChartDataModelListener</span>(<span class="syntax4">this</span>);
+<span class="gutter">  39:</span>        
+<span class="gutterH">  40:</span>        <span class="syntax1">// Start the Timer</span>
+<span class="gutter">  41:</span>        t.<span class="syntax9">start</span>();
+<span class="gutter">  42:</span>        <span class="syntax9">setSize</span>(<span class="syntax12">640</span>, <span class="syntax12">480</span>);
+<span class="gutter">  43:</span>        <span class="syntax4">this</span>.<span class="syntax9">getContentPane</span>().<span class="syntax9">add</span>(panel, BorderLayout.CENTER);
+<span class="gutter">  44:</span>    <span class="syntax11">}</span>
+<span class="gutterH">  45:</span>
+<span class="gutter">  46:</span>    <span class="syntax6">public</span> <span class="syntax8">void</span> <span class="syntax9">actionPerformed</span>(ActionEvent evt) <span class="syntax11">{</span>
+<span class="gutter">  47:</span>        <span class="syntax1">// The Timer generated an event -&gt; update DataModel with random data</span>
+<span class="gutter">  48:</span>        data.<span class="syntax9">insertValue</span>(<span class="syntax12">0</span>, <span class="syntax6">new</span> <span class="syntax9">Double</span>(Math.<span class="syntax9">random</span>() <span class="syntax11">*</span> <span class="syntax12">10</span>.<span class="syntax12">0</span> <span class="syntax11">+</span> <span class="syntax12">20</span>.<span class="syntax12">0</span>), <span class="syntax6">new</span> <span class="syntax9">Double</span>(time));
+<span class="gutter">  49:</span>        data.<span class="syntax9">insertValue</span>(<span class="syntax12">1</span>, <span class="syntax6">new</span> <span class="syntax9">Double</span>(Math.<span class="syntax9">random</span>() <span class="syntax11">*</span> <span class="syntax12">7</span>.<span class="syntax12">0</span> <span class="syntax11">+</span> <span class="syntax12">10</span>.<span class="syntax12">0</span>), <span class="syntax6">new</span> <span class="syntax9">Double</span>(time));
+<span class="gutterH">  50:</span>        
+<span class="gutter">  51:</span>        time<span class="syntax11">++</span>;
+<span class="gutter">  52:</span>    <span class="syntax11">}</span>
+<span class="gutter">  53:</span>    
+<span class="gutter">  54:</span>    <span class="syntax6">public</span> <span class="syntax8">void</span> <span class="syntax9">chartDataChanged</span>(ChartDataModelEvent evt) <span class="syntax11">{</span>
+<span class="gutterH">  55:</span>        <span class="syntax1">// The DataModel changed -&gt; update display</span>
+<span class="gutter">  56:</span>        panel.<span class="syntax9">revalidate</span>();
+<span class="gutter">  57:</span>        <span class="syntax9">repaint</span>();
+<span class="gutter">  58:</span>    <span class="syntax11">}</span>
+<span class="gutter">  59:</span>
+<span class="gutterH">  60:</span>    <span class="syntax6">public</span> <span class="syntax6">static</span> <span class="syntax8">void</span> <span class="syntax9">main</span>(String args[]) <span class="syntax11">{</span>
+<span class="gutter">  61:</span>        <span class="syntax1">// Start the whole shebang </span>
+<span class="gutter">  62:</span>        <span class="syntax6">new</span> <span class="syntax9">GraphFrame</span>().<span class="syntax9">show</span>();
+<span class="gutter">  63:</span>    <span class="syntax11">}</span>
+<span class="gutter">  64:</span><span class="syntax11">}</span>
+<span class="gutterH">  65:</span>
+<span class="gutter">  66:</span>
+</pre>
+
+		<p>This very last example which is contained in the source release in package <code>de.progra.charting.test</code>
+		shows how to use the <code>EditableChartDataModel</code> to plot realtime values. It creates a <code>ChartPanel</code>,
+		which can be used equivalently to a <code>Chart</code> object but is a Swing component. Afterwards the 
+		<code>EditableChartDataModel</code> is updated once per second with random data and the <code>ChartPanel</code> is 
+		immediately updated through its event mechanism. By the way, the chart component is double-buffered.</p>
+		
+		<a name="final"><h2>9. Some Further Advice</h2></a>
+		<p>Well, there's not much to say anymore. Maybe I should recommend to download the API docs from the download section
+		and explore the possibilities yourself. This tutorial can only give some early guidance but cannot show all aspects
+		of the library.
+		</p>
+		
+		<a href="http://sourceforge.net/"><img src="JOpenChart%20Java%20Library%20Tutorial_files/sflogo.png" alt="SourceForge Logo" align="right" border="0" height="62" width="210"></a>
+		<p class="address">Sebastian Müller<br>
+					<a href="mailto:sebastian.mueller@berlin.de">sebastian.mueller@berlin.de</a></p></td>
+		<td bgcolor="white" width="25">&nbsp;</td></tr>
+	<tr>
+		<td align="left" height="21" valign="center" width="25"><img alt="" src="JOpenChart%20Java%20Library%20Tutorial_files/corner_lu_t.gif" align="left" border="0" height="21" hspace="0" width="25"></td>
+		<td style="FONT-SIZE: 8pt" bgcolor="white">&nbsp;</td>
+		<td align="right" height="21" valign="center" width="25"><img alt="" src="JOpenChart%20Java%20Library%20Tutorial_files/corner_ru_t.gif" align="right" border="0" height="21" hspace="0" width="25"></td></tr></tbody></table>
+
+
+</body></html>
