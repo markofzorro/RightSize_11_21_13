@@ -41,7 +41,7 @@ public class LMZChart extends JInternalFrame
 			}
 */
 		/**
-		 * Create the application.
+		 * Create the chart.
 		 */
 		public LMZChart()
 			{

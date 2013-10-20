@@ -132,7 +132,7 @@ public class SRSView extends RSInternalFrame
 		
 		private void addGraphButton()
 			{
-				if (graphButton == null)
+				if (graphButton == null) // there isn't a button yet.
 					{	
 						graphButton = new JButton("Graph");
 						graphButton.setFont(new java.awt.Font("Lucida Grande", 0, 24));
