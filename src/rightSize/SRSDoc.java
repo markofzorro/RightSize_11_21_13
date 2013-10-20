@@ -10,7 +10,7 @@ public class SRSDoc
 
 	protected JDesktopPane desktop;
 	protected SRSView view = null;
-	
+	private SRSCalculator calculator = null;
 
 	protected double population = 100;
 	protected double confidenceInterval = 5;
@@ -21,7 +21,8 @@ public class SRSDoc
 	protected double fpc = 0;
 	
 	
-	static final double POP_MAX = 100000000000000000D;
+	private static final double POP_MAX = 100000000000000000D;
+	
 	static final double POP_MIN = 10; // No sense in trying to do survey on less
 	static final int POP_MAX_DIGITS = 18;
 	
@@ -83,87 +84,30 @@ public class SRSDoc
 				
 
 		}
+		
+		public void graph()
+			{
+				D.b("Reached graph()");
+			}
 	
 	
 	protected void calculate()
 		{
 			setVariables();
+			calculator = new SRSCalculator(this, population, proportion, confidenceInterval, confidenceCoefficient);
 			
-			
-			/* Begin calculations **************/		        
-/******* Formula from Cochran (1963:75) ***
- *	n0 = z2pq/e2
- *	where z2 = z squared
- *	e = confidence interval
- */
-				 
-				// Standard Normal Distribution has mean of 0 and SD of 1.
-					NormalDistribution  nd = new NormalDistribution(0, 1); 
-					
-					double alpha = 1 - (confidenceCoefficient/100); // get rid of percents and calculate inverse
-					D.b("alpha: " + alpha);
-					
-					double z =  nd.inverseCumulativeProbability((alpha/2));
-				//	double z = 1 - (alpha/2);
-					//z = abs(z);
-					double z2 = z * z;
-					D.b("z is " + z + " z2 is " + z2);
-					
-					double p = proportion/100;
-					 double q = 1 - p;
-					 double ci2 = confidenceInterval/100; // get rid of percents
-					 ci2 = ci2 * ci2; // square it.
-					
-					 //double ciSquared  
-					 D.b("ci2 is " + confidenceInterval + " squared it is " + ci2);
-					 
-					 D.b("p = " + p + ", q = " + q + ", z " + z + ", CI2 " + ci2 + ".");
-					
-				//	 double n0 = (z * z * p * q ) / ciWidth * ciWidth;
-					 
-				//	 D.b("n0 = " + n0);
-					    
-					 n0 = z2 * p * q/ ci2;
-					 D.b("n0 = " + n0);
-					 
-					 // Now calculate finite population correction
-					 
-					// now do finite population correction
-						//m_nn = RoundUp(m_dn0 / ( 1 + ((m_dn0 - 1)/m_lTargetPop ) ) );     
-					fpc = 1 / ( ( 1 + ((n0 - 1)/population ) ) );     ;                                      
-					
-					// Now that calculations are done, round the results to whole numbers
-					n = roundUp(n0 * fpc);
-					n0 = roundUp(n0);
-					
-					
-					D.b("Calculate: fpc is " + fpc + " and adjucted n = " + n);
-				//	showResults(n0, fpc, n);
-					if(n>0 && n>0 && fpc != 0)
-						view.update(n0, fpc, n);
-					
+		}	
+	
+	public void getCalculationResults(double n0, double fpc, double n)
+	{
+		this.n0 =  n0;
+		this.fpc = fpc;
+		this.n = n;
 		
-		}
-	
-		//  Weirdly I can't get hold of the version in java.math, but it is simple enough
-	protected double abs(double number)
-		{
-			double abs_number = (number < 0) ? -number : number;
-			return abs_number;
-		}
+		D.b("Doc getCalculationResult(): n0 is " + n0 + " fpc = " + fpc + "n = " + n);
+		view.update(n0, fpc, n);
+	}
 
-	double roundUp( double d )      
-		{
-			long l = (long)d;
-			double dremainder = d - l;
-			if ( dremainder > 0.0 )
-				l++;
-
-			return l;
-		}
-	
-	/****** end of calculations */
-/** Validation and value setting and getting methods follow */
 	
  	protected void setPop(String s)
 		{

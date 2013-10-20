@@ -68,7 +68,7 @@ public class SRSPanel extends JPanel
 					add(new JSeparator());
 
 				// Results:
-/******************* REsults start here ***********/
+/******************* Results start here ***********/
 				// row 7
 				JLabel lblTitle = new JLabel("Results:");
 				lblTitle.setFont(new java.awt.Font("Lucida Grande", 1, 36)); // NOI18N

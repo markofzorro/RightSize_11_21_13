@@ -38,8 +38,9 @@ public class SRSView extends RSInternalFrame
 		// SRSButtonPanel pb = null; Not a class
 		// begin variable declarations
 
-		private javax.swing.JButton okButton;
-		private javax.swing.JButton cancelButton;
+		private javax.swing.JButton okButton = null;
+		private javax.swing.JButton cancelButton = null;
+		private javax.swing.JButton graphButton = null;
 
 		private JPanel buttonPanel;
 
@@ -99,7 +100,7 @@ public class SRSView extends RSInternalFrame
 						{
 
 							doc.calculate();
-
+							addGraphButton();
 						}
 				});
 				buttonPanel.add(okButton);
@@ -127,6 +128,26 @@ public class SRSView extends RSInternalFrame
 				set_fpc(fpc);
 				revalidate();
 
+			}
+		
+		private void addGraphButton()
+			{
+				if (graphButton == null)
+					{	
+						graphButton = new JButton("Graph");
+						graphButton.setFont(new java.awt.Font("Lucida Grande", 0, 24));
+						graphButton.addActionListener(new ActionListener() {
+							public void actionPerformed(ActionEvent e)
+								{
+							
+									System.out.println("******* Graph button Clicked.********");
+									doc.graph();
+								}
+						});
+						buttonPanel.add(graphButton);
+					}
+				else
+						return;
 			}
 
 		/*************** getters and setters *********************/
@@ -161,7 +182,7 @@ public class SRSView extends RSInternalFrame
 		public void set_n(double d)
 			{
 				srsPanel.setLblN(d);
-				// srsPanel.setLblN(d);
+				
 			}
 
 		public void set_fpc(double d)
