@@ -46,7 +46,7 @@ public class SRSPanel extends JPanel
 
 				// fourth row
 				newLabel("Desired Width of Confidence Interval", 24);
-				JLabel lblPm = new JLabel("±");
+				JLabel lblPm = new JLabel( "\u00B1"); // plus/minus sign
 				lblPm.setHorizontalAlignment(SwingConstants.TRAILING);
 				lblPm.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
 				add(lblPm);

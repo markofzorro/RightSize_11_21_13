@@ -1,17 +1,17 @@
 package rightSize;
 
 import javax.swing.JDesktopPane;
-import javax.swing.JOptionPane;
 
 import org.apache.commons.math3.distribution.NormalDistribution;
 
-import charts2D.LMZChart;
+//import charts2D.RSChart;
 
 public class SRSDoc extends DocBase
 {
 
-	private SRSCalculator calculator = null;
-	SRSView view = null;
+	
+	private  SRSView view = null;
+//	private RSChart chart = null;
 	
 	protected double n0 = 0;
 	protected double n = 0;
@@ -48,6 +48,12 @@ public class SRSDoc extends DocBase
 			}
 	}
 	
+/*	protected RSChart setChart()
+		{ 
+			return chart;
+			
+		}
+	*/
 	
 	/**
 	 * Loads variables into the document's class-level vars.
@@ -67,11 +73,7 @@ public class SRSDoc extends DocBase
 
 		}
 		
-		protected void graph()
-		{
-				LMZChart chart = new LMZChart();
-			
-		}
+		
 		
 		
 	

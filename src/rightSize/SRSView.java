@@ -17,6 +17,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+
+
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 
@@ -28,12 +30,8 @@ public class SRSView extends RSInternalFrame
 	{
 		SRSDoc doc = null;
 		SRSPanel srsPanel = null;
-
-		double n = 0;
-		double n0 = 0;
-		double fpc = 0;
-
 		JPanel contentPane = new JPanel();
+		
 
 		// SRSButtonPanel pb = null; Not a class
 		// begin variable declarations
@@ -110,6 +108,7 @@ public class SRSView extends RSInternalFrame
 
 		private void initComponents()
 			{
+//				chart = new RSChart(doc);
 				srsPanel = new SRSPanel();
 				srsPanel.setVisible(true);
 				getContentPane().add(srsPanel);
@@ -122,7 +121,7 @@ public class SRSView extends RSInternalFrame
 		public void update(double n0, double fpc, double n)
 			{
 
-				this.n0 = n0;
+				//this.n0 = n0;
 				set_n0(n0);
 				set_n(n);
 				set_fpc(fpc);
@@ -139,9 +138,8 @@ public class SRSView extends RSInternalFrame
 						graphButton.addActionListener(new ActionListener() {
 							public void actionPerformed(ActionEvent e)
 								{
-							
-									System.out.println("******* Graph button Clicked.********");
-									doc.graph();
+									D.b("Reached addGraphButton()");
+									
 								}
 						});
 						buttonPanel.add(graphButton);

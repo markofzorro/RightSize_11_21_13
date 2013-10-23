@@ -12,6 +12,7 @@ public class DocBase
 	{
 		protected JDesktopPane desktop;
 		
+		
 		protected double population = 100;
 		protected double confidenceInterval = 5;
 		protected double confidenceCoefficient = 95;
@@ -33,6 +34,7 @@ public class DocBase
 		static final double CC_MAX = 99;
 		static final double CC_MIN = 90;
 		static final int CC_MAX_DIGITS = 2;
+		
 		
 		
 		
@@ -58,6 +60,8 @@ public class DocBase
 		
 
 	/************ Getters and Setters ************/	
+		
+		
 		
 		
 		protected void setPop(String s)

@@ -2,7 +2,7 @@ package rightSize;
 public class D
 {
 	
-	static void b(String s)
+	public static void b(String s)
 	{
 			System.out.println("D.b: " +s);
 	}

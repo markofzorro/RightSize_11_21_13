@@ -21,29 +21,27 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
-import charts2D.*;
+//import charts2D.*;
 
-/*
- * Desktop pane allows sample sizes to be displayed in internal panes that nestle nicely in
- * fan rows so users can keep them and compare.
+/**
+ * This class extends JDesktopPane, which allows views be displayed in internal panes that nestle nicely in
+ * fanned rows so users can keep them and compare.
  * 
- * The class sets up the main window and menu. Each menu item creates a SRSDocument that
- * creates the requisite view to get input and display results.
+ * <p>This class sets up the main window and menu. Each menu item creates a Document that
+ * creates the requisite views to get input and display results.
  * 
- * the SRSDocument does calculations and holds variables so that graphs can be created and shown.
- * 
- * InternalFrameDemo.java requires:
- *   MyInternalFrame.java
- */
+ * @author Mark White
+ *
+ **/
 public class RightSize extends JFrame implements ActionListener
 {
-	private JDesktopPane desktop;
-	private SRSDoc srsDoc;
+	private JDesktopPane desktop = null;
+	private SRSDoc srsDoc =null;
 	private ClusterDoc clusterDoc = null;
 
 	public RightSize()
 		{
-			super("RightSize from your freinds at TEPHINET");
+			super("RightSize from your friends at TEPHINET");
 
 			// Make the big window be indented 50 pixels from each edge
 			// of the screen.
@@ -124,9 +122,10 @@ public class RightSize extends JFrame implements ActionListener
 						clusterDoc = new ClusterDoc(desktop);
 				else if ("chart".equals(e.getActionCommand()))
 					{
-						LMZChart chart = new LMZChart();
-						chart.setVisible(true);
-						desktop.add(chart);
+						D.b("Rightsize: reached chart ActionListener.");
+						//RSChart chart = new RSChart(desktop);
+						//chart.setVisible(true);
+						//desktop.add(chart);
 					}
 			
 					
