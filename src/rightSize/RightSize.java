@@ -41,7 +41,7 @@ public class RightSize extends JFrame implements ActionListener
 	private JDesktopPane desktop = null;
 	private SRSDoc srsDoc =null;
 	private ClusterDoc clusterDoc = null;
-	private ChartDoc chartDoc = null;
+	private RSChartDoc chartDoc = null;
 
 	public RightSize()
 		{
@@ -128,7 +128,7 @@ public class RightSize extends JFrame implements ActionListener
 				else if ("chart".equals(e.getActionCommand()))
 					{
 						D.b("Rightsize: reached chart ActionListener.");
-						chartDoc = new ChartDoc(desktop);
+					//	chartDoc = new RSChartDoc(desktop);
 					}
 			
 					

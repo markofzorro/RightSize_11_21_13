@@ -18,7 +18,7 @@ import javax.swing.border.EmptyBorder;
  */
 public class ChartView extends RSInternalFrame
 	{
-		ChartDoc doc = null;
+		RSChartDoc doc = null;
 		RSChart chart = null;
 		JPanel contentPane = new JPanel();
 		
@@ -38,7 +38,7 @@ public class ChartView extends RSInternalFrame
 		 * Creates new Internal Frame for user interactions for simple random
 		 * sample calculations.
 		 */
-		public ChartView(ChartDoc doc, String title)
+		public ChartView(RSChartDoc doc, String title)
 			{
 				super(title); // Sets the title of RSInternalFrame. this allows
 								// us to keep count of the panels

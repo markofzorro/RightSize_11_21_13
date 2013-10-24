@@ -3,13 +3,11 @@ package rightSize;
 import javax.swing.JDesktopPane;
 
 
-public class ChartDoc extends DocBase
+public class RSChartDoc<RSDocBase> extends DocBase
 {
-
-	
 	private  ChartView view = null;
-//	private RSChart chart = null;
 	
+	private Calculator calculator = null;
 	
 	
 	
@@ -21,11 +19,15 @@ public class ChartDoc extends DocBase
 	 * @param desktop
 	 */
 	
-	public ChartDoc(JDesktopPane desktop) 
+	public RSChartDoc(SRSDoc srsDoc) 
 	{
-		this.desktop = desktop;
+		//this.desktop = desktop;
 		D.b("Reached ChartDoc constructor.");
-		setView();
+		
+		
+		
+		
+	//	setView();
 		
 	}
 	
@@ -41,4 +43,10 @@ public class ChartDoc extends DocBase
 				{
 				}
 		}
+	
+	/************** Getters ****************/
+	
+//	private get
+	
+	
 }

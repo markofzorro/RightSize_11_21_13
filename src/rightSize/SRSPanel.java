@@ -132,6 +132,7 @@ public class SRSPanel extends JPanel
 		public String getPopString()
 			{
 				D.b("panel:getPopString(). tfPopString is: " + tfPop.getText() + " "+ tfPop);
+				D.b("SRSPanel.getPopString(): tfPop is " + tfPop.getText());
 				return tfPop.getText();
 			}
 

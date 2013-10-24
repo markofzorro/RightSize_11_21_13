@@ -28,9 +28,12 @@ import java.awt.Insets;
  */
 public class SRSView extends RSInternalFrame
 	{
-		SRSDoc doc = null;
-		SRSPanel srsPanel = null;
-		JPanel contentPane = new JPanel();
+		private SRSDoc doc = null;
+		//RSChartDoc chartDoc = null;
+		private SRSPanel srsPanel = null;
+		private JPanel contentPane = new JPanel();
+		
+		//private double pop = 0;
 		
 
 		// SRSButtonPanel pb = null; Not a class
@@ -99,6 +102,7 @@ public class SRSView extends RSInternalFrame
 
 							doc.calculate();
 							addGraphButton();
+							
 						}
 				});
 				buttonPanel.add(okButton);
@@ -139,6 +143,7 @@ public class SRSView extends RSInternalFrame
 							public void actionPerformed(ActionEvent e)
 								{
 									D.b("Reached addGraphButton()");
+									
 									
 								}
 						});
