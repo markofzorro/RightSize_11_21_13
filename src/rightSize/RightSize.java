@@ -7,7 +7,9 @@ package rightSize;
  * @author zero
  *
  */
-import java.awt.Component;
+import jFreeChart.RSChart;
+//import jFreeChart.RSLineChartOldNoWord;
+
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -42,6 +44,7 @@ public class RightSize extends JFrame implements ActionListener
 	public RightSize()
 		{
 			super("RightSize from your friends at TEPHINET");
+			
 
 			// Make the big window be indented 50 pixels from each edge
 			// of the screen.
@@ -123,9 +126,9 @@ public class RightSize extends JFrame implements ActionListener
 				else if ("chart".equals(e.getActionCommand()))
 					{
 						D.b("Rightsize: reached chart ActionListener.");
-						//RSChart chart = new RSChart(desktop);
-						//chart.setVisible(true);
-						//desktop.add(chart);
+						RSChart chart = new RSChart("Called from RightSize");
+						chart.setVisible(true);
+					//	desktop.add(chart);
 					}
 			
 					
