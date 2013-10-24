@@ -32,7 +32,7 @@ import org.jfree.util.ShapeUtilities;
  * In this line chart, the visibility of lines and shapes is controlled on a per
  * series basis.
  */
-public class RSChart extends JFrame
+public class RSChart extends JPanel
 	{
 	//	JDesktopPane desktop = null; 
 
@@ -44,8 +44,9 @@ public class RSChart extends JFrame
 		 */
 		public RSChart(String title)
 			{
-				super(title);
+				//super(title);
 				//this.desktop = desktop;
+				//setTitle(title);
 				JPanel chartPanel = createDemoPanel();
 				 chartPanel.setPreferredSize(new Dimension(1000, 800));
 				add(chartPanel);

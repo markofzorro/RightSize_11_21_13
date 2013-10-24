@@ -18,6 +18,7 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -40,6 +41,7 @@ public class RightSize extends JFrame implements ActionListener
 	private JDesktopPane desktop = null;
 	private SRSDoc srsDoc =null;
 	private ClusterDoc clusterDoc = null;
+	private ChartDoc chartDoc = null;
 
 	public RightSize()
 		{
@@ -126,9 +128,7 @@ public class RightSize extends JFrame implements ActionListener
 				else if ("chart".equals(e.getActionCommand()))
 					{
 						D.b("Rightsize: reached chart ActionListener.");
-						RSChart chart = new RSChart("Called from RightSize");
-						chart.setVisible(true);
-					//	desktop.add(chart);
+						chartDoc = new ChartDoc(desktop);
 					}
 			
 					
