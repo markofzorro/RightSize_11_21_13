@@ -42,7 +42,7 @@ public class RSChart extends JPanel
 		 * @param title
 		 *            the frame title.
 		 */
-		public RSChart(String title)
+		public RSChart()
 			{
 				//super(title);
 				//this.desktop = desktop;

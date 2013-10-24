@@ -26,7 +26,7 @@ public class ChartDoc extends DocBase
 		this.desktop = desktop;
 		D.b("Reached ChartDoc constructor.");
 		setView();
-		//setVariables();
+		
 	}
 	
 	protected void setView()

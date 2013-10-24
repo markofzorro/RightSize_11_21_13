@@ -1,5 +1,7 @@
 package rightSize;
 
+import jFreeChart.RSChart;
+
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -42,14 +44,14 @@ public class ChartView extends RSInternalFrame
 								// us to keep count of the panels
 
 				D.b("Reached ChartView constructor");
-				// super("Simple Random Sample");
-				// setTitle("Simple Random Sample");
+				
 				this.doc = doc;
-				contentPane = new JPanel();
-				contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+				//contentPane = new JPanel();
+				contentPane = new RSChart();
+			//	contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 				// contentPane.setLayout(new BorderLayout(0, 0));
-				contentPane.setLayout(new BoxLayout(contentPane,
-						BoxLayout.Y_AXIS));
+			//	contentPane.setLayout(new BoxLayout(contentPane,
+				//		BoxLayout.Y_AXIS));
 				setContentPane(contentPane);
 				setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
