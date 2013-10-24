@@ -142,8 +142,9 @@ public class SRSDoc<RSDocBase> extends DocBase
 
 			}
 		
-		private void graph()
+		void graph()
 			{
+				D.b("Reached SRSDoc.graph()");
 				chartDoc = new RSChartDoc(this);
 			}
 

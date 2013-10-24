@@ -7,7 +7,7 @@ public class RSChartDoc<RSDocBase> extends DocBase
 {
 	private  ChartView view = null;
 	
-	private Calculator calculator = null;
+//	private Calculator calculator = null;
 	
 	
 	
@@ -19,17 +19,26 @@ public class RSChartDoc<RSDocBase> extends DocBase
 	 * @param desktop
 	 */
 	
+	// Debugger
+	public RSChartDoc()
+		{
+			D.b("Reached ChartDoc no arg constructor.");
+		}
+	
 	public RSChartDoc(SRSDoc srsDoc) 
 	{
 		//this.desktop = desktop;
-		D.b("Reached ChartDoc constructor.");
-		
-		
-		
+		D.b("Reached ChartDoc srsDoc constructor.");
 		
 	//	setView();
 		
 	}
+	
+	// Overloading constructor seems to work.
+	public RSChartDoc(ClusterDoc clusterDoc)
+		{
+			
+		}
 	
 	protected void setView()
 		{
