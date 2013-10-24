@@ -19,7 +19,7 @@ import javax.swing.border.EmptyBorder;
 public class ChartView extends RSInternalFrame
 	{
 		ChartDoc doc = null;
-		SRSPanel srsPanel = null;
+		RSChart chart = null;
 		JPanel contentPane = new JPanel();
 		
 
@@ -44,14 +44,14 @@ public class ChartView extends RSInternalFrame
 								// us to keep count of the panels
 
 				D.b("Reached ChartView constructor");
-				
+				// super("Simple Random Sample");
+				// setTitle("Simple Random Sample");
 				this.doc = doc;
-				//contentPane = new JPanel();
-				contentPane = new RSChart();
-			//	contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+				contentPane = new JPanel();
+				contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 				// contentPane.setLayout(new BorderLayout(0, 0));
-			//	contentPane.setLayout(new BoxLayout(contentPane,
-				//		BoxLayout.Y_AXIS));
+				contentPane.setLayout(new BoxLayout(contentPane,
+						BoxLayout.Y_AXIS));
 				setContentPane(contentPane);
 				setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -100,10 +100,11 @@ public class ChartView extends RSInternalFrame
 		private void initComponents()
 			{
 //				chart = new RSChart(doc);
-				srsPanel = new SRSPanel();
-				srsPanel.setVisible(true);
+				chart = new RSChart();
+				chart.setVisible(true);
 			//	getContentPane().add(srsPanel);
 				initButtonPanel();
+				getContentPane().add(chart);
 				getContentPane().add(buttonPanel);
 				pack();
 				// setSize(1000, 1000);
