@@ -122,21 +122,19 @@ public class RightSize extends JFrame implements ActionListener
 					quit();
 				} 
 				else if ("srs".equals(e.getActionCommand()))
-					srsDoc = new SRSDoc(desktop);
+					{
+						srsDoc = new SRSDoc(desktop);
+					//	srsDoc.graph();
+					}
 				else if ("cluster".equals(e.getActionCommand()))
 						clusterDoc = new ClusterDoc(desktop);
-				else if ("chart".equals(e.getActionCommand()))
+				else // it's a chart test call
 					{
 						D.b("Rightsize: reached chart ActionListener.");
-						if(srsDoc != null)
-							srsDoc.graph();
-						else
 							{
 								
-								srsDoc = new SRSDoc(desktop);
-								srsDoc.graph();
-								// Debugger. Need to have SRSDoc and call its graph() method.
-								//RSChart chart = new RSChart();
+								RSChartDoc chartDoc = new RSChartDoc(desktop);
+							
 							
 								
 							}

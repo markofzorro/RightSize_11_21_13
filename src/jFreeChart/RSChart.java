@@ -35,6 +35,7 @@ import org.jfree.util.ShapeUtilities;
 public class RSChart extends JPanel
 	{
 	//	JDesktopPane desktop = null; 
+	//	JPanel chartPanel = null;
 
 		/**
 		 * Creates a new demo.
@@ -49,7 +50,7 @@ public class RSChart extends JPanel
 				//setTitle(title);
 				JPanel chartPanel = createDemoPanel();
 				 chartPanel.setPreferredSize(new Dimension(1000, 800));
-				add(chartPanel);
+			
 			//	desktop.add(this);
 			}
 
@@ -139,6 +140,7 @@ public class RSChart extends JPanel
 		public  JPanel createDemoPanel()
 			{
 				JFreeChart chart = createChart(createDataset());
+			//	chartPanel.add(chart);
 				return new ChartPanel(chart);
 			}
 
