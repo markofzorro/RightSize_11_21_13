@@ -69,7 +69,7 @@ public class RSCalculator
 				// D.b("n0 = " + n0);
 
 				n0 = z2 * p * q / ci2;
-				D.b("n0 = " + n0);
+				//D.b("n0 = " + n0);
 
 				// Now calculate finite population correction
 

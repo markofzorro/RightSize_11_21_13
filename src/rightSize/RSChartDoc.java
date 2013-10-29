@@ -19,7 +19,7 @@ import org.jfree.data.category.DefaultCategoryDataset;
 public class RSChartDoc
 	{
 		private JDesktopPane desktop = null;
-		private int TOTAL_COLS = 8;
+		
 		
 		
 		public RSChartDoc(JDesktopPane desktop) 
@@ -92,24 +92,29 @@ public class RSChartDoc
 						double startVal = 50;
 						double maxVal = 100;
 						double minVal = 0;
-						
+						int cols = 13;
 						/// Choose interval to vary the starting value by
 						double iTop = maxVal - startVal;
 						double iBottom = startVal - minVal;
 						// choose the smaller of the two distances so everything fits well on the graph.
 						double interval = (iTop < iBottom)? iTop: iBottom;
+						D.b("Before division interval is " + interval); 
+						interval = interval/cols; // fit interval to chart
+						D.b("After division interval is " + interval);
 						
-						
-						for( int i = 0, j = (int)startVal; i < TOTAL_COLS; i++)
+						startVal = startVal - (interval * cols/2); 
+						for( int i = 0, j = (int)startVal; i < cols; i++)
 							{
 								 
+				
+								D.b("j is " + j);
 								RSCalculator.calculate(100, j, 10, 95);
 								double size = RSCalculator.getN();
 								
 								String column = Integer.toString(i);
 								
-								dataset.addValue(size, series1, column);
-								j+=startVal;
+								dataset.addValue(size, series1, (Comparable)j);
+								j+=interval;
 								
 							}
 						
