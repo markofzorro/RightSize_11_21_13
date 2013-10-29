@@ -52,7 +52,7 @@ public class RSChartView extends RSInternalFrame
 			{
 				// Here's where we externalize dataset. Next it has to go to document.
 			//	ChartDataset dataset = new ChartDataset();
-				JFreeChart chart = createChart(dataset);
+				JFreeChart chart = createChart(dataset, "SRS with Various Proportions", "Proportion", "Required Sample Size");
 				return new ChartPanel(chart);
 			}
 
@@ -66,17 +66,17 @@ public class RSChartView extends RSInternalFrame
 		 * 
 		 * @return The chart.
 		 */
-		private static JFreeChart createChart(CategoryDataset dataset)
+		private static JFreeChart createChart(CategoryDataset dataset, String title, String xAxisLabel, String yAxisLabel)
 			{
 
 				// create the chart...
 				JFreeChart chart = ChartFactory.createLineChart(
-						"I'm in a RSChartView", // chart title
-						"Category", // domain axis label
-						"Count", // range axis label
+						title, // chart title
+						xAxisLabel, // domain axis label
+						yAxisLabel, // range axis label
 						dataset, // data
 						PlotOrientation.VERTICAL, // orientation
-						true, // include legend
+						false, // include legend
 						true, // tooltips
 						false // urls
 						);

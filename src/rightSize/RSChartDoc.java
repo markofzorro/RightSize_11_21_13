@@ -119,34 +119,6 @@ public class RSChartDoc
 							}
 						
 						
-
-				/*		dataset.addValue(1.0, series1, col1);
-						dataset.addValue(4.0, series1, col2);
-						dataset.addValue(3.0, series1, col3);
-						dataset.addValue(5.0, series1, col4);
-						dataset.addValue(5.0, series1, col5);
-						dataset.addValue(4.0, series1, col6);
-						dataset.addValue(3.0, series1, col7);
-						dataset.addValue(2.0, series1, col8);
-
-					/*	dataset.addValue(3.0, series2, col1);
-						dataset.addValue(3.0, series2, col2);
-						dataset.addValue(3.0, series2, col3);
-						dataset.addValue(8.0, series2, col4);
-						dataset.addValue(4.0, series2, col5);
-						dataset.addValue(4.0, series2, col6);
-						dataset.addValue(4.0, series2, col7);
-						dataset.addValue(4.0, series2, col8);
-
-						dataset.addValue(4.0, series3, col1);
-						dataset.addValue(3.0, series3, col2);
-						dataset.addValue(2.0, series3, col3);
-						dataset.addValue(3.0, series3, col4);
-						dataset.addValue(6.0, series3, col5);
-						dataset.addValue(3.0, series3, col6);
-						dataset.addValue(4.0, series3, col7);
-						dataset.addValue(3.0, series3, col8);
-*/
 						return dataset;
 
 					}
