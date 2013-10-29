@@ -96,19 +96,20 @@ public class RSChartDoc
 						/// Choose interval to vary the starting value by
 						double iTop = maxVal - startVal;
 						double iBottom = startVal - minVal;
-						// choose the small of the two distances so everything fits well on the graph.
+						// choose the smaller of the two distances so everything fits well on the graph.
 						double interval = (iTop < iBottom)? iTop: iBottom;
 						
 						
-						for( int i = 0, j = 0; i < TOTAL_COLS; i++)
+						for( int i = 0, j = (int)startVal; i < TOTAL_COLS; i++)
 							{
 								 
-								RSCalculator.calculate(100, startVal, 10, 95);
+								RSCalculator.calculate(100, j, 10, 95);
 								double size = RSCalculator.getN();
 								
-								String column = "Col " + i;
+								String column = Integer.toString(i);
 								
-								dataset.addValue(size, series1, column);		
+								dataset.addValue(size, series1, column);
+								j+=startVal;
 								
 							}
 						
