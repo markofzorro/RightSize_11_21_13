@@ -33,9 +33,9 @@ public class RSChartView extends RSInternalFrame
 //		static int openFrameCount = 0;
 //		static final int xOffset = 30,  yOffset = 30;
 
-		public RSChartView(CategoryDataset dataset)
+		public RSChartView(CategoryDataset dataset, String title)
 			{
-				super("Testing RSChartFrame");
+				super(title);
 				
 				this.dataset = dataset;
 					setSize(1300, 900);

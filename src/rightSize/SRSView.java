@@ -143,7 +143,7 @@ public class SRSView extends RSInternalFrame
 							public void actionPerformed(ActionEvent e)
 								{
 									D.b("Reached addGraphButton()");
-									doc.graph();
+//									doc.graph();
 								//	RSChartDoc rsDoc = new RSChartDoc(doc);
 									
 									
