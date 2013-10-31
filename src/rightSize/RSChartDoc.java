@@ -36,7 +36,36 @@ public class RSChartDoc
 						//RSCategoryDataset dataClass = new RSCategoryDataset();
 						//CategoryDataset dataset = dataClass.createDataset();
 						
-						RSChartView frame = new RSChartView(createDataset(), "Simple Random Sample With Varied Assumptions");
+						// Get data set for chart
+						//RSVariations v = new RSVariations();
+								
+						//DefaultCategoryDataset dataset =  new DefaultCategoryDataset();//v.variationsAdd(50, 1, 99, 5, 5);
+					 //   DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+							
+					        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+					        dataset.addValue(21, "Series 1", "Category 1");
+					        dataset.addValue(50, "Series 1", "Category 2");
+					        dataset.addValue(152, "Series 1", "Category 3");
+					        dataset.addValue(184, "Series 1", "Category 4");
+					        dataset.addValue(299, "Series 1", "Category 5");
+					        dataset.addValue(275, "Series 2", "Category 1");
+					        dataset.addValue(121, "Series 2", "Category 2");
+					        dataset.addValue(98, "Series 2", "Category 3");
+					        dataset.addValue(103, "Series 2", "Category 4");
+					        dataset.addValue(210, "Series 2", "Category 5");
+					        dataset.addValue(198, "Series 3", "Category 1");
+					        dataset.addValue(165, "Series 3", "Category 2");
+					        dataset.addValue(55, "Series 3", "Category 3");
+					        dataset.addValue(34, "Series 3", "Category 4");
+					        dataset.addValue(77, "Series 3", "Category 5");
+						
+						
+						
+						
+						
+						
+						
+						RSChartView frame = new RSChartView(dataset, "Simple Random Sample With Varied Assumptions");
 						frame.setVisible(true); // necessary as of 1.3
 						desktop.add(frame);
 						try
@@ -48,7 +77,8 @@ public class RSChartDoc
 							
 					
 					}
-				
+					}
+			/*	
 				private void Variations()
 				{
 					double startVal = 50;
@@ -66,44 +96,35 @@ public class RSChartDoc
 				/**
 				 * Creates a dataset with a single series, though could add more easily.
 				 * @return
-				 */
+				 *
 				CategoryDataset createDataset()
 					{
 
 						
 						// row keys...
 						String series1 = "First";
-					//	String series2 = "Second";
-					//	String series3 = "Third";
-
-						// column keys...
-						String col1 = "col 1";
-						String col2 = "col 2";
-						String col3 = "col 3";
-						String col4 = "col 4";
-						String col5 = "col 5";
-						String col6 = "col 6";
-						String col7 = "col 7";
-						String col8 = "col 8";
+					
 
 						// create the dataset...
 						DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 						
-						double startVal = 50;
-						double maxVal = 100;
-						double minVal = 0;
-						int cols = 13;
-						/// Choose interval to vary the starting value by
-						double iTop = maxVal - startVal;
-						double iBottom = startVal - minVal;
-						// choose the smaller of the two distances so everything fits well on the graph.
-						double interval = (iTop < iBottom)? iTop: iBottom;
-						D.b("Before division interval is " + interval); 
-						interval = interval/cols; // fit interval to chart
-						D.b("After division interval is " + interval);
+						double center = 50;
+						double max = 100;
+						double min = 0;
+						int cols = 5;
 						
-						startVal = startVal - (interval * cols/2); 
-						for( int i = 0, j = (int)startVal; i < cols; i++)
+						double top = 0;
+						// Choose the interval
+						double interval = center * 0.4; //arbitrary val Refine this.
+						int halfCols = (cols - 1)/2;
+						D.b("halfCols is " + halfCols);
+						
+						D.b("interval is " + interval);
+						double floor = center - (interval * halfCols);
+						D.b("floor is " + floor);
+						
+						double j = floor;
+							for( int i = 0; i < cols; i++)
 							{
 								 
 				
@@ -122,6 +143,6 @@ public class RSChartDoc
 						return dataset;
 
 					}
-
+*/
 					
-	}
+	//}

@@ -3,6 +3,7 @@
 	<name>RightSize</name>
 	<comment></comment>
 	<projects>
+		<project>RSVariations</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
