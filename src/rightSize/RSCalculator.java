@@ -52,7 +52,7 @@ public class RSCalculator
 				// double z = 1 - (alpha/2);
 				// z = abs(z);
 				double z2 = z * z;
-				D.b("z is " + z + " z2 is " + z2);
+			//	D.b("z is " + z + " z2 is " + z2);
 
 				double p = proportion / 100;
 				double q = 1 - p;
@@ -85,7 +85,7 @@ public class RSCalculator
 
 			//	D.b("Calculate: fpc is " + fpc + " and adjusted n = " + n);
 				
-				D.b("Calculate: n0 is" + n0 + "fpc is " + fpc + " and n = " + n);
+			//	D.b("Calculate: n0 is" + n0 + "fpc is " + fpc + " and n = " + n);
 				// showResults(n0, fpc, n);
 
 //				 view.update(n0, fpc, n);

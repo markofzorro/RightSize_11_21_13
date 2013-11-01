@@ -52,7 +52,7 @@ public class RSChartView extends RSInternalFrame
 			{
 				// Here's where we externalize dataset. Next it has to go to document.
 			//	ChartDataset dataset = new ChartDataset();
-				JFreeChart chart = createChart(dataset, "SRS with Various Proportions", "Proportion", "Required Sample Size");
+				JFreeChart chart = createChart(dataset, "How Assumed Proportion Affects Sample Size", "Proportion", "Required Sample Size");
 				return new ChartPanel(chart);
 			}
 
