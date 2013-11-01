@@ -45,13 +45,13 @@ public class RSChartDoc
 				 * Second is the series (the line the point belongs on)
 				 * Third is the column the y value.
 				 */
-		/*		for (int i = 0; i < 5; i++)
+			/*	for (int i = 0; i < 5; i++)
 					{
 						dataset.addValue(i * 10, "Proportion", "Category" + Integer.toString(i));
 						RSCalculator.calculate(100, i * 10, 10, 95);
 						
 					}
-			*/		
+				*/	
 			//	dataset.addValue(1, "Series 1", "Category 6");
 			//	dataset.addValue(10, "Series 1", "Category 6");
 			/*	dataset.addValue(10, "Series 1", "Category 1");
@@ -101,7 +101,11 @@ public class RSChartDoc
 					}
 
 				int halfarraysize = cols / 2;
-				float distance = 10;
+				
+				// Arbitrary number to start the ball rolling.
+				// May be able to improve by choosing intervals to i power of 10 below userVal 
+				float distance = 10; 
+				
 
 				// does the expansion fit the range?
 				if ((min + distance * cols) > max) // the expansion is too big
@@ -124,10 +128,12 @@ public class RSChartDoc
 
 				// Can we vary up?
 				for (int i = 0; i < halfarraysize; i++)
-					if ((userVal + distance * halfarraysize) > max) // oops, it
+					{	if ((userVal + distance * halfarraysize) > max) // oops, it
 																	// will run
 																	// below min
 						userVal -= distance; // move it down
+					}
+			
 				/*
 				 * #ifdef _DEBUG // check to be sure it worked ASSERT( (userVal
 				 * - halfarraysize * distance) >= min); ASSERT( (userVal +
@@ -135,10 +141,18 @@ public class RSChartDoc
 				 */
 				// now fill the array
 				float start = userVal - distance * halfarraysize;
+				
+				// Make sure start and ddistance are 
 				for (int i = 0; i < cols; i++)
-					dataset.addValue(1, "Proportion",  Integer.toString(i));
+					{	
+					//dataset.addValue(i * 10, "Proportion", "Category" + Integer.toString(i));
+					RSCalculator.calculate(100, start, 10, 95);
+					double  n0 = RSCalculator.getN0();
+					D.b("n0 is " + n0);
+					dataset.addValue(n0, "Proportion",  Float.toString(start));
+					start += distance;
 					//array[i] = start + distance * i;
-
+					}
 				// Debugger
 			//	D.b("RSVariations: varyAdd:");
 			//	for (int i = 0; i < cols; i++)
