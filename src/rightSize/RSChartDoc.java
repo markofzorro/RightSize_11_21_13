@@ -34,7 +34,9 @@ public class RSChartDoc
 				RSCalculator.calculate(100, 50, 10, 95);
 		         double size = RSCalculator.getN();
 
-				DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+				DefaultCategoryDataset dataset = variationsAdd(50, 1, 99, 11);
+						
+						
 				
 				/*
 				 * You must follow the strict arg conventions or chart ignores your input
@@ -43,13 +45,13 @@ public class RSChartDoc
 				 * Second is the series (the line the point belongs on)
 				 * Third is the column the y value.
 				 */
-				for (int i = 0; i < 5; i++)
+		/*		for (int i = 0; i < 5; i++)
 					{
 						dataset.addValue(i * 10, "Proportion", "Category" + Integer.toString(i));
 						RSCalculator.calculate(100, i * 10, 10, 95);
 						
 					}
-					
+			*/		
 			//	dataset.addValue(1, "Series 1", "Category 6");
 			//	dataset.addValue(10, "Series 1", "Category 6");
 			/*	dataset.addValue(10, "Series 1", "Category 1");
@@ -82,10 +84,11 @@ public class RSChartDoc
 
 			}
 
-		public float[] variationsAdd(float userVal, float min, float max,
-				int varyby, int cols)
+		public DefaultCategoryDataset variationsAdd(float userVal, float min, float max, int cols)
 			{
-				float[] array = new float[cols];
+				//float[] array = new float[cols];
+				
+				DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
 				// be sure we have odd number of columns so userVal will be in
 				// center if possible
@@ -98,7 +101,7 @@ public class RSChartDoc
 					}
 
 				int halfarraysize = cols / 2;
-				float distance = varyby;
+				float distance = 10;
 
 				// does the expansion fit the range?
 				if ((min + distance * cols) > max) // the expansion is too big
@@ -133,57 +136,16 @@ public class RSChartDoc
 				// now fill the array
 				float start = userVal - distance * halfarraysize;
 				for (int i = 0; i < cols; i++)
-					array[i] = start + distance * i;
+					dataset.addValue(1, "Proportion",  Integer.toString(i));
+					//array[i] = start + distance * i;
 
 				// Debugger
-				D.b("RSVariations: varyAdd:");
-				for (int i = 0; i < cols; i++)
-					D.b("array[" + i + "] is " + array[i]);
+			//	D.b("RSVariations: varyAdd:");
+			//	for (int i = 0; i < cols; i++)
+			//		D.b("array[" + i + "] is " + array[i]);
 
-				return array;
+				return dataset;
 			} // variationsAdd
 
-		/**
-		 * Creates a dataset with a single series, though could add more easily.
-		 * 
-		 * @return
-		 */
-		/*
-		         CategoryDataset createDataset() {
-		  
-		  
-		          // row keys... String series1 = "First";
-		  
-		  
-		          // create the dataset... DefaultCategoryDataset dataset = new
-		          DefaultCategoryDataset();
-		  
-		          double center = 50; double max = 100; double min = 0; int
-		          cols = 5;
-		  
-		          double top = 0; // Choose the interval double interval =
-		          center * 0.4; //arbitrary val Refine this. int halfCols =
-		          (cols - 1)/2; D.b("halfCols is " + halfCols);
-		  
-		          D.b("interval is " + interval); double floor = center -
-		          (interval * halfCols); D.b("floor is " + floor);
-		  
-		          double j = floor; for( int i = 0; i < cols; i++) {
-		  
-		  
-		          D.b("j is " + j); RSCalculator.calculate(100, j, 10, 95);
-		          double size = RSCalculator.getN();
-		  
-		          String column = Integer.toString(i);
-		  
-		          dataset.addValue(size, series1, (Comparable)j); j+=interval;
-		  
-		          }
-		  
-		  
-		          return dataset;
-		  
-		          }
-		 */
-
-	}
+		
+	} // end of class
