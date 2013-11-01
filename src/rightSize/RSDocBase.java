@@ -8,7 +8,7 @@ import javax.swing.JDesktopPane;
  * @author markofzero
  *
  */
-public class DocBase
+public class RSDocBase
 	{
 		protected JDesktopPane desktop;
 		
@@ -76,7 +76,7 @@ public class DocBase
 				else 
 					population = retval;
 				
-				D.b("Doc setPop: retval is " + retval);
+				D.b("RSDocBase setPop: retval is " + retval);
 							
 			}
 		
@@ -89,7 +89,7 @@ public class DocBase
 				else
 					proportion = retval;
 					
-				D.b("Doc setProportion: retval is " + retval);
+				D.b("RSDocBase setProportion: retval is " + retval);
 			}
 		
 		protected void setCI(String s)
@@ -101,7 +101,7 @@ public class DocBase
 				else
 					confidenceInterval = retval;
 					
-				D.b("Doc setCI: retval is " + retval);
+				D.b("RSDocBase setCI: retval is " + retval);
 							
 			}
 		
@@ -114,7 +114,7 @@ public class DocBase
 				else
 					confidenceCoefficient = retval;
 					
-				D.b("Doc setCC: retval is " + retval);
+				D.b("RSDocBase setCC: retval is " + retval);
 							
 			}
 		

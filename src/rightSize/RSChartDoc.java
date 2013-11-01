@@ -34,7 +34,7 @@ public class RSChartDoc
 			//	RSCalculator.calculate(100, 50, 10, 95);
 		     //    double size = RSCalculator.getN();
 
-				DefaultCategoryDataset dataset = variationsAdd(99, 1, 99, 11);
+				DefaultCategoryDataset dataset = variationsAdd(50, 1, 99, 11);
 						
 						
 				
@@ -149,10 +149,13 @@ public class RSChartDoc
 					//dataset.addValue(i * 10, "Proportion", "Category" + Integer.toString(i));
 					//	calculate(double arg_population, double arg_proportion, double arg_confidenceInterval, double arg_confidenceCoefficient )
 						RSCalculator.calculate(100, start, 10, 95); // for testing purposes set population at 100
-					double  n0 = RSCalculator.getN0();
-					D.b("RSChartDoc: n0 is " + n0);
+					double  n = RSCalculator.getN();
+				
+				//	WHAT'S THIS WITH START? MAKE SURE IT CORRESPONDS WITH THE RESULT AND NOT SOMETHING ELSE
+					
+					D.b("RSChartDoc: n is " + n + "p is " + start + " ci is 10 + cc is 95");
 					String printMe = Long.toString(Math.round(start)) + "%";
-					dataset.addValue(n0, "Proportion",  printMe);
+					dataset.addValue(n, "Proportion",  printMe);
 					start += distance;
 					//array[i] = start + distance * i;
 					}

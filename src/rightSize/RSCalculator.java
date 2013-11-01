@@ -69,7 +69,7 @@ public class RSCalculator
 				// D.b("n0 = " + n0);
 
 				n0 = z2 * p * q / ci2;
-				//D.b("n0 = " + n0);
+			//	D.b(" RSCalculator: Before fpc: n0 = " + n0);
 
 				// Now calculate finite population correction
 
@@ -77,15 +77,16 @@ public class RSCalculator
 				// m_nn = RoundUp(m_dn0 / ( 1 + ((m_dn0 - 1)/m_lTargetPop ) ) );
 				fpc = 1 / ((1 + ((n0 - 1) / population)));
 				
-
+				n = n0 * fpc;
 				// Now that calculations are done, round the results to whole
 				// numbers
 				n = Math.ceil(n0 * fpc);
 				n0 = Math.ceil(n0);
+				D.b("n is " + n);
 
 			//	D.b("Calculate: fpc is " + fpc + " and adjusted n = " + n);
 				
-			//	D.b("Calculate: n0 is" + n0 + "fpc is " + fpc + " and n = " + n);
+				D.b("RSCalculator.calculate: n0 is" + n0 + "f pc is " + fpc + " and n = " + n);
 				// showResults(n0, fpc, n);
 
 //				 view.update(n0, fpc, n);
