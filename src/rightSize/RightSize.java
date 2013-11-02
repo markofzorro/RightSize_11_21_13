@@ -133,7 +133,10 @@ public class RightSize extends JFrame implements ActionListener
 						D.b("Rightsize: reached chart ActionListener.");
 							{
 								
-								RSChartDoc chartDoc = new RSChartDoc(desktop, 50D, 1D, 99D );
+								SRSChartDialog chartdlg = new SRSChartDialog();
+								chartdlg.setVisible(true);
+								desktop.add(chartdlg);
+								//RSChartDoc chartDoc = new RSChartDoc();
 							
 							
 								

@@ -22,8 +22,10 @@ public class RSChartDoc
 		private double max;
 		int cols = 5;
 
+		
+		// NEED TO ADD POPULATION ARG. LEAVING AT 100 NOW FOR TESTING. BE SURE TO ADD IT IN.
 		public RSChartDoc(JDesktopPane desktop, double assumption, double min,
-				double max)
+				double max, String surveyType)
 			{
 
 				this.desktop = desktop;
@@ -34,6 +36,12 @@ public class RSChartDoc
 				D.b("In RSChartDoc constructor.");
 				createChartFrame();
 
+			}
+
+		public RSChartDoc()
+			{
+				D.b("Reached RSChartDoc");
+				System.exit(0);		
 			}
 
 		// Create a new internal frame.

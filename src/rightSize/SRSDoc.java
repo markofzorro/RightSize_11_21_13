@@ -1,6 +1,7 @@
 package rightSize;
 
 import javax.swing.JDesktopPane;
+import javax.swing.JDialog;
 
 import org.apache.commons.math3.distribution.NormalDistribution;
 
@@ -22,6 +23,7 @@ public class SRSDoc extends RSDocBase
 		protected double n0 = 0;
 		protected double n = 0;
 		protected double fpc = 0;
+		protected double assumption;
 
 		/**
 		 * Constructor creates a view to gather input and display results. When
@@ -133,6 +135,23 @@ public class SRSDoc extends RSDocBase
 			{
 				return n0;
 
+			}
+
+		public void chart()
+			{	
+				
+				D.b("Reached SRSDoc.chart." );
+			//	JDialog dlg = SRSGraphDlg();
+			//	RSChartDoc(desktop, assumption, min,
+				//		max, "srs");
+				//RSChartDoc srsChartDoc = new RSChartDoc(desktop, "srs");
+				
+			}
+
+		private JDialog SRSGraphDlg()
+			{
+				// TODO Auto-generated method stub
+				return null;
 			}
 
 	} // end of SRSDocument
