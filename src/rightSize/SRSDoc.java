@@ -10,7 +10,7 @@ import org.apache.commons.math3.distribution.NormalDistribution;
  * SRS
  * 
  * @author markofzero
- * @param <RSDocBase>
+ * wxtends RSDocBase
  * 
  */
 public class SRSDoc extends RSDocBase
