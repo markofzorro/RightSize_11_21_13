@@ -10,6 +10,10 @@ package rightSize;
 import jFreeChart.RSChart;
 //import jFreeChart.RSLineChartOldNoWord;
 
+
+
+
+
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -23,6 +27,12 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
+
+import basesAndUtilites.D;
+import charts.RSChartDoc;
+import charts.SRSChartDialog;
+import cluster.ClusterDoc;
+import srs.SRSDoc;
 
 //import charts2D.*;
 
@@ -133,10 +143,10 @@ public class RightSize extends JFrame implements ActionListener
 						D.b("Rightsize: reached chart ActionListener.");
 							{
 								
-								SRSChartDialog chartdlg = new SRSChartDialog();
-								chartdlg.setVisible(true);
-								desktop.add(chartdlg);
-								//RSChartDoc chartDoc = new RSChartDoc();
+								//SRSChartDialog chartdlg = new SRSChartDialog();
+							//	chartdlg.setVisible(true);
+								//desktop.add(chartdlg);
+								RSChartDoc chartDoc = new RSChartDoc();
 							
 							
 								

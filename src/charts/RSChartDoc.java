@@ -1,9 +1,12 @@
-package rightSize;
+package charts;
 
 import javax.swing.JDesktopPane;
 
 import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
+
+import basesAndUtilites.D;
+import basesAndUtilites.RSVariations;
 
 /**
  * Called by SRS doc and ClusterDoc to show charts of their data. Generates a
@@ -41,7 +44,8 @@ public class RSChartDoc
 		public RSChartDoc()
 			{
 				D.b("Reached RSChartDoc");
-				System.exit(0);		
+				RSTabbedChartView tabView = new RSTabbedChartView();
+				//System.exit(0);		
 			}
 
 		// Create a new internal frame.

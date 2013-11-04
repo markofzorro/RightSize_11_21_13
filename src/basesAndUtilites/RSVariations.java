@@ -1,4 +1,4 @@
-package rightSize;
+package basesAndUtilites;
 
 //import varyChartVals.D;
 
@@ -8,6 +8,8 @@ import javax.swing.JDesktopPane;
 
 import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
+
+import charts.RSChartView;
 
 /**
  * Called by SRS doc and ClusterDoc to show charts of their data. Generates a

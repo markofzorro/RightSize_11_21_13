@@ -1,6 +1,8 @@
-package rightSize;
+package charts;
 
 import javax.swing.JDesktopPane;
+
+import basesAndUtilites.D;
 
 /**
  * An abstract base class for documents

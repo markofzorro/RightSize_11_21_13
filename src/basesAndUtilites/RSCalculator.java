@@ -1,4 +1,4 @@
-package rightSize;
+package basesAndUtilites;
 
 import org.apache.commons.math3.distribution.NormalDistribution;
 

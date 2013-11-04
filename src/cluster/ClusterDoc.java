@@ -1,10 +1,13 @@
-package rightSize;
+package cluster;
 
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
+
 import java.math.*;
 
 import org.apache.commons.math3.distribution.NormalDistribution;
+
+import basesAndUtilites.D;
 
 public class ClusterDoc
 {

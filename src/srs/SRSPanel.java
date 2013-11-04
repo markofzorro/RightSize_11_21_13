@@ -1,4 +1,4 @@
-package rightSize;
+package srs;
 
 import java.awt.GridLayout;
 
@@ -7,6 +7,8 @@ import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+
+import basesAndUtilites.D;
 
 public class SRSPanel extends JPanel
 	{

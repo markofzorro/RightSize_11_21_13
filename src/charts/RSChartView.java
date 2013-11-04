@@ -1,6 +1,6 @@
 
 
-package rightSize;
+package charts;
 
 //import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
@@ -16,6 +16,7 @@ import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.util.ShapeUtilities;
 
+import basesAndUtilites.RSInternalFrame;
 
 import java.awt.event.*;
 import java.awt.*;

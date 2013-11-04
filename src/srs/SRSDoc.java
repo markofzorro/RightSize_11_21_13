@@ -1,9 +1,14 @@
-package rightSize;
+package srs;
 
 import javax.swing.JDesktopPane;
 import javax.swing.JDialog;
 
 import org.apache.commons.math3.distribution.NormalDistribution;
+
+import basesAndUtilites.D;
+import basesAndUtilites.RSCalculator;
+import charts.RSChartDoc;
+import charts.RSDocBase;
 
 /**
  * Document handles all calculations, views, and graphs for SRS.<br>

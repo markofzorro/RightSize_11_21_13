@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package rightSize;
+package srs;
 
 //import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -18,6 +18,12 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 
+
+
+
+
+import basesAndUtilites.D;
+import basesAndUtilites.RSInternalFrame;
 
 import java.awt.GridBagConstraints;
 import java.awt.Insets;

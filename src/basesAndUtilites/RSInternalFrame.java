@@ -1,7 +1,7 @@
 /**
  * 
  */
-package rightSize;
+package basesAndUtilites;
 
 import javax.swing.BoxLayout;
 import javax.swing.JInternalFrame;
