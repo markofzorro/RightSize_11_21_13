@@ -45,7 +45,8 @@ public class RSChartDoc
 			{
 				D.b("Reached RSChartDoc");
 				RSTabbedChartView tabView = new RSTabbedChartView();
-				//System.exit(0);		
+				//System.exit(0);
+				createChartFrame();
 			}
 
 		// Create a new internal frame.

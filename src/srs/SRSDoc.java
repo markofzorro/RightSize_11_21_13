@@ -28,7 +28,9 @@ public class SRSDoc extends RSDocBase
 		protected double n0 = 0;
 		protected double n = 0;
 		protected double fpc = 0;
-		protected double assumption;
+	//	protected double assumption = 0;
+		protected static double min = 1;
+		protected static double max = 99;
 
 		/**
 		 * Constructor creates a view to gather input and display results. When
@@ -130,9 +132,9 @@ public class SRSDoc extends RSDocBase
 				this.fpc = fpc;
 				this.n = n;
 
-				// D.b("Doc getCalculationResult(): n0 is " + n0 + " fpc = " +
-				// fpc
-				// + "n = " + n);
+				 D.b("Doc getCalculationResult(): n0 is " + n0 + " fpc = " +
+				 fpc
+				+ "n = " + n);
 				view.update(n0, fpc, n);
 			}
 
@@ -145,11 +147,12 @@ public class SRSDoc extends RSDocBase
 		public void chart()
 			{	
 				
-				D.b("Reached SRSDoc.chart." );
+				//D.b("Reached SRSDoc.chart()." );
 			//	JDialog dlg = SRSGraphDlg();
-			//	RSChartDoc(desktop, assumption, min,
-				//		max, "srs");
-				//RSChartDoc srsChartDoc = new RSChartDoc(desktop, "srs");
+				RSChartDoc chartDoc = new RSChartDoc(desktop, n, min,
+						max, "srs");
+				//RSChartDoc(desktop, assumption, min, max, "srs");
+			//	RSChartDoc srsChartDoc = new RSChartDoc(desktop, "srs");
 				
 			}
 

@@ -16,6 +16,7 @@ import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.util.ShapeUtilities;
 
+import basesAndUtilites.D;
 import basesAndUtilites.RSInternalFrame;
 
 import java.awt.event.*;
@@ -37,6 +38,7 @@ public class RSChartView extends RSInternalFrame
 		public RSChartView(CategoryDataset dataset, String title)
 			{
 				super(title);
+				D.b("Reached RSChartView.");
 				
 				this.dataset = dataset;
 					setSize(1300, 900);
