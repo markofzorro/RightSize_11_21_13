@@ -2,7 +2,7 @@
 
 package charts;
 
-//import javax.swing.JInternalFrame;
+import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
 
 import org.jfree.chart.ChartFactory;
@@ -16,9 +16,6 @@ import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.util.ShapeUtilities;
 
-import basesAndUtilites.D;
-import basesAndUtilites.RSInternalFrame;
-
 import java.awt.event.*;
 import java.awt.*;
 
@@ -28,23 +25,27 @@ import java.awt.*;
  * @author markofzero
  *
  */
-public class RSChartView extends RSInternalFrame
+public class RSChartView extends JPanel
 	{
 		private CategoryDataset dataset = null;
 		
 //		static int openFrameCount = 0;
 //		static final int xOffset = 30,  yOffset = 30;
 
-		public RSChartView(CategoryDataset dataset, String title)
+		public RSChartView(CategoryDataset dataset)
 			{
-				super(title);
-				D.b("Reached RSChartView.");
+			//	super("Testing RSChartFrame");
 				
 				this.dataset = dataset;
 					setSize(1300, 900);
 				JPanel chartPanel = createDemoPanel();
 				chartPanel.setPreferredSize(new java.awt.Dimension(1000, 800));
-				add(chartPanel);
+			//* works	add(chartPanel);
+				
+				RSTabbedChartPanel tabPanel = new RSTabbedChartPanel();
+				add(tabPanel);
+				
+				
 			}
 		/**
 		 * Creates a chart panel
@@ -55,7 +56,7 @@ public class RSChartView extends RSInternalFrame
 			{
 				// Here's where we externalize dataset. Next it has to go to document.
 			//	ChartDataset dataset = new ChartDataset();
-				JFreeChart chart = createChart(dataset, "How Assumed Proportion Affects Sample Size", "Proportion", "Required Sample Size");
+				JFreeChart chart = createChart(dataset);
 				return new ChartPanel(chart);
 			}
 
@@ -69,17 +70,17 @@ public class RSChartView extends RSInternalFrame
 		 * 
 		 * @return The chart.
 		 */
-		private static JFreeChart createChart(CategoryDataset dataset, String title, String xAxisLabel, String yAxisLabel)
+		private static JFreeChart createChart(CategoryDataset dataset)
 			{
 
 				// create the chart...
 				JFreeChart chart = ChartFactory.createLineChart(
-						title, // chart title
-						xAxisLabel, // domain axis label
-						yAxisLabel, // range axis label
+						"I'm in an RSChartView", // chart title
+						"Category", // domain axis label
+						"Count", // range axis label
 						dataset, // data
 						PlotOrientation.VERTICAL, // orientation
-						false, // include legend
+						true, // include legend
 						true, // tooltips
 						false // urls
 						);

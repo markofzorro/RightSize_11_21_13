@@ -22,6 +22,8 @@ import javax.swing.border.EmptyBorder;
 
 
 
+
+import charts.RSChartDoc;
 import basesAndUtilites.D;
 import basesAndUtilites.RSInternalFrame;
 
@@ -82,6 +84,40 @@ public class SRSView extends RSInternalFrame
 				pack();
 
 			}
+		
+		public SRSView(RSChartDoc doc, String title)
+			{
+				super(title); // Sets the title of RSInternalFrame. this allows
+								// us to keep count of the panels
+
+				// super("Simple Random Sample");
+				// setTitle("Simple Random Sample");
+				//this.doc = doc;
+				RSChartDoc chartDoc = new RSChartDoc();
+				contentPane = new JPanel();
+				contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+				// contentPane.setLayout(new BorderLayout(0, 0));
+				contentPane.setLayout(new BoxLayout(contentPane,
+						BoxLayout.Y_AXIS));
+				setContentPane(contentPane);
+				setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+		//		ChartPanel = new SRSPanel();
+				srsPanel.setVisible(true);
+				getContentPane().add(srsPanel);
+				initButtonPanel();
+				getContentPane().add(buttonPanel);
+				pack();
+				/*
+				 * Inherits box layout from RSInternalPane. this shows
+				 * components vertically from top to bottom
+				 */
+
+				initComponents();
+				pack();
+
+			}
+		
+		
 
 		private JPanel initButtonPanel()
 			{

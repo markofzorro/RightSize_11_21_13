@@ -148,18 +148,20 @@ public class SRSDoc extends RSDocBase
 			{	
 				
 				//D.b("Reached SRSDoc.chart()." );
-			//	JDialog dlg = SRSGraphDlg();
-				RSChartDoc chartDoc = new RSChartDoc(desktop, n, min,
-						max, "srs");
-				//RSChartDoc(desktop, assumption, min, max, "srs");
-			//	RSChartDoc srsChartDoc = new RSChartDoc(desktop, "srs");
+			
+				//RSChartDoc chartDoc = new RSChartDoc(desktop, n, min, max, "srs");
+				// debugger
+				// worksD.b("Reached SRSDoc.chart()");
+				RSChartDoc chartDoc = new RSChartDoc(desktop);
 				
+				 
+					
 			}
-
+/*
 		private JDialog SRSGraphDlg()
 			{
 				// TODO Auto-generated method stub
 				return null;
 			}
-
+*/
 	} // end of SRSDocument
