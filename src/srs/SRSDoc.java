@@ -7,8 +7,8 @@ import org.apache.commons.math3.distribution.NormalDistribution;
 
 import basesAndUtilites.D;
 import basesAndUtilites.RSCalculator;
+import basesAndUtilites.RSDocBase;
 import charts.RSChartDoc;
-import charts.RSDocBase;
 
 /**
  * Document handles all calculations, views, and graphs for SRS.<br>
@@ -31,6 +31,7 @@ public class SRSDoc extends RSDocBase
 	//	protected double assumption = 0;
 		protected static double min = 1;
 		protected static double max = 99;
+		private JDesktopPane desktop = null;
 
 		/**
 		 * Constructor creates a view to gather input and display results. When
@@ -90,7 +91,14 @@ public class SRSDoc extends RSDocBase
 			}
 
 		/****************** Getters and Setters ******************/
-
+		public JDesktopPane getDesktop()
+			{
+				D.b("SRSDoc:getDesktop: desktop is " + desktop);
+				return desktop;
+				
+			}
+		
+		
 		protected void setView()
 			{
 				view = new SRSView(this, "Simple Random Sample");
@@ -149,14 +157,20 @@ public class SRSDoc extends RSDocBase
 				
 				//D.b("Reached SRSDoc.chart()." );
 			
-				//RSChartDoc chartDoc = new RSChartDoc(desktop, n, min, max, "srs");
+				//RSChartDoc chartDoc = new RSChartDoc(this, desktop, n, min, max, "srs");
+				//		         RSChartDoc(JDesktopPane desktop, double population,  double proportion, double confidenceInterval, double confidenceCoeffecient, String choice)
+				RSChartDoc chartDoc = new RSChartDoc(desktop, population, proportion, confidenceInterval, confidenceCoefficient, "srs");
 				// debugger
 				// worksD.b("Reached SRSDoc.chart()");
-				RSChartDoc chartDoc = new RSChartDoc(desktop);
+				//RSChartDoc chartDoc = new RSChartDoc(desktop);
 				
 				 
 					
 			}
+		
+		
+		
+		/************ ERnd Getters and Setters **********/
 /*
 		private JDialog SRSGraphDlg()
 			{

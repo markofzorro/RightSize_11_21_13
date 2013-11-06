@@ -27,7 +27,7 @@ public class RSInternalFrame extends JInternalFrame
 
 	public RSInternalFrame(String title)
 		{
-			super("Sample Number " + (++openFrameCount) +  ": A " + title, true, // resizable
+			super("Window " + (++openFrameCount) +  ": " + title, true, // resizable
 					true, // closable
 					true, // maximizable
 					true);// iconifiable

@@ -23,7 +23,7 @@ public class RSTabbedChartPanel extends JPanel
 		public RSTabbedChartPanel()
 			{
 				super(new GridLayout(1, 1));
-				D.b("Reached RSTabbedChartView constructor");
+				D.b("Reached RSTabbedChartPanel constructor");
 
 				JTabbedPane tabbedPane = new JTabbedPane();
 				//setPreferredSize( new Dimension(w, h));
@@ -47,6 +47,12 @@ public class RSTabbedChartPanel extends JPanel
 				RSChartPanel chartPanel = new RSChartPanel();
 				tabbedPane.addTab("Proportion", chartPanel);
 				//tabbedPane.setMnemonicAt(1, KeyEvent.VK_2);
+				
+				
+				// get the currently selected index for this tabbedpane
+				int selectedIndex = tabbedPane.getSelectedIndex();
+				//System.out.println("Default Index:" + selectedIndex); // it is "population"
+				tabbedPane.setSelectedIndex(selectedIndex + 1); // set it to the next one, which is the proportion
 
 				
 				

@@ -46,6 +46,9 @@ import srs.SRSDoc;
  * @author Mark White
  *
  **/
+
+
+
 public class RightSize extends JFrame implements ActionListener
 {
 	private JDesktopPane desktop = null;
@@ -116,10 +119,7 @@ public class RightSize extends JFrame implements ActionListener
 			clusterMI.addActionListener(this);
 			sampleSizeMenu.add(clusterMI);
 			
-			JMenuItem chartMI = new JMenuItem("Chart Test");
-			chartMI.setActionCommand("chart");
-			chartMI.addActionListener(this);
-			sampleSizeMenu.add(chartMI);
+			
 
 			return menuBar;
 		}
@@ -138,27 +138,8 @@ public class RightSize extends JFrame implements ActionListener
 					}
 				else if ("cluster".equals(e.getActionCommand()))
 						clusterDoc = new ClusterDoc(desktop);
-				else // it's a chart test call
-					{
-						D.b("Rightsize: reached chart ActionListener.");
-							{
-								
-								//SRSChartDialog chartdlg = new SRSChartDialog();
-							//	chartdlg.setVisible(true);
-								//desktop.add(chartdlg);
-								RSChartDoc chartDoc = new RSChartDoc(desktop);
-							
-							
-								
-							}
-						
-					}
-			
-					
-					
-				
-			
 		}
+
 
 	// Quit the application.
 	protected void quit()
@@ -195,3 +176,4 @@ public class RightSize extends JFrame implements ActionListener
 			});
 		}
 }
+

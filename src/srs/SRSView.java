@@ -84,7 +84,7 @@ public class SRSView extends RSInternalFrame
 				pack();
 
 			}
-		
+	/*	
 		public SRSView(RSChartDoc doc, String title)
 			{
 				super(title); // Sets the title of RSInternalFrame. this allows
@@ -93,7 +93,7 @@ public class SRSView extends RSInternalFrame
 				// super("Simple Random Sample");
 				// setTitle("Simple Random Sample");
 				//this.doc = doc;
-				RSChartDoc chartDoc = new RSChartDoc();
+			//	RSChartDoc chartDoc = new RSChartDoc(desktop);
 				contentPane = new JPanel();
 				contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 				// contentPane.setLayout(new BorderLayout(0, 0));
@@ -110,13 +110,13 @@ public class SRSView extends RSInternalFrame
 				/*
 				 * Inherits box layout from RSInternalPane. this shows
 				 * components vertically from top to bottom
-				 */
+				 
 
 				initComponents();
 				pack();
 
 			}
-		
+		*/
 		
 
 		private JPanel initButtonPanel()
@@ -198,6 +198,8 @@ public class SRSView extends RSInternalFrame
 			}
 
 		/*************** getters and setters *********************/
+		
+		
 		public String getPopString()
 			{
 				

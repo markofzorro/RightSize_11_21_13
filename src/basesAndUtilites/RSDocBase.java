@@ -1,8 +1,6 @@
-package charts;
+package basesAndUtilites;
 
 import javax.swing.JDesktopPane;
-
-import basesAndUtilites.D;
 
 /**
  * An abstract base class for documents
@@ -12,7 +10,7 @@ import basesAndUtilites.D;
  */
 public class RSDocBase
 	{
-		protected JDesktopPane desktop;
+	//	protected JDesktopPane desktop;
 		
 		
 		protected double population = 100;
@@ -65,7 +63,6 @@ public class RSDocBase
 		
 		
 		
-		
 		protected void setPop(String s)
 			{
 				
@@ -82,6 +79,11 @@ public class RSDocBase
 							
 			}
 		
+		public double getPop()
+			{
+				return population;
+			}
+		
 		protected void setProportion(String s)
 			{
 		
@@ -92,6 +94,11 @@ public class RSDocBase
 					proportion = retval;
 					
 				D.b("RSDocBase setProportion: retval is " + retval);
+			}
+		
+		public double getProportion()
+			{
+				return proportion;
 			}
 		
 		protected void setCI(String s)
@@ -107,6 +114,11 @@ public class RSDocBase
 							
 			}
 		
+		public double getCI()
+			{
+				return confidenceInterval;
+			}
+		
 		protected void setCC(String s)
 			{
 				double retval = 0;
@@ -118,6 +130,11 @@ public class RSDocBase
 					
 				D.b("RSDocBase setCC: retval is " + retval);
 							
+			}
+		
+		public double getCC()
+			{
+				return confidenceCoefficient;
 			}
 		
 		/************ END OF SETTERS AND GETTERS ************/
