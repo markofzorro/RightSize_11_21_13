@@ -19,6 +19,7 @@ import org.jfree.util.ShapeUtilities;
 
 public class RSChartPanel extends JPanel
 	{
+	
 
 		/**
 		 * Create the panel.

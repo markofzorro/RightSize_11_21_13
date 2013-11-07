@@ -15,7 +15,9 @@ public class RSVariations
 
 		static public double[] add(double assumption, int cols)
 			{
-				final double[] darray = new double[cols];			
+				// Need 2D array to store values and column labels
+				final double[] darray = new double[cols];
+				final double rows = cols;
 				
 				
 				// be sure we have odd number of columns so userVal will be in center if possible
@@ -60,7 +62,11 @@ public class RSVariations
 				// now fill the array
 				double start = assumption - distance * halfarraysize;
 				for (int i = 0; i < cols; i++)
-					darray[i] = start + distance * i;
+					{
+						// get rid of decimals
+						double wholeNum = Math.round(start + distance * i);
+						darray[i] = wholeNum;
+					}
 
 				// Debugger
 				D.b("RSVariations: varyAdd:");

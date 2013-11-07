@@ -20,7 +20,7 @@ import javax.swing.JTabbedPane;
 
 public class RSTabbedChartPanel extends JPanel
 	{
-		public RSTabbedChartPanel()
+		public RSTabbedChartPanel(RSChartDoc doc)
 			{
 				super(new GridLayout(1, 1));
 				D.b("Reached RSTabbedChartPanel constructor");
@@ -44,8 +44,8 @@ public class RSTabbedChartPanel extends JPanel
 				//proportionPanel.add(filler);
 				//JComponent panel2 = makeTextPanel("Panel #2");
 				
-				RSChartPanel chartPanel = new RSChartPanel();
-				tabbedPane.addTab("Proportion", chartPanel);
+				JPanel chartPanel = doc.createProportionsPanel();
+				tabbedPane.addTab("Proportion", doc. createProportionsPanel());
 				//tabbedPane.setMnemonicAt(1, KeyEvent.VK_2);
 				
 				
@@ -90,7 +90,7 @@ public class RSTabbedChartPanel extends JPanel
 		 * Create the GUI and show it. For thread safety, this method should be
 		 * invoked from the event dispatch thread.
 		 */
-		private static void createAndShowGUI()
+/*		private static void createAndShowGUI()
 			{
 				// Create and set up the window.
 				JFrame frame = new JFrame("TabbedPaneDemo");

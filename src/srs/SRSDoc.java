@@ -154,15 +154,8 @@ public class SRSDoc extends RSDocBase
 
 		public void chart()
 			{	
-				
-				//D.b("Reached SRSDoc.chart()." );
-			
-				//RSChartDoc chartDoc = new RSChartDoc(this, desktop, n, min, max, "srs");
-				//		         RSChartDoc(JDesktopPane desktop, double population,  double proportion, double confidenceInterval, double confidenceCoeffecient, String choice)
-				RSChartDoc chartDoc = new RSChartDoc(desktop, population, proportion, confidenceInterval, confidenceCoefficient, "srs");
-				// debugger
-				// worksD.b("Reached SRSDoc.chart()");
-				//RSChartDoc chartDoc = new RSChartDoc(desktop);
+					D.b("SRSDoc.chart: confidenceCoefficient is " + confidenceCoefficient);
+					RSChartDoc chartDoc = new RSChartDoc(desktop, population, proportion, confidenceInterval, confidenceCoefficient, "srs");
 				
 				 
 					
