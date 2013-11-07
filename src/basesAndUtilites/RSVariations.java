@@ -4,7 +4,8 @@ package basesAndUtilites;
 
 
 /**
- * 
+ * Produces an array of alternate assumptions so we can calculate points for
+ * chart to compare them and see effects on final sample size
  * @author markofzero
  *
  */
@@ -13,6 +14,15 @@ public class RSVariations
 		
 	 
 
+		/**
+		 * Creates assumptions by adding or subtracting an interval from the
+		 * initial value. It calculates the interval to fit within the max and min values.
+		 * 
+		 * Returns an array of the values.
+		 * @param assumption
+		 * @param cols
+		 * @return
+		 */
 		static public double[] add(double assumption, int cols)
 			{
 				// Need 2D array to store values and column labels
@@ -75,6 +85,7 @@ public class RSVariations
 				
 				return darray;
 			} // variationsAdd
-
+		
+		
 	} // RSVariations
 

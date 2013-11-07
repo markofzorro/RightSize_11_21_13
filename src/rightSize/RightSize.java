@@ -7,13 +7,6 @@ package rightSize;
  * @author zero
  *
  */
-import jFreeChart.RSChart;
-//import jFreeChart.RSLineChartOldNoWord;
-
-
-
-
-
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -22,17 +15,16 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
-import javax.swing.JInternalFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
-import basesAndUtilites.D;
-import charts.RSChartDoc;
-import charts.SRSChartDialog;
-import cluster.ClusterDoc;
 import srs.SRSDoc;
+import charts.RSChartDoc;
+import cluster.ClusterDoc;
+//import jFreeChart.RSLineChartOldNoWord;
 
 //import charts2D.*;
 
@@ -85,7 +77,7 @@ public class RightSize extends JFrame implements ActionListener
 
 			// Set up the lone menu.
 			JMenu menu = new JMenu("File");
-			menu.setMnemonic(KeyEvent.VK_D);
+			//menu.setMnemonic(KeyEvent.VK_D);
 			menuBar.add(menu);
 
 			// Set up the first menu item.
@@ -119,6 +111,21 @@ public class RightSize extends JFrame implements ActionListener
 			clusterMI.addActionListener(this);
 			sampleSizeMenu.add(clusterMI);
 			
+			JMenu aboutMenu = new JMenu("About");
+			JMenuItem aboutMI = new JMenuItem("About This Program");
+			aboutMI.setActionCommand("aboutProgram");
+			aboutMI.addActionListener(this);
+			aboutMenu.add(aboutMI);
+			/*
+			JMenuItem supportersMI = new JMenuItem("Supporters and Contributors");
+			aboutMI.setActionCommand("aboutSupporters");
+			aboutMI.addActionListener(this);
+			aboutMenu.add(supportersMI);
+			*/
+			//menu.setMnemonic(KeyEvent.VK_D);
+			menuBar.add(aboutMenu);
+
+			
 			
 
 			return menuBar;
@@ -138,6 +145,17 @@ public class RightSize extends JFrame implements ActionListener
 					}
 				else if ("cluster".equals(e.getActionCommand()))
 						clusterDoc = new ClusterDoc(desktop);
+				else if ("aboutProgram".equals(e.getActionCommand()))
+					{
+						String text = "This program is dedicated to all the FETP trainees, present and past\nwho need to learn to do accurate surveys. I hope this helps you learn to design\n fine surveysthat help you improve the health of your population.\n\nWritten by Mark White";
+						JOptionPane.showMessageDialog(null, text, "Rightsize 2.01.0 is not finished yet.", JOptionPane.PLAIN_MESSAGE, null);
+					}
+			/*	else if("aboutsupporters".equals(e.getActionCommand()))
+					{
+						String text = "Supporters text\n";
+						JOptionPane.showMessageDialog(null, text, "Rightsize 2.01.0 is not finished yet.", JOptionPane.PLAIN_MESSAGE, null);;
+					}	
+				*/	
 		}
 
 

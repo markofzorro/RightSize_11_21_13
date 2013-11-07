@@ -121,8 +121,45 @@ public class RSChartDoc
 				// JPanel panel = new JPanel();
 
 				// Now add the panels to tabbed panel
-				JPanel proportionPanel = createProportionsPanel();
+			//	JPanel proportionPanel = createProportionsPanel();
 
+			}
+		protected JPanel createPopulatonPanel()
+			{
+				JPanel panel = new JPanel();
+
+					// First, let's do proportion
+
+					// assumption is proportion
+					{
+						
+						double[] variedAssumption = RSVariations.add(proportion, cols);
+
+						// create the dataset...
+						DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+
+						// dataset.addValue(1.0, series1, type1);
+
+						for (int i = 0; i < cols; i++)
+							{
+								RSCalculator.calculate(population, variedAssumption[i], confidenceInterval, confidenceCoefficient);
+								double value = RSCalculator.getN();
+								// dataset(double value, String rowLabel, String columnLabel)			
+								dataset.addValue(value, "proportion", Double.toString(variedAssumption[i]));
+								D.b("xLabelArray[" + i + "] is " + variedAssumption[i]);
+								//D.b("dataset[" + i + "] is " + darray[i] );
+							}
+						
+						JFreeChart chart = createChart(dataset);
+						//chart.setTitle("Proportion Title");
+						chart.setTitle(new TextTitle("Effect of Estimates of Proportions on Sample Size."));
+						CategoryPlot plot = (CategoryPlot) chart.getPlot();
+					    CategoryAxis xAxis = plot.getDomainAxis();
+					    xAxis.setLabel("Proportion");
+					    ValueAxis yAxis = plot.getRangeAxis();
+					    yAxis.setLabel("Sample Size Needed");
+						return new ChartPanel(chart);
+					}
 			}
 
 		protected JPanel createProportionsPanel()
