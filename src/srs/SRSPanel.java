@@ -22,6 +22,9 @@ public class SRSPanel extends JPanel
 
 		/**
 		 * Create the panel. Has four equal sized columns. Adds rows prn.
+		 * Presents choices to users and collects their choices.
+		 * 
+		 * Default values are added in this class.
 		 */
 		public SRSPanel()
 			{
@@ -35,7 +38,7 @@ public class SRSPanel extends JPanel
 				// second row
 				newLabel("Target Population Size", 24);
 				fillCols(1);
-				tfPop = newTf("100");
+				tfPop = newTf("1000");
 				add(tfPop);
 				fillCols(1);
 

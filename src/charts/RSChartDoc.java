@@ -2,11 +2,8 @@ package charts;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.geom.Ellipse2D;
-import java.net.URL;
 
-import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
 import javax.swing.JPanel;
 
@@ -14,16 +11,15 @@ import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.CategoryAxis;
 import org.jfree.chart.axis.NumberAxis;
+import org.jfree.chart.axis.ValueAxis;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.renderer.category.LineAndShapeRenderer;
 import org.jfree.chart.title.TextTitle;
 import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
-import org.jfree.ui.HorizontalAlignment;
-import org.jfree.ui.RectangleEdge;
-import org.jfree.util.ShapeUtilities;
 
 import basesAndUtilites.D;
 import basesAndUtilites.RSCalculator;
@@ -33,6 +29,7 @@ import basesAndUtilites.RSVariations;
 public class RSChartDoc
 	{
 		// private SRSDoc doc = null;
+		JFreeChart Chart = null;
 		private JDesktopPane desktop = null;
 		private double population = 0;
 		private double proportion = 0;
@@ -87,7 +84,7 @@ public class RSChartDoc
 				// RSCategoryDataset dataClass = new RSCategoryDataset();
 				// CategoryDataset dataset = dataClass.createDataset();
 
-				RSInternalFrame internalFrame = new RSInternalFrame("Charting The Effects of Assumptions on Sample Size");
+				RSInternalFrame internalFrame = new RSInternalFrame("Charts");
 				internalFrame.setSize(800, 700);
 				RSTabbedChartPanel tabby = new RSTabbedChartPanel(this);
 
@@ -152,6 +149,13 @@ public class RSChartDoc
 							}
 						
 						JFreeChart chart = createChart(dataset);
+						//chart.setTitle("Proportion Title");
+						chart.setTitle(new TextTitle("Effect of Estimates of Proportions on Sample Size."));
+						CategoryPlot plot = (CategoryPlot) chart.getPlot();
+					    CategoryAxis xAxis = plot.getDomainAxis();
+					    xAxis.setLabel("Proportion");
+					    ValueAxis yAxis = plot.getRangeAxis();
+					    yAxis.setLabel("Sample Size Needed");
 						return new ChartPanel(chart);
 					}
 			}
@@ -179,12 +183,12 @@ public class RSChartDoc
 						false // urls
 						);
 
-				chart.addSubtitle(new TextTitle("Number of Classes By Release"));
-				TextTitle source = new TextTitle("Source: Java In A Nutshell (5th Edition) " + "by David Flanagan (O'Reilly)");
-				source.setFont(new Font("SansSerif", Font.PLAIN, 10));
-				source.setPosition(RectangleEdge.BOTTOM);
-				source.setHorizontalAlignment(HorizontalAlignment.RIGHT);
-				chart.addSubtitle(source);
+			//	chart.addSubtitle(new TextTitle("Number of Classes By Release"));
+			//	TextTitle source = new TextTitle("Source: Java In A Nutshell (5th Edition) " + "by David Flanagan (O'Reilly)");
+			//	source.setFont(new Font("SansSerif", Font.PLAIN, 10));
+			//	source.setPosition(RectangleEdge.BOTTOM);
+			//	source.setHorizontalAlignment(HorizontalAlignment.RIGHT);
+			//	chart.addSubtitle(source);
 
 				CategoryPlot plot = (CategoryPlot) chart.getPlot();
 				plot.setRangePannable(true);
