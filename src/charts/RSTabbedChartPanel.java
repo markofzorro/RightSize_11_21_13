@@ -10,16 +10,21 @@ import javax.swing.JPanel;
 
 import basesAndUtilites.*;
 /*
- * TabbedPaneDemo.java requires one additional file:
- *   images/middle.gif.
+ * RSTabbedChartPanel
+ * 
+ * Generates the panel the charts will appear on.
+ * 
+ * Manages the tabs, including which tab is open. 
+ * 
+ *
  */
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTabbedPane;
-
 public class RSTabbedChartPanel extends JPanel
 	{
+		
 		public RSTabbedChartPanel(RSChartDoc doc)
 			{
 				super(new GridLayout(1, 1));
@@ -52,18 +57,20 @@ public class RSTabbedChartPanel extends JPanel
 				// get the currently selected index for this tabbedpane
 				int selectedIndex = tabbedPane.getSelectedIndex();
 				//System.out.println("Default Index:" + selectedIndex); // it is "population"
-				tabbedPane.setSelectedIndex(selectedIndex + 1); // set it to the next one, which is the proportion
+				//tabbedPane.setSelectedIndex(selectedIndex + 1); // set it to the next one, which is the proportion
 
 				
 				
-				JComponent panel3 = makeTextPanel("Confidence Interval");
-				tabbedPane.addTab("Width of Confidence Interval", panel3);
-				//tabbedPane.setMnemonicAt(2, KeyEvent.VK_3);
+				JComponent ciPanel = makeTextPanel("Confidence Interval");
+				tabbedPane.addTab("Width of Confidence Interval", doc.createConfidenceIntervalPanel());
 
-				JComponent panel4 = makeTextPanel("Panel has a preferred size of 1010 x 500).");
-				panel4.setPreferredSize(new Dimension(1010, 500));
-				tabbedPane.addTab("Tab 4", panel4);
-				tabbedPane.setMnemonicAt(3, KeyEvent.VK_4);
+				JPanel confidenceCoefficientPanel = doc.createProportionsPanel();
+				tabbedPane.addTab("Confidence Coefficient", doc.createConfidenceCoefficientPanel());
+//				confidenceCoefficientPanel.setPreferredSize(new Dimension(1010, 500));
+			//	tabbedPane.addTab("Confidence Coifficient", confidenceCoefficientPanel);
+				
+				//DEBUGGER
+				tabbedPane.setSelectedIndex(selectedIndex + 3); // CC is the third panel
 
 				// Add the tabbed pane to this panel.
 				add(tabbedPane);

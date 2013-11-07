@@ -29,13 +29,16 @@ import basesAndUtilites.RSVariations;
 public class RSChartDoc
 	{
 		// private SRSDoc doc = null;
-		JFreeChart Chart = null;
+		
 		private JDesktopPane desktop = null;
+		JFreeChart Chart = null;
+		RSTabbedChartPanel tabby = null;
 		private double population = 0;
 		private double proportion = 0;
 		private double confidenceInterval = 0;
 		private double confidenceCoefficient = 0;
 		private String choice = null;
+		
 
 		// JPanel proportionsPanel = null;
 
@@ -86,7 +89,7 @@ public class RSChartDoc
 
 				RSInternalFrame internalFrame = new RSInternalFrame("Charts");
 				internalFrame.setSize(800, 700);
-				RSTabbedChartPanel tabby = new RSTabbedChartPanel(this);
+				tabby = new RSTabbedChartPanel(this);
 
 				internalFrame.add(tabby);
 
@@ -131,7 +134,7 @@ public class RSChartDoc
 					// assumption is proportion
 					{
 						
-						double[] xLabelsArray = RSVariations.add(proportion, cols);
+						double[] variedAssumption = RSVariations.add(proportion, cols);
 
 						// create the dataset...
 						DefaultCategoryDataset dataset = new DefaultCategoryDataset();
@@ -140,11 +143,11 @@ public class RSChartDoc
 
 						for (int i = 0; i < cols; i++)
 							{
-								RSCalculator.calculate(population, xLabelsArray[i], confidenceInterval, confidenceCoefficient);
+								RSCalculator.calculate(population, variedAssumption[i], confidenceInterval, confidenceCoefficient);
 								double value = RSCalculator.getN();
 								// dataset(double value, String rowLabel, String columnLabel)			
-								dataset.addValue(value, "proportion", Double.toString(xLabelsArray[i]));
-								D.b("xLabelArray[" + i + "] is " + xLabelsArray[i]);
+								dataset.addValue(value, "proportion", Double.toString(variedAssumption[i]));
+								D.b("xLabelArray[" + i + "] is " + variedAssumption[i]);
 								//D.b("dataset[" + i + "] is " + darray[i] );
 							}
 						
@@ -154,6 +157,78 @@ public class RSChartDoc
 						CategoryPlot plot = (CategoryPlot) chart.getPlot();
 					    CategoryAxis xAxis = plot.getDomainAxis();
 					    xAxis.setLabel("Proportion");
+					    ValueAxis yAxis = plot.getRangeAxis();
+					    yAxis.setLabel("Sample Size Needed");
+						return new ChartPanel(chart);
+					}
+			}
+
+		protected JPanel createConfidenceIntervalPanel()
+			{
+				JPanel panel = new JPanel();
+
+					// First, let's do proportion
+
+					// assumption is proportion
+					{
+						
+						double[] variedAssumption = RSVariations.add(confidenceInterval, cols);
+
+						// create the dataset...
+						DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+
+						// dataset.addValue(1.0, series1, type1);
+
+						for (int i = 0; i < cols; i++)
+							{
+								RSCalculator.calculate(population, proportion, variedAssumption[i], confidenceCoefficient);
+								double value = RSCalculator.getN();			
+								dataset.addValue(value, "confidenceInterval", "\u00B1" + Double.toString( variedAssumption[i])); // padd lus/minus sign
+							
+								
+							}
+						
+						JFreeChart chart = createChart(dataset);
+						//chart.setTitle("Proportion Title");
+						chart.setTitle(new TextTitle("Effect of Estimated Width of Confidence Interval on Sample Size."));
+						CategoryPlot plot = (CategoryPlot) chart.getPlot();
+					    CategoryAxis xAxis = plot.getDomainAxis();
+					    xAxis.setLabel("Width of Confidence Interval");
+					    ValueAxis yAxis = plot.getRangeAxis();
+					    yAxis.setLabel("Sample Size Needed");
+						return new ChartPanel(chart);
+					}
+			}
+
+		protected JPanel createConfidenceCoefficientPanel()
+			{
+				JPanel panel = new JPanel();
+
+					// First, let's do proportion
+
+					// assumption is proportion
+					{
+						
+						double[] variedAssumption = RSVariations.add(confidenceCoefficient, cols);
+
+						// create the dataset...
+						DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+
+						// dataset.addValue(1.0, series1, type1);
+
+						for (int i = 0; i < cols; i++)
+							{
+								RSCalculator.calculate(population, proportion, confidenceInterval, variedAssumption[i]);
+								double value = RSCalculator.getN();			
+								dataset.addValue(value, "confidenceCoefficient", Double.toString( variedAssumption[i]));	
+							}
+						
+						JFreeChart chart = createChart(dataset);
+						//chart.setTitle("Proportion Title");
+						chart.setTitle(new TextTitle("Effect of Estimated Confidence Coefficient on Sample Size."));
+						CategoryPlot plot = (CategoryPlot) chart.getPlot();
+					    CategoryAxis xAxis = plot.getDomainAxis();
+					    xAxis.setLabel("Confidence Coefficient");
 					    ValueAxis yAxis = plot.getRangeAxis();
 					    yAxis.setLabel("Sample Size Needed");
 						return new ChartPanel(chart);
@@ -172,10 +247,10 @@ public class RSChartDoc
 			{
 
 				// create the chart...
-				JFreeChart chart = ChartFactory.createLineChart("Java Standard Class Library", // chart
+				JFreeChart chart = ChartFactory.createLineChart("Title", // chart
 																								// title
-						null, // domain axis label
-						"Class Count", // range axis label
+						null, // X Axis Label or domain axis label
+						null, // Y or range axis label
 						dataset, // data
 						PlotOrientation.VERTICAL, // orientation
 						false, // include legend
