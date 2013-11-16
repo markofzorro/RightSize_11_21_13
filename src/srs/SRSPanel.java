@@ -9,6 +9,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import basesAndUtilites.D;
+import basesAndUtilites.Globals;
 
 public class SRSPanel extends JPanel
 	{
@@ -32,39 +33,39 @@ public class SRSPanel extends JPanel
 				// setSize(500, 500);
 
 				// first Row. Must fill three empty columns
-				newLabel("Assumptions:", 36);
+				newLabel("Assumptions:", Globals.TITLE_SIZE);
 				fillCols(3);
 
 				// second row
-				newLabel("Target Population Size", 24);
+				newLabel("Target Population Size", Globals.TEXT_SIZE);
 				fillCols(1);
 				tfPop = newTf("1000");
 				add(tfPop);
 				fillCols(1);
 
 				// third row
-				newLabel("Expected Proportion", 24);
+				newLabel("Expected Proportion", Globals.TEXT_SIZE);
 				fillCols(1);
 				tfProportion = newTf("50");
 				add(tfProportion);
-				newLabel("%", 24);
+				newLabel("%", Globals.TEXT_SIZE);
 
 				// fourth row
-				newLabel("Desired Width of Confidence Interval", 24);
+				newLabel("Desired Width of Confidence Interval", Globals.TEXT_SIZE);
 				JLabel lblPm = new JLabel( "\u00B1"); // plus/minus sign
 				lblPm.setHorizontalAlignment(SwingConstants.TRAILING);
-				lblPm.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+				lblPm.setFont(new java.awt.Font("Lucida Grande", 1, Globals.TEXT_SIZE)); // NOI18N
 				add(lblPm);
 				tfCI = newTf("5");
 				add(tfCI);
-				newLabel("%", 24);
+				newLabel("%", Globals.TEXT_SIZE);
 
 				// Fifth Row
-				newLabel("Desired Confidence Coeffecient", 24);
+				newLabel("Desired Confidence Coeffecient", Globals.TEXT_SIZE);
 				fillCols(1);
 				tfCC = newTf("95");
 				add(tfCC);
-				newLabel("%", 24);
+				newLabel("%", Globals.TEXT_SIZE);
 
 				// Sixth Row
 
@@ -76,29 +77,29 @@ public class SRSPanel extends JPanel
 /******************* Results start here ***********/
 				// row 7
 				JLabel lblTitle = new JLabel("Results:");
-				lblTitle.setFont(new java.awt.Font("Lucida Grande", 1, 36)); // NOI18N
+				lblTitle.setFont(new java.awt.Font("Lucida Grande", 1, Globals.TITLE_SIZE)); // NOI18N
 				add(lblTitle);
 				fillCols(3);
 
 				// Row 8
-				newLabel("Sample Size", 24);
+				newLabel("Sample Size", Globals.TEXT_SIZE);
 				fillCols(1);
-				lblN0 = newLabel("", 24);
+				lblN0 = newLabel("", Globals.TEXT_SIZE);
 				lblN0.setHorizontalAlignment(SwingConstants.TRAILING);
 
 				fillCols(1);
 
 				// Row 9
-				newLabel("Finite Population Correction", 24);
+				newLabel("Finite Population Correction", Globals.TEXT_SIZE);
 				fillCols(2);
-				lblFpc = newLabel("", 24);
+				lblFpc = newLabel("", Globals.TEXT_SIZE);
 				lblFpc.setHorizontalAlignment(SwingConstants.TRAILING);
 				//fillCols(1);
 
 				// Row 8
-				newLabel("Corrected Sample Size", 24);
+				newLabel("Corrected Sample Size", Globals.TEXT_SIZE);
 				fillCols(1);
-				lblN = newLabel("", 24);
+				lblN = newLabel("", Globals.TEXT_SIZE);
 				lblN.setHorizontalAlignment(SwingConstants.TRAILING);
 
 				fillCols(1);
@@ -119,7 +120,7 @@ public class SRSPanel extends JPanel
 			{
 				JTextField field = new JTextField(s);
 				field.setHorizontalAlignment(SwingConstants.TRAILING);
-				field.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+				field.setFont(new java.awt.Font("Lucida Grande", 1, Globals.TEXT_SIZE)); // NOI18N
 				return field;
 			}
 

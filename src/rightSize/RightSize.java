@@ -40,6 +40,7 @@ import cluster.ClusterDoc;
  **/
 
 
+// HERE'S THE NEW TEXT. WILL IT BE ERASED? I HOPE SO.
 
 public class RightSize extends JFrame implements ActionListener
 {
@@ -50,7 +51,7 @@ public class RightSize extends JFrame implements ActionListener
 
 	public RightSize()
 		{
-			super("RightSize: from your friends at TEPHINET");
+			super("RightSize: SaftyNet verson. From your friends at SafetyNet and TEPHINET.");
 			
 
 			// Make the big window be indented 50 pixels from each edge
@@ -116,12 +117,12 @@ public class RightSize extends JFrame implements ActionListener
 			aboutMI.setActionCommand("aboutProgram");
 			aboutMI.addActionListener(this);
 			aboutMenu.add(aboutMI);
-			/*
+			
 			JMenuItem supportersMI = new JMenuItem("Supporters and Contributors");
-			aboutMI.setActionCommand("aboutSupporters");
-			aboutMI.addActionListener(this);
+			supportersMI.setActionCommand("supporters");
+			supportersMI.addActionListener(this);
 			aboutMenu.add(supportersMI);
-			*/
+			
 			//menu.setMnemonic(KeyEvent.VK_D);
 			menuBar.add(aboutMenu);
 
@@ -150,12 +151,26 @@ public class RightSize extends JFrame implements ActionListener
 						String text = "This program is dedicated to all the FETP trainees, present and past\nwho need to learn to do accurate surveys. I hope this helps you learn to design\n fine surveysthat help you improve the health of your population.\n\nWritten by Mark White";
 						JOptionPane.showMessageDialog(null, text, "Rightsize 2.01.0 is not finished yet.", JOptionPane.PLAIN_MESSAGE, null);
 					}
-			/*	else if("aboutsupporters".equals(e.getActionCommand()))
+				else if("supporters".equals(e.getActionCommand()))
 					{
-						String text = "Supporters text\n";
-						JOptionPane.showMessageDialog(null, text, "Rightsize 2.01.0 is not finished yet.", JOptionPane.PLAIN_MESSAGE, null);;
+						String text = 
+								"This program is brought to you by TEPHINET, which provided moral and\n" +
+								"financial support. Many FETPs and their trainees provided input and provided\n" +
+								"helpful suggestions and advice. WHO and the US CDC provided technical assistance.\n\n" +
+								"Many people contributed thier expertise and pateince to testing and helping\n" +
+								"Design the screens. Conchy Roces, Conky Lim-Quizon, and Dionisio Herrera\n" +
+								"were great.\n\nI'd also like to acknowledge the help of the Vietnamese trainee\n" +
+								"who calculated along with the my presentation program and found an error.\n\n" +
+								"The China FETP trainees who asked to be able to calculate with large populations\n"+
+								"will be pleased to know the program can handle populations of more than 10 to\n" +
+								"the 80th power. That's the estimated number of atoms in the universe. They'll\n" + 
+								"have to take my word for it since the program can't accept numbers this large.\n" +
+								"I'll fix it in the next version."
+								
+										;
+						JOptionPane.showMessageDialog(null, text, "Rightsize 2.01.0 is not finished yet.", JOptionPane.PLAIN_MESSAGE, null);
 					}	
-				*/	
+					
 		}
 
 
