@@ -20,7 +20,7 @@ public class RSLogVariations
 		 * 
 		 * @return
 		 */
-		static public double[] add()
+		static public double[] multiplyLogs()
 			{
 				double lowCols = cols / 2;
 				double highCols = lowCols;
@@ -93,7 +93,7 @@ public class RSLogVariations
 		public static void main(String[] args)
 			{
 				// TODO Auto-generated method stub
-				RSLogVariations.add();
+				RSLogVariations.multiplyLogs();
 
 			}
 

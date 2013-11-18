@@ -46,7 +46,7 @@ public class RSChartDoc
 		private double confidenceInterval = 0;
 		private double confidenceCoefficient = 0;
 		private String choice = null;
-		private int cols = Globals.COLS;
+	//	private int Globals. = Globals.COLS;
 		
 
 		// JPanel proportionsPanel = null;
@@ -151,14 +151,14 @@ public class RSChartDoc
 						D.b("Reached createPopulationPane()");
 						
 						
-						double[] variedAssumption = RSLogVariations.add();
+						double[] variedAssumption = RSVariations.multiplyByLogs(population);
 
 						// create the dataset...
 						DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
 						// dataset.addValue(1.0, series1, type1);
 
-						for (int i = 0; i < cols; i++)
+						for (int i = 0; i < Globals.COLS; i++)
 							{
 								RSCalculator.calculate(population, variedAssumption[i], confidenceInterval, confidenceCoefficient);
 								double value = RSCalculator.getN();
@@ -189,14 +189,14 @@ public class RSChartDoc
 					// assumption is proportion
 					{
 						
-						double[] variedAssumption = RSVariations.add(proportion, cols);
+						double[] variedAssumption = RSVariations.add(proportion);
 
 						// create the dataset...
 						DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
 						// dataset.addValue(1.0, series1, type1);
 
-						for (int i = 0; i < cols; i++)
+						for (int i = 0; i < Globals.COLS; i++)
 							{
 								RSCalculator.calculate(population, variedAssumption[i], confidenceInterval, confidenceCoefficient);
 								double value = RSCalculator.getN();
@@ -227,14 +227,14 @@ public class RSChartDoc
 					// assumption is proportion
 					{
 						
-						double[] variedAssumption = RSVariations.add(confidenceInterval, cols);
+						double[] variedAssumption = RSVariations.add(confidenceInterval);
 
 						// create the dataset...
 						DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
 						// dataset.addValue(1.0, series1, type1);
 
-						for (int i = 0; i < cols; i++)
+						for (int i = 0; i < Globals.COLS; i++)
 							{
 								RSCalculator.calculate(population, proportion, variedAssumption[i], confidenceCoefficient);
 								double value = RSCalculator.getN();			
@@ -264,14 +264,14 @@ public class RSChartDoc
 					// assumption is proportion
 					{
 						
-						double[] variedAssumption = RSVariations.add(confidenceCoefficient, cols);
+						double[] variedAssumption = RSVariations.add(confidenceCoefficient);
 
 						// create the dataset...
 						DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
 						// dataset.addValue(1.0, series1, type1);
 
-						for (int i = 0; i < cols; i++)
+						for (int i = 0; i < Globals.COLS; i++)
 							{
 								RSCalculator.calculate(population, proportion, confidenceInterval, variedAssumption[i]);
 								double value = RSCalculator.getN();			

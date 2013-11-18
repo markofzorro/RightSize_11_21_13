@@ -39,12 +39,10 @@ public class RSTabbedChartPanel extends JPanel
 				
 			//	ImageIcon icon = createImageIcon("images/middle.gif");
 
-				JPanel popTestPanel = new JPanel();
-				JLabel testLabel = new JLabel("Population goes here.");
-				popTestPanel.add(testLabel);
-				tabbedPane.addTab("Testing", popTestPanel);
+				
 				//tabbedPane.addTab("Population", popPanel);
-				//JPanel populationPanel = doc.createPopulatonPanel();				
+				JPanel populationPanel = doc.createPopulatonPanel();
+				tabbedPane.addTab("Population", populationPanel);
 				JPanel chartPanel = doc.createProportionsPanel();
 				tabbedPane.addTab("Proportion", doc.createProportionsPanel());
 				//tabbedPane.setMnemonicAt(1, KeyEvent.VK_2);
