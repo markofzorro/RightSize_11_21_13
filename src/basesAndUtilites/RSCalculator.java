@@ -46,13 +46,13 @@ public class RSCalculator
 																	// and
 																	// calculate
 																	// inverse
-			//	D.b("alpha: " + alpha);
+			//	//D.b("alpha: " + alpha);
 
 				double z = nd.inverseCumulativeProbability((alpha / 2));
 				// double z = 1 - (alpha/2);
 				// z = abs(z);
 				double z2 = z * z;
-			//	D.b("z is " + z + " z2 is " + z2);
+			//	//D.b("z is " + z + " z2 is " + z2);
 
 				double p = proportion / 100;
 				double q = 1 - p;
@@ -60,16 +60,16 @@ public class RSCalculator
 				ci2 = ci2 * ci2; // square it.
 
 				// double ciSquared
-			//	D.b("ci2 is " + confidenceInterval + " squared it is " + ci2);
+			//	//D.b("ci2 is " + confidenceInterval + " squared it is " + ci2);
 
-				//D.b("p = " + p + ", q = " + q + ", z " + z + ", CI2 " + ci2 + ".");
+				////D.b("p = " + p + ", q = " + q + ", z " + z + ", CI2 " + ci2 + ".");
 
 				// double n0 = (z * z * p * q ) / ciWidth * ciWidth;
 
-				// D.b("n0 = " + n0);
+				// //D.b("n0 = " + n0);
 
 				n0 = z2 * p * q / ci2;
-			//	D.b(" RSCalculator: Before fpc: n0 = " + n0);
+			//	//D.b(" RSCalculator: Before fpc: n0 = " + n0);
 
 				// Now calculate finite population correction
 
@@ -82,11 +82,11 @@ public class RSCalculator
 				// numbers
 				n = Math.ceil(n0 * fpc);
 				n0 = Math.ceil(n0);
-				D.b("n is " + n);
+				//D.b("n is " + n);
 
-			//	D.b("Calculate: fpc is " + fpc + " and adjusted n = " + n);
+			//	//D.b("Calculate: fpc is " + fpc + " and adjusted n = " + n);
 				
-				D.b("RSCalculator.calculate: n0 is" + n0 + "f pc is " + fpc + " and n = " + n);
+				//D.b("RSCalculator.calculate: n0 is" + n0 + "f pc is " + fpc + " and n = " + n);
 				// showResults(n0, fpc, n);
 
 //				 view.update(n0, fpc, n);

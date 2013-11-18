@@ -44,6 +44,8 @@ public class RSInternalFrame extends JInternalFrame
 
 			// Set the window's location.
 			setLocation(xOffset * openFrameCount, yOffset * openFrameCount);
+			
+			setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		
 			// maybe this belongs in SRSView. etc.
 		//	setVisible(true);

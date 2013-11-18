@@ -35,6 +35,8 @@ import cluster.ClusterDoc;
  * <p>This class sets up the main window and menu. Each menu item creates a Document that
  * creates the requisite views to get input and display results.
  * 
+ * User choose the desired sample type in menu and action listener creates appropriate document. 
+ * 
  * @author Mark White
  *
  **/

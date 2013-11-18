@@ -1,14 +1,17 @@
 
 package charts;
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.awt.event.KeyEvent;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
+import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 
-import basesAndUtilites.*;
+import basesAndUtilites.D;
 /*
  * RSTabbedChartPanel
  * 
@@ -18,10 +21,6 @@ import basesAndUtilites.*;
  * 
  *
  */
-import javax.swing.JComponent;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JTabbedPane;
 
 /**
  * Creates tabbed pane to display charts.
@@ -34,7 +33,7 @@ public class RSTabbedChartPanel extends JPanel
 		
 		public RSTabbedChartPanel(RSChartDoc doc)
 			{
-				super(new GridLayout(1, 1));
+				super();
 				D.b("Reached RSTabbedChartPanel constructor");
 
 				JTabbedPane tabbedPane = new JTabbedPane();
@@ -52,7 +51,7 @@ public class RSTabbedChartPanel extends JPanel
 				//tabbedPane.setMnemonicAt(1, KeyEvent.VK_2);
 				
 				
-				// get the currently selected index for this tabbedpane
+				// get the currently selected index for this tabbed pane
 				int selectedIndex = tabbedPane.getSelectedIndex();
 				//System.out.println("Default Index:" + selectedIndex); // it is "population"
 				//tabbedPane.setSelectedIndex(selectedIndex + 1); // set it to the next one, which is the proportion
@@ -75,6 +74,18 @@ public class RSTabbedChartPanel extends JPanel
 				
 				Dimension dim = new Dimension(1400 , 1600);
 				setPreferredSize(dim);
+				
+				// add a button to allow users to close the panel
+				JButton cancelButton = new JButton("Cancel");
+				cancelButton.setFont(new java.awt.Font("Lucida Grande", 0, 24));
+				cancelButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e)
+						{
+							dispose();
+							// System.out.println("OK button Clicked.");
+						}
+				});
+				add(cancelButton);
 				//pack();
 			}
 	}

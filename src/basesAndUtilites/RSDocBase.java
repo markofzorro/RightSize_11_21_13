@@ -75,7 +75,7 @@ public class RSDocBase
 				else 
 					population = retval;
 				
-				D.b("RSDocBase setPop: retval is " + retval);
+				//D.b("RSDocBase setPop: retval is " + retval);
 							
 			}
 		
@@ -93,7 +93,7 @@ public class RSDocBase
 				else
 					proportion = retval;
 					
-				D.b("RSDocBase setProportion: retval is " + retval);
+				//D.b("RSDocBase setProportion: retval is " + retval);
 			}
 		
 		public double getProportion()
@@ -110,7 +110,7 @@ public class RSDocBase
 				else
 					confidenceInterval = retval;
 					
-				D.b("RSDocBase setCI: retval is " + retval);
+				//D.b("RSDocBase setCI: retval is " + retval);
 							
 			}
 		
@@ -128,7 +128,7 @@ public class RSDocBase
 				else
 					confidenceCoefficient = retval;
 					
-				D.b("RSDocBase setCC: retval is " + retval);
+				//D.b("RSDocBase setCC: retval is " + retval);
 							
 			}
 		
@@ -163,7 +163,7 @@ public class RSDocBase
 						
 					}
 				 // catch empty strings
-				//D.b("stringbuffer is " + sb);
+				////D.b("stringbuffer is " + sb);
 				
 				if((sb.length() == 0) || (sb.toString().isEmpty()))
 				{
@@ -189,7 +189,7 @@ public class RSDocBase
 //								+ " Mark White at mark@markewhite.com to report this error. <br>Thanks. Try again. Be sure to enter a valid number.</HTML>");
 					}
 				 
-					//D.b("stringtoDouble: retval is " + retval  + " min = " + min + ". max = " + max);
+					////D.b("stringtoDouble: retval is " + retval  + " min = " + min + ". max = " + max);
 						if (retval >= min && retval <= max)  // Check range.
 							{	
 							// debuggger	

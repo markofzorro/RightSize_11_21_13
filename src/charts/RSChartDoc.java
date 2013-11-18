@@ -1,9 +1,13 @@
 package charts;
 
 import java.awt.BasicStroke;
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.geom.Ellipse2D;
 
+import javax.swing.JButton;
 import javax.swing.JDesktopPane;
 import javax.swing.JPanel;
 
@@ -22,8 +26,10 @@ import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
 
 import basesAndUtilites.D;
+import basesAndUtilites.Globals;
 import basesAndUtilites.RSCalculator;
 import basesAndUtilites.RSInternalFrame;
+import basesAndUtilites.RSLogVariations;
 import basesAndUtilites.RSVariations;
 
 public class RSChartDoc
@@ -38,26 +44,14 @@ public class RSChartDoc
 		private double confidenceInterval = 0;
 		private double confidenceCoefficient = 0;
 		private String choice = null;
+		private int cols = Globals.COLS;
 		
 
 		// JPanel proportionsPanel = null;
 
-		private int cols = 11; // Number of columns in chart.
+		//private int cols = 11; // Number of columns in chart.
 
-		// public RSChartDoc(JDesktopPane desktop)
-		/*
-		 * public RSChartDoc(JDesktopPane desktop) { // For now use dummy dummy
-		 * chart
-		 * 
-		 * this.desktop = desktop; D.b("In RSChartDoc constructor.");
-		 * createChartFrame();
-		 * 
-		 * 
-		 * 
-		 * }
-		 */
-
-		public RSChartDoc(JDesktopPane desktop, double population, double proportion, double confidenceInterval, double confidenceCoefficient, String choice)
+				public RSChartDoc(JDesktopPane desktop, double population, double proportion, double confidenceInterval, double confidenceCoefficient, String choice)
 			{
 				// this.doc = doc; doesn't seem to work. Don't know why. desktop
 				// = doc.getDesktop();
@@ -75,8 +69,8 @@ public class RSChartDoc
 				this.desktop = desktop;
 				if ("srs".equals(choice))
 					;
-				D.b("In RSChartDoc constructor. confidenceConfidencient is " + confidenceCoefficient);
-				D.b("In RSChartDoc constructor. Choice is " + choice);
+			//	D.b("In RSChartDoc constructor. confidenceConfidencient is " + confidenceCoefficient);
+			//	D.b("In RSChartDoc constructor. Choice is " + choice);
 				createChartFrame();
 
 			}
@@ -87,22 +81,42 @@ public class RSChartDoc
 				// RSCategoryDataset dataClass = new RSCategoryDataset();
 				// CategoryDataset dataset = dataClass.createDataset();
 
-				RSInternalFrame internalFrame = new RSInternalFrame("Charts");
-				internalFrame.setSize(800, 700);
+				final RSInternalFrame chartFrame = new RSInternalFrame("Charts");
+				chartFrame.setLayout(new BorderLayout());
+				//chartFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+				chartFrame.setSize(800, 700);
 				tabby = new RSTabbedChartPanel(this);
 
-				internalFrame.add(tabby);
+				chartFrame.add(tabby, BorderLayout.NORTH);
 
+				
+				JPanel buttonPanel = new JPanel();
+				
+				JButton cancelButton = new JButton("Cancel");
+				cancelButton.setFont(new java.awt.Font("Lucida Grande", 0, Globals.TEXT_SIZE));
+				cancelButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e)
+						{
+							chartFrame.dispose();
+							// System.out.println("OK button Clicked.");
+						}
+				});
+				cancelButton.setVisible(true);
+				buttonPanel.add(cancelButton);
+				buttonPanel.setVisible(true);
+				chartFrame.add(buttonPanel, BorderLayout.SOUTH);
+				
+				
 				// createDataset();
 				// createChartPanels();
 
 				// varyAssumption
-				desktop.add(internalFrame);
-				internalFrame.setVisible(true); // necessary as of 1.3
+				desktop.add(chartFrame);
+				chartFrame.setVisible(true); // necessary as of 1.3
 				// desktop.add(frame);
 				try
 					{
-						internalFrame.setSelected(true);
+						chartFrame.setSelected(true);
 					} catch (java.beans.PropertyVetoException e)
 					{
 					}
@@ -127,13 +141,10 @@ public class RSChartDoc
 		protected JPanel createPopulatonPanel()
 			{
 				JPanel panel = new JPanel();
-
-					// First, let's do proportion
-
-					// assumption is proportion
+					
 					{
-						
-						double[] variedAssumption = RSVariations.add(proportion, cols);
+						D.b("Reached createPopulationPane()");
+						double[] variedAssumption = RSLogVariations.add();
 
 						// create the dataset...
 						DefaultCategoryDataset dataset = new DefaultCategoryDataset();
@@ -145,7 +156,7 @@ public class RSChartDoc
 								RSCalculator.calculate(population, variedAssumption[i], confidenceInterval, confidenceCoefficient);
 								double value = RSCalculator.getN();
 								// dataset(double value, String rowLabel, String columnLabel)			
-								dataset.addValue(value, "proportion", Double.toString(variedAssumption[i]));
+								dataset.addValue(value, "population", Double.toString(variedAssumption[i]));
 								D.b("xLabelArray[" + i + "] is " + variedAssumption[i]);
 								//D.b("dataset[" + i + "] is " + darray[i] );
 							}
@@ -155,7 +166,7 @@ public class RSChartDoc
 						chart.setTitle(new TextTitle("Effect of Estimates of Proportions on Sample Size."));
 						CategoryPlot plot = (CategoryPlot) chart.getPlot();
 					    CategoryAxis xAxis = plot.getDomainAxis();
-					    xAxis.setLabel("Proportion");
+					    xAxis.setLabel("Population");
 					    ValueAxis yAxis = plot.getRangeAxis();
 					    yAxis.setLabel("Sample Size Needed");
 						return new ChartPanel(chart);

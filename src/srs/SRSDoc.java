@@ -50,16 +50,7 @@ public class SRSDoc extends RSDocBase
 
 			}
 
-		/*
-		 * protected void graph() { LMZChart chart = new LMZChart();
-		 * 
-		 * }
-		 */
-
-		// calculator = new SRSCalculator(this, population, proportion,
-		// confidenceInterval, confidenceCoefficient);
-
-		void calculate()
+				void calculate()
 			{
 				/*******
 				 * Formula from Cochran (1963:75) *** n0 = z2pq/e2 where z2 = z
@@ -164,11 +155,4 @@ public class SRSDoc extends RSDocBase
 		
 		
 		/************ ERnd Getters and Setters **********/
-/*
-		private JDialog SRSGraphDlg()
-			{
-				// TODO Auto-generated method stub
-				return null;
-			}
-*/
 	} // end of SRSDocument
