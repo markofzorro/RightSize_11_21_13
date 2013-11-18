@@ -3,6 +3,8 @@ package charts;
 import java.awt.BasicStroke;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.Ellipse2D;
@@ -82,6 +84,9 @@ public class RSChartDoc
 				// CategoryDataset dataset = dataClass.createDataset();
 
 				final RSInternalFrame chartFrame = new RSInternalFrame("Charts");
+			
+
+				
 				chartFrame.setLayout(new BorderLayout());
 				//chartFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 				chartFrame.setSize(800, 700);
@@ -144,6 +149,8 @@ public class RSChartDoc
 					
 					{
 						D.b("Reached createPopulationPane()");
+						
+						
 						double[] variedAssumption = RSLogVariations.add();
 
 						// create the dataset...

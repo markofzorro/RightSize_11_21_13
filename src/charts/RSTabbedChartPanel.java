@@ -2,12 +2,8 @@
 package charts;
 
 import java.awt.Dimension;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
@@ -43,16 +39,19 @@ public class RSTabbedChartPanel extends JPanel
 				
 			//	ImageIcon icon = createImageIcon("images/middle.gif");
 
-				//JComponent popPanel = makeTextPanel("Population goes here");
+				JPanel popTestPanel = new JPanel();
+				JLabel testLabel = new JLabel("Population goes here.");
+				popTestPanel.add(testLabel);
+				tabbedPane.addTab("Testing", popTestPanel);
 				//tabbedPane.addTab("Population", popPanel);
-				JPanel popoulationPanel = doc.createPopulatonPanel();				
-				//JPanel chartPanel = doc.createProportionsPanel();
-				tabbedPane.addTab("Proportion", doc. createProportionsPanel());
+				//JPanel populationPanel = doc.createPopulatonPanel();				
+				JPanel chartPanel = doc.createProportionsPanel();
+				tabbedPane.addTab("Proportion", doc.createProportionsPanel());
 				//tabbedPane.setMnemonicAt(1, KeyEvent.VK_2);
 				
 				
 				// get the currently selected index for this tabbed pane
-				int selectedIndex = tabbedPane.getSelectedIndex();
+			//	int selectedIndex = tabbedPane.getSelectedIndex();
 				//System.out.println("Default Index:" + selectedIndex); // it is "population"
 				//tabbedPane.setSelectedIndex(selectedIndex + 1); // set it to the next one, which is the proportion
 
@@ -75,17 +74,5 @@ public class RSTabbedChartPanel extends JPanel
 				Dimension dim = new Dimension(1400 , 1600);
 				setPreferredSize(dim);
 				
-				// add a button to allow users to close the panel
-				JButton cancelButton = new JButton("Cancel");
-				cancelButton.setFont(new java.awt.Font("Lucida Grande", 0, 24));
-				cancelButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e)
-						{
-							dispose();
-							// System.out.println("OK button Clicked.");
 						}
-				});
-				add(cancelButton);
-				//pack();
-			}
 	}
