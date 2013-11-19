@@ -2,8 +2,8 @@
 package charts;
 
 import java.awt.Dimension;
+import java.awt.GridBagLayout;
 
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
@@ -31,10 +31,11 @@ public class RSTabbedChartPanel extends JPanel
 			{
 				super();
 				D.b("Reached RSTabbedChartPanel constructor");
-
+				
+				setLayout(new GridBagLayout());
 				JTabbedPane tabbedPane = new JTabbedPane();
 				//setPreferredSize( new Dimension(w, h));
-				Dimension d = new Dimension(1600, 1400);
+				Dimension d = new Dimension(2000, 1400);  // was 1600, 1400
 				setPreferredSize(d);
 				
 			//	ImageIcon icon = createImageIcon("images/middle.gif");

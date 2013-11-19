@@ -3,8 +3,7 @@ package charts;
 import java.awt.BasicStroke;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Toolkit;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.Ellipse2D;
@@ -31,7 +30,6 @@ import basesAndUtilites.D;
 import basesAndUtilites.Globals;
 import basesAndUtilites.RSCalculator;
 import basesAndUtilites.RSInternalFrame;
-import basesAndUtilites.RSLogVariations;
 import basesAndUtilites.RSVariations;
 
 public class RSChartDoc
@@ -87,9 +85,9 @@ public class RSChartDoc
 			
 
 				
-				chartFrame.setLayout(new BorderLayout());
+				
 				//chartFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-				chartFrame.setSize(800, 700);
+				chartFrame.setSize(1700, 1700); // was 1000,700
 				tabby = new RSTabbedChartPanel(this);
 
 				chartFrame.add(tabby, BorderLayout.NORTH);
@@ -128,22 +126,7 @@ public class RSChartDoc
 
 			}
 
-		/*
-		 * CategoryDataset createDataset() { CategoryDataset dataset =
-		 * varyAssumptions(); return dataset; }
-		 */
-
-		// JFreeChart chart = createChart(createDataset());
-		private void createChartPanels()
-			{
-
-				// JPanel panel = new JPanel();
-
-				// Now add the panels to tabbed panel
-			//	JPanel proportionPanel = createProportionsPanel();
-
-			}
-		protected JPanel createPopulatonPanel()
+			protected JPanel createPopulatonPanel()
 			{
 				JPanel panel = new JPanel();
 					
