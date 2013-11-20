@@ -22,7 +22,7 @@ import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
 import srs.SRSDoc;
-import charts.RSChartDoc;
+import charts.SRSChartDoc;
 import cluster.ClusterDoc;
 //import jFreeChart.RSLineChartOldNoWord;
 
@@ -49,7 +49,7 @@ public class RightSize extends JFrame implements ActionListener
 	private JDesktopPane desktop = null;
 	private SRSDoc srsDoc =null;
 	private ClusterDoc clusterDoc = null;
-	private RSChartDoc chartDoc = null;
+	private SRSChartDoc chartDoc = null;
 
 	public RightSize()
 		{

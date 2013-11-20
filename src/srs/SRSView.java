@@ -23,12 +23,9 @@ import javax.swing.border.EmptyBorder;
 
 
 
-import charts.RSChartDoc;
+
 import basesAndUtilites.D;
 import basesAndUtilites.RSInternalFrame;
-
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
 
 /**
  * 

@@ -8,7 +8,7 @@ import org.apache.commons.math3.distribution.NormalDistribution;
 import basesAndUtilites.D;
 import basesAndUtilites.RSCalculator;
 import basesAndUtilites.RSDocBase;
-import charts.RSChartDoc;
+import charts.SRSChartDoc;
 
 /**
  * Document handles all calculations, views, and graphs for SRS.<br>
@@ -22,7 +22,7 @@ import charts.RSChartDoc;
 public class SRSDoc extends RSDocBase
 	{
 
-		private RSChartDoc chartDoc = null;
+		private SRSChartDoc chartDoc = null;
 		SRSView view = null;
 
 		protected double n0 = 0;
@@ -146,7 +146,7 @@ public class SRSDoc extends RSDocBase
 		public void chart()
 			{	
 					D.b("SRSDoc.chart: confidenceCoefficient is " + confidenceCoefficient);
-					RSChartDoc chartDoc = new RSChartDoc(desktop, population, proportion, confidenceInterval, confidenceCoefficient, "srs");
+					SRSChartDoc chartDoc = new SRSChartDoc(desktop, population, proportion, confidenceInterval, confidenceCoefficient, "srs");
 				
 				 
 					

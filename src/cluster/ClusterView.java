@@ -20,8 +20,8 @@ import javax.swing.border.EmptyBorder;
 import basesAndUtilites.D;
 import basesAndUtilites.RSInternalFrame;
 
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
+
+
 
 /**
  * 
@@ -31,6 +31,7 @@ public class ClusterView extends RSInternalFrame
 	{
 		private ClusterDoc doc = null;
 		private ClusterPanel ClusterPanel = null;
+		JButton graphButton = null;
 
 		private double clusterSize = 0;
 		private double clustersNeeded = 0;
@@ -101,12 +102,35 @@ public class ClusterView extends RSInternalFrame
 						{
 
 							doc.calculate();
+							addGraphButton();
 
 						}
 				});
 				buttonPanel.add(okButton);
 				return buttonPanel;
 
+			}
+		
+		private void addGraphButton()
+			{
+				if (graphButton == null) // there isn't a button yet.
+					{	
+						graphButton = new JButton("Graph");
+						graphButton.setFont(new java.awt.Font("Lucida Grande", 0, 24));
+						graphButton.addActionListener(new ActionListener() {
+							public void actionPerformed(ActionEvent e)
+								{
+									D.b("Reached addGraphButton()");
+									doc.chart();
+									//RSChartDoc rsDoc = new RSChartDoc(doc);
+									
+									
+								}
+						});
+						buttonPanel.add(graphButton);
+					}
+				else
+						return;
 			}
 
 		private void initComponents()

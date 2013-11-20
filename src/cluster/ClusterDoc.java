@@ -7,6 +7,7 @@ import java.math.*;
 
 import org.apache.commons.math3.distribution.NormalDistribution;
 
+import charts.SRSChartDoc;
 import basesAndUtilites.D;
 
 public class ClusterDoc
@@ -212,6 +213,16 @@ public class ClusterDoc
 		}
 	
 	/****** end of calculations */
+	
+	public void chart()
+		{	
+				D.b("Reached ClusterDoc.chart.");
+			//	SRSChartDoc chartDoc = new SRSChartDoc(desktop, population, proportion, confidenceInterval, confidenceCoefficient, "srs");
+			
+			 
+				
+		}
+	
 /** Validation and value setting and getting methods follow */
 	
  	private void setPopulation(String s)

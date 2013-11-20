@@ -4,10 +4,11 @@ import java.awt.BasicStroke;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Toolkit;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.Ellipse2D;
+import java.text.DecimalFormat;
 
 import javax.swing.JButton;
 import javax.swing.JDesktopPane;
@@ -26,21 +27,22 @@ import org.jfree.chart.renderer.category.LineAndShapeRenderer;
 import org.jfree.chart.title.TextTitle;
 import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.ui.HorizontalAlignment;
+import org.jfree.ui.RectangleEdge;
 
 import basesAndUtilites.D;
 import basesAndUtilites.Globals;
 import basesAndUtilites.RSCalculator;
 import basesAndUtilites.RSInternalFrame;
-import basesAndUtilites.RSLogVariations;
 import basesAndUtilites.RSVariations;
 
-public class RSChartDoc
+public class ClusterChartDoc
 	{
 		// private SRSDoc doc = null;
 		
 		private JDesktopPane desktop = null;
 		JFreeChart Chart = null;
-		RSTabbedChartPanel tabby = null;
+		ClusterTabbedChartPanel tabby = null;
 		private double population = 0;
 		private double proportion = 0;
 		private double confidenceInterval = 0;
@@ -53,7 +55,7 @@ public class RSChartDoc
 
 		//private int cols = 11; // Number of columns in chart.
 
-				public RSChartDoc(JDesktopPane desktop, double population, double proportion, double confidenceInterval, double confidenceCoefficient, String choice)
+				public ClusterChartDoc(JDesktopPane desktop, double population, double proportion, double confidenceInterval, double confidenceCoefficient, String choice)
 			{
 				// this.doc = doc; doesn't seem to work. Don't know why. desktop
 				// = doc.getDesktop();
@@ -87,13 +89,21 @@ public class RSChartDoc
 			
 
 				
-				chartFrame.setLayout(new BorderLayout());
+				Dimension d = desktop.getSize();
 				//chartFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-				chartFrame.setSize(800, 700);
-				tabby = new RSTabbedChartPanel(this);
+				//chartFrame.setSize(d); // was 1000,700. 700, 500 seem to be the default.
+				chartFrame.setSize(1000,700);
+				tabby = new ClusterTabbedChartPanel(this);
 
-				chartFrame.add(tabby, BorderLayout.NORTH);
+				chartFrame.add(tabby);
+			/*	JPanel testPanel = new JPanel();
+				JLabel label  = new JLabel("Eat shit");
+				testPanel.add(label);
+				testPanel.setBorder(BorderFactory.createLineBorder(Color.black));
 
+
+				chartFrame.add(testPanel);
+				*/
 				
 				JPanel buttonPanel = new JPanel();
 				
@@ -128,22 +138,7 @@ public class RSChartDoc
 
 			}
 
-		/*
-		 * CategoryDataset createDataset() { CategoryDataset dataset =
-		 * varyAssumptions(); return dataset; }
-		 */
-
-		// JFreeChart chart = createChart(createDataset());
-		private void createChartPanels()
-			{
-
-				// JPanel panel = new JPanel();
-
-				// Now add the panels to tabbed panel
-			//	JPanel proportionPanel = createProportionsPanel();
-
-			}
-		protected JPanel createPopulatonPanel()
+			protected JPanel createPopulatonPanel()
 			{
 				JPanel panel = new JPanel();
 					
@@ -162,20 +157,37 @@ public class RSChartDoc
 							{
 								RSCalculator.calculate(population, variedAssumption[i], confidenceInterval, confidenceCoefficient);
 								double value = RSCalculator.getN();
-								// dataset(double value, String rowLabel, String columnLabel)			
-								dataset.addValue(value, "population", Double.toString(variedAssumption[i]));
+								// dataset(double value, String rowLabel, String columnLabel)
+								double columnLabel = variedAssumption[i];
+								 
+								if (columnLabel > 10000)
+									{	
+										DecimalFormat myFormatter = new DecimalFormat("#.E0");
+										String s = myFormatter.format(columnLabel);
+										dataset.addValue(value, "population", s);
+									} else
+										dataset.addValue(value, "population", Double.toString(variedAssumption[i]));
+									
+								
+								
 								D.b("xLabelArray[" + i + "] is " + variedAssumption[i]);
 								//D.b("dataset[" + i + "] is " + darray[i] );
 							}
 						
 						JFreeChart chart = createChart(dataset);
 						//chart.setTitle("Proportion Title");
-						chart.setTitle(new TextTitle("Effect of Estimates of Proportions on Sample Size."));
+						chart.setTitle(new TextTitle("Effect of Size of Target Population on Sample Size."));
 						CategoryPlot plot = (CategoryPlot) chart.getPlot();
 					    CategoryAxis xAxis = plot.getDomainAxis();
 					    xAxis.setLabel("Population");
 					    ValueAxis yAxis = plot.getRangeAxis();
 					    yAxis.setLabel("Sample Size Needed");
+					    TextTitle source = new TextTitle("Scientific notation shows numbers multiplied by 10.    \nThe number after the \'E\' is the number of trailing zeros.  \nExamples: 100 is 1E2, 1000 is 1E3, and 50,000 is 5E4.  ");
+						source.setFont(new Font("SansSerif", Font.PLAIN, 12));
+						source.setPosition(RectangleEdge.BOTTOM);
+						source.setHorizontalAlignment(HorizontalAlignment.RIGHT);
+						chart.addSubtitle(source);
+
 						return new ChartPanel(chart);
 					}
 			}
@@ -208,7 +220,7 @@ public class RSChartDoc
 						
 						JFreeChart chart = createChart(dataset);
 						//chart.setTitle("Proportion Title");
-						chart.setTitle(new TextTitle("Effect of Estimates of Proportions on Sample Size."));
+						chart.setTitle(new TextTitle("Effect of Target Population Proportions on Sample Size."));
 						CategoryPlot plot = (CategoryPlot) chart.getPlot();
 					    CategoryAxis xAxis = plot.getDomainAxis();
 					    xAxis.setLabel("Proportion");
@@ -245,7 +257,7 @@ public class RSChartDoc
 						
 						JFreeChart chart = createChart(dataset);
 						//chart.setTitle("Proportion Title");
-						chart.setTitle(new TextTitle("Effect of Estimated Width of Confidence Interval on Sample Size."));
+						chart.setTitle(new TextTitle("Effect of Width of Confidence Interval on Sample Size."));
 						CategoryPlot plot = (CategoryPlot) chart.getPlot();
 					    CategoryAxis xAxis = plot.getDomainAxis();
 					    xAxis.setLabel("Width of Confidence Interval");
@@ -280,7 +292,7 @@ public class RSChartDoc
 						
 						JFreeChart chart = createChart(dataset);
 						//chart.setTitle("Proportion Title");
-						chart.setTitle(new TextTitle("Effect of Estimated Confidence Coefficient on Sample Size."));
+						chart.setTitle(new TextTitle("Effect of Confidence Coefficient on Sample Size."));
 						CategoryPlot plot = (CategoryPlot) chart.getPlot();
 					    CategoryAxis xAxis = plot.getDomainAxis();
 					    xAxis.setLabel("Confidence Coefficient");
