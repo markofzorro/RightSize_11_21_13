@@ -8,22 +8,22 @@ import org.apache.commons.math3.distribution.NormalDistribution;
  * @author markofzero
  *
  */
-public class RSCalculator
+public class SRSCalculator
 	{
 		static private double population = 0;
 		static private double proportion = 0;
 		static private double confidenceInterval = 0;
-		static private double  confidenceCoefficient = 0;
+		static private double confidenceCoefficient = 0;
 		static private double n0 = 0;
 		static private double fpc = 0;
 		static private double n = 0;
 		
-		private double roh = 0;
-		private double designEffect = 0;
 		
 		
 		
-		static public void calculate(double arg_population, double arg_proportion, double arg_confidenceInterval, double arg_confidenceCoefficient )
+		
+		static public void calculate(double arg_population, double arg_proportion, 
+				double arg_confidenceInterval, double arg_confidenceCoefficient )
 			{
 				
 				
@@ -69,7 +69,7 @@ public class RSCalculator
 				// //D.b("n0 = " + n0);
 
 				n0 = z2 * p * q / ci2;
-			//	//D.b(" RSCalculator: Before fpc: n0 = " + n0);
+			//	//D.b(" SRSCalculator: Before fpc: n0 = " + n0);
 
 				// Now calculate finite population correction
 
@@ -86,15 +86,16 @@ public class RSCalculator
 
 			//	//D.b("Calculate: fpc is " + fpc + " and adjusted n = " + n);
 				
-				//D.b("RSCalculator.calculate: n0 is" + n0 + "f pc is " + fpc + " and n = " + n);
+				//D.b("SRSCalculator.calculate: n0 is" + n0 + "f pc is " + fpc + " and n = " + n);
 				// showResults(n0, fpc, n);
 
 //				 view.update(n0, fpc, n);
 				
 				/**RETURN CONTROL TO DOCUMENT *******/
 			}
-
 		
+		
+		/***************** Getters and setters ****/
 		/** for SRS */
 
 		static public double getN0() // for SRS
@@ -111,6 +112,5 @@ public class RSCalculator
 				return n > 0? n: 0;
 			}
 		
-/**** For Cluster ******/
 		
 	}

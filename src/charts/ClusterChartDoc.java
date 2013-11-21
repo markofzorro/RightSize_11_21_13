@@ -32,7 +32,7 @@ import org.jfree.ui.RectangleEdge;
 
 import basesAndUtilites.D;
 import basesAndUtilites.Globals;
-import basesAndUtilites.RSCalculator;
+import basesAndUtilites.ClusterCalculator;
 import basesAndUtilites.RSInternalFrame;
 import basesAndUtilites.RSVariations;
 
@@ -50,12 +50,17 @@ public class ClusterChartDoc
 		private String choice = null;
 	//	private int Globals. = Globals.COLS;
 		
+		private double clusterSize = 0;
+		private double clustersNeeded = 0;
+		private double roh = 0;
+		
 
 		// JPanel proportionsPanel = null;
 
 		//private int cols = 11; // Number of columns in chart.
 
-				public ClusterChartDoc(JDesktopPane desktop, double population, double proportion, double confidenceInterval, double confidenceCoefficient, String choice)
+				//public ClusterChartDoc(JDesktopPane desktop, double population, double proportion, double confidenceInterval, double confidenceCoefficient, double clusterSize, double roh, String choice)
+			public ClusterChartDoc(JDesktopPane dektop)
 			{
 				// this.doc = doc; doesn't seem to work. Don't know why. desktop
 				// = doc.getDesktop();
@@ -66,6 +71,8 @@ public class ClusterChartDoc
 				this.proportion = proportion;
 				this.confidenceInterval = confidenceInterval;
 				this.confidenceCoefficient = confidenceCoefficient;
+				this.clusterSize = clusterSize;
+				this.roh = roh;
 				this.choice = new String(choice); // create a new string to be
 													// sure the argument doesn't
 													// disappear somewhere.
@@ -155,8 +162,8 @@ public class ClusterChartDoc
 
 						for (int i = 0; i < Globals.COLS; i++)
 							{
-								RSCalculator.calculate(population, variedAssumption[i], confidenceInterval, confidenceCoefficient);
-								double value = RSCalculator.getN();
+								ClusterCalculator.calculate(variedAssumption[i], proportion, confidenceInterval, confidenceCoefficient, clusterSize, clustersNeeded);
+								double value = ClusterCalculator.getClustersNeeded();
 								// dataset(double value, String rowLabel, String columnLabel)
 								double columnLabel = variedAssumption[i];
 								 
@@ -191,7 +198,7 @@ public class ClusterChartDoc
 						return new ChartPanel(chart);
 					}
 			}
-
+/*
 		protected JPanel createProportionsPanel()
 			{
 				JPanel panel = new JPanel();
@@ -210,8 +217,8 @@ public class ClusterChartDoc
 
 						for (int i = 0; i < Globals.COLS; i++)
 							{
-								RSCalculator.calculate(population, variedAssumption[i], confidenceInterval, confidenceCoefficient);
-								double value = RSCalculator.getN();
+								ClusterCalculator.calculate(population, variedAssumption[i], confidenceInterval, confidenceCoefficient);
+								double value = ClusterCalculator.getN();
 								// dataset(double value, String rowLabel, String columnLabel)			
 								dataset.addValue(value, "proportion", Double.toString(variedAssumption[i]));
 								D.b("xLabelArray[" + i + "] is " + variedAssumption[i]);
@@ -248,8 +255,10 @@ public class ClusterChartDoc
 
 						for (int i = 0; i < Globals.COLS; i++)
 							{
-								RSCalculator.calculate(population, proportion, variedAssumption[i], confidenceCoefficient);
-								double value = RSCalculator.getN();			
+								ClusterCalculator.calculate(population, proportion, variedAssumption[i], confidenceCoefficient);
+													//alculate(double arg_population, double arg_proportion, 
+										double arg_confidenceInterval, double arg_confidenceCoefficient, double arg_clusterSize, double arg_roh )
+								double value = ClusterCalculator.getN();			
 								dataset.addValue(value, "confidenceInterval", "\u00B1" + Double.toString( variedAssumption[i])); // padd lus/minus sign
 							
 								
@@ -285,8 +294,8 @@ public class ClusterChartDoc
 
 						for (int i = 0; i < Globals.COLS; i++)
 							{
-								RSCalculator.calculate(population, proportion, confidenceInterval, variedAssumption[i]);
-								double value = RSCalculator.getN();			
+								ClusterCalculator.calculate(population, proportion, confidenceInterval, variedAssumption[i]);
+								double value = ClusterCalculator.getN();			
 								dataset.addValue(value, "confidenceCoefficient", Double.toString( variedAssumption[i]));	
 							}
 						
@@ -301,7 +310,7 @@ public class ClusterChartDoc
 						return new ChartPanel(chart);
 					}
 			}
-
+*/
 		/**
 		 * Creates a sample chart.
 		 * 

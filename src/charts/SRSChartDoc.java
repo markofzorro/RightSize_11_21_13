@@ -32,9 +32,9 @@ import org.jfree.ui.RectangleEdge;
 
 import basesAndUtilites.D;
 import basesAndUtilites.Globals;
-import basesAndUtilites.RSCalculator;
 import basesAndUtilites.RSInternalFrame;
 import basesAndUtilites.RSVariations;
+import basesAndUtilites.SRSCalculator;
 
 public class SRSChartDoc
 	{
@@ -73,8 +73,8 @@ public class SRSChartDoc
 				this.desktop = desktop;
 				if ("srs".equals(choice))
 					;
-			//	D.b("In RSChartDoc constructor. confidenceConfidencient is " + confidenceCoefficient);
-			//	D.b("In RSChartDoc constructor. Choice is " + choice);
+			//	// D.b("In RSChartDoc constructor. confidenceConfidencient is " + confidenceCoefficient);
+			//	// D.b("In RSChartDoc constructor. Choice is " + choice);
 				createChartFrame();
 
 			}
@@ -143,7 +143,7 @@ public class SRSChartDoc
 				JPanel panel = new JPanel();
 					
 					{
-						D.b("Reached createPopulationPane()");
+						// D.b("Reached createPopulationPane()");
 						
 						
 						double[] variedAssumption = RSVariations.multiplyByLogs(population);
@@ -155,8 +155,8 @@ public class SRSChartDoc
 
 						for (int i = 0; i < Globals.COLS; i++)
 							{
-								RSCalculator.calculate(population, variedAssumption[i], confidenceInterval, confidenceCoefficient);
-								double value = RSCalculator.getN();
+								SRSCalculator.calculate(variedAssumption[i], proportion, confidenceInterval, confidenceCoefficient);
+								double value = SRSCalculator.getN();
 								// dataset(double value, String rowLabel, String columnLabel)
 								double columnLabel = variedAssumption[i];
 								 
@@ -170,8 +170,8 @@ public class SRSChartDoc
 									
 								
 								
-								D.b("xLabelArray[" + i + "] is " + variedAssumption[i]);
-								//D.b("dataset[" + i + "] is " + darray[i] );
+								// D.b("xLabelArray[" + i + "] is " + variedAssumption[i]);
+								//// D.b("dataset[" + i + "] is " + darray[i] );
 							}
 						
 						JFreeChart chart = createChart(dataset);
@@ -182,7 +182,9 @@ public class SRSChartDoc
 					    xAxis.setLabel("Population");
 					    ValueAxis yAxis = plot.getRangeAxis();
 					    yAxis.setLabel("Sample Size Needed");
-					    TextTitle source = new TextTitle("Scientific notation shows numbers multiplied by 10.    \nThe number after the \'E\' is the number of trailing zeros.  \nExamples: 100 is 1E2, 1000 is 1E3, and 50,000 is 5E4.  ");
+					    TextTitle source = new TextTitle("Scientific notation shows numbers multiplied by 10.    \n"
+					    		+ "The number after the \'E\' is the number of trailing zeros.  \nExamples: 100 is 1.E2,"
+					    		+ " 1,000 is 1.E3, and 40,000 is 4.E4.  ");
 						source.setFont(new Font("SansSerif", Font.PLAIN, 12));
 						source.setPosition(RectangleEdge.BOTTOM);
 						source.setHorizontalAlignment(HorizontalAlignment.RIGHT);
@@ -210,12 +212,12 @@ public class SRSChartDoc
 
 						for (int i = 0; i < Globals.COLS; i++)
 							{
-								RSCalculator.calculate(population, variedAssumption[i], confidenceInterval, confidenceCoefficient);
-								double value = RSCalculator.getN();
+								SRSCalculator.calculate(population, variedAssumption[i], confidenceInterval, confidenceCoefficient);
+								double value = SRSCalculator.getN();
 								// dataset(double value, String rowLabel, String columnLabel)			
 								dataset.addValue(value, "proportion", Double.toString(variedAssumption[i]));
-								D.b("xLabelArray[" + i + "] is " + variedAssumption[i]);
-								//D.b("dataset[" + i + "] is " + darray[i] );
+								// D.b("xLabelArray[" + i + "] is " + variedAssumption[i]);
+								//// D.b("dataset[" + i + "] is " + darray[i] );
 							}
 						
 						JFreeChart chart = createChart(dataset);
@@ -248,8 +250,8 @@ public class SRSChartDoc
 
 						for (int i = 0; i < Globals.COLS; i++)
 							{
-								RSCalculator.calculate(population, proportion, variedAssumption[i], confidenceCoefficient);
-								double value = RSCalculator.getN();			
+								SRSCalculator.calculate(population, proportion, variedAssumption[i], confidenceCoefficient);
+								double value = SRSCalculator.getN();			
 								dataset.addValue(value, "confidenceInterval", "\u00B1" + Double.toString( variedAssumption[i])); // padd lus/minus sign
 							
 								
@@ -285,9 +287,10 @@ public class SRSChartDoc
 
 						for (int i = 0; i < Globals.COLS; i++)
 							{
-								RSCalculator.calculate(population, proportion, confidenceInterval, variedAssumption[i]);
-								double value = RSCalculator.getN();			
-								dataset.addValue(value, "confidenceCoefficient", Double.toString( variedAssumption[i]));	
+								SRSCalculator.calculate(population, proportion, confidenceInterval, variedAssumption[i]);
+								double value = SRSCalculator.getN();			
+								dataset.addValue(value, "confidenceCoefficient", Double.toString( variedAssumption[i]));
+								D.b("SRSChartDoc.createConfidenceCoefficient: i is " + i + ". Population is " + population + ". Sample needed is " + value);
 							}
 						
 						JFreeChart chart = createChart(dataset);

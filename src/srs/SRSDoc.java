@@ -6,7 +6,7 @@ import javax.swing.JDialog;
 import org.apache.commons.math3.distribution.NormalDistribution;
 
 import basesAndUtilites.D;
-import basesAndUtilites.RSCalculator;
+import basesAndUtilites.SRSCalculator;
 import basesAndUtilites.RSDocBase;
 import charts.SRSChartDoc;
 
@@ -65,16 +65,16 @@ public class SRSDoc extends RSDocBase
 						+ confidenceInterval + " CC is "
 						+ confidenceCoefficient);
 				
-				RSCalculator.calculate(population, proportion,
+				SRSCalculator.calculate(population, proportion,
 						confidenceInterval, confidenceCoefficient);
-				n0 = RSCalculator.getN0();
-				n = RSCalculator.getN();
-				fpc = RSCalculator.getFpc();
+				n0 = SRSCalculator.getN0();
+				n = SRSCalculator.getN();
+				fpc = SRSCalculator.getFpc();
 
 				D.b("SRSDoc.Calculate: n is " + n + " fpc is " + fpc
 						+ " and adjusted n = " + n);
 
-				// D.b("Calculate: n0 is" + n0 + "fpc is " + fpc + " and n = " +
+				////D.b("Calculate: n0 is" + n0 + "fpc is " + fpc + " and n = " +
 				// n);
 				// showResults(n0, fpc, n);
 
@@ -114,15 +114,15 @@ public class SRSDoc extends RSDocBase
 				setProportion(view.getProportionString());
 				setCI(view.getCIString());
 				setCC(view.getCCString());
-				// D.b("doc:setVariables(): ");
-				// D.b("pop = " + population + ". proportion = " + proportion
+				////D.b("doc:setVariables(): ");
+				////D.b("pop = " + population + ". proportion = " + proportion
 				// + ". ci = " + confidenceInterval + " cc = "
 				// + confidenceCoefficient);
 
 			}
 
 		/*
-		 * void graph() { // D.b("Reached SRSDoc.graph()"); chartDoc = new
+		 * void graph() { ////D.b("Reached SRSDoc.graph()"); chartDoc = new
 		 * RSChartDoc<Object>(this, "SRS Chart"); }
 		 */
 		public void getCalculationResults(double n0, double fpc, double n)
@@ -131,9 +131,10 @@ public class SRSDoc extends RSDocBase
 				this.fpc = fpc;
 				this.n = n;
 
-				 D.b("Doc getCalculationResult(): n0 is " + n0 + " fpc = " +
-				 fpc
-				+ "n = " + n);
+				//D.b("Doc getCalculationResult(): n0 is " + n0 + " fpc = " +
+			//	 fpc
+		//		+ "n = " + n);
+			
 				view.update(n0, fpc, n);
 			}
 

@@ -1,14 +1,12 @@
 package cluster;
 
 import javax.swing.JDesktopPane;
-import javax.swing.JOptionPane;
-
-import java.math.*;
 
 import org.apache.commons.math3.distribution.NormalDistribution;
 
-import charts.SRSChartDoc;
 import basesAndUtilites.D;
+import basesAndUtilites.Globals;
+import charts.ClusterChartDoc;
 
 public class ClusterDoc
 {
@@ -31,13 +29,10 @@ public class ClusterDoc
 	
 	
 	//static boolean SUCCESS = false;
-	static final double POP_MAX = 100000000000000000D;
-	static final double POP_MIN = 1000; // No sense in trying to do cluster survey on less
-	static final int POP_MAX_DIGITS = 18;
 	
-	static final double PROPORTION_MAX = 99;
-	static final double PROPORTION_MIN = 1;
-	static final int PROPORTION_MAX_DIGITS = 2;
+	//static final double PROPORTION_MAX = 99;
+	//static final double PROPORTION_MIN = 1;
+	//static final int PROPORTION_MAX_DIGITS = 2;
 	
 	static final double CI_MAX = 50;
 	static final double CI_MIN = 1;
@@ -217,7 +212,7 @@ public class ClusterDoc
 	public void chart()
 		{	
 				D.b("Reached ClusterDoc.chart.");
-			//	SRSChartDoc chartDoc = new SRSChartDoc(desktop, population, proportion, confidenceInterval, confidenceCoefficient, "srs");
+		//		ClusterChartDoc chartDoc = new ClusterChartDoc(desktop);
 			
 			 
 				
@@ -228,7 +223,8 @@ public class ClusterDoc
  	private void setPopulation(String s)
 		{
 			double retval = 0;
-			retval = stringToDouble(s, POP_MIN, POP_MAX, POP_MAX_DIGITS);
+			retval = stringToDouble(s, Globals.POPULATION_MIN, Globals.POPULATION_MAX, Globals.POPULATION_MAX_DIGITS);
+			//Double stringToDouble(String s_in, Double in_min , Double in_max, int in_max_digits)
 			
 			
 			if ( retval > 0)
@@ -252,7 +248,7 @@ public class ClusterDoc
 	private void setProportion(String s)
 		{
 			double retval = 0;
-			retval = stringToDouble(s, PROPORTION_MIN, PROPORTION_MAX, PROPORTION_MAX_DIGITS);
+			retval = stringToDouble(s, Globals.MIN, Globals.MAX, Globals.MAX_DIGITS);
 			if ( retval > 0)
 			{
 				proportion = retval;
