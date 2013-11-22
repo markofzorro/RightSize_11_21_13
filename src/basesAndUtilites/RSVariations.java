@@ -79,10 +79,10 @@ public class RSVariations
 					}
 
 				// Debugger
-				D.b("RSVariations: varyAdd:");
+			/*	D.b("RSVariations: varyAdd:");
 				for (int i = 0; i < Globals.COLS; i++)
 					D.b("array[" + i + "] is " + darray[i]);
-				
+				*/
 				return darray;
 			} // variationsAdd
 		
@@ -96,7 +96,7 @@ public class RSVariations
 				
 
 				double denominator = Math.pow(10, lowCols);
-				D.b("denominator is " + denominator + ". LowCols is " + lowCols);
+			//	D.b("denominator is " + denominator + ". LowCols is " + lowCols);
 
 				// Catch low assumptions
 				if (assumption < Globals.POPULATION_MIN)
@@ -110,7 +110,7 @@ public class RSVariations
 				for (int i = 0; i < lowCols; i++)
 					{
 						double thisVal = assumption / denominator;
-						// D.b("thisVal is " + i + " " + thisVal);
+						//// D.b("thisVal is " + i + " " + thisVal);
 						if (thisVal >= Globals.POPULATION_MIN) // in acceptable range
 							array[arrayIndex++] = thisVal; // assign it and
 															// increment j
@@ -121,7 +121,7 @@ public class RSVariations
 
 						// shrink denominator to get next higher log
 						denominator /= 10;
-						// D.b("array + " + i + " is " + array[i]);
+						//// D.b("array + " + i + " is " + array[i]);
 
 					}
 								// Add the user assumption
@@ -133,16 +133,16 @@ public class RSVariations
 				for (int i = arrayIndex; i < Globals.COLS; i++)
 					{
 						thisVal *= multiplier; // Raise value
-						// D.b("thisVal is " + i + " " + thisVal);
+						//// D.b("thisVal is " + i + " " + thisVal);
 						if (thisVal <= Globals.POPULATION_MAX) // in acceptable range
 							{
 								array[arrayIndex++] = thisVal; // assign it and
 																// increment
 																// arrayIndex
-								D.b("High end: arrayIndex is " + arrayIndex + ". thisval is " + thisVal);
+							//	D.b("High end: arrayIndex is " + arrayIndex + ". thisval is " + thisVal);
 							} else
 							{
-								D.b("RSLogVariations.vary(): Error in filling high end of array. arrayIndex is " + arrayIndex + "thisVal is " + thisVal + " max is " + Globals.POPULATION_MAX);
+							//	D.b("RSLogVariations.vary(): Error in filling high end of array. arrayIndex is " + arrayIndex + "thisVal is " + thisVal + " max is " + Globals.POPULATION_MAX);
 								System.exit(-1);
 							}
 

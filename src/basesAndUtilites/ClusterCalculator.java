@@ -15,7 +15,7 @@ public class ClusterCalculator
 		static private double confidenceInterval = 0;
 		static private double confidenceCoefficient = 0;
 		static private double clusterSize = 0;
-		static private double clusterNumber = 0;
+		static private double clustersNeeded = 0;
 		static private double n = 0;
 		static private double roh = 0;
 		static private double designEffect = 0;
@@ -29,6 +29,7 @@ public class ClusterCalculator
 				double arg_confidenceInterval, double arg_confidenceCoefficient, double arg_clusterSize, double arg_roh )
 			{
 				
+				D.b("Reached ClusterCalculator.calculate.");
 				// Assign class-level vars
 				population = arg_population;
 				proportion = arg_proportion;
@@ -37,6 +38,62 @@ public class ClusterCalculator
 				
 				clusterSize = arg_clusterSize;
 				roh = arg_roh;
+				
+				 
+				 /*					 
+				  * Formula from Bennett:
+				  * D = 1 + (b - 1)* roh
+				  * Where: 
+				  * 	D = design effect
+				  * 	b = clusterSize (number of responses per cluster
+				  * 	roh or rate of homogeneity, is a given  based on estimates. 0.2 is a big one. 
+				  * 
+				  * the number of clusters required is c = p*q*D/(s squared *b)
+				  * 
+				  * Example:
+				  * b = 20
+				  * p = 20%
+				  * roh = 0.2
+				  * ci 5%
+				  *
+				  * requires 18 clusters
+				  *
+				  * 
+				  * 
+				  */
+				// clusterSize = 20;
+				// roh = 0.02;
+				// p = 0.2;
+				 //confidenceInterval = 5;
+				 
+				// get rid of percents
+				proportion = proportion/100; 
+				double ci = confidenceInterval/100; // get rid of percents
+			
+				 
+				 // this is the right one  
+			//	 double standardError = (ci) / z;
+				
+				 double standardError = ci/2;
+				 D.b("calculate: s is " + standardError);
+				 
+				 // for testing
+				// double standardError = 0.025;
+				 designEffect = 1 +(clusterSize - 1) * roh;
+				 
+				 
+				 
+				 double numerator =  (proportion * (1 - proportion) * designEffect);
+				 double denominator = (standardError * standardError * clusterSize);
+				 clustersNeeded = numerator/denominator;
+				 
+				 clustersNeeded = Math.ceil(clustersNeeded);
+				 
+				 D.b("ClusterCalculator.calculate(): Standard Error is " + standardError + " clustersNeeded is " + clustersNeeded + 
+						 ". designEffect is " + designEffect + ". roh is " + roh + ".clusterSize is " + 
+						 clusterSize + "CI Width is " + confidenceInterval + ".");
+				 
+		
 				
 				
 				
@@ -125,7 +182,14 @@ public class ClusterCalculator
 		/***************** Getters and setters ****/
 		public static double getClustersNeeded()
 			{
-				return clusterNumber;
+				return clustersNeeded;
+			}
+
+
+		public static double getDesignEffect()
+			{
+				
+				return designEffect;
 			}
 
 

@@ -80,7 +80,7 @@ import java.awt.GridLayout;
 						// Seventh Row
 						newLabel("Estimated Rate of Homogeneity", 24);
 						fillCols(1);
-						tfROH = newTf("0.2");
+						tfROH = newTf("0.02");
 						add(tfROH);
 						newLabel("%", 24);
 						

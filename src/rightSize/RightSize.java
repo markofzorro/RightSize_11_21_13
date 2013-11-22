@@ -21,6 +21,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
+import basesAndUtilites.Globals;
 import srs.SRSDoc;
 import charts.SRSChartDoc;
 import cluster.ClusterDoc;
@@ -66,6 +67,7 @@ public class RightSize extends JFrame implements ActionListener
 			// Set up the GUI.
 			desktop = new JDesktopPane(); // a specialized layered pane
 			// createFrame(); //create first "window"
+			
 			setContentPane(desktop);
 			// SRSDoc = new SRSSRSDoc(desktop);
 			setJMenuBar(createMenuBar());
