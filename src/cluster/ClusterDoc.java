@@ -16,15 +16,15 @@ public class ClusterDoc
 	private ClusterView view = null;
 	//private SRSView view;
 
-	private double population = 100;
+	private double population = 1000;
 	private double confidenceInterval = 5;
 	private double confidenceCoefficient = 95;
-	private double proportion = 50;
+	private double proportion = 20;
 	
-	private double clusterSize = 0;
+	private double clusterSize = 20;
 	private double clustersNeeded = 0; 
 	private double designEffect = 0;
-	private double roh = 0;
+	private double roh = .02;
 	
 	
 	
@@ -53,7 +53,7 @@ public class ClusterDoc
 			setCC(view.getCCString());
 			setClusterSize(view.getClusterSizeString());
 			setROH(view.getROHString());
-			D.b("Doc:setVariables: roh is " + roh);
+			D.b("ClusterDoc:setVariables: confidenceCoefficient is " + confidenceCoefficient + ". roh is " + roh + ". Clustersize is " + clusterSize);
 			
 		}
 	
@@ -66,6 +66,7 @@ public class ClusterDoc
 			
 			clustersNeeded = ClusterCalculator.getClustersNeeded();
 			designEffect = ClusterCalculator.getDesignEffect();
+			clusterSize = ClusterCalculator.getClusterSize();
 			
 				
 			view.update(clustersNeeded, roh, designEffect);
@@ -127,6 +128,15 @@ public class ClusterDoc
 						
 		}
 	
+	String DoubleToString(double d)
+		{
+			long l = (long) d;
+			String s = Long.toString(l);
+			D.b("s = " + s);
+			
+			return s;
+		}
+	
 	/************************* Setters and Getters *******/
 	
 	
@@ -153,7 +163,7 @@ public class ClusterDoc
 
 	public double getPopulation()
 		{
-			return population;
+			return (long)population;
 		}
 
 	public void setPopulation(double population)
@@ -256,10 +266,10 @@ public class ClusterDoc
 			if ( retval > 0)
 			{
 				confidenceCoefficient = retval;
-				D.b("setCC: retval is: " + retval);
+				D.b("ClusterDoc.setCC():  retval is: " + retval);
 			}
 			else
-			{	
+			{	D.b("ClusterDoc.setCC():  FAILED! retval is: " + retval);
 				confidenceCoefficient = 0; // mark failure
 				
 			}

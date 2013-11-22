@@ -50,7 +50,7 @@ public class SRSTabbedChartPanel extends JPanel
 				
 				tabbedPane.addTab("Width of Confidence Interval", doc.createConfidenceIntervalPanel());
 
-				JPanel confidenceCoefficientPanel = doc.createProportionsPanel();
+				JPanel confidenceCoefficientPanel = doc.createConfidenceCoefficientPanel();
 				tabbedPane.addTab("Confidence Coefficient", doc.createConfidenceCoefficientPanel());
 				
 //				tabbedPane.setSelectedIndex(selectedIndex + 3); // CC is the third panel

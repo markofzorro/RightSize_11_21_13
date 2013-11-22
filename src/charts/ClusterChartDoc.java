@@ -298,36 +298,48 @@ public class ClusterChartDoc
 			} // createconfidenceIntervalPanel?
 		 
 		 
-/* 
-		 * protected JPanel createConfidenceCoefficientPanel() { JPanel panel =
-		 * new JPanel();
-		 * 
-		 * // First, let's do proportion
-		 * 
-		 * // assumption is proportion {
-		 * 
-		 * double[] variedAssumption = RSVariations.add(confidenceCoefficient);
-		 * 
-		 * // create the dataset... DefaultCategoryDataset dataset = new
-		 * DefaultCategoryDataset();
-		 * 
-		 * // dataset.addValue(1.0, series1, type1);
-		 * 
-		 * for (int i = 0; i < Globals.COLS; i++) {
-		 * ClusterCalculator.calculate(population, proportion,
-		 * confidenceInterval, variedAssumption[i]); double value =
-		 * ClusterCalculator.getN(); dataset.addValue(value,
-		 * "confidenceCoefficient", Double.toString( variedAssumption[i])); }
-		 * 
-		 * JFreeChart chart = createChart(dataset);
-		 * //chart.setTitle("Proportion Title"); chart.setTitle(new
-		 * TextTitle("Effect of Confidence Coefficient on Sample Size."));
-		 * CategoryPlot plot = (CategoryPlot) chart.getPlot(); CategoryAxis
-		 * xAxis = plot.getDomainAxis();
-		 * xAxis.setLabel("Confidence Coefficient"); ValueAxis yAxis =
-		 * plot.getRangeAxis(); yAxis.setLabel("Sample Size Needed"); return new
-		 * ChartPanel(chart); } }
-		 */
+		protected JPanel createConfidenceCoefficientPanel()
+			{
+				JPanel panel = new JPanel();
+
+				
+
+				double[] variedAssumption = RSVariations
+						.add(confidenceCoefficient);
+
+				// create the dataset...
+				DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+
+				// dataset.addValue(1.0, series1, type1);
+
+				for (int i = 0; i < Globals.COLS; i++)
+					{
+						ClusterCalculator.calculate(population, proportion,
+								confidenceInterval, variedAssumption[i],
+								clusterSize, roh);
+
+						double clustersNeeded = ClusterCalculator
+								.getClustersNeeded();
+
+						dataset.addValue(clustersNeeded, "Confidence Coefficient",
+								Double.toString(variedAssumption[i]));
+
+						
+
+					}
+
+				JFreeChart chart = createChart(dataset);
+				chart.setTitle(new TextTitle(
+						"Effect of Desired Confidence Coeffecient on Sample Size."));
+				CategoryPlot plot = (CategoryPlot) chart.getPlot();
+				CategoryAxis xAxis = plot.getDomainAxis();
+				xAxis.setLabel("Confidence Coefficient");
+				ValueAxis yAxis = plot.getRangeAxis();
+				yAxis.setLabel("Clusters Needed");
+				
+				return new ChartPanel(chart);
+
+			} // createconfidenceIntervalPanel?
 		  
 		  
 		  

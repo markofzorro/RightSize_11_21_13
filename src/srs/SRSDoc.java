@@ -29,8 +29,8 @@ public class SRSDoc extends RSDocBase
 		protected double n = 0;
 		protected double fpc = 0;
 	//	protected double assumption = 0;
-		protected static double min = 1;
-		protected static double max = 99;
+		//protected static double min = 1;
+	//	protected static double max = 99;
 		private JDesktopPane desktop = null;
 
 		/**

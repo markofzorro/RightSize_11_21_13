@@ -4,6 +4,7 @@ package charts;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
@@ -47,10 +48,11 @@ public class ClusterTabbedChartPanel extends JPanel
 				tabbedPane.addTab("Proportion", clusterChartDoc.createProportionsPanel());
 				
 				tabbedPane.addTab("Width of Confidence Interval", clusterChartDoc.createConfidenceIntervalPanel());
-/*
-				JPanel confidenceCoefficientPanel = clusterChartDoc.createProportionsPanel();
+
+			
+				JPanel confidenceCoefficientPanel = clusterChartDoc.createConfidenceCoefficientPanel();
 				tabbedPane.addTab("Confidence Coefficient", clusterChartDoc.createConfidenceCoefficientPanel());
-	*/			
+				
 				// Add the tabbed pane to this panel.
 				add(tabbedPane, BorderLayout.CENTER);
 

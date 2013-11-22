@@ -1,5 +1,7 @@
 package cluster;
 
+import java.awt.GridLayout;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
@@ -8,11 +10,11 @@ import javax.swing.SwingConstants;
 
 import basesAndUtilites.D;
 import basesAndUtilites.Globals;
-
-import java.awt.GridLayout;
+import basesAndUtilites.RSDoubleToLongToString;
 
 		public class ClusterPanel extends JPanel
 			{
+				private ClusterDoc doc = null;
 				private JTextField tfPop = null;
 				private JTextField tfProportion = null;
 				private JTextField tfCI = null;
@@ -26,13 +28,15 @@ import java.awt.GridLayout;
 				private JLabel lblROH = null;
 			
 
+				
 				/**
 				 * Create the panel. Has four equal sized columns. Adds rows prn.
 				 */
-				public ClusterPanel()
+				public ClusterPanel(ClusterDoc doc)
 					{
 						setLayout(new GridLayout(0, 4));
-						// setSize(500, 500);
+						
+						this.doc = doc;
 
 						// first Row. Must fill three empty columns
 						newLabel("Assumptions:", Globals.TITLE_SIZE);
@@ -41,14 +45,15 @@ import java.awt.GridLayout;
 						// second row
 						newLabel("Target Population Size", Globals.TEXT_SIZE);
 						fillCols(1);
-						tfPop = newTf("1000");
+						tfPop = newTf(RSDoubleToLongToString.convert(doc.getPopulation()));
+						//tfPop = newTf(Double.toString(doc.getPopulation()));
 						add(tfPop);
 						fillCols(1);
 
 						// third row
 						newLabel("Expected Proportion", Globals.TEXT_SIZE);
 						fillCols(1);
-						tfProportion = newTf("50");
+						tfProportion = newTf(RSDoubleToLongToString.convert(doc.getProportion()));
 						add(tfProportion);
 						newLabel("%", Globals.TEXT_SIZE);
 
@@ -58,14 +63,14 @@ import java.awt.GridLayout;
 						lblPm.setHorizontalAlignment(SwingConstants.TRAILING);
 						lblPm.setFont(new java.awt.Font("Lucida Grande", 1, Globals.TEXT_SIZE)); // NOI18N
 						add(lblPm);
-						tfCI = newTf("5");
+						tfCI = newTf(RSDoubleToLongToString.convert(doc.getConfidenceInterval()));
 						add(tfCI);
 						newLabel("%", Globals.TEXT_SIZE);
 
 						// Fifth Row
 						newLabel("Desired Confidence Coeffecient", Globals.TEXT_SIZE);
 						fillCols(1);
-						tfCC = newTf("95");
+						tfCC = newTf(RSDoubleToLongToString.convert(doc.getConfidenceCoefficient()));
 						add(tfCC);
 						newLabel("%", Globals.TEXT_SIZE);
 						
@@ -73,7 +78,7 @@ import java.awt.GridLayout;
 						// Sixth Row
 						newLabel("Desired Cluster Size", Globals.TEXT_SIZE);
 						fillCols(1);
-						tfClusterSize = newTf("10");
+						tfClusterSize = newTf(RSDoubleToLongToString.convert(doc.getClusterSize()));
 						add(tfClusterSize);
 						//newLabel("%", Globals.TEXT_SIZE);
 						fillCols(1);
@@ -81,7 +86,7 @@ import java.awt.GridLayout;
 						// Seventh Row
 						newLabel("Estimated Rate of Homogeneity", Globals.TEXT_SIZE);
 						fillCols(1);
-						tfROH = newTf("0.02");
+						tfROH = newTf(Double.toString(doc.getRoh()));
 						add(tfROH);
 						newLabel("%", Globals.TEXT_SIZE);
 						
@@ -169,12 +174,15 @@ import java.awt.GridLayout;
 
 				public String getCCString()
 					{
+						D.b("ClusterPanel.getCCSizestring(): tfCC is " + tfCC.getText());
 						return tfCC.getText();
 					}
 				
 				public String getClusterSizeString()
-					{
+					
+					{D.b("ClusterPanel.getClusterSizestring(): tfClusterSize is " + tfClusterSize.getText());
 						return tfClusterSize.getText();
+						
 					}
 
 				public String getROHString()
@@ -200,7 +208,7 @@ import java.awt.GridLayout;
 						lblROH.setText(Double.toString(d));
 
 					}
-				
+
 				
 
 				
