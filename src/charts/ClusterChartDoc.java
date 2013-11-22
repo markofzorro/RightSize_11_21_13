@@ -227,8 +227,8 @@ public class ClusterChartDoc
 				  
 		   // dataset(double value, String rowLabel, String columnLabel) 
 				  dataset.addValue(value, "proportion",
-		  Double.toString(variedAssumption[i])); D.b("xLabelArray[" + i +
-		  "] is " + variedAssumption[i]);
+		  Double.toString(variedAssumption[i])); 
+				 // D.b("xLabelArray[" + i +"] is " + variedAssumption[i]);
 		  
 		  
 		  //D.b("dataset[" + i + "] is " +
@@ -243,46 +243,62 @@ public class ClusterChartDoc
 		  )); 
 		  CategoryPlot plot = (CategoryPlot) chart.getPlot(); CategoryAxis
 		  xAxis = plot.getDomainAxis(); xAxis.setLabel("Proportion"); ValueAxis
-		  yAxis = plot.getRangeAxis(); yAxis.setLabel("Sample Size Needed");
+		  yAxis = plot.getRangeAxis(); yAxis.setLabel("Clusters Needed");
 		  return new ChartPanel(chart); 
-		  } 
+		  
+			 } 
 		 
-/*
-		 * protected JPanel createConfidenceIntervalPanel() { JPanel panel = new
-		 * JPanel();
-		 * 
-		 * // First, let's do proportion
-		 * 
-		 * // assumption is proportion {
-		 * 
-		 * double[] variedAssumption = RSVariations.add(confidenceInterval);
-		 * 
-		 * // create the dataset... DefaultCategoryDataset dataset = new
-		 * DefaultCategoryDataset();
-		 * 
-		 * // dataset.addValue(1.0, series1, type1);
-		 * 
-		 * for (int i = 0; i < Globals.COLS; i++) {
-		 * ClusterCalculator.calculate(population, proportion,
-		 * variedAssumption[i], confidenceCoefficient); //alculate(double
-		 * arg_population, double arg_proportion, double arg_confidenceInterval,
-		 * double arg_confidenceCoefficient, double arg_clusterSize, double
-		 * arg_roh ) double value = ClusterCalculator.getN();
-		 * dataset.addValue(value, "confidenceInterval", "\u00B1" +
-		 * Double.toString( variedAssumption[i])); // padd lus/minus sign
-		 * 
-		 * 
-		 * }
-		 * 
-		 * JFreeChart chart = createChart(dataset);
-		 * //chart.setTitle("Proportion Title"); chart.setTitle(new
-		 * TextTitle("Effect of Width of Confidence Interval on Sample Size."));
-		 * CategoryPlot plot = (CategoryPlot) chart.getPlot(); CategoryAxis
-		 * xAxis = plot.getDomainAxis();
-		 * xAxis.setLabel("Width of Confidence Interval"); ValueAxis yAxis =
-		 * plot.getRangeAxis(); yAxis.setLabel("Sample Size Needed"); return new
-		 * ChartPanel(chart); } }
-		 * 
+
+		protected JPanel createConfidenceIntervalPanel()
+			{
+				JPanel panel = new JPanel();
+
+				// First, let's do proportion
+
+				// assumption is proportion {
+
+				double[] variedAssumption = RSVariations
+						.add(confidenceInterval);
+
+				// create the dataset...
+				DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+
+				// dataset.addValue(1.0, series1, type1);
+
+				for (int i = 0; i < Globals.COLS; i++)
+					{
+						ClusterCalculator.calculate(population, proportion,
+								variedAssumption[i], confidenceCoefficient,
+								clusterSize, roh);
+
+						double clustersNeeded = ClusterCalculator
+								.getClustersNeeded();
+
+						dataset.addValue(clustersNeeded, "Confidence Interval",
+								"\u00B1" + Double.toString(variedAssumption[i]));
+
+						// dataset.addValue(clustersNeeded,
+						// "confidenceInterval", "\u00B1" +
+						// Double.toString( variedAssumption[i])); // padd
+						// lus/minus sign
+
+					}
+
+				JFreeChart chart = createChart(dataset);
+				chart.setTitle(new TextTitle(
+						"Effect of Width of Confidence Interval on Sample Size."));
+				CategoryPlot plot = (CategoryPlot) chart.getPlot();
+				CategoryAxis xAxis = plot.getDomainAxis();
+				xAxis.setLabel("Width of Confidence Interval");
+				ValueAxis yAxis = plot.getRangeAxis();
+				yAxis.setLabel("Clusters Needed");
+				
+				return new ChartPanel(chart);
+
+			} // createconfidenceIntervalPanel?
+		 
+		 
+/* 
 		 * protected JPanel createConfidenceCoefficientPanel() { JPanel panel =
 		 * new JPanel();
 		 * 
@@ -312,6 +328,9 @@ public class ClusterChartDoc
 		 * plot.getRangeAxis(); yAxis.setLabel("Sample Size Needed"); return new
 		 * ChartPanel(chart); } }
 		 */
+		  
+		  
+		  
 		/**
 		 * Creates a sample chart.
 		 * 
