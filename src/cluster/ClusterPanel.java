@@ -7,6 +7,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import basesAndUtilites.D;
+import basesAndUtilites.Globals;
 
 import java.awt.GridLayout;
 
@@ -34,55 +35,55 @@ import java.awt.GridLayout;
 						// setSize(500, 500);
 
 						// first Row. Must fill three empty columns
-						newLabel("Assumptions:", 36);
+						newLabel("Assumptions:", Globals.TITLE_SIZE);
 						fillCols(3);
 
 						// second row
-						newLabel("Target Population Size", 24);
+						newLabel("Target Population Size", Globals.TEXT_SIZE);
 						fillCols(1);
-						tfPop = newTf("100");
+						tfPop = newTf("1000");
 						add(tfPop);
 						fillCols(1);
 
 						// third row
-						newLabel("Expected Proportion", 24);
+						newLabel("Expected Proportion", Globals.TEXT_SIZE);
 						fillCols(1);
 						tfProportion = newTf("50");
 						add(tfProportion);
-						newLabel("%", 24);
+						newLabel("%", Globals.TEXT_SIZE);
 
 						// fourth row
-						newLabel("Desired Width of Confidence Interval", 24);
+						newLabel("Desired Width of Confidence Interval", Globals.TEXT_SIZE);
 						JLabel lblPm = new JLabel("\u00B1"); // plus/minus sign
 						lblPm.setHorizontalAlignment(SwingConstants.TRAILING);
-						lblPm.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+						lblPm.setFont(new java.awt.Font("Lucida Grande", 1, Globals.TEXT_SIZE)); // NOI18N
 						add(lblPm);
 						tfCI = newTf("5");
 						add(tfCI);
-						newLabel("%", 24);
+						newLabel("%", Globals.TEXT_SIZE);
 
 						// Fifth Row
-						newLabel("Desired Confidence Coeffecient", 24);
+						newLabel("Desired Confidence Coeffecient", Globals.TEXT_SIZE);
 						fillCols(1);
 						tfCC = newTf("95");
 						add(tfCC);
-						newLabel("%", 24);
+						newLabel("%", Globals.TEXT_SIZE);
 						
 
 						// Sixth Row
-						newLabel("Desired Cluster Size", 24);
+						newLabel("Desired Cluster Size", Globals.TEXT_SIZE);
 						fillCols(1);
 						tfClusterSize = newTf("10");
 						add(tfClusterSize);
-						//newLabel("%", 24);
+						//newLabel("%", Globals.TEXT_SIZE);
 						fillCols(1);
 
 						// Seventh Row
-						newLabel("Estimated Rate of Homogeneity", 24);
+						newLabel("Estimated Rate of Homogeneity", Globals.TEXT_SIZE);
 						fillCols(1);
 						tfROH = newTf("0.02");
 						add(tfROH);
-						newLabel("%", 24);
+						newLabel("%", Globals.TEXT_SIZE);
 						
 
 						// Draw separator across all 4 columns
@@ -93,29 +94,29 @@ import java.awt.GridLayout;
 		/******************* Results start here ***********/
 						// row 7
 						JLabel lblTitle = new JLabel("Results:");
-						lblTitle.setFont(new java.awt.Font("Lucida Grande", 1, 36)); // NOI18N
+						lblTitle.setFont(new java.awt.Font("Lucida Grande", 1, Globals.TITLE_SIZE)); // NOI18N
 						add(lblTitle);
 						fillCols(3);
 
 						// Row 8
-						newLabel("Clusters Needed", 24);
+						newLabel("Clusters Needed", Globals.TEXT_SIZE);
 						fillCols(1);
-						lblClustersNeeded = newLabel("", 24);
+						lblClustersNeeded = newLabel("", Globals.TEXT_SIZE);
 						lblClustersNeeded.setHorizontalAlignment(SwingConstants.TRAILING);
 
 						fillCols(1);
 
 						// Row 9
-						newLabel("Rate of Homogeneity", 24);
+						newLabel("Rate of Homogeneity", Globals.TEXT_SIZE);
 						fillCols(1);
-						lblROH = newLabel("", 24);
+						lblROH = newLabel("", Globals.TEXT_SIZE);
 						lblROH.setHorizontalAlignment(SwingConstants.TRAILING);
 						fillCols(1);
 
 						// Row 9
-						newLabel("Design Effect", 24);
+						newLabel("Design Effect", Globals.TEXT_SIZE);
 						fillCols(1);
-						lblDesignEffect = newLabel("", 24);
+						lblDesignEffect = newLabel("", Globals.TEXT_SIZE);
 						lblDesignEffect.setHorizontalAlignment(SwingConstants.TRAILING);
 						//fillCols(1);
 				}
@@ -135,7 +136,7 @@ import java.awt.GridLayout;
 					{
 						JTextField field = new JTextField(s);
 						field.setHorizontalAlignment(SwingConstants.TRAILING);
-						field.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+						field.setFont(new java.awt.Font("Lucida Grande", 1, Globals.TEXT_SIZE)); // NOI18N
 						return field;
 					}
 

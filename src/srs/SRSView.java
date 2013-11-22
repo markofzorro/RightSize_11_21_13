@@ -209,10 +209,4 @@ public class SRSView extends RSInternalFrame
 		 */
 
 		/******* end getters and setters *****************/
-
-		/**
-		 * @param args
-		 *            the command line arguments
-		 */
-
 	}

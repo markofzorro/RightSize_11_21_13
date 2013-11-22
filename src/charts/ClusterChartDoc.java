@@ -30,12 +30,12 @@ import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.ui.HorizontalAlignment;
 import org.jfree.ui.RectangleEdge;
 
-import cluster.ClusterDoc;
+import basesAndUtilites.ClusterCalculator;
 import basesAndUtilites.D;
 import basesAndUtilites.Globals;
-import basesAndUtilites.ClusterCalculator;
 import basesAndUtilites.RSInternalFrame;
 import basesAndUtilites.RSVariations;
+import cluster.ClusterDoc;
 
 public class ClusterChartDoc
 	{
@@ -198,38 +198,56 @@ public class ClusterChartDoc
 					}
 			}
 
-		/*
-		 * protected JPanel createProportionsPanel() { JPanel panel = new
-		 * JPanel();
-		 * 
-		 * // First, let's do proportion
-		 * 
-		 * // assumption is proportion {
-		 * 
-		 * double[] variedAssumption = RSVariations.add(proportion);
-		 * 
-		 * // create the dataset... DefaultCategoryDataset dataset = new
-		 * DefaultCategoryDataset();
-		 * 
-		 * // dataset.addValue(1.0, series1, type1);
-		 * 
-		 * for (int i = 0; i < Globals.COLS; i++) {
-		 * ClusterCalculator.calculate(population, variedAssumption[i],
-		 * confidenceInterval, confidenceCoefficient); double value =
-		 * ClusterCalculator.getN(); // dataset(double value, String rowLabel,
-		 * String columnLabel) dataset.addValue(value, "proportion",
-		 * Double.toString(variedAssumption[i])); D.b("xLabelArray[" + i +
-		 * "] is " + variedAssumption[i]); //D.b("dataset[" + i + "] is " +
-		 * darray[i] ); }
-		 * 
-		 * JFreeChart chart = createChart(dataset);
-		 * //chart.setTitle("Proportion Title"); chart.setTitle(new
-		 * TextTitle("Effect of Target Population Proportions on Sample Size."
-		 * )); CategoryPlot plot = (CategoryPlot) chart.getPlot(); CategoryAxis
-		 * xAxis = plot.getDomainAxis(); xAxis.setLabel("Proportion"); ValueAxis
-		 * yAxis = plot.getRangeAxis(); yAxis.setLabel("Sample Size Needed");
-		 * return new ChartPanel(chart); } }
-		 * 
+		
+		 protected JPanel createProportionsPanel() 
+			 { JPanel panel = new
+		 JPanel();
+		  
+		  // First, let's do proportion
+		  
+		  // assumption is proportion {
+		  
+		  double[] variedAssumption = RSVariations.add(proportion);
+		  
+		  // create the dataset... 
+		  DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+		  
+		  // dataset.addValue(1.0, series1, type1);
+		  
+		  for (int i = 0; i < Globals.COLS; i++) 
+			  {
+				  
+				  ClusterCalculator.calculate(
+							population, variedAssumption[i],
+							confidenceInterval,
+							confidenceCoefficient, clusterSize,
+							roh);
+				  
+				  double value = ClusterCalculator.getClustersNeeded();
+				  
+		   // dataset(double value, String rowLabel, String columnLabel) 
+				  dataset.addValue(value, "proportion",
+		  Double.toString(variedAssumption[i])); D.b("xLabelArray[" + i +
+		  "] is " + variedAssumption[i]);
+		  
+		  
+		  //D.b("dataset[" + i + "] is " +
+		  //darray[i] ); 
+		  
+			  }
+		  
+		  JFreeChart chart = createChart(dataset);
+		  //chart.setTitle("Proportion Title"); 
+		  chart.setTitle(new
+		  TextTitle("Effect of Target Population Proportions on Sample Size."
+		  )); 
+		  CategoryPlot plot = (CategoryPlot) chart.getPlot(); CategoryAxis
+		  xAxis = plot.getDomainAxis(); xAxis.setLabel("Proportion"); ValueAxis
+		  yAxis = plot.getRangeAxis(); yAxis.setLabel("Sample Size Needed");
+		  return new ChartPanel(chart); 
+		  } 
+		 
+/*
 		 * protected JPanel createConfidenceIntervalPanel() { JPanel panel = new
 		 * JPanel();
 		 * 

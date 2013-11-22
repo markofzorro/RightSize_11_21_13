@@ -16,7 +16,7 @@ import charts.SRSChartDoc;
  * SRS
  * 
  * @author markofzero
- * wxtends RSDocBase
+ * extends RSDocBase
  * 
  */
 public class SRSDoc extends RSDocBase
@@ -155,5 +155,5 @@ public class SRSDoc extends RSDocBase
 		
 		
 		
-		/************ ERnd Getters and Setters **********/
+		/************ Ennd Getters and Setters **********/
 	} // end of SRSDocument

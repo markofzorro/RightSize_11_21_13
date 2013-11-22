@@ -42,10 +42,10 @@ public class ClusterTabbedChartPanel extends JPanel
 				//tabbedPane.addTab("Population", popPanel);
 				JPanel populationPanel = clusterChartDoc.createPopulatonPanel();
 				tabbedPane.addTab("Population", populationPanel);
-/************* ADD THESE IN AS YOU BUILD THE TABBED PANE ********************				
+/************* ADD THESE IN AS YOU BUILD THE TABBED PANE ********************/				
 				JPanel chartPanel = clusterChartDoc.createProportionsPanel();
 				tabbedPane.addTab("Proportion", clusterChartDoc.createProportionsPanel());
-				
+	/*			
 				tabbedPane.addTab("Width of Confidence Interval", clusterChartDoc.createConfidenceIntervalPanel());
 
 				JPanel confidenceCoefficientPanel = clusterChartDoc.createProportionsPanel();

@@ -31,18 +31,10 @@ public class ClusterDoc
 	public ClusterDoc(JDesktopPane desktop) 
 	{
 		this.desktop = desktop;
-		//Calculate();
-
-		/* temporarily skip these steps while I test the formula*/
-		  
-		 
+				 
 		view = new ClusterView(this, "Cluster Sample");
 		view.setVisible(true); // necessary as of 1.3
 		desktop.add(view);
-		//SRSResultsView resultsView = new SRSResultsView(this);
-	//	resultsView.setVisible(true); // necessary as of 1.3
-	//	desktop.add(resultsView);
-		
 	
 		try
 		{
@@ -50,7 +42,7 @@ public class ClusterDoc
 		} catch (java.beans.PropertyVetoException e)
 		{
 		}
-		//* add some of these back when calculation works. */
+		
 	}
 
 	public void setVariables()
@@ -63,23 +55,8 @@ public class ClusterDoc
 			setROH(view.getROHString());
 			D.b("Doc:setVariables: roh is " + roh);
 			
-		//	if (SUCCESS)
-//			calculate();
-		
-			//{
-				// reset the variables;
-			//	population = proportion = confidenceInterval = 0;
-				// reset the view to defaults
-			//	view.resetToDefaults();
-			//}
-				
-			
-//			D.b("pop = " + population + ". proportion = " + proportion + ". ci = " + confidenceInterval + " cc = "+ confidenceCoefficient);
 		}
 	
-/**
- *  Formula from Bennett, WHO Stat Quarterly 44(3), 98-106, 1991	
- */
 	public void calculate()
 		{
 			setVariables();
