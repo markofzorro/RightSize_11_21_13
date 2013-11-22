@@ -153,7 +153,7 @@ public class ClusterChartDoc
 										variedAssumption[i], proportion,
 										confidenceInterval,
 										confidenceCoefficient, clusterSize,
-										clustersNeeded);
+										roh);
 								double value = ClusterCalculator
 										.getClustersNeeded();
 								// dataset(double value, String rowLabel, String
