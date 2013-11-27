@@ -29,7 +29,7 @@ import basesAndUtilites.RSInternalFrame;
 public class ClusterView extends RSInternalFrame
 	{
 		private ClusterDoc doc = null;
-		private ClusterPanel ClusterPanel = null;
+		private cluster.ClusterPanel ClusterPanel = null;
 		JButton graphButton = null;
 
 		private double clusterSize = 0;
@@ -159,7 +159,7 @@ public class ClusterView extends RSInternalFrame
 			{
 				
 				
-				return ClusterPanel.getPopString();
+				return ClusterPanel.getPopulationString();
 			}
 
 		public String getProportionString()
@@ -167,21 +167,22 @@ public class ClusterView extends RSInternalFrame
 				return ClusterPanel.getProportionString();
 			}
 
-		public String getCIString()
+		public String getConfidenceIntervalString()
 			{
-				return ClusterPanel.getCIString();
+				return ClusterPanel.getConfidenceIntervalString();
 			}
 
-		public String getCCString()
+		public String getConfidenceLevelString()
 			{
-				D.b("Clusterview.getCCString(): CC is " +  ClusterPanel.getCCString());
-				return ClusterPanel.getCCString();
+			//	D.b("Clusterview.getCCString(): CC is " +  ClusterPanel.getCCString());
+				return ClusterPanel.getConfidenceLevelString();
+				
 			}
 
 		public void setClustersNeeded(double d)
 			{
 
-				ClusterPanel.setLblClustersNeeded(d);;
+				ClusterPanel.setLblClustersNeeded(d);
 			}
 
 		public void setDesignEffect(double d)
