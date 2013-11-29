@@ -29,12 +29,21 @@ public class ClusterPanel extends JPanel
 	private JTextField tfConfidenceInterval = null;
 	private JTextField tfConfidencelevel = null;
 	private JTextField tfClusterSize = null;
-	private JTextField tfROH = null;
+	private String rohString= null;
 
 	// Result labels
-	private JLabel lblClustersNeeded = null;
-	private JLabel lblDesignEffect= null;
-	private JLabel lblROH = null;
+//	private JLabel lblClustersNeeded = null;
+//	private JLabel lblDesignEffect= null;
+	//private JLabel lblROH = null;
+	
+	private JLabel lblClustersNeededResult = null;
+	private JLabel lblTotalResponsesResult = null;
+	private JLabel lblDesignEffectResult = null;
+	private JLabel lblTotalResponsesNeededResult = null;
+	
+	
+	
+	
 
 		/**
 		 * Create the panel.
@@ -45,12 +54,12 @@ public class ClusterPanel extends JPanel
 
 				GridBagLayout gridBagLayout = new GridBagLayout();
 				gridBagLayout.columnWidths = new int[] { 1, 0, 0, 0, 0, 0, 0 };
-				gridBagLayout.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0, 0,
+				gridBagLayout.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0,
 						0, 15, 0, 0, 0, 0 };
 				gridBagLayout.columnWeights = new double[] { 0.0, 0.0, 0.0,
 						1.0, 0.0, 0.0, 0.0 };
 				gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0,
-						0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+						0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
 						Double.MIN_VALUE };
 				setLayout(gridBagLayout);
 
@@ -58,7 +67,7 @@ public class ClusterPanel extends JPanel
 						"Enter You Assumptions");
 				GridBagConstraints gbc_lblEnterYouAssumptions = new GridBagConstraints();
 				gbc_lblEnterYouAssumptions.gridwidth = 6;
-				gbc_lblEnterYouAssumptions.insets = new Insets(0, 0, 5, 5);
+				gbc_lblEnterYouAssumptions.insets = new Insets(0, 0, 5, 0);
 				gbc_lblEnterYouAssumptions.gridx = 1;
 				gbc_lblEnterYouAssumptions.gridy = 0;
 				add(lblEnterYouAssumptions, gbc_lblEnterYouAssumptions);
@@ -79,7 +88,7 @@ public class ClusterPanel extends JPanel
 				add(lblPopulation, gbc_lblPopulation);
 
 				tfPopulation = new JTextField();
-				tfPopulation.setText("tfPopulation goes here");
+				tfPopulation.setText("1000");
 				GridBagConstraints gbc_tfPopulation = new GridBagConstraints();
 				gbc_tfPopulation.insets = new Insets(0, 0, 5, 5);
 				gbc_tfPopulation.fill = GridBagConstraints.HORIZONTAL;
@@ -98,7 +107,7 @@ public class ClusterPanel extends JPanel
 				add(lblProportion, gbc_lblProportion);
 
 				tfProportion = new JTextField();
-				tfProportion.setText("proportionTf");
+				tfProportion.setText("50");
 				GridBagConstraints gbc_tfProportion = new GridBagConstraints();
 				gbc_tfProportion.insets = new Insets(0, 0, 5, 5);
 				gbc_tfProportion.fill = GridBagConstraints.HORIZONTAL;
@@ -127,7 +136,7 @@ public class ClusterPanel extends JPanel
 				add(lblPm, gbc_lblPm);
 
 				tfConfidenceInterval = new JTextField();
-				tfConfidenceInterval.setText("tfConfidenceInterval");
+				tfConfidenceInterval.setText("10");
 				GridBagConstraints gbc_tfConfidenceInterval = new GridBagConstraints();
 				gbc_tfConfidenceInterval.insets = new Insets(0, 0, 5, 5);
 				gbc_tfConfidenceInterval.fill = GridBagConstraints.HORIZONTAL;
@@ -145,7 +154,7 @@ public class ClusterPanel extends JPanel
 				add(lblConfidenceLevel, gbc_lblConfidenceLevel);
 
 				tfConfidencelevel = new JTextField();
-				tfConfidencelevel.setText("tfConfidencelevel");
+				tfConfidencelevel.setText("5");
 				GridBagConstraints gbc_tfConfidencelevel = new GridBagConstraints();
 				gbc_tfConfidencelevel.insets = new Insets(0, 0, 5, 5);
 				gbc_tfConfidencelevel.fill = GridBagConstraints.HORIZONTAL;
@@ -163,26 +172,49 @@ public class ClusterPanel extends JPanel
 
 				JLabel PercentLbl = new JLabel("");
 				GridBagConstraints gbc_PercentLbl = new GridBagConstraints();
-				gbc_PercentLbl.insets = new Insets(0, 0, 5, 5);
+				gbc_PercentLbl.insets = new Insets(0, 0, 5, 0);
 				gbc_PercentLbl.gridx = 6;
 				gbc_PercentLbl.gridy = 5;
 				add(PercentLbl, gbc_PercentLbl);
+				
+				JLabel lblDesiredClusterSize = new JLabel("Desired Cluster Size");
+				GridBagConstraints gbc_lblDesiredClusterSize = new GridBagConstraints();
+				gbc_lblDesiredClusterSize.anchor = GridBagConstraints.WEST;
+				gbc_lblDesiredClusterSize.insets = new Insets(0, 0, 5, 5);
+				gbc_lblDesiredClusterSize.gridx = 1;
+				gbc_lblDesiredClusterSize.gridy = 6;
+				add(lblDesiredClusterSize, gbc_lblDesiredClusterSize);
+				
+				tfClusterSize = new JTextField();
+				tfClusterSize.setText("10");
+				GridBagConstraints gbc_txttfClusterSize = new GridBagConstraints();
+				gbc_txttfClusterSize.insets = new Insets(0, 0, 5, 5);
+				gbc_txttfClusterSize.fill = GridBagConstraints.HORIZONTAL;
+				gbc_txttfClusterSize.gridx = 3;
+				gbc_txttfClusterSize.gridy = 6;
+				add(tfClusterSize, gbc_txttfClusterSize);
+				tfClusterSize.setColumns(10);
 
 				JLabel lblRateOfHomogeneity = new JLabel("Rate of Homogeneity");
 				GridBagConstraints gbc_lblRateOfHomogeneity = new GridBagConstraints();
 				gbc_lblRateOfHomogeneity.anchor = GridBagConstraints.WEST;
 				gbc_lblRateOfHomogeneity.insets = new Insets(0, 0, 5, 5);
 				gbc_lblRateOfHomogeneity.gridx = 1;
-				gbc_lblRateOfHomogeneity.gridy = 6;
+				gbc_lblRateOfHomogeneity.gridy = 7;
 				add(lblRateOfHomogeneity, gbc_lblRateOfHomogeneity);
-
-				JComboBox RohcomboBox = new JComboBox();
-				GridBagConstraints gbc_RohcomboBox = new GridBagConstraints();
-				gbc_RohcomboBox.insets = new Insets(0, 0, 5, 5);
-				gbc_RohcomboBox.fill = GridBagConstraints.HORIZONTAL;
-				gbc_RohcomboBox.gridx = 3;
-				gbc_RohcomboBox.gridy = 6;
-				add(RohcomboBox, gbc_RohcomboBox);
+				
+			/*	ClusterRohComboBox rohComboBox = new ClusterRohComboBox(this);
+				tfClusterSize.setText("tfClusterSize");
+				GridBagConstraints gbc_txttfClusterSize = new GridBagConstraints();
+				gbc_txttfClusterSize.insets = new Insets(0, 0, 5, 5);
+				gbc_txttfClusterSize.fill = GridBagConstraints.HORIZONTAL;
+				gbc_txttfClusterSize.gridx = 3;
+				gbc_txttfClusterSize.gridy = 6;
+				add(tfClusterSize, gbc_txttfClusterSize);
+				tfClusterSize.setColumns(10);
+				*/
+				
+				
 				/*
 				 * for separator, just make a series of drawing lines across the
 				 * columns. GridBagConstraints separatorConstraint = new
@@ -204,8 +236,23 @@ public class ClusterPanel extends JPanel
 				GridBagConstraints gbc_separator_1 = new GridBagConstraints();
 				gbc_separator_1.insets = new Insets(0, 0, 5, 5);
 				gbc_separator_1.gridx = 1;
-				gbc_separator_1.gridy = 8;
+				gbc_separator_1.gridy = 9;
 				gbc_separator.fill = JSeparator.HORIZONTAL;
+				
+				//Indices start at 0, so 4 specifies the pig.
+				//JComboBox petList = new JCom boBox(petStrings);
+				//petList.setSelectedIndex(4);
+				
+				// Set default value for roh
+				rohString = "0.02";
+				ClusterRohComboBox clusterRohComboBox = new ClusterRohComboBox((ClusterPanel) null);
+				GridBagConstraints gbc_clusterRohComboBox = new GridBagConstraints();
+				gbc_clusterRohComboBox.anchor = GridBagConstraints.EAST;
+				gbc_clusterRohComboBox.insets = new Insets(0, 0, 5, 5);
+				gbc_clusterRohComboBox.fill = GridBagConstraints.VERTICAL;
+				gbc_clusterRohComboBox.gridx = 3;
+				gbc_clusterRohComboBox.gridy = 7;
+				add(clusterRohComboBox, gbc_clusterRohComboBox);
 				add(separator_1, gbc_separator_1);
 
 				JLabel lblResults = new JLabel("Results");
@@ -213,7 +260,7 @@ public class ClusterPanel extends JPanel
 				gbc_lblResults.gridwidth = 5;
 				gbc_lblResults.insets = new Insets(0, 0, 5, 5);
 				gbc_lblResults.gridx = 1;
-				gbc_lblResults.gridy = 9;
+				gbc_lblResults.gridy = 10;
 				add(lblResults, gbc_lblResults);
 
 				JLabel lblClustersNeeded = new JLabel("Clusters Needed");
@@ -221,25 +268,25 @@ public class ClusterPanel extends JPanel
 				gbc_lblClustersNeeded.anchor = GridBagConstraints.WEST;
 				gbc_lblClustersNeeded.insets = new Insets(0, 0, 5, 5);
 				gbc_lblClustersNeeded.gridx = 1;
-				gbc_lblClustersNeeded.gridy = 10;
+				gbc_lblClustersNeeded.gridy = 11;
 				add(lblClustersNeeded, gbc_lblClustersNeeded);
 
-				JLabel lblClustersNeededResults = new JLabel(
+				lblClustersNeededResult = new JLabel(
 						"clusters Need Goes Here");
 				GridBagConstraints gbc_lblClustersNeededResults = new GridBagConstraints();
 				gbc_lblClustersNeededResults.anchor = GridBagConstraints.WEST;
 				gbc_lblClustersNeededResults.insets = new Insets(0, 0, 5, 5);
 				gbc_lblClustersNeededResults.gridx = 3;
-				gbc_lblClustersNeededResults.gridy = 10;
-				add(lblClustersNeededResults, gbc_lblClustersNeededResults);
+				gbc_lblClustersNeededResults.gridy = 11;
+				add(lblClustersNeededResult, gbc_lblClustersNeededResults);
 
-				JLabel lblDesignEffect = new JLabel("Design Effect");
+				lblDesignEffectResult = new JLabel("Design Effect");
 				GridBagConstraints gbc_lblDesignEffect = new GridBagConstraints();
 				gbc_lblDesignEffect.anchor = GridBagConstraints.WEST;
 				gbc_lblDesignEffect.insets = new Insets(0, 0, 5, 5);
 				gbc_lblDesignEffect.gridx = 1;
-				gbc_lblDesignEffect.gridy = 11;
-				add(lblDesignEffect, gbc_lblDesignEffect);
+				gbc_lblDesignEffect.gridy = 12;
+				add(lblDesignEffectResult, gbc_lblDesignEffect);
 
 				JLabel lblDesignEffectResults = new JLabel(
 						"Design Effect Goes Here");
@@ -247,26 +294,26 @@ public class ClusterPanel extends JPanel
 				gbc_lblDesignEffectResults.anchor = GridBagConstraints.WEST;
 				gbc_lblDesignEffectResults.insets = new Insets(0, 0, 5, 5);
 				gbc_lblDesignEffectResults.gridx = 3;
-				gbc_lblDesignEffectResults.gridy = 11;
+				gbc_lblDesignEffectResults.gridy = 12;
 				add(lblDesignEffectResults, gbc_lblDesignEffectResults);
 
-				JLabel lblTotalResponsesNeeded = new JLabel(
+				lblTotalResponsesResult = new JLabel(
 						"Total Responses Needed");
 				GridBagConstraints gbc_lblTotalResponsesNeeded = new GridBagConstraints();
 				gbc_lblTotalResponsesNeeded.anchor = GridBagConstraints.WEST;
 				gbc_lblTotalResponsesNeeded.insets = new Insets(0, 0, 0, 5);
 				gbc_lblTotalResponsesNeeded.gridx = 1;
-				gbc_lblTotalResponsesNeeded.gridy = 12;
-				add(lblTotalResponsesNeeded, gbc_lblTotalResponsesNeeded);
+				gbc_lblTotalResponsesNeeded.gridy = 13;
+				add(lblTotalResponsesResult, gbc_lblTotalResponsesNeeded);
 
-				JLabel lblTotalResponsesGoes = new JLabel(
+				lblTotalResponsesResult = new JLabel(
 						"Total Responses Goes here");
-				GridBagConstraints gbc_lblTotalResponsesGoes = new GridBagConstraints();
-				gbc_lblTotalResponsesGoes.anchor = GridBagConstraints.WEST;
-				gbc_lblTotalResponsesGoes.insets = new Insets(0, 0, 0, 5);
-				gbc_lblTotalResponsesGoes.gridx = 3;
-				gbc_lblTotalResponsesGoes.gridy = 12;
-				add(lblTotalResponsesGoes, gbc_lblTotalResponsesGoes);
+				GridBagConstraints gbc_lblTotalResponsesResult = new GridBagConstraints();
+				gbc_lblTotalResponsesResult.anchor = GridBagConstraints.WEST;
+				gbc_lblTotalResponsesResult.insets = new Insets(0, 0, 0, 5);
+				gbc_lblTotalResponsesResult.gridx = 3;
+				gbc_lblTotalResponsesResult.gridy = 13;
+				add(lblTotalResponsesResult, gbc_lblTotalResponsesResult);
 
 				/*
 				 * JSeparator separator_1 = new JSeparator(); GridBagConstraints
@@ -330,81 +377,40 @@ public class ClusterPanel extends JPanel
 						return tfConfidenceInterval.getText();
 			}
 
-		public void setTfConfidenceInterval(JTextField tfConfidenceInterval)
-			{
-				this.tfConfidenceInterval = tfConfidenceInterval;
-			}
-
+		
 		public String getConfidenceLevelString()
 			{
 				return tfConfidencelevel.getText();
 			}
 
-		public void setTfConfidencelevel(JTextField tfConfidencelevel)
-			{
-				this.tfConfidencelevel = tfConfidencelevel;
-			}
-
-		public JTextField getTfClusterSize()
-			{
-				return tfClusterSize;
-			}
-
-		public void setTfClusterSize(JTextField tfClusterSize)
-			{
-				this.tfClusterSize = tfClusterSize;
-			}
-
-		public JTextField getTfROH()
-			{
-				return tfROH;
-			}
-
-		public void setTfROH(JTextField tfROH)
-			{
-				this.tfROH = tfROH;
-			}
-
-		public JLabel getLblClustersNeeded()
-			{
-				return lblClustersNeeded;
-			}
-
+		
 		public void setLblClustersNeeded(double d)
 			{
-				lblClustersNeeded.setText(Double.toString(d));
+				lblClustersNeededResult.setText(Double.toString(d));
 			}
 
-		public JLabel getLblDesignEffect()
-			{
-				return lblDesignEffect;
-			}
-
+		
 		public void setLblDesignEffect(double d)
 			{
-				lblDesignEffect.setText(Double.toString(d));
+				lblDesignEffectResult.setText(Double.toString(d));
 			}
 
-		public JLabel getLblROH()
+		
+		public void setRohString(double d)
 			{
-				return lblROH;
-			}
-
-		public void setLblROH(double d)
-			{
-				this.lblROH.setText(Double.toString(d));
+				rohString = String.valueOf(d);
 			}
 		public String getClusterSizeString()
 		
 			{
-				//D.b("ClusterPanel.getClusterSizestring(): tfClusterSize is " + tfClusterSize.getText());
+				D.b("ClusterPanel.getClusterSizestring(): tfClusterSize is " + tfClusterSize.getText());
 				return tfClusterSize.getText();
 				
 			}
 		
 		public String getROHString()
 			{
-				return tfROH.getText();
+				return rohString;
 			}
 
 		

@@ -148,7 +148,7 @@ public class ClusterView extends RSInternalFrame
 
 				setClustersNeeded(clustersNeeded);
 				//= clustersNeeded;
-				setROH(roh);
+				setRohString(roh);
 				setDesignEffect(designEffect);
 				revalidate();
 
@@ -190,9 +190,10 @@ public class ClusterView extends RSInternalFrame
 				ClusterPanel.setLblDesignEffect(d);
 				// ClusterPanel.setLblN(d);
 			}
-		public void setROH(double d)
+		public void setRohString(double d)
 			{
-				ClusterPanel.setLblROH(d);
+				D.b("Clusterview.setRohString: d is " + d);
+				ClusterPanel.setRohString(d);
 				// ClusterPanel.setLblN(d);
 			}
 		

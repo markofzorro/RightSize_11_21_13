@@ -49,8 +49,8 @@ public class ClusterDoc
 		{
 			setPopulation(view.getPopString());
 			setProportion(view.getProportionString());
-			setCI(view.getCIString());
-			setCC(view.getCCString());
+			setCI(view.getConfidenceIntervalString());
+			setCC(view.getConfidenceLevelString());
 			setClusterSize(view.getClusterSizeString());
 			setROH(view.getROHString());
 			D.b("ClusterDoc:setVariables: confidenceCoefficient is " + confidenceCoefficient + ". roh is " + roh + ". Clustersize is " + clusterSize);
