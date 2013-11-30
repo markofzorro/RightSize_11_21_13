@@ -182,7 +182,7 @@ public class ClusterView extends RSInternalFrame
 		public void setClustersNeeded(double d)
 			{
 
-				ClusterPanel.setLblClustersNeeded(d);
+				ClusterPanel.setLblClustersNeededResult(d);
 			}
 
 		public void setDesignEffect(double d)

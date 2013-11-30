@@ -30,11 +30,11 @@ import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.ui.HorizontalAlignment;
 import org.jfree.ui.RectangleEdge;
 
+import srs.SRSCalculator;
 import basesAndUtilites.D;
 import basesAndUtilites.Globals;
 import basesAndUtilites.RSInternalFrame;
 import basesAndUtilites.RSVariations;
-import basesAndUtilites.SRSCalculator;
 
 public class SRSChartDoc
 	{

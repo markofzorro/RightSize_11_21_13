@@ -67,10 +67,13 @@ public class ClusterRohComboBox extends JPanel implements ActionListener
 				// Set up the UI for selecting an roh
 
 				JLabel titleLabel1 = new JLabel(
-						"Estimates of Rate of Homogenaity are based on");
+						"Estimates of Rate of Homogeneity are based on");
 				JLabel titleLabel2 = new JLabel(
-						"results of previous surveys in your population,");
-				JLabel titleLabel3 = new JLabel("or select one from this list.");
+						"results of previous surveys in your population.");
+				JLabel titleLabel2_5 = new JLabel(
+						"See tutorial for instructions.");
+				
+				JLabel titleLabel3 = new JLabel("Or, select one from this list.");
 				// JLabel titleLabel4 = new JLabel("Select one from the list:");
 
 				JComboBox box = new JComboBox(rohExamples);

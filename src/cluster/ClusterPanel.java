@@ -384,7 +384,7 @@ public class ClusterPanel extends JPanel
 			}
 
 		
-		public void setLblClustersNeeded(double d)
+		public void setLblClustersNeededResult(double d)
 			{
 				lblClustersNeededResult.setText(Double.toString(d));
 			}

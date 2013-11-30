@@ -4,7 +4,6 @@ import javax.swing.JDesktopPane;
 
 import org.apache.commons.math3.distribution.NormalDistribution;
 
-import basesAndUtilites.ClusterCalculator;
 import basesAndUtilites.D;
 import basesAndUtilites.Globals;
 import charts.ClusterChartDoc;
@@ -66,7 +65,7 @@ public class ClusterDoc
 			
 			clustersNeeded = ClusterCalculator.getClustersNeeded();
 			designEffect = ClusterCalculator.getDesignEffect();
-			clusterSize = ClusterCalculator.getClusterSize();
+			//clusterSize = ClusterCalculator.getClusterSize();
 			
 				
 			view.update(clustersNeeded, roh, designEffect);
@@ -379,4 +378,4 @@ public class ClusterDoc
 	
 	
 		
-} // end of SRSDocument
+} // end of ClusterDocument

@@ -30,11 +30,11 @@ import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.ui.HorizontalAlignment;
 import org.jfree.ui.RectangleEdge;
 
-import basesAndUtilites.ClusterCalculator;
 import basesAndUtilites.D;
 import basesAndUtilites.Globals;
 import basesAndUtilites.RSInternalFrame;
 import basesAndUtilites.RSVariations;
+import cluster.ClusterCalculator;
 import cluster.ClusterDoc;
 
 public class ClusterChartDoc

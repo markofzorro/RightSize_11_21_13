@@ -6,7 +6,6 @@ import javax.swing.JDialog;
 import org.apache.commons.math3.distribution.NormalDistribution;
 
 import basesAndUtilites.D;
-import basesAndUtilites.SRSCalculator;
 import basesAndUtilites.RSDocBase;
 import charts.SRSChartDoc;
 
