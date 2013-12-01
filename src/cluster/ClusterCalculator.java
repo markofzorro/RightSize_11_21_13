@@ -2,6 +2,8 @@ package cluster;
 
 import org.apache.commons.math3.distribution.NormalDistribution;
 
+import basesAndUtilites.D;
+
 /**
  * Declare static so won't have the overhead of creating new object every time
  * you use repetitively.<br>
@@ -56,7 +58,10 @@ public class ClusterCalculator
 																	// calculate
 																	// inverse
 
-				double z = nd.inverseCumulativeProbability((alpha / 2));
+				double z = nd.inverseCumulativeProbability((alpha/2));
+				D.b("invCumulativePropabilty says: alpha is " + alpha + " z is " + z );
+			//	z = 1.96; //debugger/
+				
 				double z2 = z * z;
 				double p = proportion / 100;
 				double q = 1 - p;
@@ -69,8 +74,6 @@ public class ClusterCalculator
 				// Now just multiply SRS calculation by design effect.
 				
 				designEffect = 1 + (clusterSize - 1) * roh;
-				designEffect = 2;
-
 				n = n0 * designEffect;
 
 				n = Math.ceil(n);
@@ -103,20 +106,17 @@ public class ClusterCalculator
 			{
 				return clustersNeeded;
 			}
-
-		public static double getClusterSize()
-			{
-				return clusterSize;
-			}
-
-	/*	public static void main(String[] args)
+/*
+		
+		public static void main(String[] args)
 			{
 				// SRSCalculator calc = new SRSCalculator();
-				ClusterCalculate.calculate(1000, 50, 5, 95, 20, 0.00);
-				D.b("n0 is " + ClusterCalculate.getN0() + " D is "
-						+ ClusterCalculate.getDesignEffect() + " n is: " + ClusterCalculate.getN()
-						+ " we need " + ClusterCalculate.getClustersNeeded() + " clusters");
+				ClusterCalculator.calculate(1000, 50, 5, 95, 20, 0.02);
+				D.b("n0 is " + ClusterCalculator.getN0() + " D is "
+						+ ClusterCalculator.getDesignEffect() + " n is: " + ClusterCalculator.getN()
+						+ " we need " + ClusterCalculator.getClustersNeeded() + " clusters");
 
 			}
 */
+		
 	}

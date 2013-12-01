@@ -16,6 +16,6 @@ public class Globals
 	static public final int TITLE_SIZE = 24;
 	public static final int MAX_DIGITS = 2;
 	public static final double ROH_MAX = 10;
-	public static final double ROH_MIN = 0.0001;
+	public static final double ROH_MIN = 0;
 	public static int ROH_MAX_DIGITS = 5;
 }

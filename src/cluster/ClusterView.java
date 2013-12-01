@@ -45,6 +45,7 @@ public class ClusterView extends RSInternalFrame
 		private javax.swing.JButton cancelButton;
 
 		private JPanel buttonPanel;
+		
 
 		// end variable declarations
 
@@ -179,6 +180,11 @@ public class ClusterView extends RSInternalFrame
 				
 			}
 
+		public double getClustersNeeded()
+			{
+				return clustersNeeded;
+			}
+		
 		public void setClustersNeeded(double d)
 			{
 

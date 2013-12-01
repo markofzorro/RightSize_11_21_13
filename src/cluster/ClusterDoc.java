@@ -23,7 +23,7 @@ public class ClusterDoc
 	private double clusterSize = 20;
 	private double clustersNeeded = 0; 
 	private double designEffect = 0;
-	private double roh = .02;
+	private double roh = 0;
 	
 	
 	
@@ -52,7 +52,8 @@ public class ClusterDoc
 			setCC(view.getConfidenceLevelString());
 			setClusterSize(view.getClusterSizeString());
 			setROH(view.getROHString());
-			D.b("ClusterDoc:setVariables: confidenceCoefficient is " + confidenceCoefficient + ". roh is " + roh + ". Clustersize is " + clusterSize);
+			setClustersNeeded(view.getClustersNeeded());
+			D.b("ClusterDoc:setVariables: clustersNeeded is " + clustersNeeded + " confidenceCoefficient is " + confidenceCoefficient + ". roh is " + roh + ". Clustersize is " + clusterSize);
 			
 		}
 	
@@ -60,12 +61,13 @@ public class ClusterDoc
 		{
 			setVariables();
 		
+					
 			ClusterCalculator.calculate(population, proportion, 
 						confidenceInterval, confidenceCoefficient, clusterSize, roh );
 			
 			clustersNeeded = ClusterCalculator.getClustersNeeded();
 			designEffect = ClusterCalculator.getDesignEffect();
-			//clusterSize = ClusterCalculator.getClusterSize();
+		//	clusterSize = ClusterCalculator.getClusterSize();
 			
 				
 			view.update(clustersNeeded, roh, designEffect);
