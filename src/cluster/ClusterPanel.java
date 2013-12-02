@@ -195,6 +195,18 @@ public class ClusterPanel extends JPanel
 				gbc_txttfClusterSize.gridy = 6;
 				add(tfClusterSize, gbc_txttfClusterSize);
 				tfClusterSize.setColumns(10);
+				
+				// Set default value for roh
+				rohString = "0.02";
+				ClusterRohComboBox clusterRohComboBox = new ClusterRohComboBox(
+						(ClusterPanel) null);
+				GridBagConstraints gbc_clusterRohComboBox = new GridBagConstraints();
+				gbc_clusterRohComboBox.anchor = GridBagConstraints.EAST;
+				gbc_clusterRohComboBox.insets = new Insets(0, 0, 5, 5);
+				gbc_clusterRohComboBox.fill = GridBagConstraints.VERTICAL;
+				gbc_clusterRohComboBox.gridx = 3;
+				gbc_clusterRohComboBox.gridy = 7;
+				add(clusterRohComboBox, gbc_clusterRohComboBox);
 
 				/**************** Results ************************/
 
@@ -217,47 +229,6 @@ public class ClusterPanel extends JPanel
 				 * 6; add(tfClusterSize, gbc_txttfClusterSize);
 				 * tfClusterSize.setColumns(10);
 				 */
-
-				/*
-				 * for separator, just make a series of drawing lines across the
-				 * columns. GridBagConstraints separatorConstraint = new
-				 * GridBagConstraints(); separatorConstraint.insets = new
-				 * Insets(0, 0, 5, 0); separatorConstraint.gridx = 7;
-				 * separatorConstraint.gridy = 0; separatorConstraint.weightx =
-				 * 1.0; separatorConstraint.fill =
-				 * GridBagConstraints.HORIZONTAL; separatorConstraint.gridwidth
-				 * = GridBagConstraints.REMAINDER; add(new
-				 * JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
-				 * 
-				 * JSeparator separator_2 = new JSeparator(); GridBagConstraints
-				 * gbc_separator_2 = new GridBagConstraints();
-				 * gbc_separator_2.gridwidth = 7; gbc_separator_2.insets = new
-				 * Insets(0, 0, 5, 5); gbc_separator_2.gridx = 1;
-				 * gbc_separator_2.gridy = 7; add(separator_2, gbc_separator_2);
-				 */
-				JSeparator separator_1 = new JSeparator();
-				GridBagConstraints gbc_separator_1 = new GridBagConstraints();
-				gbc_separator_1.insets = new Insets(0, 0, 5, 5);
-				gbc_separator_1.gridx = 1;
-				gbc_separator_1.gridy = 9;
-				gbc_separator.fill = JSeparator.HORIZONTAL;
-
-				// Indices start at 0, so 4 specifies the pig.
-				// JComboBox petList = new JCom boBox(petStrings);
-				// petList.setSelectedIndex(4);
-
-				// Set default value for roh
-				rohString = "0.02";
-				ClusterRohComboBox clusterRohComboBox = new ClusterRohComboBox(
-						(ClusterPanel) null);
-				GridBagConstraints gbc_clusterRohComboBox = new GridBagConstraints();
-				gbc_clusterRohComboBox.anchor = GridBagConstraints.EAST;
-				gbc_clusterRohComboBox.insets = new Insets(0, 0, 5, 5);
-				gbc_clusterRohComboBox.fill = GridBagConstraints.VERTICAL;
-				gbc_clusterRohComboBox.gridx = 3;
-				gbc_clusterRohComboBox.gridy = 7;
-				add(clusterRohComboBox, gbc_clusterRohComboBox);
-				add(separator_1, gbc_separator_1);
 
 				JLabel lblResults = new JLabel("Results");
 				GridBagConstraints gbc_lblResults = new GridBagConstraints();
@@ -284,22 +255,22 @@ public class ClusterPanel extends JPanel
 				gbc_lblClustersNeededResults.gridy = 11;
 				add(lblClustersNeededResult, gbc_lblClustersNeededResults);
 
-				lblDesignEffectResult = new JLabel("Design Effect");
+				JLabel lblDesignEffect = new JLabel("Design Effect");
 				GridBagConstraints gbc_lblDesignEffect = new GridBagConstraints();
 				gbc_lblDesignEffect.anchor = GridBagConstraints.WEST;
 				gbc_lblDesignEffect.insets = new Insets(0, 0, 5, 5);
 				gbc_lblDesignEffect.gridx = 1;
 				gbc_lblDesignEffect.gridy = 12;
-				add(lblDesignEffectResult, gbc_lblDesignEffect);
+				add(lblDesignEffect, gbc_lblDesignEffect);
 
-				JLabel lblDesignEffectResults = new JLabel(
+				lblDesignEffectResult = new JLabel(
 						"Design Effect Goes Here");
 				GridBagConstraints gbc_lblDesignEffectResults = new GridBagConstraints();
 				gbc_lblDesignEffectResults.anchor = GridBagConstraints.WEST;
 				gbc_lblDesignEffectResults.insets = new Insets(0, 0, 5, 5);
 				gbc_lblDesignEffectResults.gridx = 3;
 				gbc_lblDesignEffectResults.gridy = 12;
-				add(lblDesignEffectResults, gbc_lblDesignEffectResults);
+				add(lblDesignEffectResult, gbc_lblDesignEffectResults);
 
 				lblTotalResponsesResult = new JLabel("Total Responses Needed");
 				GridBagConstraints gbc_lblTotalResponsesNeeded = new GridBagConstraints();
@@ -393,7 +364,7 @@ public class ClusterPanel extends JPanel
 			}
 
 		
-		public void setLblDesignEffect(double d)
+		public void setDesignEffect(double d)
 			{
 				lblDesignEffectResult.setText(Double.toString(d));
 			}

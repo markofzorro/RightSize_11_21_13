@@ -22,7 +22,7 @@ public class ClusterCalculator
 		static private double confidenceInterval = 0;
 		static private double confidenceCoefficient = 0;
 		static private double n0 = 0;
-		static private double fpc = 0;
+		//static private double fpc = 0;
 		static private double n = 0;
 
 		static private double clusterSize = 0;
@@ -59,7 +59,7 @@ public class ClusterCalculator
 																	// inverse
 
 				double z = nd.inverseCumulativeProbability((alpha/2));
-				D.b("invCumulativePropabilty says: alpha is " + alpha + " z is " + z );
+			//	D.b("invCumulativePropabilty says: alpha is " + alpha + " z is " + z );
 			//	z = 1.96; //debugger/
 				
 				double z2 = z * z;

@@ -193,7 +193,7 @@ public class ClusterView extends RSInternalFrame
 
 		public void setDesignEffect(double d)
 			{
-				ClusterPanel.setLblDesignEffect(d);
+				ClusterPanel.setDesignEffect(d);
 				// ClusterPanel.setLblN(d);
 			}
 		public void setRohString(double d)
