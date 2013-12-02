@@ -37,9 +37,9 @@ public class ClusterPanel extends JPanel
 	//private JLabel lblROH = null;
 	
 	private JLabel lblClustersNeededResult = null;
-	private JLabel lblTotalResponsesResult = null;
-	private JLabel lblDesignEffectResult = null;
 	private JLabel lblTotalResponsesNeededResult = null;
+	private JLabel lblDesignEffectResult = null;
+	//private JLabel lblTotalResponsesNeededResult = null;
 	
 	
 	
@@ -196,6 +196,14 @@ public class ClusterPanel extends JPanel
 				add(tfClusterSize, gbc_txttfClusterSize);
 				tfClusterSize.setColumns(10);
 				
+				JLabel lblRateOfHomogeneity = new JLabel("Rate of Homogeneity");
+				GridBagConstraints gbc_lblRateOfHomogeneity = new GridBagConstraints();
+				gbc_lblRateOfHomogeneity.anchor = GridBagConstraints.WEST;
+				gbc_lblRateOfHomogeneity.insets = new Insets(0, 0, 5, 5);
+				gbc_lblRateOfHomogeneity.gridx = 1;
+				gbc_lblRateOfHomogeneity.gridy = 7;
+				add(lblRateOfHomogeneity, gbc_lblRateOfHomogeneity);
+
 				// Set default value for roh
 				rohString = "0.02";
 				ClusterRohComboBox clusterRohComboBox = new ClusterRohComboBox(
@@ -210,14 +218,7 @@ public class ClusterPanel extends JPanel
 
 				/**************** Results ************************/
 
-				JLabel lblRateOfHomogeneity = new JLabel("Rate of Homogeneity");
-				GridBagConstraints gbc_lblRateOfHomogeneity = new GridBagConstraints();
-				gbc_lblRateOfHomogeneity.anchor = GridBagConstraints.WEST;
-				gbc_lblRateOfHomogeneity.insets = new Insets(0, 0, 5, 5);
-				gbc_lblRateOfHomogeneity.gridx = 1;
-				gbc_lblRateOfHomogeneity.gridy = 7;
-				add(lblRateOfHomogeneity, gbc_lblRateOfHomogeneity);
-
+				
 				/*
 				 * ClusterRohComboBox rohComboBox = new
 				 * ClusterRohComboBox(this);
@@ -264,7 +265,7 @@ public class ClusterPanel extends JPanel
 				add(lblDesignEffect, gbc_lblDesignEffect);
 
 				lblDesignEffectResult = new JLabel(
-						"Design Effect Goes Here");
+						"");
 				GridBagConstraints gbc_lblDesignEffectResults = new GridBagConstraints();
 				gbc_lblDesignEffectResults.anchor = GridBagConstraints.WEST;
 				gbc_lblDesignEffectResults.insets = new Insets(0, 0, 5, 5);
@@ -272,22 +273,22 @@ public class ClusterPanel extends JPanel
 				gbc_lblDesignEffectResults.gridy = 12;
 				add(lblDesignEffectResult, gbc_lblDesignEffectResults);
 
-				lblTotalResponsesResult = new JLabel("Total Responses Needed");
+				lblTotalResponsesNeededResult = new JLabel("Total Responses Needed");
 				GridBagConstraints gbc_lblTotalResponsesNeeded = new GridBagConstraints();
 				gbc_lblTotalResponsesNeeded.anchor = GridBagConstraints.WEST;
 				gbc_lblTotalResponsesNeeded.insets = new Insets(0, 0, 0, 5);
 				gbc_lblTotalResponsesNeeded.gridx = 1;
 				gbc_lblTotalResponsesNeeded.gridy = 13;
-				add(lblTotalResponsesResult, gbc_lblTotalResponsesNeeded);
+				add(lblTotalResponsesNeededResult, gbc_lblTotalResponsesNeeded);
 
-				lblTotalResponsesResult = new JLabel(
-						"Total Responses Goes here");
-				GridBagConstraints gbc_lblTotalResponsesResult = new GridBagConstraints();
-				gbc_lblTotalResponsesResult.anchor = GridBagConstraints.WEST;
-				gbc_lblTotalResponsesResult.insets = new Insets(0, 0, 0, 5);
-				gbc_lblTotalResponsesResult.gridx = 3;
-				gbc_lblTotalResponsesResult.gridy = 13;
-				add(lblTotalResponsesResult, gbc_lblTotalResponsesResult);
+				lblTotalResponsesNeededResult = new JLabel(
+						"");
+				GridBagConstraints gbc_lblTotalResponsesNeededResult = new GridBagConstraints();
+				gbc_lblTotalResponsesNeededResult.anchor = GridBagConstraints.WEST;
+				gbc_lblTotalResponsesNeededResult.insets = new Insets(0, 0, 0, 5);
+				gbc_lblTotalResponsesNeededResult.gridx = 3;
+				gbc_lblTotalResponsesNeededResult.gridy = 13;
+				add(lblTotalResponsesNeededResult, gbc_lblTotalResponsesNeededResult);
 
 				/*
 				 * JSeparator separator_1 = new JSeparator(); GridBagConstraints
@@ -369,6 +370,13 @@ public class ClusterPanel extends JPanel
 				lblDesignEffectResult.setText(Double.toString(d));
 			}
 
+		public void setTotalResponsesNeededResult(double d)
+			{
+				long l = (long)d;
+				d = l;
+				
+				lblTotalResponsesNeededResult.setText(Double.toString(d));
+			}
 		
 		public void setRohString(double d)
 			{

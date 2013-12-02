@@ -24,6 +24,7 @@ public class ClusterDoc
 	private double clustersNeeded = 0; 
 	private double designEffect = 0;
 	private double roh = 0;
+	private double totalResponsesNeeded = 0;
 	
 	
 	
@@ -67,10 +68,12 @@ public class ClusterDoc
 			
 			clustersNeeded = ClusterCalculator.getClustersNeeded();
 			designEffect = ClusterCalculator.getDesignEffect();
+			totalResponsesNeeded = ClusterCalculator.getTotalResponsesNeeded();
+			
 		//	clusterSize = ClusterCalculator.getClusterSize();
 			
 				
-			view.update(clustersNeeded, roh, designEffect);
+			view.update(clustersNeeded, roh, designEffect, totalResponsesNeeded);
 					
 				
 		}

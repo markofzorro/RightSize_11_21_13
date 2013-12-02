@@ -144,18 +144,31 @@ public class ClusterView extends RSInternalFrame
 				// setSize(1000, 1000);
 			}
 
-		public void update(double clustersNeeded, double roh, double designEffect)
+		public void update(double clustersNeeded, double roh, double designEffect, double totalResponsesNeeded)
 			{
 
 				setClustersNeeded(clustersNeeded);
 				//= clustersNeeded;
 				setRohString(roh);
 				setDesignEffect(designEffect);
+				setTotalResponsesNeededResult(totalResponsesNeeded);
 				revalidate();
 
 			}
 
-		/*************** getters and setters *********************/
+		/*************** getters and setters 
+		 * @return *********************/
+		
+		/**
+		 * This will only be used within the view, so make private. It is called by
+		 * public function update.
+		 * @param d
+		 */
+		private void setTotalResponsesNeededResult(double d)
+			{
+				ClusterPanel.setTotalResponsesNeededResult(d);
+			}
+		
 		public String getPopString()
 			{
 				

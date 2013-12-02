@@ -118,5 +118,11 @@ public class ClusterCalculator
 
 			}
 */
+
+		public static double getTotalResponsesNeeded()
+			{
+				// TODO Auto-generated method stub
+				return n;
+			}
 		
 	}
