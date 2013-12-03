@@ -3,6 +3,7 @@ package cluster;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.text.DecimalFormat;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -230,7 +231,7 @@ public class ClusterPanel extends JPanel
 				gbc_lblClustersNeeded.gridy = 11;
 				add(lblClustersNeeded, gbc_lblClustersNeeded);
 
-				lblClustersNeededResult = new JLabel(Double.toString(doc.getClustersNeeded()));
+				lblClustersNeededResult = new JLabel("");
 			//	D.b("ClusterPanel: getClustersNeeded(); returns: " + doc.getClustersNeeded());
 				GridBagConstraints gbc_lblClustersNeededResults = new GridBagConstraints();
 				gbc_lblClustersNeededResults.anchor = GridBagConstraints.WEST;
@@ -305,21 +306,26 @@ public class ClusterPanel extends JPanel
 		
 		public void setLblClustersNeededResult(double d)
 			{
-				lblClustersNeededResult.setText(Double.toString(d));
+				DecimalFormat df = new DecimalFormat("#");
+		        String s = df.format(d);
+				lblClustersNeededResult.setText(s);
 			}
 
 		
 		public void setDesignEffect(double d)
 			{
-				lblDesignEffectResult.setText(Double.toString(d));
+				 DecimalFormat df = new DecimalFormat("#.##");
+			        //System.out.print(df.format(d));
+			        String s = df.format(d);
+			        lblDesignEffectResult.setText(s);
 			}
 
 		public void setTotalResponsesNeededResult(double d)
 			{
-				long l = (long)d;
-				d = l;
+				DecimalFormat df = new DecimalFormat("#");
+		        String s = df.format(d);
 				
-				lblTotalResponsesNeededResult.setText(Double.toString(d));
+				lblTotalResponsesNeededResult.setText(s);
 			}
 		
 		public void setRohString(String arg_rohString)
