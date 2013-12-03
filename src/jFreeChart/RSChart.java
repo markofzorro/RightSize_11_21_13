@@ -10,8 +10,6 @@ package jFreeChart;
 import java.awt.Color;
 import java.awt.Dimension;
 
-import javax.swing.JDesktopPane;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import org.jfree.chart.ChartFactory;

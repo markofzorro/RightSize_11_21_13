@@ -2,6 +2,7 @@ package srs;
 
 import org.apache.commons.math3.distribution.NormalDistribution;
 
+
 /**
  * Declare static so won't have the overhead of creating new object every time you
  * repetively 

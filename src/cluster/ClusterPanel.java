@@ -1,19 +1,13 @@
 package cluster;
 
-import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-
-import javax.swing.BorderFactory;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
 import java.awt.Insets;
 
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.JComboBox;
 
 import basesAndUtilites.D;
 
@@ -207,7 +201,7 @@ public class ClusterPanel extends JPanel
 				// Set default value for roh
 				rohString = "0.02";
 				ClusterRohComboBox clusterRohComboBox = new ClusterRohComboBox(
-						(ClusterPanel) null);
+						this);
 				GridBagConstraints gbc_clusterRohComboBox = new GridBagConstraints();
 				gbc_clusterRohComboBox.anchor = GridBagConstraints.EAST;
 				gbc_clusterRohComboBox.insets = new Insets(0, 0, 5, 5);
@@ -219,18 +213,7 @@ public class ClusterPanel extends JPanel
 				/**************** Results ************************/
 
 				
-				/*
-				 * ClusterRohComboBox rohComboBox = new
-				 * ClusterRohComboBox(this);
-				 * tfClusterSize.setText("tfClusterSize"); GridBagConstraints
-				 * gbc_txttfClusterSize = new GridBagConstraints();
-				 * gbc_txttfClusterSize.insets = new Insets(0, 0, 5, 5);
-				 * gbc_txttfClusterSize.fill = GridBagConstraints.HORIZONTAL;
-				 * gbc_txttfClusterSize.gridx = 3; gbc_txttfClusterSize.gridy =
-				 * 6; add(tfClusterSize, gbc_txttfClusterSize);
-				 * tfClusterSize.setColumns(10);
-				 */
-
+				
 				JLabel lblResults = new JLabel("Results");
 				GridBagConstraints gbc_lblResults = new GridBagConstraints();
 				gbc_lblResults.gridwidth = 5;
@@ -248,7 +231,7 @@ public class ClusterPanel extends JPanel
 				add(lblClustersNeeded, gbc_lblClustersNeeded);
 
 				lblClustersNeededResult = new JLabel(Double.toString(doc.getClustersNeeded()));
-				D.b("ClusterPanel: getClustersNeeded(); returns: " + doc.getClustersNeeded());
+			//	D.b("ClusterPanel: getClustersNeeded(); returns: " + doc.getClustersNeeded());
 				GridBagConstraints gbc_lblClustersNeededResults = new GridBagConstraints();
 				gbc_lblClustersNeededResults.anchor = GridBagConstraints.WEST;
 				gbc_lblClustersNeededResults.insets = new Insets(0, 0, 5, 5);
@@ -290,46 +273,7 @@ public class ClusterPanel extends JPanel
 				gbc_lblTotalResponsesNeededResult.gridy = 13;
 				add(lblTotalResponsesNeededResult, gbc_lblTotalResponsesNeededResult);
 
-				/*
-				 * JSeparator separator_1 = new JSeparator(); GridBagConstraints
-				 * gbc_separator_1 = new GridBagConstraints();
-				 * gbc_separator_1.insets = new Insets(0, 0, 0, 5);
-				 * //gbc_seperator_1.;// = 6; gbc_separator_1.gridx = 1;
-				 * gbc_separator_1.gridy = 7; add(separator_1, gbc_separator_1);
-				 */
-				// Draw separator across all 4 columns
-				// for (int i = 0; i < 6; i++)
-				// add(new JSeparator(SwingConstants.HORIZONTAL));
-
-				/*
-				 * GridBagLayout gridBagLayout = new GridBagLayout();
-				 * gridBagLayout.columnWidths = new int[]{0, 0, 0};
-				 * gridBagLayout.rowHeights = new int[]{0, 0};
-				 * gridBagLayout.columnWeights = new double[]{0.0, 0.0,
-				 * Double.MIN_VALUE}; gridBagLayout.rowWeights = new
-				 * double[]{0.0, Double.MIN_VALUE}; setLayout(gridBagLayout);
-				 * 
-				 * JLabel label = new JLabel("New label"); GridBagConstraints
-				 * gbc_label = new GridBagConstraints(); gbc_label.gridx = 1;
-				 * gbc_label.gridy = 0; add(label, gbc_label);
-				 * 
-				 * JLabel lblNewLabel = new JLabel("New label");
-				 * add(lblNewLabel);
-				 * setBorder(BorderFactory.createLineBorder(Color.black));
-				 * GridBagLayout layout = new GridBagLayout();
-				 * setLayout(layout);
-				 * 
-				 * GridBagConstraints con = new GridBagConstraints(); //public
-				 * GBC(int gridx, int gridy) con.gridx = 0; con.gridy = 0;
-				 * 
-				 * JLabel titleLbl = new JLabel("Title"); add(titleLbl, con);
-				 * GridBagConstraints con1 = new GridBagConstraints();
-				 * con1.gridx = ; con1.gridy=1;
-				 * 
-				 * JLabel popLbl = new JLabel("Target Population"); add(popLbl,
-				 * con1);
-				 */
-
+				
 			}
 
 		
@@ -378,21 +322,29 @@ public class ClusterPanel extends JPanel
 				lblTotalResponsesNeededResult.setText(Double.toString(d));
 			}
 		
-		public void setRohString(double d)
+		public void setRohString(String arg_rohString)
 			{
-				rohString = String.valueOf(d);
+				rohString = arg_rohString;
 			}
 		public String getClusterSizeString()
 		
 			{
-				D.b("ClusterPanel.getClusterSizestring(): tfClusterSize is " + tfClusterSize.getText());
+		//		D.b("ClusterPanel.getClusterSizestring(): tfClusterSize is " + tfClusterSize.getText());
 				return tfClusterSize.getText();
 				
 			}
 		
 		public String getROHString()
 			{
+				D.b("ClusterPanel.getRohString: rohString is " + rohString);
 				return rohString;
+			}
+
+
+		public void setRohString(double d)
+			{
+				rohString = Double.toString(d);
+				
 			}
 
 		

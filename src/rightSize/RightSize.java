@@ -21,7 +21,6 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
-import basesAndUtilites.Globals;
 import srs.SRSDoc;
 import charts.SRSChartDoc;
 import cluster.ClusterDoc;

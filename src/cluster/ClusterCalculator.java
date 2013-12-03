@@ -2,7 +2,6 @@ package cluster;
 
 import org.apache.commons.math3.distribution.NormalDistribution;
 
-import basesAndUtilites.D;
 
 /**
  * Declare static so won't have the overhead of creating new object every time

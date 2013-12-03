@@ -35,6 +35,8 @@ public class ClusterView extends RSInternalFrame
 		private double clusterSize = 0;
 		private double clustersNeeded = 0;
 		private double designEffect = 0;
+	//	private double roh = 0;
+		//private String rohString = null;
 
 		private JPanel contentPane = new JPanel();
 
@@ -120,7 +122,7 @@ public class ClusterView extends RSInternalFrame
 						graphButton.addActionListener(new ActionListener() {
 							public void actionPerformed(ActionEvent e)
 								{
-									D.b("Reached addGraphButton()");
+								//	D.b("Reached addGraphButton()");
 									doc.chart();
 									//RSChartDoc rsDoc = new RSChartDoc(doc);
 									
@@ -218,12 +220,12 @@ public class ClusterView extends RSInternalFrame
 		
 		public String getClusterSizeString()
 			{
-				D.b("Clusterview.getClusterSizeString: clusterSizeString is " + ClusterPanel.getClusterSizeString());
+			//	D.b("Clusterview.getClusterSizeString: clusterSizeString is " + ClusterPanel.getClusterSizeString());
 				return ClusterPanel.getClusterSizeString();
 			}
 		public String getROHString()
 			{
-				D.b("Clusterview: rohString is " + ClusterPanel.getROHString());
+				D.b("Clusterview.getRohString: rohString is " + ClusterPanel.getROHString());
 				return ClusterPanel.getROHString();
 			}
 		

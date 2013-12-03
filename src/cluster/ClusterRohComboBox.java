@@ -31,24 +31,29 @@
 
 package cluster;
 
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import javax.swing.*;
-import javax.swing.border.*;
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 import basesAndUtilites.D;
-
-import java.util.*;
-import java.text.SimpleDateFormat;
 
 /* ComboBoxDemo2.java requires no other files. */
 public class ClusterRohComboBox extends JPanel implements ActionListener
 	{
 		static JFrame frame;
 		JLabel result;
-		String rohChoice;
-		double roh;
+		String rohString = null;
+	//	double roh = 0;
 		ClusterPanel panel = null;
 
 		public ClusterRohComboBox(ClusterPanel panel)
@@ -62,7 +67,7 @@ public class ClusterRohComboBox extends JPanel implements ActionListener
 						"Low Utilization of Health Cares Services: 0.1",
 						"High Utilization of Health Cares Services: 0.3", };
 
-				rohChoice = rohExamples[0];
+				rohString = rohExamples[0];
 
 				// Set up the UI for selecting an roh
 
@@ -118,34 +123,47 @@ public class ClusterRohComboBox extends JPanel implements ActionListener
 		public void actionPerformed(ActionEvent e)
 			{
 				JComboBox cb = (JComboBox) e.getSource();
-				rohChoice = (String) cb.getSelectedItem();
+				//
 
 				// //Indices start at 0, so 4 specifies the pig.
 				//JComboBox petList = new JComboBox(petStrings);
 			//	petList.setSelectedIndex(4);
 				// send the new roh to the document to be used in calculation.
-				if ("Demographic Variables: 0.02".equals(rohChoice))
-					panel.setRohString(0.02);
+				rohString = (String) cb.getSelectedItem();
+				
+				if ("Demographic Variables: 0.02".equals(rohString))
+					//panel.setRohString(0.02);
+					rohString = "0.2";
 				else if ("Prevalence of an Infectious Disease: 0.3"
-						.equals(rohChoice))
-					roh = 0.3;
+						.equals(rohString))
+					rohString = "0.3";
 				else if ("Prevalence of Illness in General: 0.02"
-						.equals(rohChoice))
-					roh = 0.02;
+						.equals(rohString))
+					rohString = "0.02";
 				else if ("Low Utilization of Health Cares Services: 0.1"
-						.equals(rohChoice))
-					roh = 0.1;
+						.equals(rohString))
+					rohString = "0.1";
 				else if ("High Utilization of Health Cares Services: 0.3"
-						.equals(rohChoice))
-					roh = 0.3;
-				D.b("Selected: " + rohChoice);
-				D.b("rohChoice is " + roh);
+						.equals(rohString))
+					rohString = "0.3";
+				else // user has entered his own roh.
+					{
+						D.b("ClustercomboBox.actionPerformed: rohString is " + rohString);
+						
+								
+						
+					}
+				// put it right into the panel
+				panel.setRohString(rohString);
+				D.b("ClusterRohComboBox: Selected: " + rohString);
+				D.b("rohString is " + rohString);
 
 			}
 		
-		public void setChoice(String choice)
+		public String getRohString()
 			{
-				
+				D.b("ClusterComboBox.getRohString: rohString is: "+  rohString);
+				return rohString;
 			}
 
 	}

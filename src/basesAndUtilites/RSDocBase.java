@@ -1,6 +1,5 @@
 package basesAndUtilites;
 
-import javax.swing.JDesktopPane;
 
 /**
  * An abstract base class for documents

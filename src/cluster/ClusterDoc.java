@@ -2,8 +2,6 @@ package cluster;
 
 import javax.swing.JDesktopPane;
 
-import org.apache.commons.math3.distribution.NormalDistribution;
-
 import basesAndUtilites.D;
 import basesAndUtilites.Globals;
 import charts.ClusterChartDoc;
@@ -53,14 +51,17 @@ public class ClusterDoc
 			setCC(view.getConfidenceLevelString());
 			setClusterSize(view.getClusterSizeString());
 			setROH(view.getROHString());
+			D.b("ClusterDoc.setVariables after call to setRoh: roh is: " + roh); 
 			setClustersNeeded(view.getClustersNeeded());
-			D.b("ClusterDoc:setVariables: clustersNeeded is " + clustersNeeded + " confidenceCoefficient is " + confidenceCoefficient + ". roh is " + roh + ". Clustersize is " + clusterSize);
+		//	D.b("ClusterDoc:setVariables: clustersNeeded is " + clustersNeeded + " confidenceCoefficient is " + confidenceCoefficient + ". roh is " + roh + ". Clustersize is " + clusterSize);
 			
 		}
 	
 	public void calculate()
 		{
 			setVariables();
+			
+			D.b("clusterdoc.calculate after call to setVariables: roh is " + roh);
 		
 					
 			ClusterCalculator.calculate(population, proportion, 
@@ -82,7 +83,7 @@ public class ClusterDoc
 	
 	public void chart()
 		{	
-				D.b("Reached ClusterDoc.chart.");
+			//	D.b("Reached ClusterDoc.chart.");
 				ClusterChartDoc chartDoc = new ClusterChartDoc(this);
 			
 			 
@@ -109,7 +110,7 @@ public class ClusterDoc
 				
 			}
 			
-			D.b("setPop: retval is " + retval);
+		//	D.b("setPop: retval is " + retval);
 						
 		}
  	
@@ -123,7 +124,7 @@ public class ClusterDoc
 			if ( retval > 0)
 			{
 				proportion = retval;
-				D.b("setProportion: retval is: " + retval);
+		//		D.b("setProportion: retval is: " + retval);
 			}
 			else
 			{	
@@ -136,7 +137,7 @@ public class ClusterDoc
 		{
 			long l = (long) d;
 			String s = Long.toString(l);
-			D.b("s = " + s);
+		//	D.b("s = " + s);
 			
 			return s;
 		}
@@ -252,7 +253,7 @@ public class ClusterDoc
 			if ( retval > 0)
 			{
 				confidenceInterval = retval;
-				D.b("setCI: retval is: " + retval);
+		//		D.b("setCI: retval is: " + retval);
 				
 			}
 			else
@@ -270,7 +271,7 @@ public class ClusterDoc
 			if ( retval > 0)
 			{
 				confidenceCoefficient = retval;
-				D.b("ClusterDoc.setCC():  retval is: " + retval);
+	//			D.b("ClusterDoc.setCC():  retval is: " + retval);
 			}
 			else
 			{	D.b("ClusterDoc.setCC():  FAILED! retval is: " + retval);
@@ -287,7 +288,7 @@ public class ClusterDoc
 		if ( retVal > 0)
 			{
 				clusterSize = retVal;
-				D.b("setClusterSize: retval is: " + retVal);
+		//		D.b("setClusterSize: retval is: " + retVal);
 				
 			}
 			
@@ -298,7 +299,7 @@ public class ClusterDoc
 		{
 			double retVal = stringToDouble(s, Globals.ROH_MIN, Globals.ROH_MAX, Globals.ROH_MAX_DIGITS);
 			D.b("Doc: setRoh: roh is " + retVal);
-			if ( retVal > 0)
+			if ( retVal >= 0)
 				{
 					roh = retVal;
 					D.b("setROH: retval is: " + retVal);

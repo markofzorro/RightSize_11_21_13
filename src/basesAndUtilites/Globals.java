@@ -1,6 +1,5 @@
 package basesAndUtilites;
 
-import javax.swing.JDesktopPane;
 
 // Global class to hold constants. Enums would seem simpler, but I can't get them to work. Odd, but there you are.
 

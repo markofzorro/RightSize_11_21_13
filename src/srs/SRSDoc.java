@@ -1,9 +1,6 @@
 package srs;
 
 import javax.swing.JDesktopPane;
-import javax.swing.JDialog;
-
-import org.apache.commons.math3.distribution.NormalDistribution;
 
 import basesAndUtilites.D;
 import basesAndUtilites.RSDocBase;
