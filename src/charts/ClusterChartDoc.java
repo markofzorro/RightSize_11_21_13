@@ -30,8 +30,9 @@ import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.ui.HorizontalAlignment;
 import org.jfree.ui.RectangleEdge;
 
+import srs.SRSCalculator;
 import basesAndUtilites.D;
-import basesAndUtilites.Globals;
+import basesAndUtilites.GlobalConstants;
 import basesAndUtilites.RSInternalFrame;
 import basesAndUtilites.RSVariations;
 import cluster.ClusterCalculator;
@@ -53,6 +54,10 @@ public class ClusterChartDoc
 		private double clustersNeeded = 0;
 		private double roh = 0;
 		private double designEffect = 0;
+		DecimalFormat sciFormatter = new DecimalFormat(
+				"#.E0");
+		DecimalFormat right2Formatter = new DecimalFormat(
+				"#.##");
 
 		public ClusterChartDoc(ClusterDoc doc)
 			{
@@ -103,7 +108,7 @@ public class ClusterChartDoc
 
 				JButton cancelButton = new JButton("Cancel");
 				cancelButton.setFont(new java.awt.Font("Lucida Grande", 0,
-						Globals.TEXT_SIZE));
+						GlobalConstants.TEXT_SIZE));
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e)
 						{
@@ -147,7 +152,7 @@ public class ClusterChartDoc
 
 						// dataset.addValue(1.0, series1, type1);
 
-						for (int i = 0; i < Globals.COLS; i++)
+						for (int i = 0; i < GlobalConstants.COLS; i++)
 							{
 								ClusterCalculator.calculate(
 										variedAssumption[i], proportion,
@@ -162,9 +167,9 @@ public class ClusterChartDoc
 
 								if (columnLabel > 10000)
 									{
-										DecimalFormat myFormatter = new DecimalFormat(
+										DecimalFormat sciFormatter = new DecimalFormat(
 												"#.E0");
-										String s = myFormatter
+										String s = sciFormatter
 												.format(columnLabel);
 										dataset.addValue(value, "population", s);
 									} else
@@ -214,7 +219,7 @@ public class ClusterChartDoc
 		  
 		  // dataset.addValue(1.0, series1, type1);
 		  
-		  for (int i = 0; i < Globals.COLS; i++) 
+		  for (int i = 0; i < GlobalConstants.COLS; i++) 
 			  {
 				  
 				  ClusterCalculator.calculate(
@@ -258,14 +263,14 @@ public class ClusterChartDoc
 				// assumption is proportion {
 
 				double[] variedAssumption = RSVariations
-						.add(confidenceInterval);
+						.add(confidenceInterval, GlobalConstants.CI_MIN, GlobalConstants.CI_MAX, false);
 
 				// create the dataset...
 				DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
 				// dataset.addValue(1.0, series1, type1);
 
-				for (int i = 0; i < Globals.COLS; i++)
+				for (int i = 0; i < GlobalConstants.COLS; i++)
 					{
 						ClusterCalculator.calculate(population, proportion,
 								variedAssumption[i], confidenceLevel,
@@ -274,8 +279,11 @@ public class ClusterChartDoc
 						double clustersNeeded = ClusterCalculator
 								.getClustersNeeded();
 
-						dataset.addValue(clustersNeeded, "Confidence Interval",
-								"\u00B1" + Double.toString(variedAssumption[i]));
+						String s = right2Formatter.format(variedAssumption[i]);
+						dataset.addValue(clustersNeeded, "Clusters Needed", "\u00B1" + s);
+						
+						//dataset.addValue(clustersNeeded, "Confidence Interval",
+						//		"\u00B1" + Double.toString(variedAssumption[i]));
 
 						// dataset.addValue(clustersNeeded,
 						// "confidenceInterval", "\u00B1" +
@@ -312,7 +320,7 @@ public class ClusterChartDoc
 
 				// dataset.addValue(1.0, series1, type1);
 
-				for (int i = 0; i < Globals.COLS; i++)
+				for (int i = 0; i < GlobalConstants.COLS; i++)
 					{
 						ClusterCalculator.calculate(population, proportion,
 								confidenceInterval, variedAssumption[i],
@@ -357,7 +365,7 @@ public class ClusterChartDoc
 
 				// dataset.addValue(1.0, series1, type1);
 
-				for (int i = 0; i < Globals.COLS; i++)
+				for (int i = 0; i < GlobalConstants.COLS; i++)
 					{
 						ClusterCalculator.calculate(population, proportion,
 								confidenceInterval, confidenceLevel, variedAssumption[i],
@@ -395,23 +403,24 @@ public class ClusterChartDoc
 				
 
 				double[] variedAssumption = RSVariations
-						.add(roh);
+						.add(roh, GlobalConstants.ROH_MIN, GlobalConstants.ROH_MAX, false);
 
 				// create the dataset...
 				DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
 				// dataset.addValue(1.0, series1, type1);
 
-				for (int i = 0; i < Globals.COLS; i++)
+				for (int i = 0; i < GlobalConstants.COLS; i++)
 					{
 						ClusterCalculator.calculate(population, proportion,
 								confidenceInterval, confidenceLevel, clusterSize, variedAssumption[i]);
 
 						double clustersNeeded = ClusterCalculator
 								.getClustersNeeded();
-
-						dataset.addValue(clustersNeeded, "Clusters Needed",
-								Double.toString(variedAssumption[i]));
+						
+						
+						String s = right2Formatter.format(variedAssumption[i]);
+						dataset.addValue(clustersNeeded, "Clusters Needed", s);
 
 						
 
@@ -429,7 +438,50 @@ public class ClusterChartDoc
 				return new ChartPanel(chart);
 
 			} // createRohPanel
+		
+		
 
+		protected JPanel createDesignEffectPanel()
+			{
+				
+				double designEffect = 1 + (clusterSize - 1) * roh; // from Bennett, equation 3. 
+
+				double[] variedAssumption = RSVariations
+						.add(designEffect, GlobalConstants.DESIGN_EFFECT_MIN, GlobalConstants.DESIGN_EFFECT_MAX, false);
+				
+				//**** To create array of results, need to calculate SRS result and then multiply by the desired design effect to get corrected value
+				SRSCalculator.calculate(population, proportion, 
+						confidenceInterval, confidenceLevel );
+				double srsResult = SRSCalculator.getN0();
+				// create the dataset...
+				DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+
+				// dataset.addValue(1.0, series1, type1);
+
+				for (int i = 0; i < GlobalConstants.COLS; i++)
+					{
+					//	ClusterCalculator.calculate(population, proportion,
+						//		confidenceInterval, confidenceLevel, clusterSize, variedAssumption[i]);
+
+						double clustersNeeded = (srsResult * variedAssumption[i])/clusterSize;
+						clustersNeeded = Math.ceil(clustersNeeded);
+						String s = right2Formatter.format(variedAssumption[i]);
+						dataset.addValue(clustersNeeded, "Clusters Needed", s);
+						
+					}
+
+				JFreeChart chart = createChart(dataset);
+				chart.setTitle(new TextTitle(
+						"Effect of Design Effect on Sample Size."));
+				CategoryPlot plot = (CategoryPlot) chart.getPlot();
+				CategoryAxis xAxis = plot.getDomainAxis();
+				xAxis.setLabel("Design Effect");
+				ValueAxis yAxis = plot.getRangeAxis();
+				yAxis.setLabel("Clusters Needed");
+				
+				return new ChartPanel(chart);
+
+			} // createRohPanel
 		
 		
 		/**

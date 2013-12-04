@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import basesAndUtilites.D;
-import basesAndUtilites.Globals;
+import basesAndUtilites.GlobalConstants;
 import basesAndUtilites.RSInternalFrame;
 
 /**
@@ -80,7 +80,7 @@ public class SRSView extends RSInternalFrame
 				buttonPanel = new JPanel();
 				buttonPanel.setLayout(new FlowLayout());
 				cancelButton = new JButton("Cancel");
-				cancelButton.setFont(new java.awt.Font("Lucida Grande", 0, Globals.TEXT_SIZE));
+				cancelButton.setFont(new java.awt.Font("Lucida Grande", 0, GlobalConstants.TEXT_SIZE));
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e)
 						{
@@ -93,7 +93,7 @@ public class SRSView extends RSInternalFrame
 				// add buttonPanel to internal frame
 
 				okButton = new JButton("OK");
-				okButton.setFont(new java.awt.Font("Lucida Grande", 0, Globals.TEXT_SIZE));
+				okButton.setFont(new java.awt.Font("Lucida Grande", 0, GlobalConstants.TEXT_SIZE));
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e)
 						{
@@ -136,7 +136,7 @@ public class SRSView extends RSInternalFrame
 				if (graphButton == null) // there isn't a button yet.
 					{	
 						graphButton = new JButton("Graph");
-						graphButton.setFont(new java.awt.Font("Lucida Grande", 0, Globals.TEXT_SIZE));
+						graphButton.setFont(new java.awt.Font("Lucida Grande", 0, GlobalConstants.TEXT_SIZE));
 						graphButton.addActionListener(new ActionListener() {
 							public void actionPerformed(ActionEvent e)
 								{

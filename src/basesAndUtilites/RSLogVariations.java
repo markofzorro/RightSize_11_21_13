@@ -4,9 +4,9 @@ public class RSLogVariations
 	{
 
 		static private double assumption = 1000;
-		static private double min = Globals.POPULATION_MIN;
-		static private double max = Globals.POPULATION_MAX;
-		static private int cols = Globals.COLS;
+		static private double min = GlobalConstants.POPULATION_MIN;
+		static private double max = GlobalConstants.POPULATION_MAX;
+		static private int cols = GlobalConstants.COLS;
 		static private double[] array = new double[cols];
 
 		/**

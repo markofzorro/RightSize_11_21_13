@@ -32,7 +32,7 @@ import org.jfree.ui.RectangleEdge;
 
 import srs.SRSCalculator;
 import basesAndUtilites.D;
-import basesAndUtilites.Globals;
+import basesAndUtilites.GlobalConstants;
 import basesAndUtilites.RSInternalFrame;
 import basesAndUtilites.RSVariations;
 
@@ -108,7 +108,7 @@ public class SRSChartDoc
 				JPanel buttonPanel = new JPanel();
 				
 				JButton cancelButton = new JButton("Cancel");
-				cancelButton.setFont(new java.awt.Font("Lucida Grande", 0, Globals.TEXT_SIZE));
+				cancelButton.setFont(new java.awt.Font("Lucida Grande", 0, GlobalConstants.TEXT_SIZE));
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e)
 						{
@@ -153,7 +153,7 @@ public class SRSChartDoc
 
 						// dataset.addValue(1.0, series1, type1);
 
-						for (int i = 0; i < Globals.COLS; i++)
+						for (int i = 0; i < GlobalConstants.COLS; i++)
 							{
 								SRSCalculator.calculate(variedAssumption[i], proportion, confidenceInterval, confidenceCoefficient);
 								double value = SRSCalculator.getN();
@@ -210,7 +210,7 @@ public class SRSChartDoc
 
 						// dataset.addValue(1.0, series1, type1);
 
-						for (int i = 0; i < Globals.COLS; i++)
+						for (int i = 0; i < GlobalConstants.COLS; i++)
 							{
 								SRSCalculator.calculate(population, variedAssumption[i], confidenceInterval, confidenceCoefficient);
 								double value = SRSCalculator.getN();
@@ -248,7 +248,7 @@ public class SRSChartDoc
 
 						// dataset.addValue(1.0, series1, type1);
 
-						for (int i = 0; i < Globals.COLS; i++)
+						for (int i = 0; i < GlobalConstants.COLS; i++)
 							{
 								SRSCalculator.calculate(population, proportion, variedAssumption[i], confidenceCoefficient);
 								double value = SRSCalculator.getN();			
@@ -285,7 +285,7 @@ public class SRSChartDoc
 
 						// dataset.addValue(1.0, series1, type1);
 
-						for (int i = 0; i < Globals.COLS; i++)
+						for (int i = 0; i < GlobalConstants.COLS; i++)
 							{
 								SRSCalculator.calculate(population, proportion, confidenceInterval, variedAssumption[i]);
 								double value = SRSCalculator.getN();			

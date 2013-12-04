@@ -3,7 +3,7 @@ package cluster;
 import javax.swing.JDesktopPane;
 
 import basesAndUtilites.D;
-import basesAndUtilites.Globals;
+import basesAndUtilites.GlobalConstants;
 import charts.ClusterChartDoc;
 
 public class ClusterDoc
@@ -95,7 +95,7 @@ public class ClusterDoc
  	private void setPopulation(String s)
 		{
 			double retval = 0;
-			retval = stringToDouble(s, Globals.POPULATION_MIN, Globals.POPULATION_MAX, Globals.POPULATION_MAX_DIGITS);
+			retval = stringToDouble(s, GlobalConstants.POPULATION_MIN, GlobalConstants.POPULATION_MAX, GlobalConstants.POPULATION_MAX_DIGITS);
 			//Double stringToDouble(String s_in, Double in_min , Double in_max, int in_max_digits)
 			
 			
@@ -120,7 +120,7 @@ public class ClusterDoc
 	private void setProportion(String s)
 		{
 			double retval = 0;
-			retval = stringToDouble(s, Globals.MIN, Globals.MAX, Globals.MAX_DIGITS);
+			retval = stringToDouble(s, GlobalConstants.MIN, GlobalConstants.MAX, GlobalConstants.MAX_DIGITS);
 			if ( retval > 0)
 			{
 				proportion = retval;
@@ -249,7 +249,7 @@ public class ClusterDoc
 		private void setCI(String s)
 		{
 			double retval = 0;
-			retval = stringToDouble(s, Globals.MIN, Globals.MAX, Globals.MAX_DIGITS);
+			retval = stringToDouble(s, GlobalConstants.CI_MIN, GlobalConstants.CI_MAX, GlobalConstants.MAX_DIGITS);
 			if ( retval > 0)
 			{
 				confidenceInterval = retval;
@@ -267,7 +267,7 @@ public class ClusterDoc
 	private void setCC(String s)
 		{
 			double retval = 0;
-			retval = stringToDouble(s, Globals.MIN, Globals.MAX, Globals.MAX_DIGITS);
+			retval = stringToDouble(s, GlobalConstants.MIN, GlobalConstants.MAX, GlobalConstants.MAX_DIGITS);
 			if ( retval > 0)
 			{
 				confidenceCoefficient = retval;
@@ -283,7 +283,7 @@ public class ClusterDoc
 	
 	private void setClusterSize(String s)
 	{
-		double retVal = stringToDouble(s, Globals.MIN, Globals.MAX, Globals.MAX_DIGITS);
+		double retVal = stringToDouble(s, GlobalConstants.MIN, GlobalConstants.MAX, GlobalConstants.MAX_DIGITS);
 		
 		if ( retVal > 0)
 			{
@@ -297,7 +297,7 @@ public class ClusterDoc
 	
 	private void setROH(String s)
 		{
-			double retVal = stringToDouble(s, Globals.ROH_MIN, Globals.ROH_MAX, Globals.ROH_MAX_DIGITS);
+			double retVal = stringToDouble(s, GlobalConstants.ROH_MIN, GlobalConstants.ROH_MAX, GlobalConstants.ROH_MAX_DIGITS);
 			D.b("Doc: setRoh: roh is " + retVal);
 			if ( retVal >= 0)
 				{

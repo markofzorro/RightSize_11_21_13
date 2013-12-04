@@ -11,7 +11,7 @@ import javax.swing.JSeparator;
 import javax.swing.JTextField;
 
 import basesAndUtilites.D;
-import basesAndUtilites.Globals;
+import basesAndUtilites.GlobalConstants;
 
 public class ClusterPanel extends JPanel
 	{
@@ -61,7 +61,7 @@ public class ClusterPanel extends JPanel
 
 				JLabel lblEnterYouAssumptions = new JLabel(
 						"Enter You Assumptions");
-				lblEnterYouAssumptions.setFont(new java.awt.Font("Lucida Grande", 1, Globals.TITLE_SIZE)); // NOI18N
+				lblEnterYouAssumptions.setFont(new java.awt.Font("Lucida Grande", 1, GlobalConstants.TITLE_SIZE)); // NOI18N
 				GridBagConstraints gbc_lblEnterYouAssumptions = new GridBagConstraints();
 				gbc_lblEnterYouAssumptions.gridwidth = 6;
 				gbc_lblEnterYouAssumptions.insets = new Insets(0, 0, 5, 0);
@@ -218,7 +218,7 @@ public class ClusterPanel extends JPanel
 				
 				
 				JLabel lblResults = new JLabel("Results");
-				lblResults.setFont(new java.awt.Font("Lucida Grande", 1, Globals.TITLE_SIZE)); // NOI18N
+				lblResults.setFont(new java.awt.Font("Lucida Grande", 1, GlobalConstants.TITLE_SIZE)); // NOI18N
 				GridBagConstraints gbc_lblResults = new GridBagConstraints();
 				gbc_lblResults.gridwidth = 5;
 				gbc_lblResults.insets = new Insets(0, 0, 5, 5);

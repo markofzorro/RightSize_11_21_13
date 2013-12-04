@@ -45,7 +45,7 @@ public class ClusterTabbedChartPanel extends JPanel
 				tabbedPane.addTab("Confidence Level", clusterChartDoc.createConfidenceLevelPanel());
 				tabbedPane.addTab("Cluster Size", clusterChartDoc.createClusterSizePanel());
 				tabbedPane.addTab("Rate of Homogeneity", clusterChartDoc.createRohPanel());
-				
+				tabbedPane.addTab("Design Effect", clusterChartDoc.createDesignEffectPanel());
 				
 				// Add the tabbed pane to ClusterTabbedChartPanel.
 				add(tabbedPane, BorderLayout.CENTER);

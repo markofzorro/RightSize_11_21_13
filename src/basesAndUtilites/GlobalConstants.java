@@ -3,7 +3,7 @@ package basesAndUtilites;
 
 // Global class to hold constants. Enums would seem simpler, but I can't get them to work. Odd, but there you are.
 
-public class Globals 
+public class GlobalConstants 
 {
 	static public final double MIN = 1;
 	static public final double MAX = 99;
@@ -14,7 +14,11 @@ public class Globals
 	static public final int TEXT_SIZE = 12;
 	static public final int TITLE_SIZE = 24;
 	public static final int MAX_DIGITS = 2;
-	public static final double ROH_MAX = 10;
+	public static final double ROH_MAX = 1;
 	public static final double ROH_MIN = 0;
-	public static int ROH_MAX_DIGITS = 5;
+	public static final int ROH_MAX_DIGITS = 3;
+	public static final double DESIGN_EFFECT_MIN = 1;
+	public static final double DESIGN_EFFECT_MAX = 30;
+	public static final double CI_MIN = 1;
+	public static final double CI_MAX = COLS;
 }
