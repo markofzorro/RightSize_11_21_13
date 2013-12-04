@@ -39,20 +39,15 @@ public class ClusterTabbedChartPanel extends JPanel
 				setPreferredSize(d);
 				
 							
-				//tabbedPane.addTab("Population", popPanel);
-				JPanel populationPanel = clusterChartDoc.createPopulatonPanel();
-				tabbedPane.addTab("Population", populationPanel);
-/************* ADD THESE IN AS YOU BUILD THE TABBED PANE ********************/				
-				JPanel chartPanel = clusterChartDoc.createProportionsPanel();
-				tabbedPane.addTab("Proportion", clusterChartDoc.createProportionsPanel());
-				
+				tabbedPane.addTab("Population", clusterChartDoc.createPopulatonPanel());
+				tabbedPane.addTab("Proportion", clusterChartDoc.createProportionsPanel());		
 				tabbedPane.addTab("Width of Confidence Interval", clusterChartDoc.createConfidenceIntervalPanel());
-
-			
-				JPanel confidenceCoefficientPanel = clusterChartDoc.createConfidenceCoefficientPanel();
-				tabbedPane.addTab("Confidence Coefficient", clusterChartDoc.createConfidenceCoefficientPanel());
+				tabbedPane.addTab("Confidence Level", clusterChartDoc.createConfidenceLevelPanel());
+				tabbedPane.addTab("Cluster Size", clusterChartDoc.createClusterSizePanel());
+				tabbedPane.addTab("Rate of Homogeneity", clusterChartDoc.createRohPanel());
 				
-				// Add the tabbed pane to this panel.
+				
+				// Add the tabbed pane to ClusterTabbedChartPanel.
 				add(tabbedPane, BorderLayout.CENTER);
 
 				// The following line enables to use scrolling tabs.

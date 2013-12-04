@@ -48,7 +48,7 @@ public class ClusterChartDoc
 		private double population = 0;
 		private double proportion = 0;
 		private double confidenceInterval = 0;
-		private double confidenceCoefficient = 0;
+		private double confidenceLevel = 0;
 		private double clusterSize = 0;
 		private double clustersNeeded = 0;
 		private double roh = 0;
@@ -64,7 +64,7 @@ public class ClusterChartDoc
 				this.population = doc.getPopulation();
 				this.proportion = doc.getProportion();
 				this.confidenceInterval = doc.getConfidenceInterval();
-				this.confidenceCoefficient = doc.getConfidenceCoefficient();
+				this.confidenceLevel = doc.getConfidenceCoefficient();
 				this.clusterSize = doc.getClusterSize();
 				this.roh = doc.getRoh();
 				this.designEffect = doc.getDesignEffect();
@@ -152,7 +152,7 @@ public class ClusterChartDoc
 								ClusterCalculator.calculate(
 										variedAssumption[i], proportion,
 										confidenceInterval,
-										confidenceCoefficient, clusterSize,
+										confidenceLevel, clusterSize,
 										roh);
 								double value = ClusterCalculator
 										.getClustersNeeded();
@@ -220,7 +220,7 @@ public class ClusterChartDoc
 				  ClusterCalculator.calculate(
 							population, variedAssumption[i],
 							confidenceInterval,
-							confidenceCoefficient, clusterSize,
+							confidenceLevel, clusterSize,
 							roh);
 				  
 				  double value = ClusterCalculator.getClustersNeeded();
@@ -268,7 +268,7 @@ public class ClusterChartDoc
 				for (int i = 0; i < Globals.COLS; i++)
 					{
 						ClusterCalculator.calculate(population, proportion,
-								variedAssumption[i], confidenceCoefficient,
+								variedAssumption[i], confidenceLevel,
 								clusterSize, roh);
 
 						double clustersNeeded = ClusterCalculator
@@ -298,14 +298,14 @@ public class ClusterChartDoc
 			} // createconfidenceIntervalPanel?
 		 
 		 
-		protected JPanel createConfidenceCoefficientPanel()
+		protected JPanel createConfidenceLevelPanel()
 			{
 				JPanel panel = new JPanel();
 
 				
 
 				double[] variedAssumption = RSVariations
-						.add(confidenceCoefficient);
+						.add(confidenceLevel);
 
 				// create the dataset...
 				DefaultCategoryDataset dataset = new DefaultCategoryDataset();
@@ -321,7 +321,7 @@ public class ClusterChartDoc
 						double clustersNeeded = ClusterCalculator
 								.getClustersNeeded();
 
-						dataset.addValue(clustersNeeded, "Confidence Coefficient",
+						dataset.addValue(clustersNeeded, "Confidence Level",
 								Double.toString(variedAssumption[i]));
 
 						
@@ -330,19 +330,108 @@ public class ClusterChartDoc
 
 				JFreeChart chart = createChart(dataset);
 				chart.setTitle(new TextTitle(
-						"Effect of Desired Confidence Coeffecient on Sample Size."));
+						"Effect of Desired Confidence Level on Sample Size."));
 				CategoryPlot plot = (CategoryPlot) chart.getPlot();
 				CategoryAxis xAxis = plot.getDomainAxis();
-				xAxis.setLabel("Confidence Coefficient");
+				xAxis.setLabel("Confidence Level");
 				ValueAxis yAxis = plot.getRangeAxis();
 				yAxis.setLabel("Clusters Needed");
 				
 				return new ChartPanel(chart);
 
-			} // createconfidenceIntervalPanel?
+			} // createconfidenceIntervalPanel
 		  
+		
+		
+		protected JPanel createClusterSizePanel()
+			{
+				JPanel panel = new JPanel();
+
+				
+
+				double[] variedAssumption = RSVariations
+						.add(clusterSize);
+
+				// create the dataset...
+				DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+
+				// dataset.addValue(1.0, series1, type1);
+
+				for (int i = 0; i < Globals.COLS; i++)
+					{
+						ClusterCalculator.calculate(population, proportion,
+								confidenceInterval, confidenceLevel, variedAssumption[i],
+								 roh);
+
+						double clustersNeeded = ClusterCalculator
+								.getClustersNeeded();
+
+						dataset.addValue(clustersNeeded, "Clusters Needed",
+								Double.toString(variedAssumption[i]));
+
+						
+
+					}
+
+				JFreeChart chart = createChart(dataset);
+				chart.setTitle(new TextTitle(
+						"Effect of Cluster Size on Sample Size."));
+				CategoryPlot plot = (CategoryPlot) chart.getPlot();
+				CategoryAxis xAxis = plot.getDomainAxis();
+				xAxis.setLabel("Cluster Size");
+				ValueAxis yAxis = plot.getRangeAxis();
+				yAxis.setLabel("Clusters Needed");
+				
+				return new ChartPanel(chart);
+
+			} // createclusterSizePanel
 		  
-		  
+
+		
+		protected JPanel createRohPanel()
+			{
+				JPanel panel = new JPanel();
+
+				
+
+				double[] variedAssumption = RSVariations
+						.add(roh);
+
+				// create the dataset...
+				DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+
+				// dataset.addValue(1.0, series1, type1);
+
+				for (int i = 0; i < Globals.COLS; i++)
+					{
+						ClusterCalculator.calculate(population, proportion,
+								confidenceInterval, confidenceLevel, clusterSize, variedAssumption[i]);
+
+						double clustersNeeded = ClusterCalculator
+								.getClustersNeeded();
+
+						dataset.addValue(clustersNeeded, "Clusters Needed",
+								Double.toString(variedAssumption[i]));
+
+						
+
+					}
+
+				JFreeChart chart = createChart(dataset);
+				chart.setTitle(new TextTitle(
+						"Effect of Rate of Homogeneity on Sample Size."));
+				CategoryPlot plot = (CategoryPlot) chart.getPlot();
+				CategoryAxis xAxis = plot.getDomainAxis();
+				xAxis.setLabel("Rate of Homogeneity");
+				ValueAxis yAxis = plot.getRangeAxis();
+				yAxis.setLabel("Clusters Needed");
+				
+				return new ChartPanel(chart);
+
+			} // createRohPanel
+
+		
+		
 		/**
 		 * Creates a sample chart.
 		 * 
