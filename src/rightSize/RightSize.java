@@ -21,6 +21,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
+import rsTutorials.RSTutorial;
 import srs.SRSDoc;
 import charts.SRSChartDoc;
 import cluster.ClusterDoc;
@@ -62,6 +63,7 @@ public class RightSize extends JFrame implements ActionListener
 	private SRSDoc srsDoc =null;
 	private ClusterDoc clusterDoc = null;
 	private SRSChartDoc chartDoc = null;
+	private RSTutorial tutorial = null;
 
 	public RightSize()
 		{
@@ -127,6 +129,17 @@ public class RightSize extends JFrame implements ActionListener
 			clusterMI.addActionListener(this);
 			sampleSizeMenu.add(clusterMI);
 			
+			
+			JMenu tutorialMenu = new JMenu("Tutorials");
+			menuBar.add(tutorialMenu);			
+			JMenuItem tutorialMI = new JMenuItem("Sample Size Calculations");
+			tutorialMI.setActionCommand("tutorials");
+			tutorialMI.addActionListener(this);
+			tutorialMenu.add(tutorialMI);
+			
+			
+			
+
 			JMenu aboutMenu = new JMenu("About");
 			JMenuItem aboutMI = new JMenuItem("About This Program");
 			aboutMI.setActionCommand("aboutProgram");
@@ -140,6 +153,7 @@ public class RightSize extends JFrame implements ActionListener
 			
 			//menu.setMnemonic(KeyEvent.VK_D);
 			menuBar.add(aboutMenu);
+			
 
 			
 			
@@ -184,10 +198,12 @@ public class RightSize extends JFrame implements ActionListener
 								
 										;
 						JOptionPane.showMessageDialog(null, text, "Rightsize 2.01.0 is not finished yet.", JOptionPane.PLAIN_MESSAGE, null);
-					}	
-					
+					}
+				else if ("tutorials".equals(e.getActionCommand()))
+					{
+						tutorial = new RSTutorial(desktop);
+					}
 		}
-
 
 	// Quit the application.
 	protected void quit()

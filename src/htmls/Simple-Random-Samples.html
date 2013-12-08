@@ -1,0 +1,86 @@
+<HTML>
+ <HEAD>
+  <!-- $MVD$:app("RoboHELP HTML Edition by Blue Sky Software, portions by MicroVision Dev. Inc.","769") -->
+  <!-- $MVD$:template("","0","0") -->
+  <!-- $MVD$:fontset("Arial","Arial") -->
+  <!-- $MVD$:fontset("Symbol","Symbol") -->
+  <TITLE>Simple Random Samples</TITLE>
+ <LINK REL="StyleSheet" HREF="default.css"></HEAD>
+  <BODY >
+  <H1>
+   Simple Random Samples</H1>
+  <P>
+   <!-- $MVD$:spaceretainer() -->&nbsp;</P>
+  <P>
+   This formula assumes that you will collect a simple random sample to 
+   estimate a proportion in the target population. This means that each 
+   member of the target population will have an equal chance of being 
+   chosen for your sample. If this is not true, this formula will not 
+   give you the correct estimate.</P>
+  <P>
+   The formula for the sample size of a simple random sample is:</P>
+  <P>
+   &nbsp;<IMG SRC="SRS formula.gif" WIDTH="90" HEIGHT="46" VSPACE="0" HSPACE="0" BORDER="0"> where</P>
+  <P>
+   <SPAN STYLE="font-weight : bold;">n</SPAN> is the sample size you 
+   need to collect. In the field it is often useful to collect an extra 
+   10% randomly selected subjects in case some records are lost or can't 
+   be used.</P>
+  <P>
+   <SPAN STYLE="font-weight : bold;">z</SPAN> is the z value from the 
+   table of normal curve areas that corresponds to the reliability 
+   coefficient you chose.</P>
+  <P>
+   <SPAN STYLE='font-family : "Symbol";font-weight : bold;'>a </SPAN>is 
+   the probability of making an alpha error.</P>
+  <P>
+   <SPAN STYLE="font-weight : bold;">p </SPAN><SPAN STYLE="font-weight : normal;">is
+    the proportion you estimate you will find in the target population.</SPAN></P>
+  <P>
+   <FONT COLOR="BLACK"><SPAN STYLE="font-weight : bold;">q</SPAN><SPAN STYLE="font-weight : normal;"> 
+   is 1 - p.</SPAN></FONT></P>
+  <P>
+   <FONT COLOR="BLACK"><SPAN STYLE="font-weight : bold;">d </SPAN><SPAN STYLE="font-weight : normal;">is
+    1/2 the </SPAN></FONT><SPAN STYLE="font-weight : normal;"><FONT COLOR="BLACK">width
+    of the confidence interval you chose.</FONT></SPAN></P>
+  <P>
+   <SPAN STYLE="font-weight : normal;"><FONT COLOR="BLACK">Example: If 
+   you you suspect that the proportion of males in the target population 
+   population is around 40% and you want a 95% probability that the 
+   target population proportion will be within &#177; 5 % of the 
+   proportion in your sample, the calculation would be:</FONT></SPAN></P>
+  <P>
+   <SPAN STYLE="font-weight : normal;"><FONT COLOR="BLACK">Step 1. 
+   Convert the percentages to proportions. The proportion in the target 
+   population is p = 40% = 0.4, so q = 0.06. The reliability coefficient 
+   of 95% which corresponds to a proportion of 0.95. The d value of 5% is 
+   0.05.</FONT></SPAN></P>
+  <P>
+   <SPAN STYLE="font-weight : normal;"><FONT COLOR="BLACK">Step 2. Since 
+   the confidence coefficient is 0.95, you are willing to accept a 
+   chance of making an </FONT></SPAN><SPAN STYLE='font-family : "Symbol";font-weight : normal;'>a 
+   </SPAN>error of 0.05 and half of this is 0.025. Look in a table of 
+   areas under the standard normal curve and you find this corresponds 
+   to a z of 1.96.</P>
+  <P>
+   Step 3. Substitute the values into the equation and solve:</P>
+  <P>
+   <IMG SRC="SRS Calculation Ex 1.jpg" WIDTH="165" HEIGHT="44" VSPACE="0" HSPACE="0" BORDER="0"></P>
+  <P>
+   n = 368.7. Since you can't interview 0.7 people, you round up to 368. 
+   Most people <SPAN STYLE="font-style : italic;">always <SPAN STYLE="font-style : normal;"> 
+   round up n calculations to be conservative.</SPAN></SPAN></P>
+  <P>
+   <SPAN STYLE="font-style : italic;"><SPAN STYLE="font-style : normal;">Step
+    4. Do the same calculation using the RightSize program. Isn't it 
+   easier to let the computer do the work? The program always rounds n 
+   up and calculates z to 32 significant digits, so it occasionally gets 
+   a slightly different result than hand-calculated examples, which use less
+    precise z values. You should be able to get the exact same answer if 
+   you set z to the value from your normal curve table. You can do this 
+   by choosing the <SPAN STYLE="font-weight : bold;">Set Z Values </SPAN><SPAN STYLE="font-weight : normal;">option</SPAN><SPAN STYLE="font-weight : bold;"> <SPAN STYLE="font-weight : normal;"> 
+   under the </SPAN></SPAN><SPAN STYLE="font-weight : normal;"><SPAN STYLE="font-weight : bold;">Tutorials
+    and Utility</SPAN></SPAN><SPAN STYLE="font-weight : bold;"><SPAN STYLE="font-weight : normal;"> 
+   menu item.</SPAN></SPAN></SPAN></SPAN>
+ </BODY>
+</HTML>
