@@ -21,7 +21,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
-import rsTutorials.RSTutorial;
+import rsTutorials.RSTutorialDoc;
 import srs.SRSDoc;
 import charts.SRSChartDoc;
 import cluster.ClusterDoc;
@@ -63,7 +63,7 @@ public class RightSize extends JFrame implements ActionListener
 	private SRSDoc srsDoc =null;
 	private ClusterDoc clusterDoc = null;
 	private SRSChartDoc chartDoc = null;
-	private RSTutorial tutorial = null;
+	private RSTutorialDoc tutorial = null;
 
 	public RightSize()
 		{
@@ -201,7 +201,7 @@ public class RightSize extends JFrame implements ActionListener
 					}
 				else if ("tutorials".equals(e.getActionCommand()))
 					{
-						tutorial = new RSTutorial(desktop);
+						tutorial = new RSTutorialDoc(desktop);
 					}
 		}
 
