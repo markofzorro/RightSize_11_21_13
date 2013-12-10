@@ -192,9 +192,7 @@ public class RightSize extends JFrame implements ActionListener
 								"who calculated along with the my presentation program and found an error.\n\n" +
 								"The China FETP trainees who asked to be able to calculate with large populations\n"+
 								"will be pleased to know the program can handle populations of more than 10 to\n" +
-								"the 80th power. That's the estimated number of atoms in the universe. They'll\n" + 
-								"have to take my word for it since the program can't accept numbers this large.\n" +
-								"I'll fix it in the next version."
+								"the 80th power. That's the estimated number of atoms in the universe."
 								
 										;
 						JOptionPane.showMessageDialog(null, text, "Rightsize 2.01.0 is not finished yet.", JOptionPane.PLAIN_MESSAGE, null);

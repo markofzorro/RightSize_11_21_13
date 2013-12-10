@@ -61,7 +61,7 @@ public class SRSPanel extends JPanel
 				newLabel("%", GlobalConstants.TEXT_SIZE);
 
 				// Fifth Row
-				newLabel("Desired Confidence Coeffecient", GlobalConstants.TEXT_SIZE);
+				newLabel("Desired Confidence Level", GlobalConstants.TEXT_SIZE);
 				fillCols(1);
 				tfCC = newTf("95");
 				add(tfCC);
