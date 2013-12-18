@@ -1,4 +1,4 @@
-package charts;
+package cluster;
 
 import java.awt.BasicStroke;
 import java.awt.BorderLayout;
@@ -35,8 +35,6 @@ import basesAndUtilites.D;
 import basesAndUtilites.GlobalConstants;
 import basesAndUtilites.RSInternalFrame;
 import basesAndUtilites.RSVariations;
-import cluster.ClusterCalculator;
-import cluster.ClusterDoc;
 
 public class ClusterChartDoc
 	{

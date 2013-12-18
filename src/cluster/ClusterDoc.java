@@ -4,7 +4,6 @@ import javax.swing.JDesktopPane;
 
 import basesAndUtilites.D;
 import basesAndUtilites.GlobalConstants;
-import charts.ClusterChartDoc;
 
 public class ClusterDoc
 {

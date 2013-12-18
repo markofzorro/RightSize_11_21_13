@@ -22,8 +22,8 @@ import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
 import rsTutorials.RSTutorialDoc;
+import srs.SRSChartDoc;
 import srs.SRSDoc;
-import charts.SRSChartDoc;
 import cluster.ClusterDoc;
 //import jFreeChart.RSLineChartOldNoWord;
 

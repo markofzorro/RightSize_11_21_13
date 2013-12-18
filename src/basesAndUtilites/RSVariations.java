@@ -11,9 +11,33 @@ package basesAndUtilites;
  */
 public class RSVariations
 	{
-		
+		static double max = 0;
+		static double min = 0;
+		static double assumption = 0;
 	 
 
+		public static double[] confidenceLevel()
+			{
+				double[] array = new double[GlobalConstants.COLS];
+				
+				double distance = (GlobalConstants.CONFIDENCE_LEVEL_MAX - GlobalConstants.CONFIDENCE_LEVEL_MIN)/GlobalConstants.COLS;
+				System.out.println("distance  is " + distance );
+				for(int i = 0; i < GlobalConstants.COLS; i++)
+					{
+						if( i == 0)
+							array[i] = GlobalConstants.CONFIDENCE_LEVEL_MIN;
+						else if( i == GlobalConstants.COLS - 1)
+							array[i] = GlobalConstants.CONFIDENCE_LEVEL_MAX;
+						else
+							array[i] = GlobalConstants.CONFIDENCE_LEVEL_MIN + (distance * i);
+						
+						System.out.println("RSVariations.confidenceLevel: i is " + i + ", array[i] is " + array[i] );
+					}
+				
+				return array;
+			}
+		
+		
 		/**
 		 * Creates assumptions by adding or subtracting an interval from the
 		 * initial value. It calculates the interval to fit within the max and min values.
@@ -23,8 +47,13 @@ public class RSVariations
 		 * @param cols
 		 * @return
 		 */
-		static public double[] add(double assumption, double min, double max, boolean wholeNumber)
+		static public double[] add(double assumption_arg, double min_arg, double max_arg, boolean wholeNumber)
 			{
+				
+				min = min_arg;
+				max = max_arg;
+				assumption = assumption_arg;
+				
 				
 				// Need 2D array to store values and column labels
 				final double[] darray = new double[GlobalConstants.COLS];
@@ -40,11 +69,20 @@ public class RSVariations
 					}
 				
 				
-				int halfarraysize = GlobalConstants.COLS / 2;
-				double distance = 10; // arbitrary starting point
+				int halfArraySize = GlobalConstants.COLS / 2;
+			//*** 
+				//	double distance = 10; // arbitrary starting point
 
+				double top = max - assumption;
+				double bottom = assumption - min;
+				double distance = 0;
+				if( top > bottom)
+					distance = (top/halfArraySize * 2);
+				else // must be closer to bottom
+					distance = (top/halfArraySize * 2);
+				
 				// does the expansion fit the range?
-				if ((min + distance * GlobalConstants.COLS) > max )  // the expansion is too big
+			/*	if ((min + distance * GlobalConstants.COLS) > max )  // the expansion is too big
 				{
 						// chop the bigger segment into narray bits
 					double top = max - assumption;
@@ -56,13 +94,13 @@ public class RSVariations
 				} // if
 
 				// Can we vary down?
-				for (int i =0 ; i < halfarraysize; i++)
-					if( (assumption - distance * halfarraysize) < min)	// oops, it will run below Globals.MIN
+				for (int i =0 ; i < halfArraysize; i++)
+					if( (assumption - distance * halfArraysize) < min)	// oops, it will run below Globals.MIN
 						assumption += distance;	// move it up
 
 				// Can we vary up?
-				for (int i =0 ; i < halfarraysize; i++)
-					if( (assumption + distance * halfarraysize) > max)	// oops, it will run below Globals.MIN
+				for (int i =0 ; i < halfArraysize; i++)
+					if( (assumption + distance * halfArraysize) > max)	// oops, it will run below Globals.MIN
 						assumption -= distance;	// move it down
 			/*#ifdef _DEBUG
 					// check to be sure it worked
@@ -71,7 +109,7 @@ public class RSVariations
 			#endif	
 				*/
 				// now fill the array
-				double start = assumption - distance * halfarraysize;
+				double start = assumption - distance * halfArraySize;
 				for (int i = 0; i < GlobalConstants.COLS; i++)
 					{
 						
@@ -91,6 +129,8 @@ public class RSVariations
 				for (int i = 0; i < Globals.COLS; i++)
 					D.b("array[" + i + "] is " + darray[i]);
 				*/
+				
+			
 				return darray;
 			} // variationsAdd
 
@@ -121,14 +161,14 @@ public class RSVariations
 				
 				
 				int halfarraysize = GlobalConstants.COLS / 2;
-				double distance = 10; // arbitrary starting point
+				double distance = 0; // arbitrary starting point
 
 				// does the expansion fit the range?
-				if ((GlobalConstants.MIN + distance * GlobalConstants.COLS) > GlobalConstants.MAX )  // the expansion is too big
+				if ((min + distance * GlobalConstants.COLS) > max )  // the expansion is too big
 				{
 						// chop the bigger segment into narray bits
-					double top = GlobalConstants.MAX - assumption;
-					double bottom = assumption - GlobalConstants.MIN;
+					double top = max - assumption;
+					double bottom = assumption - min;
 					if (top >= bottom)
 						distance = top / GlobalConstants.COLS;
 					else
@@ -137,12 +177,12 @@ public class RSVariations
 
 				// Can we vary down?
 				for (int i =0 ; i < halfarraysize; i++)
-					if( (assumption - distance * halfarraysize) < GlobalConstants.MIN)	// oops, it will run below Globals.MIN
+					if( (assumption - distance * halfarraysize) < min)	// oops, it will run below Globals.MIN
 						assumption += distance;	// move it up
 
 				// Can we vary up?
 				for (int i =0 ; i < halfarraysize; i++)
-					if( (assumption + distance * halfarraysize) > GlobalConstants.MAX)	// oops, it will run below Globals.MIN
+					if( (assumption + distance * halfarraysize) > max)	// oops, it will run below Globals.MIN
 						assumption -= distance;	// move it down
 			/*#ifdef _DEBUG
 					// check to be sure it worked

@@ -1,5 +1,5 @@
 
-package charts;
+package srs;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -51,7 +51,7 @@ public class SRSTabbedChartPanel extends JPanel
 				tabbedPane.addTab("Width of Confidence Interval", doc.createConfidenceIntervalPanel());
 
 				JPanel confidenceCoefficientPanel = doc.createConfidenceCoefficientPanel();
-				tabbedPane.addTab("Confidence Coefficient", doc.createConfidenceCoefficientPanel());
+				tabbedPane.addTab("Confidence Level", doc.createConfidenceCoefficientPanel());
 				
 //				tabbedPane.setSelectedIndex(selectedIndex + 3); // CC is the third panel
 

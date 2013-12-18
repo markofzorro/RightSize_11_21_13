@@ -1,4 +1,4 @@
-package charts;
+package srs;
 
 import java.awt.BasicStroke;
 import java.awt.BorderLayout;
@@ -30,12 +30,20 @@ import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.ui.HorizontalAlignment;
 import org.jfree.ui.RectangleEdge;
 
-import srs.SRSCalculator;
 import basesAndUtilites.D;
 import basesAndUtilites.GlobalConstants;
 import basesAndUtilites.RSInternalFrame;
 import basesAndUtilites.RSVariations;
 
+/**
+ * Holds data and calculates values for chart. Gets values to calculate from
+ * RSVariations then calls SRSCalculator to find populations needed. Values come
+ * in an array of doubles. Converts these to strings of in the form of XX.XX
+ * which are used by chart to draw x axis.
+ * 
+ * @author markofzero
+ * 
+ */
 public class SRSChartDoc
 	{
 		// private SRSDoc doc = null;
@@ -92,7 +100,7 @@ public class SRSChartDoc
 				Dimension d = desktop.getSize();
 				//chartFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 				//chartFrame.setSize(d); // was 1000,700. 700, 500 seem to be the default.
-				chartFrame.setSize(1000,700);
+				chartFrame.setSize(1100,800);
 				tabby = new SRSTabbedChartPanel(this);
 
 				chartFrame.add(tabby);
@@ -204,7 +212,7 @@ public class SRSChartDoc
 					{
 						
 						double[] variedAssumption = RSVariations.add(proportion);
-
+						
 						// create the dataset...
 						DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
@@ -277,8 +285,9 @@ public class SRSChartDoc
 
 					// assumption is proportion
 					{
-						
-						double[] variedAssumption = RSVariations.add(confidenceCoefficient);
+
+						double[] variedAssumption = RSVariations
+								.confidenceLevel();
 
 						// create the dataset...
 						DefaultCategoryDataset dataset = new DefaultCategoryDataset();
@@ -287,20 +296,43 @@ public class SRSChartDoc
 
 						for (int i = 0; i < GlobalConstants.COLS; i++)
 							{
-								SRSCalculator.calculate(population, proportion, confidenceInterval, variedAssumption[i]);
-								double value = SRSCalculator.getN();			
-								dataset.addValue(value, "confidenceCoefficient", Double.toString( variedAssumption[i]));
-								D.b("SRSChartDoc.createConfidenceCoefficient: i is " + i + ". Population is " + population + ". Sample needed is " + value);
+
+								// dataset.addValue(value, "population", s);
+								SRSCalculator
+										.calculate(population, proportion,
+												confidenceInterval,
+												variedAssumption[i]);
+								double value = SRSCalculator.getN();
+
+								double columnLabel = variedAssumption[i];
+
+								if (columnLabel > GlobalConstants.CONFIDENCE_LEVEL_MIN)
+									{
+										DecimalFormat myFormatter = new DecimalFormat(
+												"#.##");
+										String s = myFormatter
+												.format(columnLabel);
+										dataset.addValue(value,
+												"confidenceLevel", s);
+									} else
+									dataset.addValue(
+											value,
+											"confidenceLevel",
+											Double.toString(variedAssumption[i]));
+
+						//		D.b("SSChartDoc.createConfdenceLevel: i is "
+							//			+ i + " columnLabel is " + columnLabel);
 							}
-						
+
 						JFreeChart chart = createChart(dataset);
-						//chart.setTitle("Proportion Title");
-						chart.setTitle(new TextTitle("Effect of Confidence Coefficient on Sample Size."));
+						// chart.setTitle("Proportion Title");
+						chart.setTitle(new TextTitle(
+								"Effect of Confidence Level on Sample Size."));
 						CategoryPlot plot = (CategoryPlot) chart.getPlot();
-					    CategoryAxis xAxis = plot.getDomainAxis();
-					    xAxis.setLabel("Confidence Coefficient");
-					    ValueAxis yAxis = plot.getRangeAxis();
-					    yAxis.setLabel("Sample Size Needed");
+						CategoryAxis xAxis = plot.getDomainAxis();
+						xAxis.setLabel("Confidence Level");
+						ValueAxis yAxis = plot.getRangeAxis();
+						yAxis.setLabel("Sample Size Needed");
 						return new ChartPanel(chart);
 					}
 			}

@@ -1,5 +1,5 @@
 
-package charts;
+package cluster;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
