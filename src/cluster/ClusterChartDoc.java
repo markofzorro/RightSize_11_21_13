@@ -210,7 +210,7 @@ public class ClusterChartDoc
 		  
 		  // assumption is proportion {
 		  
-		  double[] variedAssumption = RSVariations.add(proportion);
+		  double[] variedAssumption = RSVariations.proportion();
 		  
 		  // create the dataset... 
 		  DefaultCategoryDataset dataset = new DefaultCategoryDataset();
@@ -226,16 +226,22 @@ public class ClusterChartDoc
 							confidenceLevel, clusterSize,
 							roh);
 				  
-				  double value = ClusterCalculator.getClustersNeeded();
+				  double clustersNeeded = ClusterCalculator.getClustersNeeded();
+				  double columnLabel = variedAssumption[i];
 				  
 		   // dataset(double value, String rowLabel, String columnLabel) 
-				  dataset.addValue(value, "proportion",
-		  Double.toString(variedAssumption[i])); 
-				 // D.b("xLabelArray[" + i +"] is " + variedAssumption[i]);
+			//	  dataset.addValue(value, "proportion",
+			//	  Double.toString(variedAssumption[i])); 
+		
+				  DecimalFormat myFormatter = new DecimalFormat(
+							"#.##");
+					String s = myFormatter
+							.format(columnLabel);
+					dataset.addValue(clustersNeeded,
+							"confidenceLevel", s);
+			//	  D.b("ClusterChart.proportions(): array[" + i +"] is " + variedAssumption[i]);
 		  
 		  
-		  //D.b("dataset[" + i + "] is " +
-		  //darray[i] ); 
 		  
 			  }
 		  
@@ -340,18 +346,8 @@ public class ClusterChartDoc
 										.format(columnLabel);
 								dataset.addValue(clustersNeeded,
 										"confidenceLevel", s);
-							} else
-							dataset.addValue(
-									clustersNeeded,
-									"confidenceLevel",
-									Double.toString(variedAssumption[i]));
-
-				//		D.b("SSChartDoc.createConfdenceLevel: i is "
-					//			+ i + " columnLabel is " + columnLabel);
+							} 
 					
-
-						
-
 					}
 
 				JFreeChart chart = createChart(dataset);

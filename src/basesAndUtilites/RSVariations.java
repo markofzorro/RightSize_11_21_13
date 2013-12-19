@@ -16,12 +16,34 @@ public class RSVariations
 		static double assumption = 0;
 	 
 
+		public static double[] proportion()
+			{
+				double[] array = new double[GlobalConstants.COLS];
+			
+			double distance = (GlobalConstants.MAX - GlobalConstants.MIN)/GlobalConstants.COLS;
+			System.out.println("distance  is " + distance );
+			for(int i = 0; i < GlobalConstants.COLS; i++)
+				{
+					if( i == 0)
+						array[i] = GlobalConstants.MIN;
+					else if( i == GlobalConstants.COLS - 1)
+						array[i] = GlobalConstants.MAX;
+					else
+						array[i] = GlobalConstants.MIN + (distance * i);
+					
+					D.b("RSVariations.proportion(): i is " + i + ", array[i] is " + array[i] );
+				}
+			
+			return array;
+			}
+		
+		
 		public static double[] confidenceLevel()
 			{
 				double[] array = new double[GlobalConstants.COLS];
 				
 				double distance = (GlobalConstants.CONFIDENCE_LEVEL_MAX - GlobalConstants.CONFIDENCE_LEVEL_MIN)/GlobalConstants.COLS;
-				System.out.println("distance  is " + distance );
+				//System.out.println("distance  is " + distance );
 				for(int i = 0; i < GlobalConstants.COLS; i++)
 					{
 						if( i == 0)
@@ -31,7 +53,7 @@ public class RSVariations
 						else
 							array[i] = GlobalConstants.CONFIDENCE_LEVEL_MIN + (distance * i);
 						
-						System.out.println("RSVariations.confidenceLevel: i is " + i + ", array[i] is " + array[i] );
+					//	System.out.println("RSVariations.confidenceLevel: i is " + i + ", array[i] is " + array[i] );
 					}
 				
 				return array;
