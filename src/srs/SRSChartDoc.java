@@ -54,7 +54,7 @@ public class SRSChartDoc
 		private double population = 0;
 		private double proportion = 0;
 		private double confidenceInterval = 0;
-		private double confidenceCoefficient = 0;
+		private double confidenceLevel = 0;
 		private String choice = null;
 	//	private int Globals. = Globals.COLS;
 		
@@ -63,7 +63,7 @@ public class SRSChartDoc
 
 		//private int cols = 11; // Number of columns in chart.
 
-				public SRSChartDoc(JDesktopPane desktop, double population, double proportion, double confidenceInterval, double confidenceCoefficient, String choice)
+				public SRSChartDoc(JDesktopPane desktop, double population, double proportion, double confidenceInterval, double confidenceLevel, String choice)
 			{
 				// this.doc = doc; doesn't seem to work. Don't know why. desktop
 				// = doc.getDesktop();
@@ -73,15 +73,15 @@ public class SRSChartDoc
 				this.population = population;
 				this.proportion = proportion;
 				this.confidenceInterval = confidenceInterval;
-				this.confidenceCoefficient = confidenceCoefficient;
+				this.confidenceLevel = confidenceLevel;
 				this.choice = new String(choice); // create a new string to be
 													// sure the argument doesn't
 													// disappear somewhere.
 
 				this.desktop = desktop;
-				if ("srs".equals(choice))
-					;
-			//	// D.b("In RSChartDoc constructor. confidenceConfidencient is " + confidenceCoefficient);
+			//	if ("srs".equals(choice))
+				//	;
+			//	// D.b("In RSChartDoc constructor. confidenceConfidencient is " + confidenceLevel);
 			//	// D.b("In RSChartDoc constructor. Choice is " + choice);
 				createChartFrame();
 
@@ -163,7 +163,7 @@ public class SRSChartDoc
 
 						for (int i = 0; i < GlobalConstants.COLS; i++)
 							{
-								SRSCalculator.calculate(variedAssumption[i], proportion, confidenceInterval, confidenceCoefficient);
+								SRSCalculator.calculate(variedAssumption[i], proportion, confidenceInterval, confidenceLevel);
 								double value = SRSCalculator.getN();
 								// dataset(double value, String rowLabel, String columnLabel)
 								double columnLabel = variedAssumption[i];
@@ -220,7 +220,7 @@ public class SRSChartDoc
 
 						for (int i = 0; i < GlobalConstants.COLS; i++)
 							{
-								SRSCalculator.calculate(population, variedAssumption[i], confidenceInterval, confidenceCoefficient);
+								SRSCalculator.calculate(population, variedAssumption[i], confidenceInterval, confidenceLevel);
 								double value = SRSCalculator.getN();
 								// dataset(double value, String rowLabel, String columnLabel)			
 								dataset.addValue(value, "proportion", Double.toString(variedAssumption[i]));
@@ -258,7 +258,7 @@ public class SRSChartDoc
 
 						for (int i = 0; i < GlobalConstants.COLS; i++)
 							{
-								SRSCalculator.calculate(population, proportion, variedAssumption[i], confidenceCoefficient);
+								SRSCalculator.calculate(population, proportion, variedAssumption[i], confidenceLevel);
 								double value = SRSCalculator.getN();			
 								dataset.addValue(value, "confidenceInterval", "\u00B1" + Double.toString( variedAssumption[i])); // padd lus/minus sign
 							
@@ -287,7 +287,7 @@ public class SRSChartDoc
 					{
 
 						double[] variedAssumption = RSVariations
-								.confidenceLevel();
+								.confidenceLevel(confidenceLevel);
 
 						// create the dataset...
 						DefaultCategoryDataset dataset = new DefaultCategoryDataset();

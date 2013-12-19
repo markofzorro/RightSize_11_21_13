@@ -317,7 +317,7 @@ public class ClusterChartDoc
 
 				
 
-				double[] variedAssumption = RSVariations.confidenceLevel();
+				double[] variedAssumption = RSVariations.confidenceLevel(confidenceLevel);
 						
 
 				// create the dataset...

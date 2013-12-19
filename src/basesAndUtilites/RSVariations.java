@@ -52,10 +52,16 @@ public class RSVariations
 		public static double[] createArrayAroundAssumption(double assumption, double bottom, double top, int size)
 			{
 				
-				double[] bottomHalf = createArray(bottom, assumption, (size/2)); 
-				double[] topHalf = createArray(assumption, top, (size/2) + 1);
-				return concat(bottomHalf, topHalf);
+				double[] bottomHalf = createArray(bottom, assumption, (size/2) + 2); 
+				double[] topHalf = createArray(assumption + 1, top, (size/2) - 1);
 				
+				double[] array = concat(bottomHalf, topHalf);
+				
+				for(int i =0; i < size; i++)
+				// Debugger
+					D.b("RSVariations.createArrayAroundAssumption(): array[" + i + "] is " + array[i] );
+				
+				return array;
 				/*createBottomHalfArray(min, assumption, (cols/2) + 1);
 				createBottomHalfArray(min, assumption, (cols/2) + 1);
 				createTopHalfArray(assumption, (cols/2) + 1);
@@ -82,9 +88,9 @@ public class RSVariations
 			}
 		
 		
-		public static double[] confidenceLevel()
+		public static double[] confidenceLevel(double assumption)
 			{
-				return createArray(GlobalConstants.CONFIDENCE_LEVEL_MIN, GlobalConstants.CONFIDENCE_LEVEL_MAX, GlobalConstants.COLS);
+				return createArrayAroundAssumption(assumption, GlobalConstants.CONFIDENCE_LEVEL_MIN, GlobalConstants.CONFIDENCE_LEVEL_MAX, GlobalConstants.COLS);
 			}
 		
 		public static double[] confidenceInterval()
