@@ -211,19 +211,30 @@ public class SRSChartDoc
 					// assumption is proportion
 					{
 						
-						double[] variedAssumption = RSVariations.add(proportion);
+						double[] variedAssumption = RSVariations.proportion(proportion);
 						
 						// create the dataset...
 						DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
 						// dataset.addValue(1.0, series1, type1);
 
+						
 						for (int i = 0; i < GlobalConstants.COLS; i++)
 							{
 								SRSCalculator.calculate(population, variedAssumption[i], confidenceInterval, confidenceLevel);
-								double value = SRSCalculator.getN();
+								double sampleSize = SRSCalculator.getN();
+								
+								double columnLabel = variedAssumption[i];		
+								DecimalFormat myFormatter = new DecimalFormat(
+										"#.##");
+								String s = myFormatter
+										.format(columnLabel);
+								dataset.addValue(sampleSize,
+										"confidenceLevel", s);
+						//	  D.
+								
 								// dataset(double value, String rowLabel, String columnLabel)			
-								dataset.addValue(value, "proportion", Double.toString(variedAssumption[i]));
+							//	dataset.addValue(sampleSize, "proportion", Double.toString(variedAssumption[i]));
 								// D.b("xLabelArray[" + i + "] is " + variedAssumption[i]);
 								//// D.b("dataset[" + i + "] is " + darray[i] );
 							}

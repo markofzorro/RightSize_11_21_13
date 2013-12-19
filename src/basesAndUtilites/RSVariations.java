@@ -51,9 +51,9 @@ public class RSVariations
 		
 		public static double[] createArrayAroundAssumption(double assumption, double bottom, double top, int size)
 			{
-				
-				double[] bottomHalf = createArray(bottom, assumption, (size/2) + 2); 
-				double[] topHalf = createArray(assumption + 1, top, (size/2) - 1);
+				double distance = (top - bottom)/size;
+				double[] bottomHalf = createArray(bottom, assumption, (size/2) + 1); 
+				double[] topHalf = createArray(assumption + distance, top, (size/2));
 				
 				double[] array = concat(bottomHalf, topHalf);
 				
