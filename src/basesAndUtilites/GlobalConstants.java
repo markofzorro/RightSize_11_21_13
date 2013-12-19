@@ -19,8 +19,10 @@ public class GlobalConstants
 	public static final int ROH_MAX_DIGITS = 3;
 	public static final double DESIGN_EFFECT_MIN = 1;
 	public static final double DESIGN_EFFECT_MAX = 30;
-	public static final double CI_MIN = 1;
-	public static final double CI_MAX = 20;
+	public static final double CONFIDENCE_INTERVAL_MIN = 1;
+	public static final double CONFIDENCE_INTERVAL_MAX = 20;
 	public static final double CONFIDENCE_LEVEL_MIN = 90;
 	public static final double CONFIDENCE_LEVEL_MAX = 99.99;
+	public static final double CLUSTER_SIZE_MIN = 1;
+	public static final double CLUSTER_SIZE_MAX = 100;
 }

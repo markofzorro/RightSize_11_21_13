@@ -267,7 +267,7 @@ public class ClusterChartDoc
 				// assumption is proportion {
 
 				double[] variedAssumption = RSVariations
-						.add(confidenceInterval, GlobalConstants.CI_MIN, GlobalConstants.CI_MAX, false);
+						.confidenceInterval();
 
 				// create the dataset...
 				DefaultCategoryDataset dataset = new DefaultCategoryDataset();
@@ -369,29 +369,29 @@ public class ClusterChartDoc
 			{
 				JPanel panel = new JPanel();
 
-				
-
-				double[] variedAssumption = RSVariations
-						.add(clusterSize);
+				double[] variedAssumption = RSVariations.clusterSize();
 
 				// create the dataset...
 				DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
 				// dataset.addValue(1.0, series1, type1);
-
+				DecimalFormat myFormatter = new DecimalFormat("#");
 				for (int i = 0; i < GlobalConstants.COLS; i++)
 					{
 						ClusterCalculator.calculate(population, proportion,
-								confidenceInterval, confidenceLevel, variedAssumption[i],
-								 roh);
+								confidenceInterval, confidenceLevel,
+								variedAssumption[i], roh);
 
 						double clustersNeeded = ClusterCalculator
 								.getClustersNeeded();
 
-						dataset.addValue(clustersNeeded, "Clusters Needed",
-								Double.toString(variedAssumption[i]));
+						double columnLabel = variedAssumption[i];
+				
+						String s = myFormatter.format(columnLabel);
+						dataset.addValue(clustersNeeded, "clusterSize", s);
 
-						
+						// dataset.addValue(clustersNeeded, "Clusters Needed",
+						// Double.toString(variedAssumption[i]));
 
 					}
 
@@ -403,7 +403,7 @@ public class ClusterChartDoc
 				xAxis.setLabel("Cluster Size");
 				ValueAxis yAxis = plot.getRangeAxis();
 				yAxis.setLabel("Clusters Needed");
-				
+
 				return new ChartPanel(chart);
 
 			} // createclusterSizePanel

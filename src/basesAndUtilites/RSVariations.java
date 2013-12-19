@@ -16,48 +16,50 @@ public class RSVariations
 		static double assumption = 0;
 	 
 
-		public static double[] proportion()
+		public static double[] createArray(double min, double max, int cols)
 			{
-				double[] array = new double[GlobalConstants.COLS];
+				double[] array = new double[cols];
 			
-			double distance = (GlobalConstants.MAX - GlobalConstants.MIN)/(GlobalConstants.COLS - 1);
-			System.out.println("distance  is " + distance );
-			for(int i = 0; i < GlobalConstants.COLS; i++)
+			double distance = (max - min)/(cols - 1);
+			System.out.println("RSVariations.createArray(): distance  is " + distance );
+			for(int i = 0; i < cols; i++)
 				{
 					if( i == 0)
-						array[i] = GlobalConstants.MIN;
-					else if( i == GlobalConstants.COLS - 1)
-						array[i] = GlobalConstants.MAX;
+						array[i] = min;
+					else if( i == cols - 1)
+						array[i] = max;
 					else
-						array[i] = GlobalConstants.MIN + (distance * i);
+						array[i] = min + (distance * i);
 					
-					D.b("RSVariations.proportion(): i is " + i + ", array[i] is " + array[i] );
+					D.b("RSVariations.createArray(): i is " + i + ", array[i] is " + array[i] );
 				}
 			
 			return array;
 			}
 		
 		
+		public static double[] proportion()
+			{
+			
+				return createArray(GlobalConstants.MIN, GlobalConstants.MAX, GlobalConstants.COLS);
+			}
+		
+		
 		public static double[] confidenceLevel()
 			{
-				double[] array = new double[GlobalConstants.COLS];
-				
-				double distance = (GlobalConstants.CONFIDENCE_LEVEL_MAX - GlobalConstants.CONFIDENCE_LEVEL_MIN)/(GlobalConstants.COLS - 1);
-				//System.out.println("distance  is " + distance );
-				for(int i = 0; i < GlobalConstants.COLS; i++)
-					{
-						if( i == 0)
-							array[i] = GlobalConstants.CONFIDENCE_LEVEL_MIN;
-						else if( i == GlobalConstants.COLS - 1)
-							array[i] = GlobalConstants.CONFIDENCE_LEVEL_MAX;
-						else
-							array[i] = GlobalConstants.CONFIDENCE_LEVEL_MIN + (distance * i);
-						
-					//	System.out.println("RSVariations.confidenceLevel: i is " + i + ", array[i] is " + array[i] );
-					}
-				
-				return array;
+				return createArray(GlobalConstants.CONFIDENCE_LEVEL_MIN, GlobalConstants.CONFIDENCE_LEVEL_MAX, GlobalConstants.COLS);
 			}
+		
+		public static double[] confidenceInterval()
+			{
+				return createArray(GlobalConstants.CONFIDENCE_INTERVAL_MIN, GlobalConstants.CONFIDENCE_INTERVAL_MAX, GlobalConstants.COLS);
+			}
+		
+		public static double[] clusterSize()
+			{
+				return createArray(GlobalConstants.CLUSTER_SIZE_MIN, GlobalConstants.CLUSTER_SIZE_MAX, GlobalConstants.COLS);
+			}
+		
 		
 		
 		/**

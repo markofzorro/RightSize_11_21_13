@@ -248,7 +248,7 @@ public class ClusterDoc
 		private void setCI(String s)
 		{
 			double retval = 0;
-			retval = stringToDouble(s, GlobalConstants.CI_MIN, GlobalConstants.CI_MAX, GlobalConstants.MAX_DIGITS);
+			retval = stringToDouble(s, GlobalConstants.CONFIDENCE_INTERVAL_MIN, GlobalConstants.CONFIDENCE_INTERVAL_MAX, GlobalConstants.MAX_DIGITS);
 			if ( retval > 0)
 			{
 				confidenceInterval = retval;
