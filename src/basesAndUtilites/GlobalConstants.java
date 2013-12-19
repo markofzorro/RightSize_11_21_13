@@ -14,7 +14,7 @@ public class GlobalConstants
 	static public final int TEXT_SIZE = 12;
 	static public final int TITLE_SIZE = 24;
 	public static final int MAX_DIGITS = 2;
-	public static final double ROH_MAX = 1;
+	public static final double ROH_MAX = 2;
 	public static final double ROH_MIN = 0;
 	public static final int ROH_MAX_DIGITS = 3;
 	public static final double DESIGN_EFFECT_MIN = 1;

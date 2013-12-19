@@ -416,14 +416,13 @@ public class ClusterChartDoc
 
 				
 
-				double[] variedAssumption = RSVariations
-						.add(roh, GlobalConstants.ROH_MIN, GlobalConstants.ROH_MAX, false);
+				double[] variedAssumption = RSVariations.roh();
 
 				// create the dataset...
 				DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
-				// dataset.addValue(1.0, series1, type1);
-
+				
+				DecimalFormat myFormatter = new DecimalFormat("#.##");
 				for (int i = 0; i < GlobalConstants.COLS; i++)
 					{
 						ClusterCalculator.calculate(population, proportion,
@@ -431,15 +430,18 @@ public class ClusterChartDoc
 
 						double clustersNeeded = ClusterCalculator
 								.getClustersNeeded();
-						
-						
-						String s = right2Formatter.format(variedAssumption[i]);
-						dataset.addValue(clustersNeeded, "Clusters Needed", s);
 
-						
+						double columnLabel = variedAssumption[i];
+				
+						String s = myFormatter.format(columnLabel);
+						dataset.addValue(clustersNeeded, "roh", s);
+
+						// dataset.addValue(clustersNeeded, "Clusters Needed",
+						// Double.toString(variedAssumption[i]));
 
 					}
 
+				
 				JFreeChart chart = createChart(dataset);
 				chart.setTitle(new TextTitle(
 						"Effect of Rate of Homogeneity on Sample Size."));
@@ -460,8 +462,8 @@ public class ClusterChartDoc
 				
 				double designEffect = 1 + (clusterSize - 1) * roh; // from Bennett, equation 3. 
 
-				double[] variedAssumption = RSVariations
-						.add(designEffect, GlobalConstants.DESIGN_EFFECT_MIN, GlobalConstants.DESIGN_EFFECT_MAX, false);
+				double[] variedAssumption = RSVariations.designEffect();
+					//	.add(designEffect, GlobalConstants.DESIGN_EFFECT_MIN, GlobalConstants.DESIGN_EFFECT_MAX, false);
 				
 				//**** To create array of results, need to calculate SRS result and then multiply by the desired design effect to get corrected value
 				SRSCalculator.calculate(population, proportion, 

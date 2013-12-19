@@ -59,6 +59,16 @@ public class RSVariations
 			{
 				return createArray(GlobalConstants.CLUSTER_SIZE_MIN, GlobalConstants.CLUSTER_SIZE_MAX, GlobalConstants.COLS);
 			}
+		public static double[] roh()
+			{
+				return createArray(GlobalConstants.ROH_MIN, GlobalConstants.ROH_MAX, GlobalConstants.COLS);	
+				}
+		
+		public static double[]  designEffect()
+			{
+				return createArray(GlobalConstants.DESIGN_EFFECT_MIN, GlobalConstants.DESIGN_EFFECT_MAX, GlobalConstants.COLS);
+			}
+		
 		
 		
 		
@@ -296,6 +306,8 @@ public class RSVariations
 				return array;
 
 			} // multiplyByLogs
+
+
 		
 		
 	} // RSVariations
