@@ -20,7 +20,7 @@ public class RSVariations
 			{
 				double[] array = new double[GlobalConstants.COLS];
 			
-			double distance = (GlobalConstants.MAX - GlobalConstants.MIN)/GlobalConstants.COLS;
+			double distance = (GlobalConstants.MAX - GlobalConstants.MIN)/(GlobalConstants.COLS - 1);
 			System.out.println("distance  is " + distance );
 			for(int i = 0; i < GlobalConstants.COLS; i++)
 				{
@@ -42,7 +42,7 @@ public class RSVariations
 			{
 				double[] array = new double[GlobalConstants.COLS];
 				
-				double distance = (GlobalConstants.CONFIDENCE_LEVEL_MAX - GlobalConstants.CONFIDENCE_LEVEL_MIN)/GlobalConstants.COLS;
+				double distance = (GlobalConstants.CONFIDENCE_LEVEL_MAX - GlobalConstants.CONFIDENCE_LEVEL_MIN)/(GlobalConstants.COLS - 1);
 				//System.out.println("distance  is " + distance );
 				for(int i = 0; i < GlobalConstants.COLS; i++)
 					{
