@@ -21,7 +21,7 @@ public class RSVariations
 				double[] array = new double[cols];
 			
 			double distance = (max - min)/(cols - 1);
-			System.out.println("RSVariations.createArray(): distance  is " + distance );
+		//	System.out.println("RSVariations.createArray(): distance  is " + distance );
 			for(int i = 0; i < cols; i++)
 				{
 					if( i == 0)
@@ -36,12 +36,49 @@ public class RSVariations
 			
 			return array;
 			}
+
+		private static double[] createBottomHalfArray(double bottom, double assumption, int size)
+			{
+				
+				return createArray(bottom, assumption, size);
+			}
+		
+		private static double[] createTopHalfArray(double assumption, double top, int size)
+			{
+				
+				return createArray(assumption + 1, top, size);
+			}
+		
+		public static double[] createArrayAroundAssumption(double assumption, double bottom, double top, int size)
+			{
+				
+				double[] bottomHalf = createArray(bottom, assumption, (size/2)); 
+				double[] topHalf = createArray(assumption, top, (size/2) + 1);
+				return concat(bottomHalf, topHalf);
+				
+				/*createBottomHalfArray(min, assumption, (cols/2) + 1);
+				createBottomHalfArray(min, assumption, (cols/2) + 1);
+				createTopHalfArray(assumption, (cols/2) + 1);
+				return null;
+				*/
+			}
+		
+		private static double[] concat(double[] A, double[] B) 
+			{
+			   int aLen = A.length;
+			   int bLen = B.length;
+			   double[] C= new double[aLen+bLen];
+			   System.arraycopy(A, 0, C, 0, aLen);
+			   System.arraycopy(B, 0, C, aLen, bLen);
+			   return C;
+			}
 		
 		
-		public static double[] proportion()
+		public static double[] proportion(double assumption)
 			{
 			
-				return createArray(GlobalConstants.MIN, GlobalConstants.MAX, GlobalConstants.COLS);
+				//return createArray(GlobalConstants.MIN, GlobalConstants.MAX, GlobalConstants.COLS);
+				return createArrayAroundAssumption(assumption, GlobalConstants.MIN, GlobalConstants.MAX, GlobalConstants.COLS);
 			}
 		
 		

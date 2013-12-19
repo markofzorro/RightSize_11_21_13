@@ -210,7 +210,8 @@ public class ClusterChartDoc
 		  
 		  // assumption is proportion {
 		  
-		  double[] variedAssumption = RSVariations.proportion();
+		  double[] variedAssumption = RSVariations.proportion(proportion);
+		  //double[] variedAssumption = createArray(GlobalConstants.MIN, assumption, (size/2) + 1);
 		  
 		  // create the dataset... 
 		  DefaultCategoryDataset dataset = new DefaultCategoryDataset();
