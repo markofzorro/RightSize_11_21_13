@@ -277,7 +277,7 @@ public class SRSChartDoc
 					}
 			}
 
-		protected JPanel createConfidenceCoefficientPanel()
+		protected JPanel createConfidenceLevelPanel()
 			{
 				JPanel panel = new JPanel();
 

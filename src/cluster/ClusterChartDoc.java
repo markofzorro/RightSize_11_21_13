@@ -310,8 +310,8 @@ public class ClusterChartDoc
 
 				
 
-				double[] variedAssumption = RSVariations
-						.add(confidenceLevel);
+				double[] variedAssumption = RSVariations.confidenceLevel();
+						
 
 				// create the dataset...
 				DefaultCategoryDataset dataset = new DefaultCategoryDataset();
@@ -327,8 +327,28 @@ public class ClusterChartDoc
 						double clustersNeeded = ClusterCalculator
 								.getClustersNeeded();
 
-						dataset.addValue(clustersNeeded, "Confidence Level",
-								Double.toString(variedAssumption[i]));
+						
+						//dataset.addValue(clustersNeeded, "Confidence Level",
+							//	Double.toString(variedAssumption[i]));
+						double columnLabel = variedAssumption[i];
+
+						if (columnLabel > GlobalConstants.CONFIDENCE_LEVEL_MIN)
+							{
+								DecimalFormat myFormatter = new DecimalFormat(
+										"#.##");
+								String s = myFormatter
+										.format(columnLabel);
+								dataset.addValue(clustersNeeded,
+										"confidenceLevel", s);
+							} else
+							dataset.addValue(
+									clustersNeeded,
+									"confidenceLevel",
+									Double.toString(variedAssumption[i]));
+
+				//		D.b("SSChartDoc.createConfdenceLevel: i is "
+					//			+ i + " columnLabel is " + columnLabel);
+					
 
 						
 
