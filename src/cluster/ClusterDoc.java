@@ -375,7 +375,7 @@ public class ClusterDoc
 //						JOptionPane.showMessageDialog(view,"Oops, You entered: " + retval + ". The value must be between" + in_min + " and " + in_max);
 						
 						
-						return 0.0;
+						return (double) -69;
 					}
 					
 		}

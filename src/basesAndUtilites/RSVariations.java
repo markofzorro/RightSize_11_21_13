@@ -103,13 +103,13 @@ public class RSVariations
 				return createArrayAroundAssumption(assumption, GlobalConstants.CONFIDENCE_INTERVAL_MIN, GlobalConstants.CONFIDENCE_INTERVAL_MAX, GlobalConstants.COLS);
 			}
 		
-		public static double[] clusterSize()
+		public static double[] clusterSize(double assumption)
 			{
 				return createArrayAroundAssumption(assumption, GlobalConstants.CLUSTER_SIZE_MIN, GlobalConstants.CLUSTER_SIZE_MAX, GlobalConstants.COLS);
 			}
-		public static double[] roh()
+		public static double[] roh(double roh)
 			{
-				return createArray(GlobalConstants.ROH_MIN, GlobalConstants.ROH_MAX, GlobalConstants.COLS);	
+				return createArrayAroundAssumption(roh, GlobalConstants.ROH_MIN, GlobalConstants.ROH_MAX, GlobalConstants.COLS);	
 				}
 		
 		public static double[]  designEffect()

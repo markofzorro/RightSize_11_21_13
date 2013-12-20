@@ -298,7 +298,7 @@ public class SRSChartDoc
 						return new ChartPanel(chart);
 					}
 			}
-/*
+
 		protected JPanel createConfidenceLevelPanel()
 			{
 				JPanel panel = new JPanel();
@@ -358,7 +358,7 @@ public class SRSChartDoc
 						return new ChartPanel(chart);
 					}
 			}
-			*/
+			
 
 		/**
 		 * Creates a sample chart.

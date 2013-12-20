@@ -378,7 +378,7 @@ public class ClusterChartDoc
 			{
 				JPanel panel = new JPanel();
 
-				double[] variedAssumption = RSVariations.clusterSize();
+				double[] variedAssumption = RSVariations.clusterSize(clusterSize);
 
 				// create the dataset...
 				DefaultCategoryDataset dataset = new DefaultCategoryDataset();
@@ -425,7 +425,7 @@ public class ClusterChartDoc
 
 				
 
-				double[] variedAssumption = RSVariations.roh();
+				double[] variedAssumption = RSVariations.roh(roh);
 
 				// create the dataset...
 				DefaultCategoryDataset dataset = new DefaultCategoryDataset();

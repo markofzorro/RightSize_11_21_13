@@ -16,7 +16,7 @@ public class GlobalConstants
 	public static final int MAX_DIGITS = 2;
 	public static final double ROH_MAX = 2;
 	public static final double ROH_MIN = 0;
-	public static final int ROH_MAX_DIGITS = 3;
+	public static final int ROH_MAX_DIGITS = 5;
 	public static final double DESIGN_EFFECT_MIN = 1;
 	public static final double DESIGN_EFFECT_MAX = 30;
 	public static final double CONFIDENCE_INTERVAL_MIN = 1;
