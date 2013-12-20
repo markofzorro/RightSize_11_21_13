@@ -30,6 +30,7 @@ public class SRSTabbedChartPanel extends JPanel
 		public SRSTabbedChartPanel(SRSChartDoc doc)
 			{
 				super();
+				setName("simple Random Sample Charts");
 				D.b("Reached RSTabbedChartPanel constructor");
 				
 				setLayout(new BorderLayout());
@@ -50,8 +51,8 @@ public class SRSTabbedChartPanel extends JPanel
 				
 				tabbedPane.addTab("Width of Confidence Interval", doc.createConfidenceIntervalPanel());
 
-				JPanel confidenceCoefficientPanel = doc.createConfidenceLevelPanel();
-				tabbedPane.addTab("Confidence Level", doc.createConfidenceLevelPanel());
+	//			JPanel confidenceCoefficientPanel = doc.createConfidenceLevelPanel();
+		//		tabbedPane.addTab("Confidence Level", doc.createConfidenceLevelPanel());
 				
 //				tabbedPane.setSelectedIndex(selectedIndex + 3); // CC is the third panel
 

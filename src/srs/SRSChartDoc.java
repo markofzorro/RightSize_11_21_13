@@ -260,19 +260,30 @@ public class SRSChartDoc
 					// assumption is proportion
 					{
 						
-						double[] variedAssumption = RSVariations.add(confidenceInterval);
+						double[] variedAssumption = RSVariations.confidenceInterval(confidenceInterval);
 
 						// create the dataset...
 						DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
 						// dataset.addValue(1.0, series1, type1);
+						
+						D.b("/************** Reached createConficenceInterval****************/");
 
 						for (int i = 0; i < GlobalConstants.COLS; i++)
 							{
+								
 								SRSCalculator.calculate(population, proportion, variedAssumption[i], confidenceLevel);
 								double value = SRSCalculator.getN();			
-								dataset.addValue(value, "confidenceInterval", "\u00B1" + Double.toString( variedAssumption[i])); // padd lus/minus sign
+								//dataset.addValue(value, "confidenceInterval", "\u00B1" + Double.toString( variedAssumption[i])); // padd lus/minus sign
 							
+								double columnLabel = variedAssumption[i];
+								DecimalFormat myFormatter = new DecimalFormat(
+										"#.##");
+								String s = "\u00B1" + myFormatter
+										.format(columnLabel);
+								
+								dataset.addValue(value, "Clusters Needed",  s);
+								
 								
 							}
 						
@@ -287,7 +298,7 @@ public class SRSChartDoc
 						return new ChartPanel(chart);
 					}
 			}
-
+/*
 		protected JPanel createConfidenceLevelPanel()
 			{
 				JPanel panel = new JPanel();
@@ -347,6 +358,7 @@ public class SRSChartDoc
 						return new ChartPanel(chart);
 					}
 			}
+			*/
 
 		/**
 		 * Creates a sample chart.

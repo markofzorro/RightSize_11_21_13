@@ -24,9 +24,13 @@ public class RSVariations
 		//	System.out.println("RSVariations.createArray(): distance  is " + distance );
 			for(int i = 0; i < cols; i++)
 				{
-					if( i == 0)
-						array[i] = min;
-					else if( i == cols - 1)
+					/*if( i == 0)
+						{
+							array[i] = min + distance;
+						//	distance = distance * 2;
+						}
+						*/
+					if( i == cols - 1)
 						array[i] = max;
 					else
 						array[i] = min + (distance * i);
@@ -93,14 +97,15 @@ public class RSVariations
 				return createArrayAroundAssumption(assumption, GlobalConstants.CONFIDENCE_LEVEL_MIN, GlobalConstants.CONFIDENCE_LEVEL_MAX, GlobalConstants.COLS);
 			}
 		
-		public static double[] confidenceInterval()
+		public static double[] confidenceInterval(double assumption)
 			{
-				return createArray(GlobalConstants.CONFIDENCE_INTERVAL_MIN, GlobalConstants.CONFIDENCE_INTERVAL_MAX, GlobalConstants.COLS);
+				D.b("****************** Reached RSVariations.confidenceInterval *************");
+				return createArrayAroundAssumption(assumption, GlobalConstants.CONFIDENCE_INTERVAL_MIN, GlobalConstants.CONFIDENCE_INTERVAL_MAX, GlobalConstants.COLS);
 			}
 		
 		public static double[] clusterSize()
 			{
-				return createArray(GlobalConstants.CLUSTER_SIZE_MIN, GlobalConstants.CLUSTER_SIZE_MAX, GlobalConstants.COLS);
+				return createArrayAroundAssumption(assumption, GlobalConstants.CLUSTER_SIZE_MIN, GlobalConstants.CLUSTER_SIZE_MAX, GlobalConstants.COLS);
 			}
 		public static double[] roh()
 			{

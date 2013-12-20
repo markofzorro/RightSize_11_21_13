@@ -268,7 +268,7 @@ public class ClusterChartDoc
 				// assumption is proportion {
 
 				double[] variedAssumption = RSVariations
-						.confidenceInterval();
+						.confidenceInterval(confidenceInterval);
 
 				// create the dataset...
 				DefaultCategoryDataset dataset = new DefaultCategoryDataset();
@@ -283,9 +283,17 @@ public class ClusterChartDoc
 
 						double clustersNeeded = ClusterCalculator
 								.getClustersNeeded();
+						
+						 double columnLabel = variedAssumption[i];
 
-						String s = right2Formatter.format(variedAssumption[i]);
-						dataset.addValue(clustersNeeded, "Clusters Needed", "\u00B1" + s);
+						//String s = right2Formatter.format(variedAssumption[i]);
+						
+						DecimalFormat myFormatter = new DecimalFormat(
+								"#.##");
+						String s = "\u00B1" + myFormatter
+								.format(columnLabel);
+						
+						dataset.addValue(clustersNeeded, "Clusters Needed",  s);
 						
 						//dataset.addValue(clustersNeeded, "Confidence Interval",
 						//		"\u00B1" + Double.toString(variedAssumption[i]));
