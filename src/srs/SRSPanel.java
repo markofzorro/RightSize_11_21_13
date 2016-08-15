@@ -1,6 +1,7 @@
 package srs;
-
 import java.awt.GridLayout;
+
+import java.text.DecimalFormat;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -9,7 +10,10 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import basesAndUtilites.D;
+import basesAndUtilites.FormatOutputString;
 import basesAndUtilites.GlobalConstants;
+import basesAndUtilites.*;
+
 
 public class SRSPanel extends JPanel
 	{
@@ -73,8 +77,9 @@ public class SRSPanel extends JPanel
 				for (int i = 0; i < 4; i++)
 					add(new JSeparator());
 
+				/******************* Results start here ***********/
 				// Results:
-/******************* Results start here ***********/
+
 				// row 7
 				JLabel lblTitle = new JLabel("Results:");
 				lblTitle.setFont(new java.awt.Font("Lucida Grande", 1, GlobalConstants.TITLE_SIZE)); // NOI18N
@@ -86,15 +91,14 @@ public class SRSPanel extends JPanel
 				fillCols(1);
 				lblN0 = newLabel("", GlobalConstants.TEXT_SIZE);
 				lblN0.setHorizontalAlignment(SwingConstants.TRAILING);
-
 				fillCols(1);
 
 				// Row 9
 				newLabel("Finite Population Correction", GlobalConstants.TEXT_SIZE);
-				fillCols(2);
+				fillCols(1); // was 2
 				lblFpc = newLabel("", GlobalConstants.TEXT_SIZE);
 				lblFpc.setHorizontalAlignment(SwingConstants.TRAILING);
-				//fillCols(1);
+				fillCols(1);
 
 				// Row 8
 				newLabel("Corrected Sample Size", GlobalConstants.TEXT_SIZE);
@@ -160,20 +164,31 @@ public class SRSPanel extends JPanel
 		/************** Setters ************/
 		public void setLblN0(double d)
 			{
-				lblN0.setText(Double.toString(d));
-
+				
+				String s = FormatOutputString.format(d);
+				lblN0.setText(s);
+				
 			}
 
 		public void setLblN(double d)
 			{
-				lblN.setText(Double.toString(d));
-
+				String s = FormatOutputString.format(d);
+				lblN.setText(s);
 			}
 
 		public void setLblFpc(double d)
 			{
-				lblFpc.setText(Double.toString(d));
-
+				
+				String s = FormatOutputString.format(d);
+				//DecimalFormat double_formatter = new DecimalFormat("#####.###");
+				//String formattedString = double_formatter.format(fpc);
+				// add leading zero
+			// insert leading 0
+				String zero = "0";
+				zero+=s;
+				lblFpc.setText(zero);
+				
+										
 			}
 
 	}

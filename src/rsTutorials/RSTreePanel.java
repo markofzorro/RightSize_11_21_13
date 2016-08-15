@@ -212,7 +212,7 @@ public class RSTreePanel extends JPanel implements TreeSelectionListener
         category = new DefaultMutableTreeNode("Blah, blah, blady-blah");
         top.add(category);
 */
-        category = new DefaultMutableTreeNode("Camotes are Good for Youu");
+        category = new DefaultMutableTreeNode("Camotes are Good for You");
         top.add(category);
 
         page = new DefaultMutableTreeNode(new PageInfo

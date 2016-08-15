@@ -108,10 +108,19 @@ public class SRSCalculator
 			{
 				return fpc > 0? fpc: 0;
 			}
-		static public double getN()	// For SRS
+	
+		static public int getN()	// For SRS
+		{
+			// n is an integer, so return it that way.
+			return n > 0? (int)n: 0;
+		}
+
+/* works
+ * static public double getN()	// For SRS
 			{
 				return n > 0? n: 0;
 			}
+			*/
 		
 		
 	}

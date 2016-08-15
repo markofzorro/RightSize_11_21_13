@@ -168,13 +168,39 @@ public class SRSChartDoc
 								// dataset(double value, String rowLabel, String columnLabel)
 								double columnLabel = variedAssumption[i];
 								 
-								if (columnLabel > 10000)
+/* this works as far as it goes. Need to make each label different and add X million, etc. Not sure if I need a formatter for
+ * this at all. Look at proportion to see if it has a formatter.
+ */
+									
+								DecimalFormat myFormatter = new DecimalFormat(
+										"#.#");
+								
+								if (columnLabel >= 100000)
 									{	
-										DecimalFormat myFormatter = new DecimalFormat("#.E0");
+										//DecimalFormat myFormatter = new DecimalFormat(
+											//	"#");
+										
+										columnLabel/=100000;
 										String s = myFormatter.format(columnLabel);
-										dataset.addValue(value, "population", s);
-									} else
-										dataset.addValue(value, "population", Double.toString(variedAssumption[i]));
+										// String s = Double.toString(columnLabel) + " million";
+										dataset.addValue(value, "population", s + " m");
+									}
+								else if (columnLabel >= 100000 && columnLabel <= 1000000000)
+									{	
+										//DecimalFormat myFormatter = new DecimalFormat(
+											//	"#");
+										
+										columnLabel/=100000;
+										String s = myFormatter.format(columnLabel);
+										// String s = Double.toString(columnLabel) + " million";
+										dataset.addValue(value, "population", s + " million");
+									} 
+								
+								
+								else
+										{	
+											dataset.addValue(value, "population", Double.toString(variedAssumption[i]));
+										}
 									
 								
 								
@@ -190,13 +216,14 @@ public class SRSChartDoc
 					    xAxis.setLabel("Population");
 					    ValueAxis yAxis = plot.getRangeAxis();
 					    yAxis.setLabel("Sample Size Needed");
-					    TextTitle source = new TextTitle("Scientific notation shows numbers multiplied by 10.    \n"
+					  /*  TextTitle source = new TextTitle("Scientific notation shows numbers multiplied by 10.    \n"
 					    		+ "The number after the \'E\' is the number of trailing zeros.  \nExamples: 100 is 1.E2,"
 					    		+ " 1,000 is 1.E3, and 40,000 is 4.E4.  ");
 						source.setFont(new Font("SansSerif", Font.PLAIN, 12));
 						source.setPosition(RectangleEdge.BOTTOM);
 						source.setHorizontalAlignment(HorizontalAlignment.RIGHT);
 						chart.addSubtitle(source);
+						*/
 
 						return new ChartPanel(chart);
 					}
@@ -423,3 +450,4 @@ public class SRSChartDoc
 		/********* end Getters and Setters *********/
 
 	}
+
