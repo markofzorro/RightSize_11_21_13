@@ -90,11 +90,6 @@ public class RSLogVariations
 					D.b("Array[" + i + "] is " + array[i]);
 			}
 
-		public static void main(String[] args)
-			{
-				// TODO Auto-generated method stub
-				RSLogVariations.multiplyLogs();
-
-			}
+		
 
 	}

@@ -8,7 +8,7 @@ import org.apache.commons.math3.distribution.NormalDistribution;
  * repetively 
  * @author markofzero
  *
- */
+ **/
 public class SRSCalculator
 	{
 		static private double population = 0;
