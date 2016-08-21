@@ -1,9 +1,0 @@
-1.  RightSize.java presents menu. User choose the desired sample type in menu and action listener creates appropriate document.
- 
-2. SRSDocument (for example) presents SRS Panel which gathers user input and returns control to the document that created it when calling
-function returns.    
-
-3. SRSDocument calculations function collects user input by calling panel getters. then it does calculations.
-
-4. SRSDocument calculations method then calls view.update which takes the results as arguments and then shows them to user.
-

@@ -95,10 +95,10 @@ public class SRSPanel extends JPanel
 
 				// Row 9
 				newLabel("Finite Population Correction", GlobalConstants.TEXT_SIZE);
-				fillCols(2);
+				fillCols(1);
 				lblFpc = newLabel("", GlobalConstants.TEXT_SIZE);
 				lblFpc.setHorizontalAlignment(SwingConstants.TRAILING);
-				//fillCols(1);
+				fillCols(1);
 
 				// Row 8
 				newLabel("Corrected Sample Size", GlobalConstants.TEXT_SIZE);
@@ -164,33 +164,25 @@ public class SRSPanel extends JPanel
 		/************** Setters ************/
 		public void setLblN0(double d)
 			{
-			 DecimalFormat df = new DecimalFormat("###.000");
-		        	
-			//lblN0.setText(Double.toString(d));
-			lblN0.setText(df.format(d));
+				String s = new DecimalFormat("####.####").format(d); //"1.2"
+				lblN0.setText(s);
+				
+		
 			}
 
 		public void setLblN(double d)
 			{
-			 DecimalFormat df = new DecimalFormat("###.000");	
-			 lblN.setText(Double.toString(d));
+				String s = new DecimalFormat("####.####").format(d); //"1.2"		
+				lblN.setText(s);
 
 			}
 
 		public void setLblFpc(double d)
 			{
-				//lblFpc.setText(Double.toString(d));
-			
-				String s = new DecimalFormat("#.####").format(d); //"1.2"
+				String s = new DecimalFormat("###0.####").format(d); //"1.2"
 				lblFpc.setText(s);
 
 			}
-		
-		
-
-		
-		//String s = String.format("%s",d);
-		//	lblFpc.setText(s);
 
 
 	}
