@@ -3,7 +3,7 @@
 
 
 /**
- * RightSize
+ * RightSize3
  * 
  * @author markofzero
  * 
@@ -25,4 +25,4 @@
  * 
  * 
  */
-package rightSize;
+package rightSize3;

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package rightSize;
+package rightSize3;
 
 /**
  * @author zero
@@ -30,7 +30,7 @@ import cluster.ClusterDoc;
 //import charts2D.*;
 
 /**
- * RightSize
+ * RightSize3
  * 
  * @author Mark White
  * 
@@ -57,7 +57,7 @@ import cluster.ClusterDoc;
 
 // HERE'S THE NEW TEXT. WILL IT BE ERASED? I HOPE SO.
 
-public class RightSize extends JFrame implements ActionListener
+public class RightSize3 extends JFrame implements ActionListener
 {
 	private JDesktopPane desktop = null;
 	private SRSDoc srsDoc =null;
@@ -65,9 +65,9 @@ public class RightSize extends JFrame implements ActionListener
 	private SRSChartDoc chartDoc = null;
 	private RSTutorialDoc tutorial = null;
 
-	public RightSize()
+	public RightSize3()
 		{
-			super("RightSize: From your friends at TEPHINET.");
+			super("RightSize3: From your friends at TEPHINET.");
 			
 
 			// Make the big window be indented 50 pixels from each edge
@@ -219,7 +219,7 @@ public class RightSize extends JFrame implements ActionListener
 			JFrame.setDefaultLookAndFeelDecorated(true);
 
 			// Create and set up the window.
-			RightSize frame = new RightSize();
+			RightSize3 frame = new RightSize3();
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 			// Display the window.

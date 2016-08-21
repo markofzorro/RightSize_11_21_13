@@ -61,7 +61,7 @@ public class RSTreePanel extends JPanel implements TreeSelectionListener
 
 				// Create the nodes.
 				DefaultMutableTreeNode top = new DefaultMutableTreeNode(
-						"RightSize Turorial");
+						"RightSize3 Turorial");
 				createNodes(top);
 
 				// Create a tree that allows one selection at a time.

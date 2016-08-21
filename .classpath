@@ -2,7 +2,7 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Commons-math-3.6.1"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JFreeChart.1.0-2.16Lib"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/commons-math3-.3.6.1"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

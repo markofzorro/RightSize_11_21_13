@@ -10,6 +10,8 @@ import javax.swing.SwingConstants;
 
 import basesAndUtilites.D;
 import basesAndUtilites.GlobalConstants;
+import java.text.DecimalFormat;
+
 
 public class SRSPanel extends JPanel
 	{
@@ -80,8 +82,10 @@ public class SRSPanel extends JPanel
 				lblTitle.setFont(new java.awt.Font("Lucida Grande", 1, GlobalConstants.TITLE_SIZE)); // NOI18N
 				add(lblTitle);
 				fillCols(3);
-
+// Methods below set the text
 				// Row 8
+				// DecimalFormat df = new DecimalFormat("###.000");
+			      //  System.out.println(df.format(364565.14));
 				newLabel("Sample Size", GlobalConstants.TEXT_SIZE);
 				fillCols(1);
 				lblN0 = newLabel("", GlobalConstants.TEXT_SIZE);
@@ -160,20 +164,33 @@ public class SRSPanel extends JPanel
 		/************** Setters ************/
 		public void setLblN0(double d)
 			{
-				lblN0.setText(Double.toString(d));
-
+			 DecimalFormat df = new DecimalFormat("###.000");
+		        	
+			//lblN0.setText(Double.toString(d));
+			lblN0.setText(df.format(d));
 			}
 
 		public void setLblN(double d)
 			{
-				lblN.setText(Double.toString(d));
+			 DecimalFormat df = new DecimalFormat("###.000");	
+			 lblN.setText(Double.toString(d));
 
 			}
 
 		public void setLblFpc(double d)
 			{
-				lblFpc.setText(Double.toString(d));
+				//lblFpc.setText(Double.toString(d));
+			
+				String s = new DecimalFormat("#.####").format(d); //"1.2"
+				lblFpc.setText(s);
 
 			}
+		
+		
+
+		
+		//String s = String.format("%s",d);
+		//	lblFpc.setText(s);
+
 
 	}
