@@ -21,11 +21,10 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
+import cluster.ClusterDoc;
 import rsTutorials.RSTutorialDoc;
 import srs.SRSChartDoc;
 import srs.SRSDoc;
-import cluster.ClusterDoc;
-//import jFreeChart.RSLineChartOldNoWord;
 
 //import charts2D.*;
 

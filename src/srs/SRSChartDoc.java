@@ -41,7 +41,7 @@ import basesAndUtilites.RSVariations;
  * in an array of doubles. Converts these to strings of in the form of XX.XX
  * which are used by chart to draw x axis.
  * 
- * @author markofzero
+ * @author Mark White
  * 
  */
 public class SRSChartDoc
@@ -56,7 +56,7 @@ public class SRSChartDoc
 		private double confidenceInterval = 0;
 		private double confidenceLevel = 0;
 		private String choice = null;
-	//	private int Globals. = Globals.COLS;
+	
 		
 
 		// JPanel proportionsPanel = null;
